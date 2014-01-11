@@ -200,7 +200,7 @@ public class SystemTetsBotGarrettAuto extends IterativeRobot {
 	
 	public void disabledContinuous() {
 		// TODO Auto-generated method stub
-		super.disabledContinuous();
+		super.disabledPeriodic();
 	}
 
 	
