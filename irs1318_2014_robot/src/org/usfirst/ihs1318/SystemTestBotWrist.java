@@ -66,19 +66,19 @@ public class SystemTestBotWrist extends IterativeRobot {
 	
 	public void disabledContinuous() {
 		// TODO Auto-generated method stub
-		super.disabledContinuous();
+		super.disabledPeriodic();
 	}
 
 	
 	public void autonomousContinuous() {
 		// TODO Auto-generated method stub
-		super.autonomousContinuous();
+		super.autonomousPeriodic();
 	}
 
 	
 	public void teleopContinuous() {
 		// TODO Auto-generated method stub
-		super.teleopContinuous();
+		super.teleopPeriodic();
 	}
 
 }
