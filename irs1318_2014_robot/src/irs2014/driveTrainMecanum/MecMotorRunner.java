@@ -1,5 +1,6 @@
 package irs2014.driveTrainMecanum;
 
+import edu.wpi.first.wpilibj.Jaguar;
 import irs2014.components.RobotComponentBase;
 
 public class MecMotorRunner extends RobotComponentBase{
@@ -17,7 +18,7 @@ public class MecMotorRunner extends RobotComponentBase{
 	
 	private final double SPEED = .5;
 	
-	private final int counter;
+	private int counter;
 	
 	public void robotInit (){
 		jaguar1 = new Jaguar(this.SIDECAR_SLOT, PORT_1);

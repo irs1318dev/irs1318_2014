@@ -4,7 +4,6 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="C:/devfrc/git/irs1318_2014/irs1318_2014_robot/libs/networktables-crio.jar"/>
 	<classpathentry kind="lib" path="C:/devfrc/git/irs1318_2014/irs1318_2014_robot/libs/squawk.jar"/>
-	<classpathentry kind="lib" path="C:/devfrc/git/irs1318_2014/irs1318_2014_robot/libs/squawk_device_classes.jar"/>
 	<classpathentry kind="lib" path="C:/devfrc/git/irs1318_2014/irs1318_2014_robot/libs/wpilibj.jar" sourcepath="libs/wpilibj.src.zip"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
