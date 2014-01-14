@@ -19,4 +19,6 @@ public interface PortRef {
 	int ENCODER_L_A = 3;
 	int ENCODER_L_B = 4;
 	
+	int JAGUAR_1 = 1;
+	
 }

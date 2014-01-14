@@ -18,9 +18,10 @@ public class MainIterativeComponentRobot extends IterativeComponentRobot {
 		return simpleMecanumTest();
 	}
 	
-	// I have no idea what I'm doing.
+	// I have slightly less of no idea what I'm doing.
 	protected static BotVector simpleMecanumTest(){
 		BotVector b = new BotVector();
+		b.add(new MecMotorRunner());
 		return b;
 	}
 	
