@@ -5,14 +5,37 @@ import irs2014.driveTrainTank.DriveTrainEncoderReader;
 import irs2014.driveTrainTank.DriveTrainNoPIDCalculator;
 import irs2014.driveTrainTank.DriveTrainPIDCalculator;
 import irs2014.driveTrainTank.DriveTrainRunner;
+import irs2014.driveTrainTank.MotorRunner;
 import irs2014.helloWorld.HelloWorldRunner;
+import irs2014.simpleRIAB.GamePadReaderRIAB;
+import irs2014.simpleRIAB.SimpleRAIBCalculator;
+import irs2014.simpleRIAB.TalonRunner;
 import irs2014.userInputDevices.Joystick1Reader;
 
 public class MainIterativeComponentRobot extends IterativeComponentRobot {
 
 	public BotVector currentRobotComponents() {
-		//return tankDriveTrainTest();
-		return helloWorld();
+		return simpleMecanumTest();
+	}
+	
+	// I have no idea what I'm doing.
+	protected static BotVector simpleMecanumTest(){
+		BotVector b = new BotVector();
+		return b;
+	}
+	
+	private BotVector simpleRAIBTest() {
+		BotVector b = new BotVector();
+		b.add(new GamePadReaderRIAB());
+		b.add(new SimpleRAIBCalculator());
+		b.add(new TalonRunner());
+		return b;
+	}
+
+	protected static BotVector motorRunnerTest (){
+		BotVector b = new BotVector();
+		b.add(new MotorRunner());
+		return b;
 	}
 	
 	protected static BotVector helloWorld(){
