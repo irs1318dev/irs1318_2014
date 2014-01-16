@@ -12,7 +12,6 @@ public class MecMotorRunner extends RobotComponentBase{
 	private Jaguar jaguar4;
 		
 	
-	
 	private final double SPEED = .5;
 	
 	private int counter;

@@ -1,6 +1,5 @@
 package irs2014.generalData;
 
-import edu.wpi.first.wpilibj.DigitalSource;
 import edu.wpi.first.wpilibj.SensorBase;
 
 
