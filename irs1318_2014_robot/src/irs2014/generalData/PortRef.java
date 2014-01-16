@@ -3,6 +3,7 @@ package irs2014.generalData;
 import edu.wpi.first.wpilibj.DigitalSource;
 import edu.wpi.first.wpilibj.SensorBase;
 
+
 public interface PortRef {
 	
 	int JOYSTICK = 1;
@@ -12,6 +13,11 @@ public interface PortRef {
 
 	int TALON_R = 2;
 	int TALON_L = 1;
+	
+	int PORT_1 = 1;
+	int PORT_2 = 2;
+	int PORT_3 = 3;
+	int PORT_4 = 4;
 
 	int ENCODER_R_A = 1;
 	int ENCODER_R_B = 2;

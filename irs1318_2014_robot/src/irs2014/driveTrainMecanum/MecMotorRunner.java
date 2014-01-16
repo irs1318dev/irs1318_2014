@@ -2,6 +2,8 @@ package irs2014.driveTrainMecanum;
 
 import edu.wpi.first.wpilibj.Jaguar;
 import irs2014.components.RobotComponentBase;
+import irs2014.generalData.PortRef;
+
 
 public class MecMotorRunner extends RobotComponentBase{
 	private Jaguar jaguar1;
@@ -9,22 +11,17 @@ public class MecMotorRunner extends RobotComponentBase{
 	private Jaguar jaguar3;
 	private Jaguar jaguar4;
 		
-	private final int PORT_1 = 1;
-	private final int PORT_2 = 2;
-	private final int PORT_3 = 3;
-	private final int PORT_4 = 4;
 	
-	private final int SIDECAR_SLOT = 2;
 	
 	private final double SPEED = .5;
 	
 	private int counter;
 	
 	public void robotInit (){
-		jaguar1 = new Jaguar(this.SIDECAR_SLOT, PORT_1);
-		jaguar2 = new Jaguar(this.SIDECAR_SLOT, PORT_2);
-		jaguar3 = new Jaguar(this.SIDECAR_SLOT, PORT_3);
-		jaguar4 = new Jaguar(this.SIDECAR_SLOT, PORT_4);
+		jaguar1 = new Jaguar(PortRef.SIDECAR_SLOT, PortRef.PORT_1);
+		jaguar2 = new Jaguar(PortRef.SIDECAR_SLOT, PortRef.PORT_2);
+		jaguar3 = new Jaguar(PortRef.SIDECAR_SLOT, PortRef.PORT_3);
+		jaguar4 = new Jaguar(PortRef.SIDECAR_SLOT, PortRef.PORT_4);
 		
 		System.out.println ("RobotInit");
 		
@@ -33,7 +30,7 @@ public class MecMotorRunner extends RobotComponentBase{
 	
 	public void teleopPeriodic (){
 		if ((counter % 100) == 0){
-			System.out.println ("MecMotorRunner teleop ports " + PORT_1 + ", " + PORT_2 + ", " + PORT_3 + ", " + PORT_4 + " = " + SPEED);
+			System.out.println ("MecMotorRunner teleop ports " + PortRef.PORT_1 + ", " + PortRef.PORT_2 + ", " + PortRef.PORT_3 + ", " + PortRef.PORT_4 + " = " + SPEED);
 		}
 		counter++;
 		jaguar1.set(SPEED);
