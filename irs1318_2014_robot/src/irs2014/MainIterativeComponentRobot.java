@@ -12,14 +12,22 @@ import irs2014.simpleRIAB.GamePadReaderRIAB;
 import irs2014.simpleRIAB.SimpleRAIBCalculator;
 import irs2014.simpleRIAB.TalonRunner;
 import irs2014.userInputDevices.Joystick1Reader;
+import irs2014.userInputDevices.JoystickPortTest;
 
 public class MainIterativeComponentRobot extends IterativeComponentRobot {
 
 	public BotVector currentRobotComponents() {
-		return simpleMecanumTest();
+		//return simpleMecanumTest();
+		//return joystickTest();
+		return tankDriveTrainTest();
 	}
 	
-	// I have slightly less of no idea what I'm doing.
+	protected static BotVector joystickTest(){
+		BotVector b = new BotVector();
+		b.add(new JoystickPortTest());
+		return b;
+	}
+	
 	protected static BotVector simpleMecanumTest(){
 		BotVector b = new BotVector();
 		b.add(new MecMotorRunner());

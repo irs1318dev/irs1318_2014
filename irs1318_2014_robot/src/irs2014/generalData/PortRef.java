@@ -5,7 +5,8 @@ import edu.wpi.first.wpilibj.SensorBase;
 
 public interface PortRef {
 	
-	int JOYSTICK = 1;
+	int JOYSTICK_1 = 1;
+	int JOYSTICK_2 = 2;
 	
 	int SIDECAR_SLOT = SensorBase.getDefaultDigitalModule();
 	int DIGITAL_IO = SensorBase.getDefaultSolenoidModule();

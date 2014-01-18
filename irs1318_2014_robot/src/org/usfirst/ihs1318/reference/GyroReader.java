@@ -82,7 +82,8 @@ public class GyroReader {
 		} else {
 			prevGyroToggle = false;
 		}
-		
+	
+		gyroEnabled=false; // TODO force gyro to be off always.
 		if (gyroEnabled) {
 			setTheta();
 		} else {

@@ -13,7 +13,7 @@ public class Joystick1Reader extends RobotComponentBase {
 	private double joystickY;
 	
 	public void robotInit() {
-		joystick = new Joystick(PortRef.JOYSTICK);
+		joystick = new Joystick(PortRef.JOYSTICK_1);
 	}
 
 	public void teleopPeriodic() {

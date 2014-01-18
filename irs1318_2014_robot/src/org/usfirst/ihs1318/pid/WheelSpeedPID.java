@@ -101,12 +101,12 @@ public class WheelSpeedPID implements Runnable {
 		
 		if(debug % 30 == 0) {
 		debug = 0;
-		System.out.println(
-				  "crf " + currentRightFront
-				+",krf " + getKinMS().getRf()
-				+",omg " + getKinMS().calculateWheelOmega(getKinMS().getRf())
-				+",enc " + getRefMEnc().getRf()
-				);
+//		System.out.println(
+//				  "crf " + currentRightFront
+//				+",krf " + getKinMS().getRf()
+//				+",omg " + getKinMS().calculateWheelOmega(getKinMS().getRf())
+//				+",enc " + getRefMEnc().getRf()
+//				);
 		}
 		debug++;
 
@@ -129,19 +129,24 @@ public class WheelSpeedPID implements Runnable {
 						- getRefMEnc().getRr());
 		getPidMS().setRr(currentRightRear);
 		
-		/*if (isDebugEnabled()) {
-			if (printCount%20==0) {
-			System.out.println("lf="+getRefMEnc().getLf()
-					           +",rf="+getRefMEnc().getRf()
-					           +",lr="+getRefMEnc().getLr()
-					           +",rr="+getRefMEnc().getRr()
-					           );
+		if (count%100==0) {
+			System.out.println("lfpid="+getPidMS().getLf()
+			           +",rfpid="+getPidMS().getRf()
+			           +",lrpid="+getPidMS().getLr()
+			           +",rrpid="+getPidMS().getRr()
+			           );
+			System.out.println("lfenc="+getRefMEnc().getLf()
+			           +",rfenc="+getRefMEnc().getRf()
+			           +",lrenc="+getRefMEnc().getLr()
+			           +",rrenc="+getRefMEnc().getRr()
+			           );
+			   count=0;
 			}
-			printCount++;
-		}*/
+			count++;
 
 	}
-	
+
+    int count=0;
 	private void setClampValues() {
 		double baseValue;
 		if(sprintEnabled)

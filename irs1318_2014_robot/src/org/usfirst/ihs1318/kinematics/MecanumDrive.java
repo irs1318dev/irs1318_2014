@@ -46,7 +46,7 @@ public class MecanumDrive implements Runnable {
 		}
 	}
 	
-	
+	int count =0;
 	public void  calculateWheelSpeeds() {
 		double jX,jY, jRY, omega,theta,a1, a2;
 		synchronized(ReferenceData.getInstance()) {
@@ -97,6 +97,17 @@ public class MecanumDrive implements Runnable {
 			ws.setLf(values[1]);
 			ws.setLr(values[2]);
 			ws.setRr(values[3]);
+			
+			if (count%100==0) {
+			   System.out.println(
+				"Lf="+ws.getLf()
+				+",Rf="+ws.getRf()
+				+",Lr="+ws.getLr()
+				+",Rr="+ws.getRr()
+					);
+			   count=0;
+			}
+			count++;
 		}		
 	}
 	
