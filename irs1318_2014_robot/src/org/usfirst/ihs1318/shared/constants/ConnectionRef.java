@@ -32,8 +32,8 @@ public class ConnectionRef {
 	
 	public static final int MOTOR_CHANNEL_RF = 1;
 	public static final int MOTOR_CHANNEL_LF = 2;
-	public static final int MOTOR_CHANNEL_LR = 3;
-	public static final int MOTOR_CHANNEL_RR = 4;
+	public static final int MOTOR_CHANNEL_LR = 4;	//TODO 1/18/2014 - switch ports for LR and RR
+	public static final int MOTOR_CHANNEL_RR = 3;
 	
 //	public static final int ARM_ENCODER_SLOT = SIDECAR_ONE_SLOT;
 //	public static final int ARM_ENCODER_CHANNEL1 = 9;
