@@ -6,10 +6,10 @@ public class ConnectionRef {
 	public static final int SIDECAR_ONE_SLOT = SensorBase.getDefaultDigitalModule();	
 	
 	public static final int WHEEL_ENCODER_SLOT = SIDECAR_ONE_SLOT;
-	public static final int WHEEL_ENCODER_RF_SOURCE_1 = 1;
-	public static final int WHEEL_ENCODER_RF_SOURCE_2 = 2;
-	public static final int WHEEL_ENCODER_LF_SOURCE_1 = 3;
-	public static final int WHEEL_ENCODER_LF_SOURCE_2 = 4;
+	public static final int WHEEL_ENCODER_RF_SOURCE_1 = 3;
+	public static final int WHEEL_ENCODER_RF_SOURCE_2 = 4;
+	public static final int WHEEL_ENCODER_LF_SOURCE_1 = 1;
+	public static final int WHEEL_ENCODER_LF_SOURCE_2 = 2;
 	public static final int WHEEL_ENCODER_LR_SOURCE_1 = 5;	
 	public static final int WHEEL_ENCODER_LR_SOURCE_2 = 6;
 	public static final int WHEEL_ENCODER_RR_SOURCE_1 = 7;
@@ -30,10 +30,10 @@ public class ConnectionRef {
 	public static final int MOTOR_SLOT_LR = SIDECAR_ONE_SLOT;	
 	public static final int MOTOR_SLOT_RR = SIDECAR_ONE_SLOT;
 	
-	public static final int MOTOR_CHANNEL_RF = 1;
-	public static final int MOTOR_CHANNEL_LF = 2;
-	public static final int MOTOR_CHANNEL_LR = 4;	//TODO 1/18/2014 - switch ports for LR and RR
-	public static final int MOTOR_CHANNEL_RR = 3;
+	public static final int MOTOR_CHANNEL_RF = 2;
+	public static final int MOTOR_CHANNEL_LF = 1;
+	public static final int MOTOR_CHANNEL_LR = 3;	
+	public static final int MOTOR_CHANNEL_RR = 4;
 	
 //	public static final int ARM_ENCODER_SLOT = SIDECAR_ONE_SLOT;
 //	public static final int ARM_ENCODER_CHANNEL1 = 9;
