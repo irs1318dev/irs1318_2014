@@ -1,6 +1,13 @@
+<<<<<<< HEAD
 *.class
 ./bin
 
 # Package Files #
 *.war
 *.ear
+=======
+/suite
+/build
+/.classpath
+/.project
+>>>>>>> branch 'master' of https://github.com/irs1318dev/irs1318_2014.git
