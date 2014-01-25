@@ -1,0 +1,98 @@
+<!-- <project name="VisionSystem" default="dist" basedir="."> -->
+<project name="VisionSystem" default="dist" basedir=".">
+	<description>VisionSystem build file</description>
+
+	<!-- set global properties for this build -->
+	<property name="src" location="src"/>
+	<property name="build" location="build"/>
+	<property name="dist"  location="dist" />
+	<property name="lib"  location="./lib" />
+	<property name="report.dir"  location="./report" />
+	
+	<property name="repository.revision"  location="1.0" />
+	
+	
+	<path id="compile.classpath">
+		<fileset dir="./lib">
+			<include name="*.jar"/>
+		</fileset>
+	</path>
+	
+	<target name="init">	
+		<property name="label" value="irs1318"/>
+		<echo message="label ${label}" />
+	
+		<!-- Create the build directory structure used by compile -->
+		<mkdir dir="${build}"/>
+	</target>
+
+	<target name="compile" depends="init"
+        description="compile the source " >
+		<!-- Compile the java code from ${src} into ${build} -->
+		<javac srcdir="${src}" destdir="${build}" includeantruntime="false">
+			<classpath refid="compile.classpath"/>
+		</javac>
+		
+	</target>
+
+	<target name="dist" depends="compile" description="generate the distribution" >
+		<!-- Create the distribution directory -->
+		<mkdir dir="${dist}"/>
+		<mkdir dir="${dist}/${label}"/>
+		<mkdir dir="${dist}/${label}/bin"/>
+
+		<mkdir dir="${dist}/${label}/libraries"/>
+		<mkdir dir="${dist}/${label}/libraries/jar"/>
+		
+		<!-- Put everything in ${build} into the VisionSystem-${DSTAMP}.jar file -->
+		<jar jarfile="${dist}/${label}/libraries/jar/VisionSystem.jar" basedir="${build}">
+			<manifest>
+				<attribute name="Built-By" value="${user.name}"/>
+				<!-- section name="VisionSystem" -->
+				<section name="compile">
+					<attribute name="Specification-Title" value="VisionSystem"/>
+					<attribute name="Specification-Version" value="${repository.revision} ${DSTAMP} ${TSTAMP}"/>
+					<attribute name="Specification-Vendor" value="irs1318"/>
+					<attribute name="Implementation-Title" value="VisionSystem"/>
+					<attribute name="Implementation-Version" value="${repository.revision} ${DSTAMP} ${TSTAMP}"/>
+					<attribute name="Implementation-Vendor" value="irs1318"/>
+				</section>
+			</manifest>
+		</jar>
+	</target>
+	
+	<target name="clean" description="clean up" >
+		<!-- Delete the ${build} and ${dist} directory trees -->
+		<delete dir="${build}"/>
+		<delete dir="${dist}"/>
+	</target>
+
+	  <target name="junit" depends="dist">
+	        <mkdir dir="${report.dir}"/>
+	        <junit printsummary="yes">
+	            <classpath>
+	        		<fileset dir="${lib}">
+	        			<include name="*.jar"/>
+	        		</fileset>
+	            	<pathelement path="${lib}/junit-4.4.jar"/>
+	            	<!-- pathelement path="${dist}/${label}/libraries/jar/VisionSystem.jar"/ -->
+	            	<pathelement location="${build}" />
+	            </classpath>
+	            
+	            <formatter type="xml"/>
+	            
+	            <batchtest fork="yes" todir="${report.dir}">
+	                <fileset dir="${src}" includes="**/junit/*Test.java"/>
+	            </batchtest>
+	        </junit>
+	    </target>
+	    
+	    <target name="junitreport" depends="junit">
+	        <junitreport>
+	            <fileset dir="${report.dir}" includes="TEST-*.xml"/>
+	            <report todir="${report.dir}" format="noframes">
+	        	</report>
+	        </junitreport>
+	    </target>
+	
+</project>
