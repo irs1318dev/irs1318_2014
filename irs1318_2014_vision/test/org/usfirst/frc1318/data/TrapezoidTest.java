@@ -18,10 +18,10 @@ public class TrapezoidTest extends DataStructureContractTest{
 	
 	@Before
 	public void construct() {
-		square = new Trapezoid(0,2, 2,2, 0,0, 2,0);
-		rect = new Trapezoid(0,4, 6,4, 0,0, 6,0);
-		rectForTheta = new Trapezoid(0,3, 4,3, 0,0, 4,0);
-		trap = new Trapezoid(0,4, 2,2, 0,0, 2,0);
+		square = new Trapezoid(0,0, 0,2, 2,2, 0,0, 2,0);
+		rect = new Trapezoid(0,0, 0,4, 6,4, 0,0, 6,0);
+		rectForTheta = new Trapezoid(0,0, 0,3, 4,3, 0,0, 4,0);
+		trap = new Trapezoid(0,0, 0,4, 2,2, 0,0, 2,0);
 	}
 	
 	@Test
@@ -76,19 +76,19 @@ public class TrapezoidTest extends DataStructureContractTest{
 	
 	@Test
 	public void calculateThetaFieldTest() {
-		assertEquals(1.6666666 * Math.PI, trap.findThetaField(), 0.1);
+		assertEquals(-60.0, trap.findThetaField(), 0.1);
 	}
 
 	@Override
 	protected DataStructure createData1() {
-		square = new Trapezoid(0,2, 2,2, 0,0, 2,0);
+		square = new Trapezoid(0,0, 0,2, 2,2, 0,0, 2,0);
 		DataStructure data = square;
 		return data;
 	}
 
 	@Override
 	protected DataStructure createData2() {
-		rect = new Trapezoid(0,4, 6,4, 0,0, 6,0);
+		rect = new Trapezoid(0,0, 0,4, 6,4, 0,0, 6,0);
 		DataStructure data = rect;
 		return data;
 	}

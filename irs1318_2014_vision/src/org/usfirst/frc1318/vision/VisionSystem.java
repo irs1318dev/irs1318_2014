@@ -15,8 +15,18 @@ public class VisionSystem {
 
 	}
 	
+	private static CameraRunnable cr;
+	public static CameraRunnable getCameraRunnable() {
+		if (cr==null) {
+			cr = new CameraRunnable();
+			cr.setResolution(640);
+			cr.setFramesPerSecond(5);
+		}
+		return cr;
+	}
+	
 	public void see() throws Exception {
-		Thread cameraThread = new Thread(new CameraRunnable());
+		Thread cameraThread = new Thread(getCameraRunnable());
 		cameraThread.start();
 	}
 

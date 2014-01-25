@@ -76,7 +76,7 @@ public class JavaCVUtils {
 		intrinsic_matrix.put(2, 0, 0.0);
 		intrinsic_matrix.put(2, 1, 0.0);
 		intrinsic_matrix.put(2, 2, 1.0); // flat z
-		JavaCVUtils.printMatrix("intrisic matrix",intrinsic_matrix);
+//		JavaCVUtils.printMatrix("intrisic matrix",intrinsic_matrix);
 		return intrinsic_matrix;
 		
 	}
@@ -89,7 +89,7 @@ public class JavaCVUtils {
 		distortion_coeffs.put(2, 0, -p_factor); // tangential p1
 		distortion_coeffs.put(3, 0, p_factor); // tangential p2
 
-		JavaCVUtils.printMatrix("distortion coeffs",distortion_coeffs);
+//		JavaCVUtils.printMatrix("distortion coeffs",distortion_coeffs);
 		return distortion_coeffs;
 		
 	}

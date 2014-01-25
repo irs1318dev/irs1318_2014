@@ -6,16 +6,36 @@ import static java.lang.Math.acos;
 
 
 public class Trapezoid implements DataStructure{
+	private String errorMessage=null;
+	public String getErrorMessage() {
+		return errorMessage;
+	}
+	public void setErrorMessage(String errorMessage) {
+		this.errorMessage = errorMessage;
+	}
+	public boolean hasError() {
+		return !("".equals(errorMessage) || errorMessage==null);
+	}
+	
+
+	private int pointCount;;
+	private int lineWidth;
 	private Point topRight;
 	private Point topLeft;
 	private Point lowRight;
 	private Point lowLeft;
 	
-	public Trapezoid(double x1, double y1, double x2, double y2, double x3, double y3, double x4, double y4){
-		topLeft = new Point(x1, y1);
-		topRight = new Point(x2, y2);
-		lowLeft = new Point(x3, y3);
-		lowRight = new Point(x4, y4);
+	public Trapezoid() {
+		
+	}
+	
+	public Trapezoid(int pointCount, int lineWidth, double x1, double y1, double x2, double y2, double x3, double y3, double x4, double y4){
+		this.pointCount = pointCount;
+		this.lineWidth = lineWidth; 
+		this.topLeft = new Point(x1, y1);
+		this.topRight = new Point(x2, y2);
+		this.lowLeft = new Point(x3, y3);
+		this.lowRight = new Point(x4, y4);
 	}
 	
 	public Trapezoid(Point topRight, Point topLeft, Point bottomLeft, Point bottomRight){
@@ -26,7 +46,7 @@ public class Trapezoid implements DataStructure{
 	}
 	
 	public Trapezoid(Trapezoid that) {
-		this(that.topRight.getX(), that.topRight.getY(), that.topLeft.getX(), that.topLeft.getY(),
+		this(that.getPointCount(),that.getLineWidth(),that.topRight.getX(), that.topRight.getY(), that.topLeft.getX(), that.topLeft.getY(),
 				that.lowLeft.getX(), that.lowLeft.getY(), that.lowRight.getX(), that.lowRight.getY());
 	}
 
@@ -114,23 +134,61 @@ public class Trapezoid implements DataStructure{
 		}
 		return height;
 	}
-	
+
+	// look for range within 1.33 +/- .05
+	public double findAspectRatio() {
+		return this.findWidth() / this.findHeight();
+	}
+
+	// too sensitive.
 	public double findTheta() {
 		//equation is theta = arccos(percieved height / percieved width * actual width / actual height)
-		double theta = this.findWidth() / this.findHeight() * 3 / 4;
-		theta = acos(theta);
-		return theta;
+		double theta =  findAspectRatio() * (3.0 / 4.0);
+		theta = acos(theta); //the division of pi is to put theta into terms of pi
+		return theta * 180.0 /Math.PI;
+	}
+	
+	public int findFieldSide() {
+		int side = 0;
+		if (findAspectRatio()>1.25) return side;
+		double leftSideHeight = getTopLeft().distanceY(getLowLeft());
+		double rightSideHeight = getTopRight().distanceY(getLowRight());
+		if(leftSideHeight > rightSideHeight) {
+			side = -1; // if we are on the left side of the field, the left side of the triangle will appear bigger
+		}
+		else {
+			side = 1;
+		}
+		return side;
+		
 	}
 
 	public double findThetaField() {
 		double result = findTheta();
-		double leftSideHeight = getTopLeft().distanceY(getLowLeft());
-		double rightSideHeight = getTopRight().distanceY(getLowRight());
-		if(leftSideHeight > rightSideHeight) {
-			result *= -1; // if we are on the left side of the field, the left side of the triangle will appear bigger
-			result += 2 * Math.PI; //this is to convert the negative number we made into 0 through 2 pi radians
-		}
+		int side = findFieldSide();
+		if (side!=0) result *= side;
 		return result;
-	}	
+	}
+	
+	public double getFieldOfViewOffset() {
+		return findMidpoint().getX() - (320);
+	}
+	
+	public String toString() {
+		if (hasError()) return getErrorMessage();
+		
+		StringBuilder sb = new StringBuilder();
+		sb.append(String.format("tl=%s, tr=%s, ",getTopLeft(), getTopRight()));
+		sb.append(String.format("ll=%s, lr=%s, ",getLowLeft(), getLowRight()));
+		sb.append(String.format("pointCount=%s, lineWidth=%s, width=%.0f, height=%.0f, midPoint=%s, AR=%1.2f, fov=%.0f, t=%.3f",getPointCount(), getLineWidth(), findWidth(), findHeight(), findMidpoint(),findAspectRatio(),getFieldOfViewOffset(),findThetaField()));
+		return sb.toString();
+
+	}
+	public int getLineWidth() {
+		return lineWidth;
+	}
+	public int getPointCount() {
+		return pointCount;
+	}
 
 }

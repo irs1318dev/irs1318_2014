@@ -1,17 +1,18 @@
 package org.usfirst.frc1318.vision;
 
+import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.usfirst.frc1318.data.Point;
 import org.usfirst.frc1318.data.Trapezoid;
 
-import static com.googlecode.javacv.cpp.opencv_core.*;
-import static com.googlecode.javacv.cpp.opencv_imgproc.*;
-
 import com.googlecode.javacv.CanvasFrame;
 import com.googlecode.javacv.FrameGrabber;
 import com.googlecode.javacv.OpenCVFrameGrabber;
+
+import static com.googlecode.javacv.cpp.opencv_core.*;
+import static com.googlecode.javacv.cpp.opencv_imgproc.*;
 import com.googlecode.javacv.cpp.opencv_core.*;
 
 import static java.lang.String.*;
@@ -19,8 +20,41 @@ import static java.lang.Math.*;
 
 public class CameraRunnable implements Runnable {
 
-	private String outputPath = "c:\temp";
-	private LookUp distanceLookUp;
+	private String outputPath = "C:\\movies";
+	
+	private boolean movieMode = true;
+	public boolean getMovieMode() {
+		return movieMode;
+	}
+	
+	
+	public void setMovieMode(boolean movieMode) {
+		this.movieMode = movieMode;
+	}
+	private ViewBand viewBand;
+	private HueBand hueBand;
+
+	public ViewBand getViewBand() {
+		if (viewBand==null) {
+			viewBand = ViewBand.buildViewBand(640, 480, 390, 110); // default
+		}
+		return viewBand;
+	}
+
+	public void setViewBand(ViewBand viewBand) {
+		this.viewBand = viewBand;
+	}
+
+	public HueBand getHueBand() {
+		if (hueBand==null) {
+			hueBand = HueBand.buildHueBand("default",75, 100, 147, 255, 240, 255);
+		}
+		return hueBand;
+	}
+
+	public void setHueBand(HueBand hueBand) {
+		this.hueBand = hueBand;
+	}
 
 	public String getOutputPath() {
 		return outputPath;
@@ -49,52 +83,127 @@ public class CameraRunnable implements Runnable {
 		}
 	}
 
+
+	private boolean showFrame = true;
+	public boolean getShowFrame() {
+		return showFrame;
+	}
+	public void setShowFrame(boolean showFrame) {
+		this.showFrame = showFrame;
+	}
+	
+	private boolean printPictures = true;
+	public boolean getPrintPictures() {
+		return printPictures;
+	}
+	public void setPrintPictures(boolean printPictures) {
+		this.printPictures = printPictures;
+	}
+	
+	private int resolution;
+	public int getResolution() {
+		if (resolution==0) {
+			setResolution(640);
+		}
+		return resolution;
+	}
+	public void setResolution(int resolution) {
+		if (!(resolution==320||resolution==640)) {
+			throw new IllegalArgumentException("320 or 640 resolution allowed.");
+		}
+		this.resolution = resolution;
+	}
+	
+	private int framesPerSecond;
+	public int getFramesPerSecond() {
+		if (framesPerSecond==0) {
+			setFramesPerSecond(15);
+		}
+		return framesPerSecond;
+	}
+	public void setFramesPerSecond(int framesPerSecond) {
+		if (framesPerSecond>30) {
+			throw new IllegalArgumentException("30 fps or less allowed");
+		}
+		this.framesPerSecond = framesPerSecond;
+	}
+	
+	private String getWidthXHeight() {
+		if (getResolution()==640) {
+			return "640x480";
+		}
+		return "320x240";
+	}
+	
+	int frameCount = 0;
+	long now = 0;
+	
+	CanvasFrame frame =null;
+	CanvasFrame hsvFrame =null;
+
 	public void processImage() throws Exception {
-		FrameGrabber grabber = new OpenCVFrameGrabber(
-				"http://10.13.18.11/mjpg/video.mjpg?resolution=640x480&req_fps=30&.mjpg");
+		String url = format("http://10.13.18.11/mjpg/video.mjpg?resolution=%s&req_fps=%s&.mjpg",getWidthXHeight(),getFramesPerSecond());
+		System.out.println(url);
+		
+		FrameGrabber grabber = new OpenCVFrameGrabber(url);
 		grabber.start();
-		CanvasFrame frame = new CanvasFrame("Rectangle pipeline");
-
+		if (showFrame) {
+			frame = new CanvasFrame("Raw Image");
+			hsvFrame = new CanvasFrame("HSV pipeline");
+		}
 		IplImage image = null;
+		HsvAnalysis result = null;
 
+		now = System.currentTimeMillis();
 		while ((image = grabber.grab()) != null) {
-			IplImage undistortImage = undistort(image);
-
-			IplImage finalHsv = performHsvFilter(undistortImage);
-			List<Point> cornerPoints = findCorners(image, finalHsv);
-//			float scale = 0.25f;
-//			IplImage scaled = JavaCVUtils.resizeImage(image,
-//					(int) (image.width() * scale),
-//					(int) (image.height() * scale), true);
-			PointsToTrapezoid p2t = new PointsToTrapezoid();
-			Trapezoid trap = p2t.getOuterTrapezoid(cornerPoints);
-			if (trap != null) {
-				System.out.println(format("c2b=%s", trap.findThetaField()));
+			if (getMovieMode()) {
+				// skip some frames to avoid disk access
+				JavaCVUtils.saveImage(outputPath, now+"_raw_"
+						+ frameCount + ".jpg", image);
 			}
-			if (trap != null) {
-				System.out.println(String.valueOf(distanceLookUp.getValue(trap.findMidpoint().getY())));
+			result = processImage(image);
+
+			if (showFrame) {
+				frame.showImage(image);
+				System.out.println(String.format("live %s, %s",getHueBand(),getViewBand()));
+				System.out.println(String.format("live %s: %s",
+						result.getName(),
+						result.getTrapezoid()
+						));
 			}
-
-
-// undistort is the original image
-			
-//			cvReleaseImage(scaled);
-//			scaled=null;
-
-
-			cvReleaseImage(finalHsv);
-			finalHsv = null;
-
-			frame.showImage(image);
-//			if (true) continue;
-
-
+			if (!result.getTrapezoid().hasError()) {
+				PublishValues.publishValues(resolution, frameCount, result.getTrapezoid());
+			} else { // adjust hue band and view band for the next image
+				// skip frames if autosharpened less than 3 seoncds worth 3 * fps frames
+				AutoSharpen.autoSharpen(this, frameCount, image); // already undistorted
+			}
+			frameCount++;
 		}
 		grabber.stop();
 		grabber.release();
-		
-		frame.dispose();
 
+		if (showFrame) {
+			frame.dispose();
+		}
+
+	}
+	
+	public HsvAnalysis processImage(IplImage image) {
+		IplImage undistortImage = undistort(image); // this is image transformed in place
+		IplImage finalHSV = cvCreateImage(cvGetSize(image), IPL_DEPTH_8U, 1);
+		cvSetImageROI(finalHSV, getViewBand().getCvRect());
+		performHsvFilter(undistortImage,finalHSV, getHueBand());
+		HsvAnalysis result = findImagePoints(finalHSV);
+		result.analyzePoints();
+		if (showFrame) {
+			hsvFrame.showImage(finalHSV);
+		}
+		if (getMovieMode()) {
+			JavaCVUtils.saveImage(outputPath, now+"_hsv_"
+					+ frameCount + ".jpg", finalHSV);
+		}
+		cvReleaseImage(finalHSV);
+		return result;
 	}
 
 	CvMat intrinsic = null;
@@ -102,9 +211,14 @@ public class CameraRunnable implements Runnable {
 	IplImage mapx = null;
 	IplImage mapy = null;
 
-	private IplImage undistort(IplImage image) {
+	public IplImage undistort(IplImage image) {
 		if (mapx == null || mapy == null) {
-			intrinsic = JavaCVUtils.build640x480Intrinsic();
+			if (getResolution()==640){
+				intrinsic = JavaCVUtils.build640x480Intrinsic();
+			}
+			else {
+				intrinsic = JavaCVUtils.build320x240Intrinsic();
+			}
 			distortion = JavaCVUtils.buildDistortion();
 
 			mapx = cvCreateImage(cvGetSize(image), IPL_DEPTH_32F, 1);
@@ -119,8 +233,6 @@ public class CameraRunnable implements Runnable {
 				cvScalarAll(0));
 		cvReleaseImage(t);
 
-		// JavaCVUtils.saveImage(getOutputPath(),
-		// "01_undistort.jpg", image);
 		return image;
 
 	}
@@ -131,62 +243,88 @@ public class CameraRunnable implements Runnable {
 	IplImage sat = null;
 	IplImage val = null;
 
-	private IplImage performHsvFilter(IplImage image) {
+	public void performHsvFilter(IplImage image,IplImage finalHSV, HueBand hueBandParam) {
 		if (imageSingleDepth == null) {
 			imageSingleDepth = cvCreateImage(cvGetSize(image), IPL_DEPTH_8U, 1);
+			cvZero(imageSingleDepth); 
 			// hsv
 			ihsv = cvCreateImage(cvGetSize(image), IPL_DEPTH_8U, 3);
 			hue = cvCreateImage(cvGetSize(image), IPL_DEPTH_8U, 1);
 			sat = cvCreateImage(cvGetSize(image), IPL_DEPTH_8U, 1);
 			val = cvCreateImage(cvGetSize(image), IPL_DEPTH_8U, 1);
-
 		}
 
-		cvZero(imageSingleDepth);
-		cvZero(ihsv);
-		cvZero(hue);
-		cvZero(sat);
-		cvZero(val);
+		CvRect roi = cvGetImageROI(finalHSV);
+		CvRect isdRoi = cvGetImageROI(ihsv);
+		cvSetImageROI(finalHSV,isdRoi);
+
+		// work with full image
 		cvCvtColor(image, ihsv, CV_BGR2HSV); // hsv
 		cvSplit(ihsv, hue, sat, val, null); // single channel
 
-		// JavaCVUtils.saveImage(getOutputPath(),
-		// "041_hue.jpg", hue);
-		// JavaCVUtils.saveImage(getOutputPath(),
-		// "042_sat.jpg", sat);
-		// JavaCVUtils.saveImage(getOutputPath(),
-		// "043_val.jpg", val);
-
 		IplImage hueFilter = cvCloneImage(imageSingleDepth);
-		cvInRangeS(hue, cvScalarAll(75), cvScalarAll(100), hueFilter);
-		// JavaCVUtils.saveImage(getOutputPath(),
-		// "045_hueFilter.jpg", hueFilter);
+		cvInRangeS(hue, hueBandParam.getHueLow(), hueBandParam.getHueHi(), hueFilter);
 
 		IplImage satFilter = cvCloneImage(imageSingleDepth);
-		cvInRangeS(sat, cvScalarAll(147), cvScalarAll(255), satFilter);
-		// JavaCVUtils.saveImage(getOutputPath(),
-		// "046_satFilter.jpg", satFilter);
+		cvInRangeS(sat, hueBandParam.getSatLow(), hueBandParam.getSatHi(), satFilter);
 
 		IplImage valFilter = cvCloneImage(imageSingleDepth);
-		cvInRangeS(val, cvScalarAll(240), cvScalarAll(255), valFilter);
-		// JavaCVUtils.saveImage(getOutputPath(),
-		// "047_valFilter.jpg", valFilter);
-
-		IplImage finalHSV = cvCreateImage(cvGetSize(image), IPL_DEPTH_8U, 1);
-		cvZero(finalHSV);
+		cvInRangeS(val, hueBandParam.getValLow(), hueBandParam.getValHi(), valFilter);
 
 		cvAnd(hueFilter, valFilter, finalHSV, null);
 		cvAnd(finalHSV, satFilter, finalHSV, null);
-		// JavaCVUtils.saveImage(getOutputPath(),
-		// "048_finalHSV.jpg", finalHSV);
+		
+		// blank out everything except the region of interest.
+		int topY = 0;
+		int topH = roi.y();
+		CvRect topBlank = cvRect(0,topY,roi.width(),topH);
+		int bottomY = roi.y()+roi.height();
+		int bottomH = imageSingleDepth.height() - bottomY;
+		CvRect bottomBlank = cvRect(0,bottomY,roi.width(),bottomH);
 
+		if (topH>0) {
+			cvSetImageROI(finalHSV,topBlank);
+			cvSetImageROI(imageSingleDepth,topBlank);
+			cvAnd(finalHSV,imageSingleDepth,finalHSV,null);
+		}
+
+		if (bottomH>0) {
+			cvSetImageROI(finalHSV,bottomBlank);
+			cvSetImageROI(imageSingleDepth,bottomBlank);
+			cvAnd(finalHSV,imageSingleDepth,finalHSV,null);
+		}
+
+		cvSetImageROI(finalHSV,roi);
+		cvSetImageROI(imageSingleDepth,isdRoi);
+		
+		
 		// release
 		cvReleaseImage(hueFilter);
 		cvReleaseImage(satFilter);
 		cvReleaseImage(valFilter);
-
-		return finalHSV;
 	}
+
+	public HsvAnalysis findImagePoints(IplImage image) {
+		ByteBuffer bb = image.getByteBuffer();
+		byte[] dst = new byte[bb.remaining()];
+		bb.get(dst);
+		
+		HsvAnalysis hsvAnalysis = new HsvAnalysis();
+		hsvAnalysis.setResolution(resolution);
+		
+		List<Point> points = new ArrayList<Point>();
+		for (int i=0; i<dst.length; i++){
+			if (dst[i]!=0){
+				int y = (int) (floor(i/image.width()));
+				int x = i%image.width();
+				hsvAnalysis.recordPoint(x,y);
+			}
+		}
+		
+		
+		return hsvAnalysis;
+	}
+
 
 	IplImage eig = null;
 	IplImage temp = null;
@@ -201,7 +339,8 @@ public class CameraRunnable implements Runnable {
 	int USE_HARRIS = 0;
 	double K = 0.04;
 
-	private List<Point> findCorners(IplImage image, IplImage finalHsv) {
+	// not required
+	public List<Point> findCorners(IplImage image, IplImage finalHsv) {
 		// clone for overlay
 		// -------------------------------------------------- find corners
 		// oreilly learning opencv p333
@@ -237,5 +376,5 @@ public class CameraRunnable implements Runnable {
 		}
 		return points;
 	}
-
+	
 }

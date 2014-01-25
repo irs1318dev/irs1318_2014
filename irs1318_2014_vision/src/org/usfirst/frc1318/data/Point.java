@@ -121,4 +121,8 @@ public class Point implements DataStructure{
 
 		setAll(xprime + rotationPoint.getX(), yprime + rotationPoint.getY());
 	}
+	
+	public String toString() {
+		return String.format("(%.0f,%.0f)",getX(),getY());
+	}
 }

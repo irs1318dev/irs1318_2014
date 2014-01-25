@@ -8,5 +8,6 @@
 	<classpathentry kind="lib" path="lib/javacv-windows-x86_64.jar"/>
 	<classpathentry kind="lib" path="lib/javacv.jar" sourcepath="lib/javacv-0.7-src.zip"/>
 	<classpathentry kind="lib" path="lib/opencv-2.4.8-windows-x86_64.jar"/>
+	<classpathentry kind="lib" path="lib/NetworkTable_Client.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
