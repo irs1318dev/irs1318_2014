@@ -6,10 +6,10 @@ public class ConnectionRef {
 	public static final int SIDECAR_ONE_SLOT = SensorBase.getDefaultDigitalModule();	
 	
 	public static final int WHEEL_ENCODER_SLOT = SIDECAR_ONE_SLOT;
-	public static final int WHEEL_ENCODER_RF_SOURCE_1 = 3;
-	public static final int WHEEL_ENCODER_RF_SOURCE_2 = 4;
-	public static final int WHEEL_ENCODER_LF_SOURCE_1 = 1;
-	public static final int WHEEL_ENCODER_LF_SOURCE_2 = 2;
+	public static final int WHEEL_ENCODER_RF_SOURCE_1 = 3;//1
+	public static final int WHEEL_ENCODER_RF_SOURCE_2 = 4;//2
+	public static final int WHEEL_ENCODER_LF_SOURCE_1 = 2;//3
+	public static final int WHEEL_ENCODER_LF_SOURCE_2 = 1;//4
 	public static final int WHEEL_ENCODER_LR_SOURCE_1 = 5;	
 	public static final int WHEEL_ENCODER_LR_SOURCE_2 = 6;
 	public static final int WHEEL_ENCODER_RR_SOURCE_1 = 7;

@@ -11,12 +11,20 @@ public class DriveTrainEncoderReader extends RobotComponentBase{
 	EncoderAngularVelocity encoderL;
 	
 	public void robotInit(){
-		encoderR = new EncoderAngularVelocity(PortRef.ENCODER_R_A, PortRef.ENCODER_R_B);
+		encoderR = getNewRightEncoder();//new EncoderAngularVelocity(PortRef.ENCODER_R_A, PortRef.ENCODER_R_B);
 		encoderR.setName("RightMotor");
-		encoderL = new EncoderAngularVelocity(PortRef.ENCODER_L_A, PortRef.ENCODER_L_B);
+		encoderL = getNewLeftEncoder();//new EncoderAngularVelocity(PortRef.ENCODER_L_A, PortRef.ENCODER_L_B);
 		encoderL.setName("LeftMotor");
 	}
 	
+	public EncoderAngularVelocity getNewLeftEncoder() {
+		return new EncoderAngularVelocity(PortRef.ENCODER_L_A, PortRef.ENCODER_L_B);
+	}
+
+	public EncoderAngularVelocity getNewRightEncoder() {
+		return new EncoderAngularVelocity(PortRef.ENCODER_R_A, PortRef.ENCODER_R_B);
+	}
+
 	double count;
 	
 	public void teleopPeriodic(){

@@ -12,10 +12,18 @@ public class DriveTrainRunner extends RobotComponentBase {
 	//read speed from a data class and update
 	
 	public void robotInit(){
-		rightTalon = new Talon(PortRef.SIDECAR_SLOT, PortRef.TALON_R);
-		leftTalon = new Talon(PortRef.SIDECAR_SLOT, PortRef.TALON_L);
+		rightTalon = getNewRightTalon();//new Talon(PortRef.SIDECAR_SLOT, PortRef.TALON_R);
+		leftTalon = getNewLeftTalon();//new Talon(PortRef.SIDECAR_SLOT, PortRef.TALON_L);
+	}
+	
+	public Talon getNewRightTalon(){
+		return new Talon(PortRef.SIDECAR_SLOT, PortRef.TALON_R);
 	}
 
+	public Talon getNewLeftTalon(){
+		return new Talon(PortRef.SIDECAR_SLOT, PortRef.TALON_L);
+	}
+	
 	public Talon getRightTalon() {
 		return rightTalon;
 	}
@@ -28,11 +36,13 @@ public class DriveTrainRunner extends RobotComponentBase {
 		double rightVal = ReferenceData.getInstance().getDriveTrainData().getRightPIDSpeed();
 		rightVal = Math.min(rightVal, 1);
 		rightVal = Math.max(rightVal, -1);
+		System.out.println("rightVal: " + rightVal);
 		getRightTalon().set(rightVal);
 				
 		double leftVal = ReferenceData.getInstance().getDriveTrainData().getLeftPIDSpeed();
 		leftVal = Math.min(leftVal, 1);
 		leftVal = Math.max(leftVal, -1);
+//		System.out.println("leftVal: " + leftVal);
 		getLeftTalon().set(leftVal);
 
 

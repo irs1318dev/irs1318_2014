@@ -13,7 +13,11 @@ public class Joystick1Reader extends RobotComponentBase {
 	private double joystickY;
 	
 	public void robotInit() {
-		joystick = new Joystick(PortRef.JOYSTICK_1);
+		joystick = getNewJoystick();//new Joystick(PortRef.JOYSTICK_1);
+	}
+	
+	public Joystick getNewJoystick(){
+		return new Joystick(PortRef.JOYSTICK_1);
 	}
 
 	public void teleopPeriodic() {
@@ -26,11 +30,24 @@ public class Joystick1Reader extends RobotComponentBase {
 //		ReferenceData.getInstance().getUserInputData().setJoystickY(-joystickX);
 //		ReferenceData.getInstance().getUserInputData().setJoystickX(-joystickY);
 		
+//		System.out.println("joystick Y: " + joystickY);
+//		System.out.println("joystick X: " + joystickX);
+		
 		//TODO X and Y were switched on hardware, switched in software
 		ReferenceData.getInstance().getUserInputData().setJoystickY(joystickX);
 		ReferenceData.getInstance().getUserInputData().setJoystickX(joystickY);
+		
+		ReferenceData.getInstance().getUserInputData().setFire(joystick.getRawButton(PortRef.FIRE));
+		ReferenceData.getInstance().getUserInputData().setExtendLoader(joystick.getRawButton(PortRef.EXTEND_LOADER));
+		
+		//ReferenceData.getInstance().getUserInputData().setGoForward(joystick.getRawButton(PortRef.GO_FORWARD));
+		ReferenceData.getInstance().getUserInputData().setGoForward(getGoForward());
 	}
 	
+	public boolean getGoForward() {
+		return joystick.getRawButton(PortRef.GO_FORWARD);
+	}
+
 	public double applyLinearDeadBand(double x, double band) {
 		double output = 0;
 		if (Math.abs(x) < band){

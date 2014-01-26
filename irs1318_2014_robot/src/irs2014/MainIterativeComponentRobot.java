@@ -20,6 +20,7 @@ public class MainIterativeComponentRobot extends IterativeComponentRobot {
 		//return simpleMecanumTest();
 		//return joystickTest();
 		return tankDriveTrainTest();
+		//return helloWorld();
 	}
 	
 	protected static BotVector joystickTest(){
@@ -57,10 +58,10 @@ public class MainIterativeComponentRobot extends IterativeComponentRobot {
 	protected static BotVector tankDriveTrainTest(){
 		BotVector b = new BotVector();
 		b.add(new Joystick1Reader());
-		//b.add(new DriveTrainEncoderReader());
+		b.add(new DriveTrainEncoderReader());
 		b.add(new DriveTrain1JoystickCalculator());
-		b.add(new DriveTrainNoPIDCalculator());
-		//b.add(new DriveTrainPIDCalculator());
+		//b.add(new DriveTrainNoPIDCalculator());
+		b.add(new DriveTrainPIDCalculator());
 		b.add(new DriveTrainRunner());
 		return b;
 	}

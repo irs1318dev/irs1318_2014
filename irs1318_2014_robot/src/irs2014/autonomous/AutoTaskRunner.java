@@ -17,10 +17,12 @@ public class AutoTaskRunner extends RobotComponentBase
 		autoInputMap = new AutoInputMap(this);
 	}
 
-	public void teleopPeriodic()
+	public void teleopPeriodic() 
 	{
+		autoInputMap.update();
 		if(currentTask != null)
 		{
+			currentTask.run();
 			if(currentTask.isDone())
 			{//If the task's isDone method returned true, meaning it's done...
 				completedTasks.addElement(currentTask);

@@ -16,16 +16,19 @@ public class AutoInputMap
 	
 	public void update()
 	{
-		if(false)//ReferenceData.getInstance().getUserInputData().getAllActive,,,,?
+		if(ReferenceData.getInstance().getUserInputData().getIsActive())
 		{
 			if(autoTaskRunner.hasCurrentTask())
-			{
+			{//Gives the user back control
 				autoTaskRunner.cancelCurrentTask();
 			}
+			
+			
 			if(!autoTaskRunner.hasCurrentTask())
-			{
-				//If(someButton.isDown)
-				autoTaskRunner.setAutoTask();
+			{//sets the current macro, if applicable
+				if(ReferenceData.getInstance().getUserInputData().getGoForward())
+					autoTaskRunner.setAutoTask(new GoForward());
+				//autoTaskRunner.setAutoTask();
 			}
 		}
 	}
