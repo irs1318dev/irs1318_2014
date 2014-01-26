@@ -6,6 +6,7 @@ public class GoForward extends AutonomousCommand
 {
 	public void run() 
 	{
+		System.out.println("Doing the actual macro now! Wohoo!");
 		switch(currentState)
 		{
 			case 0:

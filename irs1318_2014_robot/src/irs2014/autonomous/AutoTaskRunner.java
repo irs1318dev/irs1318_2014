@@ -12,13 +12,14 @@ public class AutoTaskRunner extends RobotComponentBase
 	
 	public void robotInit()
 	{//Construction, runs once.
-		System.out.println("Automomous tasks started. Friendly Warning: Too many umlauts!?");
+		System.out.println("Automomous task started. ((Friendly Warning: Too many umlauts!?))");
 		completedTasks = new Vector();
 		autoInputMap = new AutoInputMap(this);
 	}
 
 	public void teleopPeriodic() 
 	{
+		System.out.println("Running... the periodic thing.");
 		autoInputMap.update();
 		if(currentTask != null)
 		{
@@ -27,6 +28,7 @@ public class AutoTaskRunner extends RobotComponentBase
 			{//If the task's isDone method returned true, meaning it's done...
 				completedTasks.addElement(currentTask);
 				currentTask = null;
+				System.err.println("You shouldn't see this after only one pass.");
 			}
 		}
 	}

@@ -68,13 +68,13 @@ public class GoForwardTest {
 		auto.robotInit();
 		driveTrainJoystickCalculator.robotInit();
 		driveTrainCalculator.robotInit();
-		runner.robotInit();
+		runnerSpy.robotInit();
 		
 		readerSpy.teleopPeriodic();
 		auto.teleopPeriodic();
 		driveTrainJoystickCalculator.teleopPeriodic();
 		driveTrainCalculator.teleopPeriodic();
-		runner.teleopPeriodic();
+		runnerSpy.teleopPeriodic();
 		
 		readerSpy.robotInit();
 		

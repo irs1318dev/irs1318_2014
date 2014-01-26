@@ -26,6 +26,7 @@ public class AutoInputMap
 			
 			if(!autoTaskRunner.hasCurrentTask())
 			{//sets the current macro, if applicable
+				System.out.println("About to add the current task");
 				if(ReferenceData.getInstance().getUserInputData().getGoForward())
 					autoTaskRunner.setAutoTask(new GoForward());
 				//autoTaskRunner.setAutoTask();
