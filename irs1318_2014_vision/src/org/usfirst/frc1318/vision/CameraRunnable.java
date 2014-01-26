@@ -22,7 +22,7 @@ public class CameraRunnable implements Runnable {
 
 	private String outputPath = "C:\\movies";
 	
-	private boolean movieMode = true;
+	private boolean movieMode = false;
 	public boolean getMovieMode() {
 		return movieMode;
 	}
@@ -161,22 +161,22 @@ public class CameraRunnable implements Runnable {
 				JavaCVUtils.saveImage(outputPath, now+"_raw_"
 						+ frameCount + ".jpg", image);
 			}
-			result = processImage(image);
+//			result = processImage(image);
 
 			if (showFrame) {
 				frame.showImage(image);
-				System.out.println(String.format("live %s, %s",getHueBand(),getViewBand()));
-				System.out.println(String.format("live %s: %s",
-						result.getName(),
-						result.getTrapezoid()
-						));
+//				System.out.println(String.format("live %s, %s",getHueBand(),getViewBand()));
+//				System.out.println(String.format("live %s: %s",
+//						result.getName(),
+//						result.getTrapezoid()
+//						));
 			}
-			if (!result.getTrapezoid().hasError()) {
-				PublishValues.publishValues(resolution, frameCount, result.getTrapezoid());
-			} else { // adjust hue band and view band for the next image
-				// skip frames if autosharpened less than 3 seoncds worth 3 * fps frames
-				AutoSharpen.autoSharpen(this, frameCount, image); // already undistorted
-			}
+//			if (!result.getTrapezoid().hasError()) {
+//				PublishValues.publishValues(resolution, frameCount, result.getTrapezoid());
+//			} else { // adjust hue band and view band for the next image
+//				// skip frames if autosharpened less than 3 seoncds worth 3 * fps frames
+//				AutoSharpen.autoSharpen(this, frameCount, image); // already undistorted
+//			}
 			frameCount++;
 		}
 		grabber.stop();

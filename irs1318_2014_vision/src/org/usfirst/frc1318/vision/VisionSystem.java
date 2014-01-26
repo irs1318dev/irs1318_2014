@@ -19,8 +19,8 @@ public class VisionSystem {
 	public static CameraRunnable getCameraRunnable() {
 		if (cr==null) {
 			cr = new CameraRunnable();
-			cr.setResolution(640);
-			cr.setFramesPerSecond(5);
+			cr.setResolution(320);
+			cr.setFramesPerSecond(10);
 		}
 		return cr;
 	}
