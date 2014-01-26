@@ -1,5 +1,5 @@
 *target*
-*.jar
+#*.jar
 *.war
 *.ear
 *.class
@@ -9,6 +9,7 @@
 .project
 .metadata
 bin/**
+build/**
 tmp/**
 tmp/**/*
 *.tmp
