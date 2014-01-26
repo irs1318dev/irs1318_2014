@@ -8,5 +8,6 @@
 	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/irs1318_2014_robot"/>
 	<classpathentry kind="var" path="2014lib/mockito-all-1.9.5.jar"/>
 	<classpathentry kind="var" path="2014lib/wpilibj.jar"/>
+	<classpathentry kind="var" path="2014lib"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
