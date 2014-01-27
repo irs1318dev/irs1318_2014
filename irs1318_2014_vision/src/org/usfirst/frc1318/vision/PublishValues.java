@@ -103,7 +103,7 @@ public class PublishValues {
 						
 						if ("mm".equals(key)) {
 							boolean booleanValue = ((Boolean)value).booleanValue();
-							VisionSystem.getCameraRunnable().setMovieMode(booleanValue);
+							VisionSystem.getCalcRunnable().setMovieMode(booleanValue);
 						}
 //						printValue("confirmed",key, value);
 					}
@@ -117,7 +117,7 @@ public class PublishValues {
 //						}
 						if ("mm".equals(key)) {
 							boolean booleanValue = ((Boolean)value).booleanValue();
-							VisionSystem.getCameraRunnable().setMovieMode(booleanValue);
+							VisionSystem.getCalcRunnable().setMovieMode(booleanValue);
 						}
 					}
 				};

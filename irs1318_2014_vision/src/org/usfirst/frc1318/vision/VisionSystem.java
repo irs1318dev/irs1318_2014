@@ -15,6 +15,14 @@ public class VisionSystem {
 
 	}
 	
+	private static CalcRunnable calcRunnable;
+	public static CalcRunnable getCalcRunnable() {
+		if (calcRunnable==null) {
+			calcRunnable = new CalcRunnable();
+		}
+		return calcRunnable;
+	}
+	
 	private static CameraRunnable cr;
 	public static CameraRunnable getCameraRunnable() {
 		if (cr==null) {
@@ -26,7 +34,11 @@ public class VisionSystem {
 	}
 	
 	public void see() throws Exception {
+		Thread calcThread = new Thread(getCalcRunnable());
 		Thread cameraThread = new Thread(getCameraRunnable());
+		getCalcRunnable().setCameraRunnable(getCameraRunnable());
+		getCalcRunnable().setResolution(getCameraRunnable().getResolution());
+		calcThread.start();
 		cameraThread.start();
 	}
 
