@@ -122,7 +122,7 @@ public class CameraRunnable implements Runnable {
 	}
 
 
-	//TODO perform wait and notify
+	// http://docs.oracle.com/javase/tutorial/essential/concurrency/guardmeth.html
 	private IplImage latestImage;
 	public IplImage getLatestImage() throws InterruptedException {
 		// apply a request to the camera thread
