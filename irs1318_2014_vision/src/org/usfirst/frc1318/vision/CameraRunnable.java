@@ -112,7 +112,16 @@ public class CameraRunnable implements Runnable {
 	private Object latestImageMonitor = new Object();
 	private boolean latestImageReady=false;
 	private boolean latestImageRequested=false;
+	private int latestFrameNumber;
 	
+	public int getLatestFrameNumber() {
+		return latestFrameNumber;
+	}
+	private void setLatestFrameNumber(int latestFrameNumber) {
+		this.latestFrameNumber = latestFrameNumber;
+	}
+
+
 	//TODO perform wait and notify
 	private IplImage latestImage;
 	public IplImage getLatestImage() throws InterruptedException {
@@ -138,6 +147,7 @@ public class CameraRunnable implements Runnable {
 			latestImage = cvCloneImage(image);
 			latestImageReady=true; // indicate the image is ready for consumption
 			latestImageRequested=false; // fulfilled request
+			latestFrameNumber = frameCount;
 			latestImageMonitor.notify();
 		}
 	}

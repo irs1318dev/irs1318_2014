@@ -119,6 +119,7 @@ public class CalcRunnable implements Runnable {
 			IplImage image;
 			try {
 				image = getCameraRunnable().getLatestImage();
+				frameCount = getCameraRunnable().getLatestFrameNumber();
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 				continue;
@@ -127,6 +128,13 @@ public class CalcRunnable implements Runnable {
 				// skip some frames to avoid disk access
 				JavaCVUtils.saveImage(outputPath, now+"_raw_"
 						+ frameCount + ".jpg", image);
+			}
+			// simulate 1 second calculation time.
+			try {
+				Thread.currentThread().sleep(1000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
 //			result = processImage(image);
 
