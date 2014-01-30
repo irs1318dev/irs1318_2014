@@ -1,6 +1,6 @@
 package irs2014.collector;
 
-public class CollectorPistonData {
+public class CollectorSolenoidData {
 	private boolean pistonState;
 	
 	public boolean getPistonState(){

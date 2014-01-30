@@ -10,7 +10,8 @@ public interface PortRef {
 	
 	int SIDECAR_SLOT = SensorBase.getDefaultDigitalModule();
 	int DIGITAL_IO = SensorBase.getDefaultSolenoidModule();
-
+	int SOLENOID_MODULE_PORT = SensorBase.getDefaultSolenoidModule();
+	
 	int TALON_R = 2;
 	int TALON_L = 1;
 	
@@ -34,6 +35,7 @@ public interface PortRef {
 	
 	int COLLECTOR_MOTOR = 0; //TODO
 	
-	int COLLECTOR_PISTON = 0; //TODO
+	int COLLECTOR_EXTENDER_SOLENOID_PORT = 0; //TODO
+	int COLLECTOR_RETRACTOR_SOLENOID_PORT = 0; //TODO
 	
 }

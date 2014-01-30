@@ -2,13 +2,13 @@ package irs2014.collector;
 
 public class CollectorData {
 	CollectorMotorData motorData = new CollectorMotorData();
-	CollectorPistonData pistonData = new CollectorPistonData();
+	CollectorSolenoidData pistonData = new CollectorSolenoidData();
 	
 	public CollectorMotorData getMotorData (){
 		return motorData;
 	}
 	
-	public CollectorPistonData getPistonData (){
+	public CollectorSolenoidData getPistonData (){
 		return pistonData;
 	}
 }
