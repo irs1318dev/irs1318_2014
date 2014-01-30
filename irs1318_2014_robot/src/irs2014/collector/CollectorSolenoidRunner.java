@@ -14,7 +14,7 @@ public class CollectorSolenoidRunner extends RobotComponentBase {
 	}
 	
 	public void teleopPeriodic(){
-		if (ReferenceData.getInstance().getCollectorData().getPistonData().getPistonState()) {
+		if (ReferenceData.getInstance().getCollectorData().getSolenoidData().getSolenoidState() == CollectorRef.EXTEND) {
 			collectorSolenoid.set(Value.kForward);
 		} else {
 			collectorSolenoid.set(Value.kReverse);

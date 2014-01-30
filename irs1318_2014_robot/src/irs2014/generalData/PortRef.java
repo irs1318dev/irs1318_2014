@@ -29,7 +29,7 @@ public interface PortRef {
 	int JAGUAR_1 = 1;
 	
 	int FIRE = 1;
-	int EXTEND_LOADER = 2;
+	int EXTEND_COLLECTOR = 2;
 	
 	int GO_FORWARD = 3;
 	

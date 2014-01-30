@@ -1,13 +1,13 @@
 package irs2014.collector;
 
 public class CollectorSolenoidData {
-	private boolean pistonState;
+	private boolean solenoidState;
 	
-	public boolean getPistonState(){
-		return pistonState;
+	public boolean getSolenoidState(){
+		return solenoidState;
 	}
 	
-	public void setPistonState(boolean pistonState){
-		this.pistonState = pistonState;
+	public void setSolenoidState(boolean solenoidState){
+		this.solenoidState = solenoidState;
 	}
 }

@@ -38,7 +38,7 @@ public class Joystick1Reader extends RobotComponentBase {
 		ReferenceData.getInstance().getUserInputData().setJoystickX(joystickY);
 		
 		ReferenceData.getInstance().getUserInputData().setFire(joystick.getRawButton(PortRef.FIRE));
-		ReferenceData.getInstance().getUserInputData().setExtendLoader(joystick.getRawButton(PortRef.EXTEND_LOADER));
+		ReferenceData.getInstance().getUserInputData().setExtendCollector(joystick.getRawButton(PortRef.EXTEND_COLLECTOR));
 		
 		//ReferenceData.getInstance().getUserInputData().setGoForward(joystick.getRawButton(PortRef.GO_FORWARD));
 		ReferenceData.getInstance().getUserInputData().setGoForward(getGoForward());
