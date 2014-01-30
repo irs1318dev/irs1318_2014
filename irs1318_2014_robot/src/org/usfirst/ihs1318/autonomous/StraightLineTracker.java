@@ -1,4 +1,4 @@
-package org.usfirst.ihs1318.autonomous;
+  package org.usfirst.ihs1318.autonomous;
 
 import org.usfirst.ihs1318.shared.ReferenceData;
 import org.usfirst.ihs1318.shared.constants.EncoderRef;

@@ -6,8 +6,8 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/irs1318_2014_robot"/>
-	<classpathentry kind="var" path="2014lib/mockito-all-1.9.5.jar"/>
-	<classpathentry kind="var" path="2014lib/wpilibj.jar"/>
-	<classpathentry kind="var" path="2014lib"/>
+	<classpathentry kind="lib" path="lib/mockito-all-1.9.5.jar"/>
+	<classpathentry kind="lib" path="lib/networktables-crio.jar"/>
+	<classpathentry kind="lib" path="lib/wpilibj.jar" sourcepath="lib/wpilibj.src.zip"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
