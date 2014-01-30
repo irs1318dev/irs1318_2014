@@ -30,6 +30,10 @@ public interface PortRef {
 	
 	int FIRE = 1;
 	int EXTEND_COLLECTOR = 2;
+	int RETRACT_COLLECTOR = -1; //TODO
+	int MOTOR_IN_COLLECTOR = -1; //TODO
+	int MOTOR_OUT_COLLECTOR = -1; //TODO
+	int MOTOR_STOP_COLLECTOR = -1; //TODO
 	
 	int GO_FORWARD = 3;
 	

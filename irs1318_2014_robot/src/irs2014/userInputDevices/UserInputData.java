@@ -7,8 +7,7 @@ public class UserInputData {
 	private double joystickY;
 	//regular buttons 
 	private boolean fire;
-	private boolean extendCollector; //I changed this from extendLoader to extendCollector to be the same as the package for that component, same for getter/setter.
-	//Grant's stuff, could be totally wrong.
+	private boolean extendCollector; 
 	private boolean retractCollector;
 	private boolean motorInCollector;
 	private boolean motorOutCollector;
@@ -59,7 +58,7 @@ public class UserInputData {
 	public void setGoForward(boolean value){
 		goForward = value;
 	}
-	// Also Grant's stuff, ditto.
+
 	public boolean getRetractCollector(){
 		return retractCollector;
 	}
