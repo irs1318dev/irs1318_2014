@@ -1,5 +1,6 @@
 package irs2014.generalData;
 
+import irs2014.collector.CollectorData;
 import irs2014.driveTrainTank.DriveTrainData;
 import irs2014.userInputDevices.UserInputData;
 
@@ -9,6 +10,8 @@ public class ReferenceData {
 	
 	private UserInputData userInputData;
 	private DriveTrainData driveTrainData;
+	
+	private CollectorData collectorData;
 	
 	private ReferenceData(){
 	}
@@ -32,6 +35,13 @@ public class ReferenceData {
 			driveTrainData = new DriveTrainData();
 		}
 		return driveTrainData;
+	}
+	
+	public CollectorData getCollectorData(){
+		if(collectorData == null){
+				collectorData = new CollectorData();
+		}
+		return collectorData;
 	}
 
 }

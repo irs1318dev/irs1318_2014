@@ -32,4 +32,8 @@ public interface PortRef {
 	
 	int GO_FORWARD = 3;
 	
+	int COLLECTOR_MOTOR = 0; //TODO
+	
+	int COLLECTOR_PISTON = 0; //TODO
+	
 }
