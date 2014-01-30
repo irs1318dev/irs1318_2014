@@ -1,6 +1,10 @@
 package irs2014.generalData;
 
+
 import irs2014.collector.CollectorData;
+import org.usfirst.ihs1318.shooter.PressureSensorData;
+import org.usfirst.ihs1318.shooter.ShooterData;
+
 import irs2014.driveTrainTank.DriveTrainData;
 import irs2014.userInputDevices.UserInputData;
 
@@ -12,6 +16,10 @@ public class ReferenceData {
 	private DriveTrainData driveTrainData;
 	
 	private CollectorData collectorData;
+	
+	private PressureSensorData pressureSensorData;
+	private ShooterData shooterData;
+	
 	
 	private ReferenceData(){
 	}
@@ -44,4 +52,17 @@ public class ReferenceData {
 		return collectorData;
 	}
 
+	public PressureSensorData getPressureSensorData() {
+		if(pressureSensorData == null) {
+			pressureSensorData = new PressureSensorData();
+		}
+		return pressureSensorData;
+	}
+	
+	public ShooterData getShooterData() {
+		if(shooterData == null) {
+			shooterData = new ShooterData();
+		}
+		return shooterData; 
+	}
 }
