@@ -33,7 +33,7 @@ public class CameraRunnableTest {
 		IplImage image;
 		try {
 			image = cvLoadImage(file.getCanonicalPath());
-			CameraRunnable cr = new CameraRunnable();
+			CalcRunnable cr = new CalcRunnable();
 			cr.processImage(image);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -58,7 +58,7 @@ public class CameraRunnableTest {
 		return sampleFile;
 	}
 
-	public List<Point> analyzeKnownImage(CameraRunnable cr) {
+	public List<Point> analyzeKnownImage(CalcRunnable cr) {
 
 		IplImage temp = cvCreateImage(cvSize(640, 480), IPL_DEPTH_8U, 1);
 		cvZero(temp);
@@ -73,7 +73,7 @@ public class CameraRunnableTest {
 
 	@Test
 	public void testCenterCircle() {
-		CameraRunnable cr = new CameraRunnable();
+		CalcRunnable cr = new CalcRunnable();
 		List<Point> points = analyzeKnownImage(cr);
 		// x=320, y=240
 		// width=640, height=480
@@ -161,7 +161,7 @@ public class CameraRunnableTest {
 		String hsvPath = "C:\\dev\\frc2012\\rawfootage\\hsv";
 
 		IplImage image;
-		CameraRunnable cr = new CameraRunnable();
+		CalcRunnable cr = new CalcRunnable();
 		cr.setResolution(640);
 
 		int count = 0;
@@ -245,7 +245,7 @@ public class CameraRunnableTest {
 		String hsvPath = "C:\\dev\\frc2012\\snapshots\\hsv";
 
 		IplImage image;
-		CameraRunnable cr = new CameraRunnable();
+		CalcRunnable cr = new CalcRunnable();
 		cr.setResolution(640);
 
 		Map<Integer, File> sortedFiles = new TreeMap<Integer, File>();
@@ -378,7 +378,7 @@ public class CameraRunnableTest {
 		String outputPath = "C:\\dev\\frc2012\\snapshots\\corners";
 
 		IplImage image;
-		CameraRunnable cr = new CameraRunnable();
+		CalcRunnable cr = new CalcRunnable();
 		cr.setResolution(640);
 
 		int count = 0;
@@ -433,7 +433,7 @@ public class CameraRunnableTest {
 		String hsvPath = "C:\\dev\\frc2012\\range\\snapshots640_0deg\\hsv";
 
 		IplImage image;
-		CameraRunnable cr = new CameraRunnable();
+		CalcRunnable cr = new CalcRunnable();
 		cr.setResolution(640);
 
 		Map<Integer, File> sortedFiles = new TreeMap<Integer, File>();
@@ -624,7 +624,7 @@ public class CameraRunnableTest {
 		String hsvPath = "C:\\dev\\frc2012\\range\\bright640_full_field\\hsv";
 		
 		IplImage image;
-		CameraRunnable cr = new CameraRunnable();
+		CalcRunnable cr = new CalcRunnable();
 		cr.setResolution(640);
 
 		Map<String, File> sortedFiles = new TreeMap<String, File>();
@@ -874,7 +874,7 @@ public class CameraRunnableTest {
 		String hsvPath = "C:\\dev\\frc2012\\range\\bright640_full_field\\hsv";
 		
 		IplImage image;
-		CameraRunnable cr = new CameraRunnable();
+		CalcRunnable cr = new CalcRunnable();
 		cr.setResolution(640);
 
 		Map<String, File> sortedFiles = new TreeMap<String, File>();

@@ -59,4 +59,35 @@ public abstract class AutonomousCommand implements AutoTask
 		else
 			advanceState();
 	}
+	
+	public void pause(long delayMillis)
+	{
+		if(stateTime + delayMillis < System.currentTimeMillis())
+			advanceState();
+	}
+	
+	public void extendCollector(){
+		ReferenceData.getInstance().getUserInputData().setExtendCollector(true);
+		advanceState();
+	}
+	
+	public void retractCollector(){
+		ReferenceData.getInstance().getUserInputData().setRetractCollector(true);
+		advanceState();
+	}
+	
+	public void collectorMotorIn(){
+		ReferenceData.getInstance().getUserInputData().setCollectorMotorIn(true);
+		advanceState();
+	}
+	
+	public void collectorMotorOut(){
+		ReferenceData.getInstance().getUserInputData().setCollectorMotorOut(true);
+		advanceState();
+	}
+	
+	public void stopCollectorMotor(){
+		ReferenceData.getInstance().getUserInputData().setStopCollectorMotor(true);
+		advanceState();
+	}
 }
