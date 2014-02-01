@@ -28,7 +28,7 @@ public class StartCompressorTest extends Throwable{
 	
 	public void startCompressorTest() {
 	    runnerSpy.robotInit();
-	    doThrow(Throwable.class).when(mockCompressor).start();
+	    verify(mockCompressor,times(1)).start();
 	}
 	
 }
