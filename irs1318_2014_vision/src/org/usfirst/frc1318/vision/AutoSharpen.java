@@ -8,7 +8,7 @@ public class AutoSharpen {
 	
 	String hsvPath = "C:\\dev\\frc2012\\range\\integration\\hsv";
 	
-	public static void autoSharpen(CameraRunnable cr, int frameCount, IplImage undistortImage) {
+	public static void autoSharpen(CameraRunnable cr, CalcRunnable calcRunnable, int frameCount, IplImage undistortImage) {
 		IplImage finalHSV = null;
 		ViewBand vb = ViewBand.buildViewBand(640, 480, 390, 110); // default
 		boolean viewPortAdjustment = true; // do once only
@@ -107,9 +107,9 @@ public class AutoSharpen {
 						finalHSV = cvCreateImage(cvGetSize(undistortImage),
 								IPL_DEPTH_8U, 1);
 						cvSetImageROI(finalHSV, vb.getCvRect());
-						cr.performHsvFilter(undistortImage, finalHSV,
+						calcRunnable.performHsvFilter(undistortImage, finalHSV,
 								hueBand);
-						HsvAnalysis hsvAnalysis = cr
+						HsvAnalysis hsvAnalysis = calcRunnable
 								.findImagePoints(finalHSV);
 						hsvAnalysis.setName("" + frameCount);
 						hsvAnalysis.analyzePoints();
@@ -196,8 +196,8 @@ public class AutoSharpen {
 				bestAnalysis.getName(),
 				bestAnalysis.getTrapezoid()
 				));
-		cr.setViewBand(vb);
-		cr.setHueBand(bestHueBand);
+		calcRunnable.setViewBand(vb);
+		calcRunnable.setHueBand(bestHueBand);
 		bestHueBand.setName(frameCount+"_"+ bestHueBand.getName());
 
 	}
