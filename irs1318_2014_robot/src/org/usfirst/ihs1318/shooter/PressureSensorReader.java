@@ -1,6 +1,8 @@
 package org.usfirst.ihs1318.shooter;
 
+
 import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.Joystick;
 import irs2014.generalData.PortRef;
 import irs2014.generalData.ReferenceData;
 import org.usfirst.ihs1318.shooter.PressureSensorData;;
@@ -19,5 +21,6 @@ public class PressureSensorReader {
 		ReferenceData.getInstance().getPressureSensorData().setIsPressurized(value);
 		System.out.println("pressureSensor= " + value + ", isPressurized=" + ReferenceData.getInstance().getPressureSensorData().getIsPressurized());
 	}
+	
 
 }
