@@ -6,17 +6,20 @@ public class UserInputData {
 	private double joystickX;
 	private double joystickY;
 	//regular buttons 
-	private boolean fire;
 	private boolean extendCollector; 
 	private boolean retractCollector;
-	private boolean motorInCollector;
-	private boolean motorOutCollector;
-	private boolean motorStopCollector;
+	private boolean collectorMotorIn;
+	private boolean collectorMotorOut;
+	private boolean stopCollectorMotor;
 	//macros
 	private boolean goForward;
+	private boolean collectBall;
+	private boolean ejectBall;
+	
 	
 	public boolean getIsActive(){
-		return fire || extendCollector || (joystickX != 0) || (joystickY != 0); 
+		return true;
+//		return fire || extendCollector || (joystickX != 0) || (joystickY != 0); 
 	}
 	
 	public double getJoystickX(){
@@ -33,14 +36,6 @@ public class UserInputData {
 
 	public void setJoystickY(double joystickY){
 		this.joystickY = joystickY;
-	}
-	
-	public boolean getFire(){
-		return fire;
-	}
-	
-	public void setFire(boolean value){
-		fire = value;
 	}
 	
 	public boolean getExtendCollector(){
@@ -65,22 +60,38 @@ public class UserInputData {
 	public void setRetractCollector(boolean value){
 		retractCollector = value;
 	}
-	public boolean getMotorInCollector(){
-		return motorInCollector;
+	public boolean getCollectorMotorIn(){
+		return collectorMotorIn;
 	}
-	public void setMotorInCollector(boolean value){
-		motorInCollector = value;
+	public void setCollectorMotorIn(boolean value){
+		collectorMotorIn = value;
 	}
-	public boolean getMotorOutCollector(){
-		return motorOutCollector;
+	public boolean getCollectorMotorOut(){
+		return collectorMotorOut;
 	}
-	public void setMotorOutCollector(boolean value){
-		motorOutCollector = value;
+	public void setCollectorMotorOut(boolean value){
+		collectorMotorOut = value;
 	}
-	public boolean getMotorStopCollector(){
-		return motorStopCollector;
+	public boolean getStopCollectorMotor(){
+		return stopCollectorMotor;
 	}
-	public void setMotorStopCollector(boolean value){
-		motorStopCollector = value;
+	public void setStopCollectorMotor(boolean value){
+		stopCollectorMotor = value;
+	}
+	
+	public boolean getCollectBall(){
+		return collectBall;
+	}
+	
+	public void setCollectBall (boolean value){
+		collectBall = value;
+	}
+	
+	public boolean getEjectBall(){
+		return ejectBall;
+	}
+	
+	public void setEjectBall (boolean value){
+		ejectBall = value;
 	}
 }
