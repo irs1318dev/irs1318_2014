@@ -37,19 +37,48 @@ public class Joystick1Reader extends RobotComponentBase {
 		ReferenceData.getInstance().getUserInputData().setJoystickY(joystickX);
 		ReferenceData.getInstance().getUserInputData().setJoystickX(joystickY);
 		
-		ReferenceData.getInstance().getUserInputData().setFire(joystick.getRawButton(PortRef.FIRE));
-		ReferenceData.getInstance().getUserInputData().setExtendCollector(joystick.getRawButton(PortRef.EXTEND_COLLECTOR));
-		ReferenceData.getInstance().getUserInputData().setRetractCollector(joystick.getRawButton(PortRef.RETRACT_COLLECTOR));
-		ReferenceData.getInstance().getUserInputData().setMotorInCollector(joystick.getRawButton(PortRef.MOTOR_IN_COLLECTOR));
-		ReferenceData.getInstance().getUserInputData().setMotorOutCollector(joystick.getRawButton(PortRef.MOTOR_OUT_COLLECTOR));
-		ReferenceData.getInstance().getUserInputData().setMotorStopCollector(joystick.getRawButton(PortRef.MOTOR_STOP_COLLECTOR));
+		ReferenceData.getInstance().getUserInputData().setExtendCollector(getExtendCollector());
+		ReferenceData.getInstance().getUserInputData().setRetractCollector(getRetractCollector());
+		ReferenceData.getInstance().getUserInputData().setCollectorMotorIn(getCollectorMotorIn());
+		ReferenceData.getInstance().getUserInputData().setCollectorMotorOut(getCollectorMotorOut());
+		ReferenceData.getInstance().getUserInputData().setStopCollectorMotor(getStopCollectorMotor());
 
 		//ReferenceData.getInstance().getUserInputData().setGoForward(joystick.getRawButton(PortRef.GO_FORWARD));
 		ReferenceData.getInstance().getUserInputData().setGoForward(getGoForward());
+		ReferenceData.getInstance().getUserInputData().setCollectBall(getCollectBall());
+		ReferenceData.getInstance().getUserInputData().setEjectBall(getEjectBall());
 	}
 	
 	public boolean getGoForward() {
 		return joystick.getRawButton(PortRef.GO_FORWARD);
+	}
+	
+	public boolean getExtendCollector(){
+		return joystick.getRawButton(ButtonRef.EXTEND_COLLECTOR);
+	}
+	
+	public boolean getRetractCollector(){
+		return joystick.getRawButton(ButtonRef.RETRACT_COLLECTOR);
+	}
+	
+	public boolean getCollectorMotorIn(){
+		return joystick.getRawButton(ButtonRef.COLLECTOR_MOTOR_IN);
+	}
+	
+	public boolean getCollectorMotorOut(){
+		return joystick.getRawButton(ButtonRef.COLLECTOR_MOTOR_OUT);
+	}
+	
+	public boolean getStopCollectorMotor(){
+		return joystick.getRawButton(ButtonRef.STOP_COLLECTOR_MOTOR);
+	}
+	
+	public boolean getCollectBall(){
+		return joystick.getRawButton(ButtonRef.COLLECT_BALL);
+	}
+	
+	public boolean getEjectBall(){
+		return joystick.getRawButton(ButtonRef.EJECT_BALL);
 	}
 
 	public double applyLinearDeadBand(double x, double band) {

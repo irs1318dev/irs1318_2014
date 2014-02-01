@@ -14,11 +14,11 @@ public class CollectorCalculator extends RobotComponentBase{
 		}
 		
 		//Sets the motor to roll in, out, or turn off; prefers stop, then out, then in.
-		if (ReferenceData.getInstance().getUserInputData().getMotorStopCollector()){
+		if (ReferenceData.getInstance().getUserInputData().getStopCollectorMotor()){
 			ReferenceData.getInstance().getCollectorData().getMotorData().setCollectorMotorOff();
-		} else if (ReferenceData.getInstance().getUserInputData().getMotorOutCollector()){
+		} else if (ReferenceData.getInstance().getUserInputData().getCollectorMotorOut()){
 			ReferenceData.getInstance().getCollectorData().getMotorData().setCollectorMotorOut();
-		} else if (ReferenceData.getInstance().getUserInputData().getMotorInCollector()){
+		} else if (ReferenceData.getInstance().getUserInputData().getCollectorMotorIn()){
 			ReferenceData.getInstance().getCollectorData().getMotorData().setCollectorMotorIn();
 		}
 	}
