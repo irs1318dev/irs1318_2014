@@ -16,14 +16,14 @@ public class AutoInputMap
 	
 	public void update()
 	{
-		if(ReferenceData.getInstance().getUserInputData().getIsActive())
+		if(ReferenceData.getInstance().getUserInputData().getIsActive()) //THINGS FAIL HERE, A LOT. Also, remove the !
 		{
 			if(autoTaskRunner.hasCurrentTask())
 			{//Gives the user back control
 				autoTaskRunner.cancelCurrentTask();
 			}
 			
-			
+			System.out.println(""+ autoTaskRunner.hasCurrentTask());
 			if(!autoTaskRunner.hasCurrentTask())
 			{//sets the current macro, if applicable
 				System.out.println("About to add the current task");

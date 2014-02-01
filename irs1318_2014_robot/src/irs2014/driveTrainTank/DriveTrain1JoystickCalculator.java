@@ -45,7 +45,8 @@ public class DriveTrain1JoystickCalculator extends RobotComponentBase {
 		
 		ReferenceData.getInstance().getDriveTrainData().setLeftSpeedSetPoint(speedL);
 		ReferenceData.getInstance().getDriveTrainData().setRightSpeedSetPoint(speedR);
-		
+//		System.out.println("DriveTrain1JoystickCalculator set speedL to: " + speedL);
+//		System.out.println("DriveTrain1JoystickCalculator set speedR to: " + speedR);
 		
 		
 	}

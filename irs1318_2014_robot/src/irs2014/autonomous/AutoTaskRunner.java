@@ -21,6 +21,7 @@ public class AutoTaskRunner extends RobotComponentBase
 	{
 		System.out.println("Running... the periodic thing.");
 		autoInputMap.update();
+		System.out.println("Ran the autoInputMap update");
 		if(currentTask != null)
 		{
 			currentTask.run();

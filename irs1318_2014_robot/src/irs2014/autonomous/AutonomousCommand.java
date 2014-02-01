@@ -54,7 +54,7 @@ public abstract class AutonomousCommand implements AutoTask
 	{
 		if(System.currentTimeMillis() <= (stateTime + timeSec * 1000))
 		{
-			ReferenceData.getInstance().getUserInputData().setJoystickY(.5);
+			ReferenceData.getInstance().getUserInputData().setJoystickX(0.2);
 		}
 		else
 			advanceState();
