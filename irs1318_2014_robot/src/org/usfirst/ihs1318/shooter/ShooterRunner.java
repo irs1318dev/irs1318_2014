@@ -22,6 +22,7 @@ public class ShooterRunner {
 		
 	}
 	
+	
 	public void teleopPeriodic() {
 		if(ReferenceData.getInstance().getShooterData().getMiddleSolenoidState() == ShooterRef.EXTEND) {
 			middleSolenoid.set(Value.kForward);

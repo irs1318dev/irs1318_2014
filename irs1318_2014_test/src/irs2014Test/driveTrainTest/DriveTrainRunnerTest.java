@@ -3,7 +3,7 @@ package irs2014Test.driveTrainTest;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.mockito.Mockitos.*;
+import static org.mockito.Mockito.*;
 
 import edu.wpi.first.wpilibj.Talon;
 import irs2014.driveTrainTank.DriveTrainRunner;
@@ -80,23 +80,23 @@ public class DriveTrainRunnerTest {
 		verify(mockLeftTalon, times(1)).set(1);
 	}
 	
-	@Test
-	public void leftNegative1(){
-		ReferenceData.getInstance().getDriveTrainData().setRightPIDSpeed(0.0);
-		ReferenceData.getInstance().getDriveTrainData().setLeftPIDSpeed(-1);
-		runnerSpy.teleopPeriodic();
-		verify(mockRightTalon, time(1)).set(0.0);
-		verify(mockLeftTalon, time (-1))
-	}
+//	@Test
+//	public void leftNegative1(){
+//		ReferenceData.getInstance().getDriveTrainData().setRightPIDSpeed(0.0);
+//		ReferenceData.getInstance().getDriveTrainData().setLeftPIDSpeed(-1);
+//		runnerSpy.teleopPeriodic();
+//		verify(mockRightTalon, time(1)).set(0.0);
+//		verify(mockLeftTalon, time (-1))
+//	}
 
-	@Test
-	public void negitiveInBoundsTest(){
-		ReferenceData.getInstance().getDriveTrainData().setRightPIDSpeed(-.178);
-		ReferenceData.getInstance().getDriveTrainData().setLeftPIDSpeed(-.573);
-		runnerSpy.teleopPeriodic();
-		verify(mockRightTalon, times(1)).set(.573);
-		verify(mockLefttalon, times(1)).set(-.178)
-	}
+//	@Test
+//	public void negitiveInBoundsTest(){
+//		ReferenceData.getInstance().getDriveTrainData().setRightPIDSpeed(-.178);
+//		ReferenceData.getInstance().getDriveTrainData().setLeftPIDSpeed(-.573);
+//		runnerSpy.teleopPeriodic();
+//		verify(mockRightTalon, times(1)).set(.573);
+//		verify(mockLefttalon, times(1)).set(-.178)
+//	}
 	
 }	
 

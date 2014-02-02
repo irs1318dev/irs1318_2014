@@ -1,5 +1,7 @@
 package org.usfirst.ihs1318.shared;
 
+import irs2014.shooter.PressureSensorData;
+
 import org.usfirst.ihs1318.shared.data.ArmEncoderValues;
 import org.usfirst.ihs1318.shared.data.ArmInput;
 import org.usfirst.ihs1318.shared.data.AutoPlacementValue;
@@ -32,6 +34,7 @@ public class ReferenceData {
 	private ButtonValues buttons;
 	private ImageData cameraImage;
 	private AutoPlacementValue autoPlace;
+	private PressureSensorData pressureSensor; 
 	
 
 	private LineSensorHistory lineSensorHistory;
@@ -43,6 +46,10 @@ public class ReferenceData {
 	private LimitSwitchValue upperLimitSwitchValue;
 
 	private LimitSwitchValue lowerLimitSwitchValue;
+	
+	private ReferenceData() {
+		
+	}
 	
 	public static ReferenceData getInstance() {
 		if (instance==null) {
@@ -165,5 +172,18 @@ public class ReferenceData {
 	public void setAutoPlacementValue(AutoPlacementValue autoPlace){
 		this.autoPlace = autoPlace;
 	}
+	
+	public PressureSensorData getPressureSensorData() {
+		if(pressureSensor == null) {
+			pressureSensor = new PressureSensorData();
+		}
+		return pressureSensor;
+	}
+	
+	public void setPressureSensorData(PressureSensorData pressureSensor) {
+		this.pressureSensor = pressureSensor; 
+	}
+	
+	
 
 }
