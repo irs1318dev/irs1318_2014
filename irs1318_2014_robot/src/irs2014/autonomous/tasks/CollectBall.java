@@ -2,7 +2,7 @@ package irs2014.autonomous.tasks;
 
 import irs2014.autonomous.AutonomousCommand;
 
-public class CollectBall extends AutonomousCommand{
+public class CollectBall extends AutonomousCommand {
 
 	public void run() {
 		switch(currentState){
