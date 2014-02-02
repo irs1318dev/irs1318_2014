@@ -96,7 +96,8 @@ public class UI extends javax.swing.JFrame {
 				bw = new BufferedWriter(fw);
 				writeOutput = true;
 			} catch (FileNotFoundException e) {
-				e.printStackTrace();
+				//TODO: add back in comment 
+				//e.printStackTrace();
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

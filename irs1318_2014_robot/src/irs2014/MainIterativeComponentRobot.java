@@ -8,6 +8,7 @@ import irs2014.driveTrainTank.DriveTrainPIDCalculator;
 import irs2014.driveTrainTank.DriveTrainRunner;
 import irs2014.driveTrainTank.MotorRunner;
 import irs2014.helloWorld.HelloWorldRunner;
+import irs2014.networkTable.GetValuesTest;
 import irs2014.shooter.PressureSensorReader;
 import irs2014.simpleRIAB.GamePadReaderRIAB;
 import irs2014.simpleRIAB.SimpleRAIBCalculator;
@@ -18,11 +19,13 @@ import irs2014.userInputDevices.JoystickPortTest;
 public class MainIterativeComponentRobot extends IterativeComponentRobot {
 
 	public BotVector currentRobotComponents() {
-		//return simpleMecanumTest();
-		//return joystickTest();
-//		return tankDriveTrainTest();
-		//return helloWorld();
-		return pressureSensorTest();
+		return networkTableTest();
+	}
+	
+	protected static BotVector networkTableTest(){
+		BotVector b = new BotVector();
+		b.add(new GetValuesTest());
+		return b;
 	}
 	
 	protected static BotVector pressureSensorTest(){
