@@ -26,6 +26,7 @@ public class AutoTaskRunner extends RobotComponentBase
 	public void teleopPeriodic() 
 	{
 		autoInputMap.update();
+		System.out.println("Ran the autoInputMap update");
 		if(currentTask != null)
 		{
 			currentTask.run();

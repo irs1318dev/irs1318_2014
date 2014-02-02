@@ -23,6 +23,8 @@ public class Joystick1Reader extends RobotComponentBase {
 	public void teleopPeriodic() {
 		joystickX = JoystickFilter.applyLinearDeadBand(joystick.getX(),0.1);
 		joystickY = -JoystickFilter.applyLinearDeadBand(joystick.getY(),0.1);
+		System.out.println("joystickX: " + joystickX);
+		System.out.println("joystickY: " + joystickY);
 		
 		//Theoretical Throttle
 		
