@@ -10,7 +10,7 @@ public class GoForward extends AutonomousCommand
 		switch(currentState)
 		{
 			case 0:
-				driveForward(3);
+				driveForward(500);
 				break;
 			case 1:
 				isDone = true;
