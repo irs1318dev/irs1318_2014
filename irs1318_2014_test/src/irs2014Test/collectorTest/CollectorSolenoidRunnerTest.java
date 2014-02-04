@@ -24,10 +24,17 @@ public class CollectorSolenoidRunnerTest {
 		doReturn(mockDoubleSolenoid).when(runnerSpy).getCollectorSolenoid();
 	}
 	
-/*	@Test
+	@Test
 	public void extendSolenoidTest(){
 		ReferenceData.getInstance().getCollectorData().getSolenoidData().setSolenoidState(CollectorRef.EXTEND);
 		runnerSpy.teleopPeriodic();
 		verify(mockDoubleSolenoid, times(1)).set(Value.kForward);
-	} */
+	} 
+	
+	@Test
+	public void retractSolenoidTest(){
+		ReferenceData.getInstance().getCollectorData().getSolenoidData().setSolenoidState(CollectorRef.RETRACT);
+		runnerSpy.teleopPeriodic();
+		verify(mockDoubleSolenoid, times(1)).set(Value.kReverse);
+	} 
 }
