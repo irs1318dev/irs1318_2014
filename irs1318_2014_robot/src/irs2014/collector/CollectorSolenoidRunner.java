@@ -20,5 +20,9 @@ public class CollectorSolenoidRunner extends RobotComponentBase {
 			collectorSolenoid.set(Value.kReverse);
 		}
 	}
+	
+	public DoubleSolenoid getCollectorSolenoid(){
+		return collectorSolenoid;
+	}
 
 }

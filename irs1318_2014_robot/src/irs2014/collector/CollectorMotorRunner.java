@@ -13,6 +13,10 @@ public class CollectorMotorRunner extends RobotComponentBase {
 	}
 	
 	public void teleopPeriodic(){
-		collectorMotor.set(ReferenceData.getInstance().getCollectorData().getMotorData().getCollectorMotorSpeed());
+		getCollectorMotor().set(ReferenceData.getInstance().getCollectorData().getMotorData().getCollectorMotorSpeed());
+	}
+	
+	public Talon getCollectorMotor() {
+		return collectorMotor;
 	}
 }
