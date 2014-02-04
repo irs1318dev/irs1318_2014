@@ -18,8 +18,8 @@ public class ReferenceData {
 	private CollectorData collectorData;
 	
 	private PressureSensorData pressureSensorData;
-	private ShooterData shooterData;
-	
+	private ShooterData shooterData;	
+	private EncoderHistory encoderHistory;
 	
 	private ReferenceData(){
 	}
@@ -64,5 +64,12 @@ public class ReferenceData {
 			shooterData = new ShooterData();
 		}
 		return shooterData; 
+	}
+	
+	public EncoderHistory getEncoderHistory()
+	{
+		if(encoderHistory == null)
+			encoderHistory = new EncoderHistory();
+		return encoderHistory;
 	}
 }

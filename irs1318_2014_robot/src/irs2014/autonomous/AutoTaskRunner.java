@@ -16,11 +16,17 @@ public class AutoTaskRunner extends RobotComponentBase
 		completedTasks = new Vector();
 		autoInputMap = new AutoInputMap(this);
 	}
-
+	
+	public void autonomousPeriodic()
+	{
+		if(currentTask == null)
+			setAutoTask(new AutonomousMode());
+	}
+	
 	public void teleopPeriodic() 
 	{
-		System.out.println("Running... the periodic thing.");
 		autoInputMap.update();
+		System.out.println("Ran the autoInputMap update");
 		if(currentTask != null)
 		{
 			currentTask.run();

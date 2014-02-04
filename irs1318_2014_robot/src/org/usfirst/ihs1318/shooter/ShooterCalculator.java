@@ -3,7 +3,19 @@ package org.usfirst.ihs1318.shooter;
 import irs2014.generalData.ReferenceData;
 
 public class ShooterCalculator {
-
+	
+	public void robotInit() {
+		
+	}
+	
+	public void teleopPeriodic() {
+		if(ReferenceData.getInstance().getPressureSensorData().getIsPressurized() && ReferenceData.getInstance().getUserInputData().getExtendAllShooterSolenoids()) {
+			ReferenceData.getInstance().getShooterData().setMiddleSolenoidState(ShooterRef.EXTEND);
+			ReferenceData.getInstance().getShooterData().setInnerSolenoidsState(ShooterRef.EXTEND);
+			ReferenceData.getInstance().getShooterData().setOuterSolenoidsState(ShooterRef.EXTEND);
+		}
+		
+	}
 	//for the one piston extension macro
 		public void extendMiddlePiston() {
 			

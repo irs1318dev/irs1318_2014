@@ -11,15 +11,19 @@ public class UserInputData {
 	private boolean collectorMotorIn;
 	private boolean collectorMotorOut;
 	private boolean stopCollectorMotor;
+	private boolean extendAllShooterSolenoids; 
+	private boolean extendInnerShooterSolenoids;
+	private boolean extendThreeShooterSolenoids;
+	private boolean extendMiddleShooterSolenoid; 
 	//macros
 	private boolean goForward;
 	private boolean collectBall;
 	private boolean ejectBall;
 	
 	
+	
 	public boolean getIsActive(){
-		return true;
-//		return fire || extendCollector || (joystickX != 0) || (joystickY != 0); 
+		return ((joystickX != 0) || (joystickY != 0) || goForward); 
 	}
 	
 	public double getJoystickX(){
@@ -28,6 +32,7 @@ public class UserInputData {
 
 	public void setJoystickX(double joystickX){
 		this.joystickX = joystickX;
+//		System.out.println("UserInputData set joystickX to: " + joystickX);
 	}
 
 	public double getJoystickY(){
@@ -77,6 +82,15 @@ public class UserInputData {
 	}
 	public void setStopCollectorMotor(boolean value){
 		stopCollectorMotor = value;
+	}
+	public boolean getExtendAllShooterSolenoids() {
+		return extendAllShooterSolenoids;
+	}
+	public void setExtendAllShooterSolenoids(boolean value) {
+		extendAllShooterSolenoids = value; 
+	}
+	public boolean getExtendInnerShooterSolenoids() {
+		return extendInnerShooterSolenoids; 
 	}
 	
 	public boolean getCollectBall(){

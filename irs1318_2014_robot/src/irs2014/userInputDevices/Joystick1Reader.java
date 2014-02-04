@@ -23,6 +23,8 @@ public class Joystick1Reader extends RobotComponentBase {
 	public void teleopPeriodic() {
 		joystickX = JoystickFilter.applyLinearDeadBand(joystick.getX(),0.1);
 		joystickY = -JoystickFilter.applyLinearDeadBand(joystick.getY(),0.1);
+		System.out.println("joystickX: " + joystickX);
+		System.out.println("joystickY: " + joystickY);
 		
 		//Theoretical Throttle
 		
@@ -42,7 +44,8 @@ public class Joystick1Reader extends RobotComponentBase {
 		ReferenceData.getInstance().getUserInputData().setCollectorMotorIn(getCollectorMotorIn());
 		ReferenceData.getInstance().getUserInputData().setCollectorMotorOut(getCollectorMotorOut());
 		ReferenceData.getInstance().getUserInputData().setStopCollectorMotor(getStopCollectorMotor());
-
+		ReferenceData.getInstance().getUserInputData().setExtendAllShooterSolenoids(getExtendAllPistons());
+		
 		//ReferenceData.getInstance().getUserInputData().setGoForward(joystick.getRawButton(PortRef.GO_FORWARD));
 		ReferenceData.getInstance().getUserInputData().setGoForward(getGoForward());
 		ReferenceData.getInstance().getUserInputData().setCollectBall(getCollectBall());
@@ -79,6 +82,10 @@ public class Joystick1Reader extends RobotComponentBase {
 	
 	public boolean getEjectBall(){
 		return joystick.getRawButton(ButtonRef.EJECT_BALL);
+	}
+	
+	public boolean getExtendAllPistons() {
+		return joystick.getRawButton(ButtonRef.EXTEND_ALL_SHOOTER_SOLENOIDS);
 	}
 
 	public double applyLinearDeadBand(double x, double band) {

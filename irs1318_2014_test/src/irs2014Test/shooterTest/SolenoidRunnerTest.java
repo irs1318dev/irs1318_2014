@@ -2,6 +2,7 @@ package irs2014Test.shooterTest;
 
 import org.usfirst.ihs1318.shooter.PressureSensorReader;
 import org.usfirst.ihs1318.shooter.ShooterRunner;
+import org.usfirst.ihs1318.shooter.ShooterData;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -37,6 +38,10 @@ public class SolenoidRunnerTest {
 	
 	@Test
 	public void SolenoidRunnerTest() {
+		readerSpy.robotInit(); 
+		runnerSpy.robotInit();
+		
+		assertEquals(true, mockMiddleSolenoid.getMiddleSolenoidState());		
 		
 	}
 
