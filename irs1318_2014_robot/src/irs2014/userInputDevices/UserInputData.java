@@ -23,8 +23,7 @@ public class UserInputData {
 	
 	
 	public boolean getIsActive(){
-		return true;
-//		return fire || extendCollector || (joystickX != 0) || (joystickY != 0); 
+		return ((joystickX != 0) || (joystickY != 0) || goForward); 
 	}
 	
 	public double getJoystickX(){
@@ -33,6 +32,7 @@ public class UserInputData {
 
 	public void setJoystickX(double joystickX){
 		this.joystickX = joystickX;
+//		System.out.println("UserInputData set joystickX to: " + joystickX);
 	}
 
 	public double getJoystickY(){
