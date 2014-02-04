@@ -13,8 +13,11 @@ public class UserInputData {
 	private boolean stopCollectorMotor;
 	private boolean extendAllShooterSolenoids; 
 	private boolean extendInnerShooterSolenoids;
-	private boolean extendThreeShooterSolenoids;
+	private boolean extendInnerThreeShooterSolenoids;
 	private boolean extendMiddleShooterSolenoid; 
+	private boolean retractShooter; 
+	private boolean extendShooterAngle; 
+	private boolean retractShooterAngle; 
 	//macros
 	private boolean goForward;
 	private boolean collectBall;
@@ -91,6 +94,39 @@ public class UserInputData {
 	}
 	public boolean getExtendInnerShooterSolenoids() {
 		return extendInnerShooterSolenoids; 
+	}
+	public void setExtendInnerShooterSolenoids(boolean value) {
+		extendInnerShooterSolenoids = value; 
+	}
+	public boolean getExtendInnerThreeShooterSolenoids() {
+		return extendInnerThreeShooterSolenoids;
+	}
+	public void setExtendInnerThreeShooterSolenoids(boolean value) {
+		extendInnerThreeShooterSolenoids = value; 
+	}
+	public boolean getExtendMiddleShooterSolenoid() {
+		return extendMiddleShooterSolenoid;
+	}
+	public void setExtendMiddleShooterSolenoid(boolean value) {
+		extendMiddleShooterSolenoid = value; 
+	}
+	public boolean getRetractShooter() {
+		return retractShooter;
+	}
+	public void setRetractShooter(boolean value) {
+		retractShooter = value; 
+	}
+	public boolean getExtendShooterAngle() {
+		return extendShooterAngle;
+	}
+	public void setExtendShooterAngle(boolean value) {
+		extendShooterAngle = value; 
+	}
+	public boolean getRetractShooterAngle() {
+		return retractShooterAngle; 
+	}
+	public void setRetractShooterAngle(boolean value) {
+		retractShooterAngle = value; 
 	}
 	
 	public boolean getCollectBall(){

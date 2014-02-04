@@ -32,17 +32,18 @@ public class ShooterRunner {
 		if(ReferenceData.getInstance().getShooterData().getInnerSolenoidsState() == ShooterRef.EXTEND){
 			innerSolenoids.set(Value.kForward);
 		} else {
-			innerSolenoids.set(Value.kReverse);
+			innerSolenoids.set(Value.kOff);
 		}
 		if(ReferenceData.getInstance().getShooterData().getOuterSolenoidsState() == ShooterRef.EXTEND){
 			outerSolenoids.set(Value.kForward);
 		} else {
-			outerSolenoids.set(Value.kReverse);
+			outerSolenoids.set(Value.kOff);
 		}
 		if(ReferenceData.getInstance().getShooterData().getShooterAngleSolenoidState() == ShooterRef.EXTEND) {
 			shooterAngleSolenoid.set(Value.kForward);
 		} else {
 			shooterAngleSolenoid.set(Value.kReverse);
 		}
+		
 	}
 }
