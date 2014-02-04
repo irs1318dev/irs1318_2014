@@ -12,6 +12,10 @@ public class CollectorLimitSwitchReader {
 	}
 	
 	public void teleopPeriodic() {
-		ReferenceData.getInstance().getCollectorData().getLimitSwitchData().setBallPresent(collectorLimitSwitch.get());
+		ReferenceData.getInstance().getCollectorData().getLimitSwitchData().setBallPresent(getCollectorLimitSwitch().get());
+	}
+	
+	public DigitalInput getCollectorLimitSwitch() {
+		return collectorLimitSwitch;
 	}
 }
