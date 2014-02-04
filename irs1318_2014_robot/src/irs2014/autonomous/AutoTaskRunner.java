@@ -1,6 +1,8 @@
 package irs2014.autonomous;
 
 import java.util.Vector;
+
+import irs2014.autonomous.tasks.AutonomousMode;
 import irs2014.components.RobotComponentBase;
 
 public class AutoTaskRunner extends RobotComponentBase

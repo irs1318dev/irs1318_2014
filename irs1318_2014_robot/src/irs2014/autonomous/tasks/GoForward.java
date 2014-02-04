@@ -6,11 +6,11 @@ public class GoForward extends AutonomousCommand
 {
 	public void run() 
 	{
-		System.out.println("Doing the actual macro now! Wohoo!");
+//		System.out.println("Doing the actual macro now! Wohoo!");
 		switch(currentState)
 		{
 			case 0:
-				driveForward(500);
+				goForwardRel(200);
 				break;
 			case 1:
 				isDone = true;

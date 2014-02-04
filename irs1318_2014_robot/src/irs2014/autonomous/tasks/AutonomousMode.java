@@ -13,21 +13,21 @@ public class AutonomousMode extends AutonomousCommand
 			goForwardRel(200);
 			//putYourRightFootIn();
 			break;
-		case 1:
-			takeYourRightFootOut();
-			break;
-		case 2:
-			putYourLeftFootIn();
-			break;
-		case 3:
-			andYouShakeItAllAbout();
-			break;
-		case 4:
-			youDoTheShootyShooty();
-			break;
-		case 5:
-			andYouTurnYourselfAbout();
-			break;
+//		case 1:
+//			takeYourRightFootOut();
+//			break;
+//		case 2:
+//			putYourLeftFootIn();
+//			break;
+//		case 3:
+//			andYouShakeItAllAbout();
+//			break;
+//		case 4:
+//			youDoTheShootyShooty();
+//			break;
+//		case 5:
+//			andYouTurnYourselfAbout();
+//			break;
 		case 6:
 			isDone = true;
 			break;
