@@ -96,7 +96,7 @@ public abstract class AutonomousCommand implements AutoTask
 	
 	public void goForwardAbs(double centimeters, String encoderHistory)
 	{//this will allow you to go forward a certain number of centimeters from a set point defined earlier. You just tell it what point to use.
-		double refEncodeValue = (double) ReferenceData.getInstance().getEncoderHistory().getDistanceFromReferencePoints().get(EncoderHistory.ALLIANCE_TO_GOAL);
+		double refEncodeValue = 1;//(double) ReferenceData.getInstance().getEncoderHistory().getDistanceFromReferencePoints().get(EncoderHistory.ALLIANCE_TO_GOAL);
 		if(refEncodeValue + toTicks(centimeters) < ReferenceData.getInstance().getDriveTrainData().getLeftEncoder())
 			advanceState();
 		else

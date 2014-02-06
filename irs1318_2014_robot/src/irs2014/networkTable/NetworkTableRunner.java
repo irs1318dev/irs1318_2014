@@ -52,7 +52,7 @@ public class NetworkTableRunner extends RobotComponentBase
  	private void collectorData(){
  		IRSTable.putBoolean(NTRef.Collector_BallPresent, ReferenceData.getInstance().getCollectorData().getLimitSwitchData().getBallPresent());
  		IRSTable.putNumber(NTRef.Collector_MotorSpeed, ReferenceData.getInstance().getCollectorData().getMotorData().getCollectorMotorSpeed());
- 		IRSTable.putBoolean(NTRef.Collector_SolenoidState, ReferenceData.getInstance().getCollectorData().getSolenoidData().getSolenoidState());
+ 		IRSTable.putBoolean(NTRef.Collector_SolenoidState, ReferenceData.getInstance().getCollectorData().getSolenoidData().getDesiredSolenoidState());
  	}
  	
  	private void userInputData()
