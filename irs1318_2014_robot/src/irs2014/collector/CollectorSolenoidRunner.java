@@ -14,10 +14,12 @@ public class CollectorSolenoidRunner extends RobotComponentBase {
 	}
 	
 	public void teleopPeriodic(){
-		if (ReferenceData.getInstance().getCollectorData().getSolenoidData().getSolenoidState() == CollectorRef.EXTEND) {
-			collectorSolenoid.set(Value.kForward);
-		} else {
-			collectorSolenoid.set(Value.kReverse);
+		if (ReferenceData.getInstance().getCollectorData().getSolenoidData().getDesiredSolenoidState() != ReferenceData.getInstance().getCollectorData().getSolenoidData().getCurrentSolenoidState()) {
+			if (ReferenceData.getInstance().getCollectorData().getSolenoidData().getDesiredSolenoidState() == CollectorRef.EXTEND) {
+				getCollectorSolenoid().set(Value.kForward);
+			} else if (ReferenceData.getInstance().getCollectorData().getSolenoidData().getDesiredSolenoidState() == CollectorRef.RETRACT) {
+				getCollectorSolenoid().set(Value.kReverse);
+			}
 		}
 	}
 	

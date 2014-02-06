@@ -22,28 +22,42 @@ public class ShooterRunner {
 		
 	}
 	
-	
 	public void teleopPeriodic() {
 		if(ReferenceData.getInstance().getShooterData().getMiddleSolenoidState() == ShooterRef.EXTEND) {
-			middleSolenoid.set(Value.kForward);
+			getMiddleSolenoid().set(Value.kForward);
 		} else {
-			middleSolenoid.set(Value.kReverse);
+			getMiddleSolenoid().set(Value.kReverse);
 		}
 		if(ReferenceData.getInstance().getShooterData().getInnerSolenoidsState() == ShooterRef.EXTEND){
-			innerSolenoids.set(Value.kForward);
+			getInnerSolenoids().set(Value.kForward);
 		} else {
-			innerSolenoids.set(Value.kOff);
+			getInnerSolenoids().set(Value.kOff);
 		}
 		if(ReferenceData.getInstance().getShooterData().getOuterSolenoidsState() == ShooterRef.EXTEND){
-			outerSolenoids.set(Value.kForward);
+			getOuterSolenoids().set(Value.kForward);
 		} else {
-			outerSolenoids.set(Value.kOff);
+			getOuterSolenoids().set(Value.kOff);
 		}
 		if(ReferenceData.getInstance().getShooterData().getShooterAngleSolenoidState() == ShooterRef.EXTEND) {
-			shooterAngleSolenoid.set(Value.kForward);
+			getShooterAngleSolenoid().set(Value.kForward);
 		} else {
-			shooterAngleSolenoid.set(Value.kReverse);
-		}
-		
+			getShooterAngleSolenoid().set(Value.kReverse);
+		}	
+	}
+	
+	public DoubleSolenoid getMiddleSolenoid() {
+		return middleSolenoid;
+	}
+	
+	public DoubleSolenoid getInnerSolenoids() {
+		return innerSolenoids; 
+	}
+	
+	public DoubleSolenoid getOuterSolenoids() {
+		return outerSolenoids; 
+	}
+	
+	public DoubleSolenoid getShooterAngleSolenoid() {
+		return shooterAngleSolenoid;
 	}
 }

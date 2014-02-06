@@ -102,6 +102,7 @@ public abstract class AutonomousCommand implements AutoTask
 			ReferenceData.getInstance().getUserInputData().setJoystickX(speed / 2.5);
 	}
 	
+<<<<<<< HEAD
 	private final double EPSILON = 10; //Ticks
 	private final double VEL_CUTOFF = 24 * 2.54; // measured in cm, converted from inches.
 	private boolean IS_POSITION_PID = false; // ...
@@ -115,6 +116,12 @@ public abstract class AutonomousCommand implements AutoTask
 		if(Math.abs(launchTick - ReferenceData.getInstance().getDriveTrainData().getLeftEncoder()) < EPSILON)
 		{
 			IS_POSITION_PID = false;
+=======
+	public void goForwardAbs(double centimeters, String encoderHistory)
+	{//this will allow you to go forward a certain number of centimeters from a set point defined earlier. You just tell it what point to use.
+		double refEncodeValue = 1;//(double) ReferenceData.getInstance().getEncoderHistory().getDistanceFromReferencePoints().get(EncoderHistory.ALLIANCE_TO_GOAL);
+		if(refEncodeValue + toTicks(centimeters) < ReferenceData.getInstance().getDriveTrainData().getLeftEncoder())
+>>>>>>> branch 'master' of https://github.com/irs1318dev/irs1318_2014
 			advanceState();
 		}
 		else

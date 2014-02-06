@@ -1,9 +1,9 @@
 package irs2014.collector;
 
 public class CollectorData {
-	CollectorMotorData motorData = new CollectorMotorData();
-	CollectorSolenoidData solenoidData = new CollectorSolenoidData();
-	CollectorLimitSwitchData limitSwitchData = new CollectorLimitSwitchData();
+	private CollectorMotorData motorData = new CollectorMotorData();
+	private CollectorSolenoidData solenoidData = new CollectorSolenoidData();
+	private CollectorLimitSwitchData limitSwitchData = new CollectorLimitSwitchData();
 	
 	public CollectorMotorData getMotorData (){
 		return motorData;

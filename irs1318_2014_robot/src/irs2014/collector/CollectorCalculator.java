@@ -8,9 +8,9 @@ public class CollectorCalculator extends RobotComponentBase{
 	public void teleopPeriodic(){
 		//Extends or retracts the collector; prefers extend.
 		if (ReferenceData.getInstance().getUserInputData().getExtendCollector()){
-			ReferenceData.getInstance().getCollectorData().getSolenoidData().setSolenoidState(CollectorRef.EXTEND);
+			ReferenceData.getInstance().getCollectorData().getSolenoidData().setDesiredSolenoidState(CollectorRef.EXTEND);
 		} else if (ReferenceData.getInstance().getUserInputData().getRetractCollector()){
-			ReferenceData.getInstance().getCollectorData().getSolenoidData().setSolenoidState(CollectorRef.RETRACT);
+			ReferenceData.getInstance().getCollectorData().getSolenoidData().setDesiredSolenoidState(CollectorRef.RETRACT);
 		}
 		
 		//Sets the motor to roll in, out, or turn off; prefers stop, then out, then in.
