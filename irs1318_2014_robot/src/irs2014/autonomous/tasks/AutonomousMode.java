@@ -33,7 +33,6 @@ public class AutonomousMode extends AutonomousCommand
 		}
 	}
 
-	@Override
 	public void cancel() 
 	{
 		//Reset things here...
