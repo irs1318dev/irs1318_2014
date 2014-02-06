@@ -11,4 +11,5 @@ public class PressureSensorData {
 	public void setIsPressurized(boolean isPressurized) {
 		this.isPressurized = isPressurized; 
 	}
+
 }

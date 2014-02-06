@@ -1,4 +1,4 @@
-package org.usfirst.ihs1318.shooter;
+package irs2014.shooter;
 
 import irs2014.components.RobotComponentBase;
 import irs2014.generalData.PortRef;
