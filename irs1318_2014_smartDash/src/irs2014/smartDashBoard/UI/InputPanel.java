@@ -166,7 +166,9 @@ public class InputPanel extends JPanel {
 			//String
 			}else if (table.getValue(s).getClass() == String.class) {
 				
-				table.putString(s, fields.get(s).getText());
+				if(!fields.get(s).getText().equals("")){
+					table.putString(s, fields.get(s).getText());
+				}
 				
 			//Other
 			}else{
