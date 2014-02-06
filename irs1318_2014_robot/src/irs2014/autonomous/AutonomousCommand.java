@@ -37,7 +37,10 @@ public abstract class AutonomousCommand implements AutoTask
 	
 	private double toTicks(double centimeters)
 	{//Converts centimeters to ticks
-		return centimeters * .0349;
+		double practiceWheelRaduis = 4.0 * 2.54; // centimeters
+		double competitionWheelRadius = 2.5 * 2.54; // centimeters
+		
+		return centimeters * 360 / (2 * Math.PI *practiceWheelRaduis); 
 	}
 	
 	
@@ -86,21 +89,40 @@ public abstract class AutonomousCommand implements AutoTask
 			ReferenceData.getInstance().getUserInputData().setJoystickX(.66 / 2.5);
 	}
 	
+	/**
+	 * Go forward relative- goes forward relative to the encoder value from the last state.
+	 * @param centimeters
+	 * @param speed
+	 */
 	public void goForwardRel(double centimeters, double speed)
-	{//Go forward relative- goes forward relative to the encoder value from the last state.
+	{
 		if(stateEncoderTicks + toTicks(centimeters) < ReferenceData.getInstance().getDriveTrainData().getLeftEncoder())
 			advanceState();
 		else
 			ReferenceData.getInstance().getUserInputData().setJoystickX(speed / 2.5);
 	}
 	
-	public void goForwardAbs(double centimeters, String encoderHistory)
-	{//this will allow you to go forward a certain number of centimeters from a set point defined earlier. You just tell it what point to use.
-		double refEncodeValue = (double) ReferenceData.getInstance().getEncoderHistory().getDistanceFromReferencePoints().get(EncoderHistory.ALLIANCE_TO_GOAL);
-		if(refEncodeValue + toTicks(centimeters) < ReferenceData.getInstance().getDriveTrainData().getLeftEncoder())
+	private final double EPSILON = 10; //Ticks
+	private final double VEL_CUTOFF = 24 * 2.54; // measured in cm, converted from inches.
+	private boolean IS_POSITION_PID = false; // ...
+	
+	/**
+	 * As long as it is being called, this will send you toward the calculated launch tick, with a small margin of error.
+	 */
+	public void goToLaunchTick()
+	{
+		double launchTick = ReferenceData.getInstance().getEncoderState().getLaunchTick(); // specific tick
+		if(Math.abs(launchTick - ReferenceData.getInstance().getDriveTrainData().getLeftEncoder()) < EPSILON)
+		{
+			IS_POSITION_PID = false;
 			advanceState();
+		}
 		else
-			ReferenceData.getInstance().getUserInputData().setJoystickX(.66 / 2.5);
+		{
+			int direction = 1;
+			//if(launchTick > toTicks(VEL_CUTOFF))
+				//ReferenceData.getInstance().getUserInputData().setJoystickX(.66 / 2.5); if 2ft, right
+		}
 	}
 	
 	public void turn(double degrees)

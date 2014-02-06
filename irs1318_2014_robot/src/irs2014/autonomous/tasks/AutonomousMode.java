@@ -4,7 +4,6 @@ import irs2014.autonomous.AutonomousCommand;
 
 public class AutonomousMode extends AutonomousCommand
 {
-	@Override
 	public void run() 
 	{
 		switch(currentState)
@@ -34,7 +33,6 @@ public class AutonomousMode extends AutonomousCommand
 		}
 	}
 
-	@Override
 	public void cancel() 
 	{
 		//Reset things here...

@@ -26,14 +26,20 @@ public class CollectorSolenoidRunnerTest {
 	
 	@Test
 	public void extendSolenoidTest(){
-		ReferenceData.getInstance().getCollectorData().getSolenoidData().setSolenoidState(CollectorRef.EXTEND);
+		ReferenceData.getInstance().getCollectorData().getSolenoidData().setDesiredSolenoidState(CollectorRef.EXTEND);
+		runnerSpy.teleopPeriodic();
+		ReferenceData.getInstance().getCollectorData().getSolenoidData().setDesiredSolenoidState(CollectorRef.EXTEND);
 		runnerSpy.teleopPeriodic();
 		verify(mockDoubleSolenoid, times(1)).set(Value.kForward);
 	} 
 	
 	@Test
 	public void retractSolenoidTest(){
-		ReferenceData.getInstance().getCollectorData().getSolenoidData().setSolenoidState(CollectorRef.RETRACT);
+		ReferenceData.getInstance().getCollectorData().getSolenoidData().setDesiredSolenoidState(CollectorRef.EXTEND);
+		runnerSpy.teleopPeriodic();
+		ReferenceData.getInstance().getCollectorData().getSolenoidData().setDesiredSolenoidState(CollectorRef.RETRACT);
+		runnerSpy.teleopPeriodic();
+		ReferenceData.getInstance().getCollectorData().getSolenoidData().setDesiredSolenoidState(CollectorRef.RETRACT);
 		runnerSpy.teleopPeriodic();
 		verify(mockDoubleSolenoid, times(1)).set(Value.kReverse);
 	} 

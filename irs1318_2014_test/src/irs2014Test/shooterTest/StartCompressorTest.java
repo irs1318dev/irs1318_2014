@@ -1,6 +1,7 @@
 package irs2014Test.shooterTest;
 
-import org.usfirst.ihs1318.shooter.CompressorRunner;
+import irs2014.shooter.CompressorRunner;
+
 import org.junit.Before;
 import org.junit.Test;
 

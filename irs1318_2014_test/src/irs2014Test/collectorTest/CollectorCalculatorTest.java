@@ -21,7 +21,7 @@ public class CollectorCalculatorTest {
 		ReferenceData.getInstance().getUserInputData().setExtendCollector(true);
 		ReferenceData.getInstance().getUserInputData().setRetractCollector(false);
 		calculator.teleopPeriodic();
-		assertEquals(CollectorRef.EXTEND, ReferenceData.getInstance().getCollectorData().getSolenoidData().getSolenoidState());
+		assertEquals(CollectorRef.EXTEND, ReferenceData.getInstance().getCollectorData().getSolenoidData().getDesiredSolenoidState());
 	}
 	
 	@Test
@@ -29,7 +29,7 @@ public class CollectorCalculatorTest {
 		ReferenceData.getInstance().getUserInputData().setExtendCollector(false);
 		ReferenceData.getInstance().getUserInputData().setRetractCollector(true);
 		calculator.teleopPeriodic();
-		assertEquals(CollectorRef.RETRACT, ReferenceData.getInstance().getCollectorData().getSolenoidData().getSolenoidState());
+		assertEquals(CollectorRef.RETRACT, ReferenceData.getInstance().getCollectorData().getSolenoidData().getDesiredSolenoidState());
 	}
 	
 	@Test
@@ -37,7 +37,7 @@ public class CollectorCalculatorTest {
 		ReferenceData.getInstance().getUserInputData().setExtendCollector(true);
 		ReferenceData.getInstance().getUserInputData().setRetractCollector(true);
 		calculator.teleopPeriodic();
-		assertEquals(CollectorRef.EXTEND, ReferenceData.getInstance().getCollectorData().getSolenoidData().getSolenoidState());
+		assertEquals(CollectorRef.EXTEND, ReferenceData.getInstance().getCollectorData().getSolenoidData().getDesiredSolenoidState());
 	}
 	
 	@Test

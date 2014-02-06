@@ -2,10 +2,10 @@ package irs2014.generalData;
 
 
 import irs2014.collector.CollectorData;
-import org.usfirst.ihs1318.shooter.PressureSensorData;
-import org.usfirst.ihs1318.shooter.ShooterData;
 import irs2014.dipSwitch.DipSwitchData;
 import irs2014.driveTrainTank.DriveTrainData;
+import irs2014.shooter.PressureSensorData;
+import irs2014.shooter.ShooterData;
 import irs2014.userInputDevices.UserInputData;
 
 public class ReferenceData {
@@ -19,9 +19,8 @@ public class ReferenceData {
 	
 	private PressureSensorData pressureSensorData;
 	private ShooterData shooterData;	
-	private EncoderHistory encoderHistory;
-	
 	private DipSwitchData dipSwitchData;
+	private EncoderState encoderState;
 	
 	private ReferenceData(){
 	}
@@ -75,10 +74,10 @@ public class ReferenceData {
 		return shooterData; 
 	}
 	
-	public EncoderHistory getEncoderHistory()
+	public EncoderState getEncoderState()
 	{
-		if(encoderHistory == null)
-			encoderHistory = new EncoderHistory();
-		return encoderHistory;
+		if(encoderState == null)
+			encoderState = new EncoderState();
+		return encoderState;
 	}
 }
