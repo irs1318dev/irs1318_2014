@@ -1,11 +1,12 @@
 package irs2014.shooter;
 
+import irs2014.components.RobotComponentBase;
 import irs2014.generalData.PortRef;
 import irs2014.generalData.ReferenceData;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 
-public class ShooterRunner {
+public class ShooterRunner extends RobotComponentBase {
 	
 	private DoubleSolenoid middleSolenoid;
 	private DoubleSolenoid innerSolenoids;

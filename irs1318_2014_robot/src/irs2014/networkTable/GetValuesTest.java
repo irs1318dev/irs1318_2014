@@ -1,8 +1,5 @@
 package irs2014.networkTable;
 
-import org.usfirst.frc1318.FRC2013.shared.ReferenceData;
-import org.usfirst.frc1318.generic.networktable.IRSTable;
-
 import irs2014.components.RobotComponentBase;
 
 public class GetValuesTest extends RobotComponentBase{

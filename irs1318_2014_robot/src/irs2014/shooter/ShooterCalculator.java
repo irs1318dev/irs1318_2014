@@ -1,8 +1,9 @@
 package irs2014.shooter;
 
+import irs2014.components.RobotComponentBase;
 import irs2014.generalData.ReferenceData;
 
-public class ShooterCalculator {
+public class ShooterCalculator extends RobotComponentBase {
 	
 	public void robotInit() {
 		
