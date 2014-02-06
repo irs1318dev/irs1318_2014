@@ -55,4 +55,6 @@ public interface PortRef {
 	int SHOOTER_PRESSURE_SWITCH_SLOT = 0; //TODO
 	int COMPRESSOR_RELAY_SLOT = 0; //TODO
 	int COMPRESSOR_RELAY_CHANNEL = 0; //TODO
+	
+	int DIP_SWITCH = -1; //TODO
 }
