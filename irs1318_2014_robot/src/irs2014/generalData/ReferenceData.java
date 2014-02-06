@@ -2,10 +2,10 @@ package irs2014.generalData;
 
 
 import irs2014.collector.CollectorData;
-import org.usfirst.ihs1318.shooter.PressureSensorData;
-import org.usfirst.ihs1318.shooter.ShooterData;
 
 import irs2014.driveTrainTank.DriveTrainData;
+import irs2014.shooter.PressureSensorData;
+import irs2014.shooter.ShooterData;
 import irs2014.userInputDevices.UserInputData;
 
 public class ReferenceData {

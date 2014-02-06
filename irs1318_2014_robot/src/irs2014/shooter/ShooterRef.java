@@ -1,4 +1,4 @@
-package org.usfirst.ihs1318.shooter;
+package irs2014.shooter;
 
 public interface ShooterRef {
 	
