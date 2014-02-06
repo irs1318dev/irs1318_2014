@@ -19,7 +19,7 @@ public class ReferenceData {
 	
 	private PressureSensorData pressureSensorData;
 	private ShooterData shooterData;	
-	private EncoderHistory encoderHistory;
+	private EncoderState encoderState;
 	
 	private ReferenceData(){
 	}
@@ -66,10 +66,10 @@ public class ReferenceData {
 		return shooterData; 
 	}
 	
-	public EncoderHistory getEncoderHistory()
+	public EncoderState getEncoderState()
 	{
-		if(encoderHistory == null)
-			encoderHistory = new EncoderHistory();
-		return encoderHistory;
+		if(encoderState == null)
+			encoderState = new EncoderState();
+		return encoderState;
 	}
 }

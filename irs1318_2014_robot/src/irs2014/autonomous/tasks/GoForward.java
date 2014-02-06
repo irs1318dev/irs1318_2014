@@ -10,7 +10,7 @@ public class GoForward extends AutonomousCommand
 		switch(currentState)
 		{
 			case 0:
-				goForwardRel(200);
+				goToLaunchTick();
 				break;
 			case 1:
 				isDone = true;
