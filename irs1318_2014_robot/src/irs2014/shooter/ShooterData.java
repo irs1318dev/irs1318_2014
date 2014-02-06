@@ -60,18 +60,22 @@ public class ShooterData {
 	}
 	
 	public void setDesiredMiddleSolenoidState(boolean desiredMiddleSolenoidState) {
+		setCurrentMiddleSolenoidState(this.desiredMiddleSolenoidState);
 		this.desiredMiddleSolenoidState = desiredMiddleSolenoidState; 
 	}
 	
 	public void setDesiredInnerSolenoidsState(boolean desiredInnerSolenoidsState) {
+		setCurrentInnerSolenoidsState(this.desiredInnerSolenoidsState);
 		this.desiredInnerSolenoidsState = desiredInnerSolenoidsState; 
 	}
 	
 	public void setDesiredOuterSolenoidsState(boolean desiredOuterSolenoidsState) {
+		setCurrentOuterSolenoidsState(this.desiredOuterSolenoidsState);
 		this.desiredOuterSolenoidsState = desiredOuterSolenoidsState; 
 	}
 	
 	public void setDesiredShooterAngleSolenoidState(boolean desiredShooterAngleSolenoidState) {
+		setCurrentShooterAngleSolenoidState(this.desiredShooterAngleSolenoidState);
 		this.desiredShooterAngleSolenoidState = desiredShooterAngleSolenoidState; 
 	}
 	
