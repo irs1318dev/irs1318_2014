@@ -8,14 +8,14 @@ public class DriveTrainNoPIDCalculator extends RobotComponentBase
 	public void teleopPeriodic() {
 			
 
-		ReferenceData.getInstance().getDriveTrainData().setRightPIDSpeed(ReferenceData
+		ReferenceData.getInstance().getDriveTrainData().getRightPIDData().setPIDVelocity(ReferenceData
 				.getInstance()
 				.getDriveTrainData()
-				.getRightSpeedSetPoint());
-		ReferenceData.getInstance().getDriveTrainData().setLeftPIDSpeed(ReferenceData
+				.getRightPIDData().getVelocitySetpoint());
+		ReferenceData.getInstance().getDriveTrainData().getLeftPIDData().setPIDVelocity(ReferenceData
 				.getInstance()
 				.getDriveTrainData()
-				.getLeftSpeedSetPoint());	
+				.getLeftPIDData().getVelocitySetpoint());	
 
 	}
 }

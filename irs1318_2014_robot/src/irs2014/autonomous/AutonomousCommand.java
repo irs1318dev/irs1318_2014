@@ -26,7 +26,7 @@ public abstract class AutonomousCommand implements AutoTask
 	public void advanceState() 
 	{//Advance the macro to the next state
 		currentState++;
-		stateEncoderTicks = ReferenceData.getInstance().getDriveTrainData().getLeftEncoderTicks();
+		stateEncoderTicks = ReferenceData.getInstance().getDriveTrainData().getLeftEncoderData().getTicks();
 		stateTime = System.currentTimeMillis();
 	}
 	
@@ -80,7 +80,7 @@ public abstract class AutonomousCommand implements AutoTask
 	
 	public void goForwardRel(double centimeters)
 	{//Go forward relative- goes forward relative to the encoder value from the last state.
-		if(stateEncoderTicks + toTicks(centimeters) < ReferenceData.getInstance().getDriveTrainData().getLeftEncoder())
+		if(stateEncoderTicks + toTicks(centimeters) < ReferenceData.getInstance().getDriveTrainData().getLeftEncoderData().getVelocity())
 			advanceState();
 		else
 			ReferenceData.getInstance().getUserInputData().setJoystickX(.66 / 2.5);
@@ -88,7 +88,7 @@ public abstract class AutonomousCommand implements AutoTask
 	
 	public void goForwardRel(double centimeters, double speed)
 	{//Go forward relative- goes forward relative to the encoder value from the last state.
-		if(stateEncoderTicks + toTicks(centimeters) < ReferenceData.getInstance().getDriveTrainData().getLeftEncoder())
+		if(stateEncoderTicks + toTicks(centimeters) < ReferenceData.getInstance().getDriveTrainData().getLeftEncoderData().getVelocity())
 			advanceState();
 		else
 			ReferenceData.getInstance().getUserInputData().setJoystickX(speed / 2.5);
@@ -97,7 +97,7 @@ public abstract class AutonomousCommand implements AutoTask
 	public void goForwardAbs(double centimeters, String encoderHistory)
 	{//this will allow you to go forward a certain number of centimeters from a set point defined earlier. You just tell it what point to use.
 		double refEncodeValue = 1;//(double) ReferenceData.getInstance().getEncoderHistory().getDistanceFromReferencePoints().get(EncoderHistory.ALLIANCE_TO_GOAL);
-		if(refEncodeValue + toTicks(centimeters) < ReferenceData.getInstance().getDriveTrainData().getLeftEncoder())
+		if(refEncodeValue + toTicks(centimeters) < ReferenceData.getInstance().getDriveTrainData().getLeftEncoderData().getVelocity())
 			advanceState();
 		else
 			ReferenceData.getInstance().getUserInputData().setJoystickX(.66 / 2.5);
