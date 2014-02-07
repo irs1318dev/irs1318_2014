@@ -26,7 +26,7 @@ public abstract class AutonomousCommand implements AutoTask
 	public void advanceState() 
 	{//Advance the macro to the next state
 		currentState++;
-		stateEncoderTicks = ReferenceData.getInstance().getDriveTrainData().getLeftEncoderTicks();
+		stateEncoderTicks = ReferenceData.getInstance().getDriveTrainData().getLeftEncoderData().getTicks();
 		stateTime = System.currentTimeMillis();
 	}
 	
@@ -83,7 +83,7 @@ public abstract class AutonomousCommand implements AutoTask
 	
 	public void goForwardRel(double centimeters)
 	{//Go forward relative- goes forward relative to the encoder value from the last state.
-		if(stateEncoderTicks + toTicks(centimeters) < ReferenceData.getInstance().getDriveTrainData().getLeftEncoder())
+		if(stateEncoderTicks + toTicks(centimeters) < ReferenceData.getInstance().getDriveTrainData().getLeftEncoderData().getVelocity())
 			advanceState();
 		else
 			ReferenceData.getInstance().getUserInputData().setJoystickX(.66 / 2.5);
@@ -95,13 +95,14 @@ public abstract class AutonomousCommand implements AutoTask
 	 * @param speed
 	 */
 	public void goForwardRel(double centimeters, double speed)
-	{
-		if(stateEncoderTicks + toTicks(centimeters) < ReferenceData.getInstance().getDriveTrainData().getLeftEncoder())
+	{//Go forward relative- goes forward relative to the encoder value from the last state.
+		if(stateEncoderTicks + toTicks(centimeters) < ReferenceData.getInstance().getDriveTrainData().getLeftEncoderData().getVelocity())
 			advanceState();
 		else
 			ReferenceData.getInstance().getUserInputData().setJoystickX(speed / 2.5);
 	}
 	
+
 	private final double EPSILON = 10; //Ticks
 	private final double VEL_CUTOFF = 24 * 2.54; // measured in cm, converted from inches.
 	private boolean IS_POSITION_PID = false; // ...
@@ -112,11 +113,16 @@ public abstract class AutonomousCommand implements AutoTask
 	public void goToLaunchTick()
 	{
 		double launchTick = ReferenceData.getInstance().getEncoderState().getLaunchTick(); // specific tick
-		if(Math.abs(launchTick - ReferenceData.getInstance().getDriveTrainData().getLeftEncoder()) < EPSILON)
+		if(Math.abs(launchTick - ReferenceData.getInstance().getDriveTrainData().getLeftEncoderData().getTicks()) < EPSILON)
 		{
 			IS_POSITION_PID = false;
-			advanceState();
 		}
+	}
+	public void goForwardAbs(double centimeters, String encoderHistory)
+	{//this will allow you to go forward a certain number of centimeters from a set point defined earlier. You just tell it what point to use.
+		double refEncodeValue = 1;//(double) ReferenceData.getInstance().getEncoderHistory().getDistanceFromReferencePoints().get(EncoderHistory.ALLIANCE_TO_GOAL);
+		if(refEncodeValue + toTicks(centimeters) < ReferenceData.getInstance().getDriveTrainData().getLeftEncoderData().getVelocity())
+			advanceState();
 		else
 		{
 			int direction = 1;

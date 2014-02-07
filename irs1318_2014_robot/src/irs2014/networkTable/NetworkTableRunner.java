@@ -36,12 +36,12 @@ public class NetworkTableRunner extends RobotComponentBase
 	
 	private void driveTrainData()
 	{
-		IRSTable.putNumber(NTRef.DriveTrain_RightEncoder, ReferenceData.getInstance().getDriveTrainData().getRightEncoder());
-		IRSTable.putNumber(NTRef.DriveTrain_LeftEncoder, ReferenceData.getInstance().getDriveTrainData().getLeftEncoder());
-		IRSTable.putNumber(NTRef.DriveTrain_RightSetPoint, ReferenceData.getInstance().getDriveTrainData().getRightSpeedSetPoint());
-		IRSTable.putNumber(NTRef.DriveTrain_LeftSetPoint, ReferenceData.getInstance().getDriveTrainData().getLeftSpeedSetPoint());
-		IRSTable.putNumber(NTRef.DriveTrain_RightPIDSpeed, ReferenceData.getInstance().getDriveTrainData().getRightPIDSpeed());
-		IRSTable.putNumber(NTRef.DriveTrain_LeftPIDSpeed, ReferenceData.getInstance().getDriveTrainData().getLeftPIDSpeed());
+		IRSTable.putNumber(NTRef.DriveTrain_RightEncoder, ReferenceData.getInstance().getDriveTrainData().getRightEncoderData().getVelocity());
+		IRSTable.putNumber(NTRef.DriveTrain_LeftEncoder, ReferenceData.getInstance().getDriveTrainData().getLeftEncoderData().getVelocity());
+		IRSTable.putNumber(NTRef.DriveTrain_RightSetPoint, ReferenceData.getInstance().getDriveTrainData().getRightPIDData().getVelocitySetpoint());
+		IRSTable.putNumber(NTRef.DriveTrain_LeftSetPoint, ReferenceData.getInstance().getDriveTrainData().getLeftPIDData().getVelocitySetpoint());
+		IRSTable.putNumber(NTRef.DriveTrain_RightPIDSpeed, ReferenceData.getInstance().getDriveTrainData().getRightPIDData().getPIDVelocity());
+		IRSTable.putNumber(NTRef.DriveTrain_LeftPIDSpeed, ReferenceData.getInstance().getDriveTrainData().getLeftPIDData().getPIDVelocity());
 	}
 
  	private void shooterData()

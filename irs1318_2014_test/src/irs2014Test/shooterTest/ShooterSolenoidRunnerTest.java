@@ -13,6 +13,7 @@ import org.junit.Test;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 
+import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
 public class ShooterSolenoidRunnerTest {
@@ -40,46 +41,58 @@ public class ShooterSolenoidRunnerTest {
 		doReturn(mockOuterSolenoids).when(runnerSpy).getOuterSolenoids();
 		doReturn(mockShooterAngleSolenoid).when(runnerSpy).getShooterAngleSolenoid(); 
 	}
-	
+//	@Test
+//	public void defaultValueIsFalseTest() {
+//		assertEquals(false, ReferenceData.getInstance().getShooterData().getCurrentMiddleSolenoidState());
+//	}
 	@Test 
 	public void extendMiddleSolenoidTest() {
-		ReferenceData.getInstance().getShooterData().setCurrentMiddleSolenoidState(ShooterRef.EXTEND);
+		ReferenceData.getInstance().getShooterData().setDesiredMiddleSolenoidState(ShooterRef.EXTEND);
 		runnerSpy.teleopPeriodic();
 		verify(mockMiddleSolenoid, times(1)).set(Value.kForward);
 	}
 	
+	@Test
 	public void retractMiddleSolenoidTest() {
-		ReferenceData.getInstance().getShooterData().setCurrentMiddleSolenoidState(ShooterRef.RETRACT);
+		ReferenceData.getInstance().getShooterData().setDesiredMiddleSolenoidState(ShooterRef.EXTEND);
 		runnerSpy.teleopPeriodic();
+		ReferenceData.getInstance().getShooterData().setDesiredMiddleSolenoidState(ShooterRef.RETRACT);
+		runnerSpy.teleopPeriodic(); 
+		ReferenceData.getInstance().getShooterData().setDesiredMiddleSolenoidState(ShooterRef.EXTEND); //checks that even with change of value set() method is only called once
+		runnerSpy.teleopPeriodic(); 
 		verify(mockMiddleSolenoid, times(1)).set(Value.kReverse);
 	}
 	
-	public void middleSolenoidOffTest() {
-		ReferenceData.getInstance().getShooterData().setCurrentMiddleSolenoidState(ShooterRef.RETRACT);
-	}
-	
+	@Test
 	public void extendInnerSolenoidsTest() {
-		
+		ReferenceData.getInstance().getShooterData().setDesiredInnerSolenoidsState(ShooterRef.EXTEND);
+		runnerSpy.teleopPeriodic();
+		verify(mockInnerSolenoids, times(1)).set(Value.kForward);
 	}
 	
-	public void retractInnerSolenoidsTest() {
-		
-	}
-	
+	@Test
 	public void innerSolenoidsOffTest() {
-		
+		ReferenceData.getInstance().getShooterData().setDesiredInnerSolenoidsState(ShooterRef.EXTEND);
+		runnerSpy.teleopPeriodic();
+		ReferenceData.getInstance().getShooterData().setDesiredInnerSolenoidsState(ShooterRef.RETRACT);
+		runnerSpy.teleopPeriodic();
+		verify(mockInnerSolenoids, times(1)).set(Value.kOff);
 	}
 	
+	@Test
 	public void extendOuterSolenoidsTest() {
-		
+		ReferenceData.getInstance().getShooterData().setDesiredOuterSolenoidsState(ShooterRef.EXTEND);
+		runnerSpy.teleopPeriodic();
+		verify(mockOuterSolenoids, times(1)).set(Value.kForward);
 	}
 	
-	public void retractOuterSolenoidsTest() {
-		
-	}
-	
+	@Test
 	public void outerSolenoidsOffTest() {
-		
+		ReferenceData.getInstance().getShooterData().setDesiredOuterSolenoidsState(ShooterRef.EXTEND);
+		runnerSpy.teleopPeriodic();
+		ReferenceData.getInstance().getShooterData().setDesiredOuterSolenoidsState(ShooterRef.RETRACT);
+		runnerSpy.teleopPeriodic();
+		verify(mockOuterSolenoids, times(1)).set(Value.kOff);
 	}
 	
 
