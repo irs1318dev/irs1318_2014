@@ -40,11 +40,17 @@ public class ShooterSolenoidRunnerTest {
 		doReturn(mockInnerSolenoids).when(runnerSpy).getInnerSolenoids();
 		doReturn(mockOuterSolenoids).when(runnerSpy).getOuterSolenoids();
 		doReturn(mockShooterAngleSolenoid).when(runnerSpy).getShooterAngleSolenoid(); 
+		
+		ReferenceData.getInstance().getShooterData().setDesiredInnerSolenoidsState(ShooterRef.RETRACT);
+		ReferenceData.getInstance().getShooterData().setDesiredMiddleSolenoidState(ShooterRef.RETRACT);
+		ReferenceData.getInstance().getShooterData().setDesiredOuterSolenoidsState(ShooterRef.RETRACT);
+		ReferenceData.getInstance().getShooterData().setDesiredShooterAngleSolenoidState(ShooterRef.RETRACT);
+//		ReferenceData.getInstance().getShooterData().setCurrentInnerSolenoidsState(ShooterRef.RETRACT);
+//		ReferenceData.getInstance().getShooterData().setCurrentMiddleSolenoidState(ShooterRef.RETRACT);
+//		ReferenceData.getInstance().getShooterData().setCurrentOuterSolenoidsState(ShooterRef.RETRACT);
+//		ReferenceData.getInstance().getShooterData().setCurrentShooterAngleSolenoidState(ShooterRef.RETRACT);
 	}
-//	@Test
-//	public void defaultValueIsFalseTest() {
-//		assertEquals(false, ReferenceData.getInstance().getShooterData().getCurrentMiddleSolenoidState());
-//	}
+	
 	@Test 
 	public void extendMiddleSolenoidTest() {
 		ReferenceData.getInstance().getShooterData().setDesiredMiddleSolenoidState(ShooterRef.EXTEND);

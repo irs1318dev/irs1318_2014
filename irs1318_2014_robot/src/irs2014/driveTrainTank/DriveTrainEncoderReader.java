@@ -18,11 +18,11 @@ public class DriveTrainEncoderReader extends RobotComponentBase{
 	}
 	
 	public EncoderAngularVelocity getNewLeftEncoder() {
-		return new EncoderAngularVelocity(PortRef.ENCODER_L_A, PortRef.ENCODER_L_B);
+		return new EncoderAngularVelocity(PortRef.COMPETITION_ENCODER_L_A, PortRef.COMPETITION_ENCODER_L_B);
 	}
 
 	public EncoderAngularVelocity getNewRightEncoder() {
-		return new EncoderAngularVelocity(PortRef.ENCODER_R_A, PortRef.ENCODER_R_B);
+		return new EncoderAngularVelocity(PortRef.COMPETITION_ENCODER_R_A, PortRef.COMPETITION_ENCODER_R_B);
 	}
 
 	double count;

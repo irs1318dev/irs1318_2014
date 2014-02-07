@@ -17,11 +17,11 @@ public class DriveTrainRunner extends RobotComponentBase {
 	}
 	
 	public Talon getNewRightTalon(){
-		return new Talon(PortRef.SIDECAR_SLOT, PortRef.TALON_R);
+		return new Talon(PortRef.SIDECAR_SLOT, PortRef.COMPETITION_TALON_R);
 	}
 
 	public Talon getNewLeftTalon(){
-		return new Talon(PortRef.SIDECAR_SLOT, PortRef.TALON_L);
+		return new Talon(PortRef.SIDECAR_SLOT, PortRef.COMPETITION_TALON_L);
 	}
 	
 	public Talon getRightTalon() {

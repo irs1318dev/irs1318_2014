@@ -12,7 +12,7 @@ public class PressureSensorReader extends RobotComponentBase{
 	DigitalInput pressureSensor;
 	
 	public void robotInit() {
-		pressureSensor = new DigitalInput(PortRef.PRESSURE_SENSOR);
+		pressureSensor = new DigitalInput(PortRef.COMPETITION_PRESSURE_SENSOR);
 		System.out.println("PressureSensor robotInit()");
 	}
 	
