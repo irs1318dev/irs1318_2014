@@ -17,9 +17,13 @@ public class PressureSensorReader extends RobotComponentBase{
 	}
 	
 	public void teleopPeriodic() {
-		boolean value = pressureSensor.get();
+		boolean value = getPressureSensor().get();
 		ReferenceData.getInstance().getPressureSensorData().setIsPressurized(value);
 		System.out.println("pressureSensor= " + value + ", isPressurized=" + ReferenceData.getInstance().getPressureSensorData().getIsPressurized());
+	}
+	
+	public DigitalInput getPressureSensor() {
+		return pressureSensor;
 	}
 	
 
