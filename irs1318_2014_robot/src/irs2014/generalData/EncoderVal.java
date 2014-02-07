@@ -25,8 +25,8 @@ public class EncoderVal
 	
 	private void calculateCenterOfTicks()
 	{
-		double difLeft = startLeft - ReferenceData.getInstance().getDriveTrainData().getLeftEncoder();
-		double difRight = startRight - ReferenceData.getInstance().getDriveTrainData().getRightEncoder();
+		double difLeft = startLeft - ReferenceData.getInstance().getDriveTrainData().getLeftEncoderData().getTicks();
+		double difRight = startRight - ReferenceData.getInstance().getDriveTrainData().getRightEncoderData().getTicks();
 		distaneTraveled = (difLeft + difRight) / 2.0;
 	}
 

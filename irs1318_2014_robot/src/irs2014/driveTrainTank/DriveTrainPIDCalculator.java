@@ -7,75 +7,94 @@ import irs2014.generalOpperations.PID;
 
 public class DriveTrainPIDCalculator extends RobotComponentBase{
 	
-	//TODO wright test
+	//TODO write test
 	
-	PID rightPID;
-	PID leftPID;
 	long count;
 	
 	public void robotInit(){
-//		rightPID = new PID(0, 0, 0, 1);
-		//flip sign if not work right after pull
-		rightPID = new PID(0, 0, -0.001, 0);
-//		rightPID = new PID(0, 0, 0.0, 0);
-		rightPID.setKScale(2800); 
 		
-//		all left negative
-//		leftPID = new PID(0, 0, 0, -1);
-		leftPID = new PID(0, 0, -0.001, 0);
-//		leftPID = new PID(0, 0, 0.0, 0);
-		leftPID.setKScale(2800);
-		//TODO ask James about values
-		count = 0;
 	}
 	
 	public void teleopPeriodic(){
+		velocityPIDCalculator();
+//		if (ReferenceData.getInstance().getSomethingOrOther???){
+//			velocityPIDCalculator();
+//		}else if(){
+//			positionPIDCalculator();
+//		}
+	}
+
+	private void velocityPIDCalculator(){
+		double rightVelocitySetpoint = ReferenceData.getInstance().getDriveTrainData().getRightPIDData().getVelocitySetpoint();
+		double rightEncoderVelocity = ReferenceData.getInstance().getDriveTrainData().getRightEncoderData().getVelocity();
+		double rightKf = 0.1;
+		double rightKd = -0.0004; // practice bot
+//		double rightKd = 0.00020; // competition bot
+		double rightKscale = 2800;
 		
-		double rset = ReferenceData.getInstance().getDriveTrainData().getRightSpeedSetPoint();
-		double rencv = ReferenceData.getInstance().getDriveTrainData().getRightEncoder();
-		double rkf = 0.1;
-		double rkd = -0.0004; // practice bot
-//		double rkd = 0.00020; // competition bot
-		double rkscale = 2800;
-		double rightPIDVal = rkf * rset + rkd*(rkscale * rset - rencv);
+		double rightPIDVal = rightKf * rightVelocitySetpoint + rightKd*(rightKscale * rightVelocitySetpoint - rightEncoderVelocity);
 
-		double lset = - ReferenceData.getInstance().getDriveTrainData().getLeftSpeedSetPoint();
-		double lencv = ReferenceData.getInstance().getDriveTrainData().getLeftEncoder();
-		double lkf = 0.1;
-		double lkd = -0.0005;		// practice bot
-//		double lkd = 0.00022;		// competition bot
-		double lkscale = 2800;
+		double leftVelocitySetpoint = - ReferenceData.getInstance().getDriveTrainData().getLeftPIDData().getVelocitySetpoint();
+		double leftEncoderVelocity = ReferenceData.getInstance().getDriveTrainData().getLeftEncoderData().getVelocity();
+		double leftKf = 0.1;
+		double leftKd = -0.0005;		// practice bot
+//		double leftKd = 0.00022;		// competition bot
+		double leftKscale = 2800;
 
-		double leftPIDVal = lkf * lset + lkd*(lkscale * lset - lencv);
+		double leftPIDVal = leftKf * leftVelocitySetpoint + leftKd*(leftKscale * leftVelocitySetpoint - leftEncoderVelocity);
 
-		JoystickFilter.Speed motorSpeed = new JoystickFilter.Speed();
-		motorSpeed.speedL = leftPIDVal;
-		motorSpeed.speedR = rightPIDVal;
-//		JoystickFilter.Speed clampedSpeed = JoystickFilter.applyClamp(motorSpeed, 1.0);
+		JoystickFilter.Velocity motorVelocity = new JoystickFilter.Velocity();
+		motorVelocity.leftVelocity = leftPIDVal;
+		motorVelocity.rightVelocity = rightPIDVal;
+//		JoystickFilter.Velocity clampedVelocity = JoystickFilter.applyClamp(motorVelocity, 1.0);
 		
 		if (count%1000==0) {
-			System.out.println("lset="+lset+" , rset="+rset);
-			System.out.println("lencv="+lencv+" , rencv="+rencv);
-			System.out.println("LPID="+ReferenceData.getInstance().getDriveTrainData().getLeftPIDSpeed()
-					+", RPID="+ReferenceData.getInstance().getDriveTrainData().getRightPIDSpeed()
-					);
-//			System.out.println("lmotor="+clampedSpeed.speedL+" , rmotor="+clampedSpeed.speedR);
+			System.out.println("leftVelocitySetpoint=" + leftVelocitySetpoint + " , rightVelocitySetpoint=" + rightVelocitySetpoint);
+			System.out.println("leftEncoderVelocity=" + leftEncoderVelocity + " , rightEncoderVelocity=" + rightEncoderVelocity);
+			System.out.println("leftPIDVal=" + ReferenceData.getInstance().getDriveTrainData().getLeftPIDData().getPIDVelocity()
+					+ ", rightPIDVal=" + ReferenceData.getInstance().getDriveTrainData().getRightPIDData().getPIDVelocity());
+//			System.out.println("leftVelocity="+clampedVelocity.leftVelocity+" , rightVelocity="+clampedVelocity.rightVelocity);
 		}
 		count++;
 
-		ReferenceData.getInstance().getDriveTrainData().setRightPIDSpeed(rightPIDVal);
-		ReferenceData.getInstance().getDriveTrainData().setLeftPIDSpeed(leftPIDVal);
+		ReferenceData.getInstance().getDriveTrainData().getRightPIDData().setPIDVelocity(rightPIDVal);
+		ReferenceData.getInstance().getDriveTrainData().getLeftPIDData().setPIDVelocity(leftPIDVal);
 
-//		ReferenceData.getInstance().getDriveTrainData().setRightPIDSpeed(clampedSpeed.speedR);
-//		ReferenceData.getInstance().getDriveTrainData().setLeftPIDSpeed(clampedSpeed.speedL);
-
-//		System.out.println("LPIDConst:"+leftPID.toString()
-//				+", RPIDConst:"+rightPID.toString()
-//				);
+//		ReferenceData.getInstance().getDriveTrainData().getRightPIDData().setPIDVelocity(clampedVelocity.rightVelocity);
+//		ReferenceData.getInstance().getDriveTrainData().getLeftPIDData().setPIDVelocity(clampedVelocity.leftVelocity);
 
 	}
 	
-	//PID.setSetpoint(what you want the encoder to read = what the joystick says it should read) 
-	//PID.input(acutal angular velocity)
-	//PID.getOutPut() = value to give motors 
+	private void positionPIDCalculator(){
+		double rightPostionSetpoint = ReferenceData.getInstance().getDriveTrainData().getRightPIDData().getPositionSetpoint();
+		double rightEncoderTicks = ReferenceData.getInstance().getDriveTrainData().getRightEncoderData().getTicks();
+		double rightEncoderVelocity = ReferenceData.getInstance().getDriveTrainData().getRightEncoderData().getVelocity();
+		double rightKp = -1; //TODO
+		double rightKd = -1; //TODO
+		
+		double rightPIDVal = rightKp * (rightPostionSetpoint - rightEncoderTicks) + rightKd * rightEncoderVelocity;
+		
+		double leftPostionSetpoint = - ReferenceData.getInstance().getDriveTrainData().getLeftPIDData().getPositionSetpoint();
+		double leftEncoderTicks = ReferenceData.getInstance().getDriveTrainData().getLeftEncoderData().getTicks();
+		double leftEncoderVelocity = ReferenceData.getInstance().getDriveTrainData().getLeftEncoderData().getVelocity();
+		double leftKp = -1; //TODO
+		double leftKd = -1; //TODO
+		
+		double leftPIDVal = leftKp * (leftPostionSetpoint - leftEncoderTicks) + leftKd * leftEncoderVelocity;
+		
+		JoystickFilter.Velocity motorVelocity = new JoystickFilter.Velocity();
+		motorVelocity.leftVelocity = leftPIDVal;
+		motorVelocity.rightVelocity = rightPIDVal;
+		
+		if (count%1000==0){
+			System.out.println("leftPostionSetpoint=" + leftPostionSetpoint + " , rightPostionSetpoint=" + rightPostionSetpoint);
+			System.out.println("leftEncoderTicks=" + leftEncoderTicks + " , rightEncoderTicks=" + rightEncoderTicks);
+			System.out.println("leftPIDVal=" + ReferenceData.getInstance().getDriveTrainData().getLeftPIDData().getPIDVelocity()
+					+ ", rightPIDVal=" + ReferenceData.getInstance().getDriveTrainData().getRightPIDData().getPIDVelocity());
+		}
+		count++;
+		
+		ReferenceData.getInstance().getDriveTrainData().getRightPIDData().setPIDVelocity(rightPIDVal);
+		ReferenceData.getInstance().getDriveTrainData().getLeftPIDData().setPIDVelocity(leftPIDVal);
+	}
 }

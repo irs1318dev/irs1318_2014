@@ -32,10 +32,10 @@ public class DriveTrainEncoderReader extends RobotComponentBase{
 		double rencv = encoderR.getRate();
 		double lencv = encoderL.getRate();
 		
-		ReferenceData.getInstance().getDriveTrainData().setRightEncoder(encoderR.getRate());
-		ReferenceData.getInstance().getDriveTrainData().setLeftEncoder(encoderL.getRate());
-		ReferenceData.getInstance().getDriveTrainData().setRightEncoderTicks(encoderR.getDistance());
-		ReferenceData.getInstance().getDriveTrainData().setLeftEncoderTicks(encoderL.getDistance());
+		ReferenceData.getInstance().getDriveTrainData().getRightEncoderData().setVelocity(encoderR.getRate());
+		ReferenceData.getInstance().getDriveTrainData().getLeftEncoderData().setVelocity(encoderL.getRate());
+		ReferenceData.getInstance().getDriveTrainData().getRightEncoderData().setTicks(encoderR.getDistance());
+		ReferenceData.getInstance().getDriveTrainData().getLeftEncoderData().setTicks(encoderL.getDistance());
 		
 	}
 	

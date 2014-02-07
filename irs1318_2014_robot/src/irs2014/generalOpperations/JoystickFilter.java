@@ -18,24 +18,24 @@ public class JoystickFilter {
 		return output;
 	}
 
-	public static Speed applyClamp(Speed speed, double clamp) {
-		Speed newSpeed = new Speed();
-		if(Math.abs(speed.speedL)>1){
-			newSpeed.speedR = speed.speedR/Math.abs(speed.speedL);
-			newSpeed.speedL = speed.speedL/Math.abs(speed.speedL);
+	public static Velocity applyClamp(Velocity velocity, double clamp) {
+		Velocity newVelocity = new Velocity();
+		if(Math.abs(velocity.leftVelocity)>1){
+			newVelocity.rightVelocity = velocity.rightVelocity/Math.abs(velocity.leftVelocity);
+			newVelocity.leftVelocity = velocity.leftVelocity/Math.abs(velocity.leftVelocity);
 		}
-		if (Math.abs(speed.speedR)>1){
-			newSpeed.speedL = speed.speedL/Math.abs(speed.speedR);
-			newSpeed.speedR = speed.speedR/Math.abs(speed.speedR);
+		if (Math.abs(velocity.rightVelocity)>1){
+			newVelocity.leftVelocity = velocity.leftVelocity/Math.abs(velocity.rightVelocity);
+			newVelocity.rightVelocity = velocity.rightVelocity/Math.abs(velocity.rightVelocity);
 		}
-		return newSpeed;
+		return newVelocity;
 
 	}
 	
-	public static class Speed {
-		public double speedL;
-		public double speedR;
-		public Speed(){
+	public static class Velocity {
+		public double leftVelocity;
+		public double rightVelocity;
+		public Velocity(){
 			
 		}
 	}
