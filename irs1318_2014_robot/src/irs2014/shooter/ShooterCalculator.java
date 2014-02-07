@@ -5,10 +5,6 @@ import irs2014.generalData.ReferenceData;
 
 public class ShooterCalculator extends RobotComponentBase {
 	
-	public void robotInit() {
-		
-	}
-	
 	public void teleopPeriodic() {
 		if(ReferenceData.getInstance().getPressureSensorData().getIsPressurized() && ReferenceData.getInstance().getUserInputData().getExtendAllShooterSolenoids()) {
 			ReferenceData.getInstance().getShooterData().setDesiredMiddleSolenoidState(ShooterRef.EXTEND);
