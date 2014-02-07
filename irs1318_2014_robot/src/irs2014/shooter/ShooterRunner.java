@@ -15,17 +15,11 @@ public class ShooterRunner extends RobotComponentBase {
 	private DoubleSolenoid shooterAngleSolenoid; 
 	
 	public void robotInit() {
-		if(ReferenceData.getInstance().getDipSwitchData().getDipSwitchState() == DipSwitchRef.COMPETITION_BOT) {
-			middleSolenoid = new DoubleSolenoid(PortRef.SOLENOID_MODULE_PORT, PortRef.COMPETITION_SHOOTER_ANGLE_SOLENOID_EXTENDER_PORT, PortRef.COMPETITION_SHOOTER_MIDDLE_SOLENOID_RETRACTOR_PORT);
-			innerSolenoids = new DoubleSolenoid(PortRef.SOLENOID_MODULE_PORT, PortRef.COMPETITION_SHOOTER_INNER_SOLENOIDS_EXTENDER_PORT, PortRef.COMPETITION_SHOOTER_INNER_SOLENOIDS_RETRACTOR_PORT);
-			outerSolenoids = new DoubleSolenoid(PortRef.SOLENOID_MODULE_PORT, PortRef.COMPETITION_SHOOTER_OUTER_SOLENOIDS_EXTENDER_PORT, PortRef.COMPETITION_SHOOTER_OUTER_SOLENOIDS_RETRACTOR_PORT);
-			shooterAngleSolenoid = new DoubleSolenoid(PortRef.SOLENOID_MODULE_PORT, PortRef.COMPETITION_SHOOTER_ANGLE_SOLENOID_EXTENDER_PORT, PortRef.COMPETITION_SHOOTER_ANGLE_SOLENOID_RETRACTOR_PORT);
-		}else if(ReferenceData.getInstance().getDipSwitchData().getDipSwitchState() == DipSwitchRef.PRACTICE_BOT) {
-			middleSolenoid = new DoubleSolenoid(PortRef.SOLENOID_MODULE_PORT, PortRef.PRACTICE_SHOOTER_ANGLE_SOLENOID_EXTENDER_PORT, PortRef.PRACTICE_SHOOTER_MIDDLE_SOLENOID_RETRACTOR_PORT);
-			innerSolenoids = new DoubleSolenoid(PortRef.SOLENOID_MODULE_PORT, PortRef.PRACTICE_SHOOTER_INNER_SOLENOIDS_EXTENDER_PORT, PortRef.PRACTICE_SHOOTER_INNER_SOLENOIDS_RETRACTOR_PORT);
-			outerSolenoids = new DoubleSolenoid(PortRef.SOLENOID_MODULE_PORT, PortRef.PRACTICE_SHOOTER_OUTER_SOLENOIDS_EXTENDER_PORT, PortRef.PRACTICE_SHOOTER_OUTER_SOLENOIDS_RETRACTOR_PORT);
-			shooterAngleSolenoid = new DoubleSolenoid(PortRef.SOLENOID_MODULE_PORT, PortRef.PRACTICE_SHOOTER_ANGLE_SOLENOID_EXTENDER_PORT, PortRef.PRACTICE_SHOOTER_ANGLE_SOLENOID_RETRACTOR_PORT);
-		}
+		middleSolenoid = getNewMiddleSolenoid();
+		innerSolenoids = getNewInnerSolenoids();
+		outerSolenoids = getNewOuterSolenoids();
+		shooterAngleSolenoid = getNewShooterAngleSolenoid();
+		
 		System.out.println("DoubleSolenoids robotInit()");
 		
 	}
@@ -60,6 +54,42 @@ public class ShooterRunner extends RobotComponentBase {
 				getShooterAngleSolenoid().set(Value.kReverse);
 			}
 		}
+	}
+	
+	public DoubleSolenoid getNewMiddleSolenoid(){
+		if (ReferenceData.getInstance().getDipSwitchData().getDipSwitchState() == DipSwitchRef.COMPETITION_BOT){
+			return new DoubleSolenoid(PortRef.SOLENOID_MODULE_PORT, PortRef.COMPETITION_SHOOTER_ANGLE_SOLENOID_EXTENDER_PORT, PortRef.COMPETITION_SHOOTER_MIDDLE_SOLENOID_RETRACTOR_PORT);
+		}else if (ReferenceData.getInstance().getDipSwitchData().getDipSwitchState() == DipSwitchRef.PRACTICE_BOT){
+			return new DoubleSolenoid(PortRef.SOLENOID_MODULE_PORT, PortRef.PRACTICE_SHOOTER_ANGLE_SOLENOID_EXTENDER_PORT, PortRef.PRACTICE_SHOOTER_MIDDLE_SOLENOID_RETRACTOR_PORT);
+		}
+		return null;
+	}
+	
+	public DoubleSolenoid getNewInnerSolenoids(){
+		if (ReferenceData.getInstance().getDipSwitchData().getDipSwitchState() == DipSwitchRef.COMPETITION_BOT){
+			return new DoubleSolenoid(PortRef.SOLENOID_MODULE_PORT, PortRef.COMPETITION_SHOOTER_INNER_SOLENOIDS_EXTENDER_PORT, PortRef.COMPETITION_SHOOTER_INNER_SOLENOIDS_RETRACTOR_PORT);
+		}else if (ReferenceData.getInstance().getDipSwitchData().getDipSwitchState() == DipSwitchRef.PRACTICE_BOT){
+			return new DoubleSolenoid(PortRef.SOLENOID_MODULE_PORT, PortRef.PRACTICE_SHOOTER_INNER_SOLENOIDS_EXTENDER_PORT, PortRef.PRACTICE_SHOOTER_INNER_SOLENOIDS_RETRACTOR_PORT);
+		}
+		return null;
+	}
+	
+	public DoubleSolenoid getNewOuterSolenoids(){
+		if (ReferenceData.getInstance().getDipSwitchData().getDipSwitchState() == DipSwitchRef.COMPETITION_BOT){
+			return new DoubleSolenoid(PortRef.SOLENOID_MODULE_PORT, PortRef.COMPETITION_SHOOTER_OUTER_SOLENOIDS_EXTENDER_PORT, PortRef.COMPETITION_SHOOTER_OUTER_SOLENOIDS_RETRACTOR_PORT);
+		}else if (ReferenceData.getInstance().getDipSwitchData().getDipSwitchState() == DipSwitchRef.PRACTICE_BOT){
+			return new DoubleSolenoid(PortRef.SOLENOID_MODULE_PORT, PortRef.PRACTICE_SHOOTER_OUTER_SOLENOIDS_EXTENDER_PORT, PortRef.PRACTICE_SHOOTER_OUTER_SOLENOIDS_RETRACTOR_PORT);
+		}
+		return null;
+	}
+	
+	public DoubleSolenoid getNewShooterAngleSolenoid(){
+		if (ReferenceData.getInstance().getDipSwitchData().getDipSwitchState() == DipSwitchRef.COMPETITION_BOT){
+			return new DoubleSolenoid(PortRef.SOLENOID_MODULE_PORT, PortRef.COMPETITION_SHOOTER_ANGLE_SOLENOID_EXTENDER_PORT, PortRef.COMPETITION_SHOOTER_ANGLE_SOLENOID_RETRACTOR_PORT);
+		}else if (ReferenceData.getInstance().getDipSwitchData().getDipSwitchState() == DipSwitchRef.PRACTICE_BOT){
+			return new DoubleSolenoid(PortRef.SOLENOID_MODULE_PORT, PortRef.PRACTICE_SHOOTER_ANGLE_SOLENOID_EXTENDER_PORT, PortRef.PRACTICE_SHOOTER_ANGLE_SOLENOID_RETRACTOR_PORT);
+		}
+		return null;
 	}
 	
 	public DoubleSolenoid getMiddleSolenoid() {
