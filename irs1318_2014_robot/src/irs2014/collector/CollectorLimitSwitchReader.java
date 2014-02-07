@@ -1,10 +1,11 @@
 package irs2014.collector;
 
+import irs2014.components.RobotComponentBase;
 import irs2014.generalData.PortRef;
 import irs2014.generalData.ReferenceData;
 import edu.wpi.first.wpilibj.DigitalInput;
 
-public class CollectorLimitSwitchReader {
+public class CollectorLimitSwitchReader extends RobotComponentBase{
 	private DigitalInput collectorLimitSwitch;
 	
 	public void robotInit() {
