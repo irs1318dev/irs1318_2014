@@ -10,11 +10,20 @@ public class NTRef
 	public static final String DriveTrain_RightPIDSpeed = "dt.rps";
 	public static final String DriveTrain_LeftPIDSpeed = "dt.lps";
 	//Shooter======================================================================
-
+	public static final String Shooter_PressureSensorState = "s.pss";
+	public static final String Shooter_CurrentMiddleSolenoidState = "s.cmss";
+	public static final String Shooter_CurrentInnerSolenoidState = "s.ciss";
+	public static final String Shooter_CurrentOuterSolenoidState = "s.coss";
+	public static final String Shooter_CurrentShooterAngleSolenoidState = "s.cass";
+	public static final String Shooter_DesiredMiddleSolenoidState = "s.dmss";
+	public static final String Shooter_DesiredInnerSolenoidState = "s.diss";
+	public static final String Shooter_DesiredOuterSolenoidState = "s.doss";
+	public static final String Shooter_DesiredShooterAngleSolenoidState = "s.dass";
 	//Collector====================================================================
 	public static final String Collector_BallPresent = "cl.bp";
 	public static final String Collector_MotorSpeed = "cl.ms";
-	public static final String Collector_SolenoidState = "cl.ss";
+	public static final String Collector_DesiredSolenoidState = "cl.dss";
+	public static final String Collector_CurrentSolenoidState = "cl.css";
 	//UserInput====================================================================
 		//Joysticks
 	public static final String Input_JoystickX = "i.jx";

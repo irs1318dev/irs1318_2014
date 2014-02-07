@@ -46,13 +46,22 @@ public class NetworkTableRunner extends RobotComponentBase
 
  	private void shooterData()
  	{
-
+ 		IRSTable.putBoolean(NTRef.Shooter_PressureSensorState, ReferenceData.getInstance().getPressureSensorData().getIsPressurized());
+ 		IRSTable.putBoolean(NTRef.Shooter_CurrentMiddleSolenoidState, ReferenceData.getInstance().getShooterData().getCurrentMiddleSolenoidState());
+ 		IRSTable.putBoolean(NTRef.Shooter_CurrentInnerSolenoidState, ReferenceData.getInstance().getShooterData().getCurrentInnerSolenoidsState());
+ 		IRSTable.putBoolean(NTRef.Shooter_CurrentOuterSolenoidState, ReferenceData.getInstance().getShooterData().getCurrentOuterSolenoidsState());
+ 		IRSTable.putBoolean(NTRef.Shooter_CurrentShooterAngleSolenoidState, ReferenceData.getInstance().getShooterData().getCurrentShooterAngleSolenoidState());
+ 		IRSTable.putBoolean(NTRef.Shooter_DesiredMiddleSolenoidState, ReferenceData.getInstance().getShooterData().getDesiredMiddleSolenoidState());
+ 		IRSTable.putBoolean(NTRef.Shooter_DesiredInnerSolenoidState, ReferenceData.getInstance().getShooterData().getDesiredInnerSolenoidsState());
+ 		IRSTable.putBoolean(NTRef.Shooter_DesiredOuterSolenoidState, ReferenceData.getInstance().getShooterData().getDesiredOuterSolenoidsState());
+ 		IRSTable.putBoolean(NTRef.Shooter_DesiredShooterAngleSolenoidState, ReferenceData.getInstance().getShooterData().getDesiredShooterAngleSolenoidState());
  	}
  	
  	private void collectorData(){
  		IRSTable.putBoolean(NTRef.Collector_BallPresent, ReferenceData.getInstance().getCollectorData().getLimitSwitchData().getBallPresent());
  		IRSTable.putNumber(NTRef.Collector_MotorSpeed, ReferenceData.getInstance().getCollectorData().getMotorData().getCollectorMotorSpeed());
- 		IRSTable.putBoolean(NTRef.Collector_SolenoidState, ReferenceData.getInstance().getCollectorData().getSolenoidData().getDesiredSolenoidState());
+ 		IRSTable.putBoolean(NTRef.Collector_DesiredSolenoidState, ReferenceData.getInstance().getCollectorData().getSolenoidData().getDesiredSolenoidState());
+ 		IRSTable.putBoolean(NTRef.Collector_CurrentSolenoidState, ReferenceData.getInstance().getCollectorData().getSolenoidData().getCurrentSolenoidState());
  	}
  	
  	private void userInputData()
