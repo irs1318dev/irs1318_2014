@@ -53,7 +53,7 @@ public class Joystick1Reader extends RobotComponentBase {
 	}
 	
 	public boolean getGoForward() {
-		return joystick.getRawButton(PortRef.GO_FORWARD);
+		return joystick.getRawButton(ButtonRef.GO_FORWARD);
 	}
 	
 	public boolean getExtendCollector(){

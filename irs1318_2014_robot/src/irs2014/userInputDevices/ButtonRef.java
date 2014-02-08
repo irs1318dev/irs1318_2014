@@ -17,4 +17,5 @@ public interface ButtonRef {
 	int RETRACT_SHOOTER = -1; //TODO 
 	int EXTEND_SHOOTER_ANGLE = -1; //TODO 
 	int RETRACT_SHOOTER_ANGLE = -1; //TODO
+	int GO_FORWARD = 3;
 }

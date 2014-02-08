@@ -22,15 +22,14 @@ public class DipSwitchReaderTest {
 		mockDipSwitch = mock(DigitalInput.class);
 		
 		readerSpy = spy(reader);
-		
-		doReturn(mockDipSwitch).when(readerSpy).getNewDipSwitch();
 	}
 	
 	@Test
 	public void dipSwitch() {
-	
-		boolean value = doReturn(true).when(mockDipSwitch).get();
-		ReferenceData.getInstance().getDipSwitchData().setDipSwitchState(value);
+		doReturn(mockDipSwitch).when(readerSpy).getNewDipSwitch();
+		when(mockDipSwitch.get()).thenReturn(true);
+				
+		readerSpy.robotInit();
 		
 		assertEquals(true, ReferenceData.getInstance().getDipSwitchData().getDipSwitchState());
 	}

@@ -3,6 +3,7 @@ package irs2014.collector;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import irs2014.components.RobotComponentBase;
+import irs2014.dipSwitch.DipSwitchRef;
 import irs2014.generalData.PortRef;
 import irs2014.generalData.ReferenceData;
 
@@ -10,7 +11,7 @@ public class CollectorSolenoidRunner extends RobotComponentBase {
 	private DoubleSolenoid collectorSolenoid;
 	
 	public void robotInit(){
-		collectorSolenoid = new DoubleSolenoid(PortRef.SOLENOID_MODULE_PORT, PortRef.COLLECTOR_EXTENDER_SOLENOID_PORT, PortRef.COLLECTOR_RETRACTOR_SOLENOID_PORT);
+		collectorSolenoid = getNewCollectorSolenoid();
 	}
 	
 	public void teleopPeriodic(){
@@ -27,4 +28,12 @@ public class CollectorSolenoidRunner extends RobotComponentBase {
 		return collectorSolenoid;
 	}
 
+	public DoubleSolenoid getNewCollectorSolenoid() {
+		if (ReferenceData.getInstance().getDipSwitchData().getDipSwitchState() == DipSwitchRef.COMPETITION_BOT) {
+			collectorSolenoid = new DoubleSolenoid(PortRef.SOLENOID_MODULE_PORT, PortRef.COMPETITION_COLLECTOR_EXTENDER_SOLENOID_PORT, PortRef.COMPETITION_COLLECTOR_RETRACTOR_SOLENOID_PORT);
+		} else if (ReferenceData.getInstance().getDipSwitchData().getDipSwitchState() == DipSwitchRef.PRACTICE_BOT) {
+			collectorSolenoid = new DoubleSolenoid(PortRef.SOLENOID_MODULE_PORT, PortRef.PRACTICE_COLLECTOR_EXTENDER_SOLENOID_PORT, PortRef.PRACTICE_COLLECTOR_RETRACTOR_SOLENOID_PORT);
+		}
+		return null;
+	}
 }
