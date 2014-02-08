@@ -21,7 +21,7 @@ public class StartCompressorTest extends Throwable{
 		mockCompressor = mock(Compressor.class);
 		runnerSpy = spy(runner);
 		
-		doReturn(mockCompressor).when(runnerSpy).getCompressor(); 
+		doReturn(mockCompressor).when(runnerSpy).getNewCompressor(); 
 		 
 	}
 	
