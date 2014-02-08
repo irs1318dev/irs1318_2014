@@ -20,7 +20,7 @@ public class ReferenceData {
 	private PressureSensorData pressureSensorData;
 	private ShooterData shooterData;	
 	private DipSwitchData dipSwitchData;
-	private EncoderState encoderState;
+	private EncoderState encoderState; 
 	
 	private ReferenceData(){
 	}
@@ -80,4 +80,5 @@ public class ReferenceData {
 			encoderState = new EncoderState();
 		return encoderState;
 	}
+	
 }

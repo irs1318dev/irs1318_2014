@@ -45,6 +45,7 @@ public class Joystick1Reader extends RobotComponentBase {
 		ReferenceData.getInstance().getUserInputData().setCollectorMotorOut(getCollectorMotorOut());
 		ReferenceData.getInstance().getUserInputData().setStopCollectorMotor(getStopCollectorMotor());
 		ReferenceData.getInstance().getUserInputData().setExtendAllShooterSolenoids(getExtendAllPistons());
+		ReferenceData.getInstance().getUserInputData().setExtendInnerShooterSolenoids(value)
 		
 		//ReferenceData.getInstance().getUserInputData().setGoForward(joystick.getRawButton(PortRef.GO_FORWARD));
 		ReferenceData.getInstance().getUserInputData().setGoForward(getGoForward());
@@ -86,6 +87,10 @@ public class Joystick1Reader extends RobotComponentBase {
 	
 	public boolean getExtendAllPistons() {
 		return joystick.getRawButton(ButtonRef.EXTEND_ALL_SHOOTER_SOLENOIDS);
+	}
+	
+	public boolean getExtendInnerSolenoids() {
+		
 	}
 
 	public double applyLinearDeadBand(double x, double band) {
