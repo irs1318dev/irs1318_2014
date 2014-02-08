@@ -1,7 +1,10 @@
 package irs2014.shooter;
 
+import irs2014.collector.CollectorRef;
 import irs2014.components.RobotComponentBase;
 import irs2014.generalData.ReferenceData;
+import edu.wpi.first.wpilibj.Utility;
+import irs2014.shooter.ShooterData;
 
 public class ShooterCalculator extends RobotComponentBase {
 	
@@ -14,8 +17,6 @@ public class ShooterCalculator extends RobotComponentBase {
 		else {
 			if (ReferenceData.getInstance().getUserInputData().getExtendAllShooterSolenoids()) {
 				System.out.println("Retract collector before shooting.");
-			
-			
 			}
 		}
 		
@@ -77,5 +78,23 @@ public class ShooterCalculator extends RobotComponentBase {
 			}
 		}
 		
+		if(ReferenceData.getInstance().getPressureSensorData().getIsPressurized() && ReferenceData.getInstance().getUserInputData().getShooterPulse() && ReferenceData.getInstance().getCollectorData().getSolenoidData().getCurrentSolenoidState() == CollectorRef.EXTEND)  {
+			ReferenceData.getInstance().getShooterData().setStartTime(Utility.getFPGATime());
+			ReferenceData.getInstance().getShooterData().setIsShooting(true);
+		}
+		
+		if(ReferenceData.getInstance().getShooterData().getIsShooting()){
+			if(Utility.getFPGATime() < ReferenceData.getInstance().getShooterData().getStartTime() + ReferenceData.getInstance().getShooterData().getPulseTime()){
+				ReferenceData.getInstance().getShooterData().setDesiredMiddleSolenoidState(ShooterRef.EXTEND);
+				ReferenceData.getInstance().getShooterData().setDesiredInnerSolenoidsState(ShooterRef.EXTEND);
+				ReferenceData.getInstance().getShooterData().setDesiredOuterSolenoidsState(ShooterRef.EXTEND);
+			}else{
+				ReferenceData.getInstance().getShooterData().setIsShooting(false);
+			}
+		} else {
+			ReferenceData.getInstance().getShooterData().setDesiredMiddleSolenoidState(ShooterRef.RETRACT);
+			ReferenceData.getInstance().getShooterData().setDesiredInnerSolenoidsState(ShooterRef.RETRACT);
+			ReferenceData.getInstance().getShooterData().setDesiredOuterSolenoidsState(ShooterRef.RETRACT);
+		}
 	}
 }
