@@ -14,8 +14,6 @@ public class ShooterCalculator extends RobotComponentBase {
 		else {
 			if (ReferenceData.getInstance().getUserInputData().getExtendAllShooterSolenoids()) {
 				System.out.println("Retract collector before shooting.");
-			
-			
 			}
 		}
 		
