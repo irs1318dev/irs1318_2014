@@ -12,7 +12,7 @@ public class ShooterData {
 	private boolean desiredOuterSolenoidsState;
 	private boolean desiredShooterAngleSolenoidState; 
 	
-	private long pulseTime; 
+	private long pulseTime; //TODO set pulse time somewhere
 	private long startTime; 
 	private boolean isShooting; 
 	
