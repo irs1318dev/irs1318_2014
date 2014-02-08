@@ -39,5 +39,7 @@ public class NTRef
 	public static final String Input_EjectBall = "i.eb";
 	//RobotGeneral=================================================================
 	public static final String Robot_State = "r.s";
+	//Timmer=======================================================================
+	public static final String Timer_Message = "t.m";
 	//=============================================================================
 }

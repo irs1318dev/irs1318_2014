@@ -39,6 +39,7 @@ public class KeyHandeler {
 		this.keyMappings.put("s.ciss", "INN SOL ST");
 		this.keyMappings.put("s.coss", "OUT SOL ST");
 		this.keyMappings.put("s.cass", "SHT ANG ST");
+		this.keyMappings.put("t.m", "Timer: ");
 		
 		keyOrder = new ArrayList<String>();
 		
@@ -57,6 +58,7 @@ public class KeyHandeler {
 		this.keyOrder.add("s.cmss");
 		this.keyOrder.add("s.ciss");
 		this.keyOrder.add("s.coss");
+		this.keyOrder.add("t.m");
 	}
 	
 	public String makeReadable(String key){

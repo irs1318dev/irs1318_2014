@@ -11,6 +11,7 @@ public class NetworkTableRunner extends RobotComponentBase
 	{
 		System.out.println("Network Table is ready!");
 		IRSTable.putString(NTRef.Robot_State, "Init");
+		IRSTable.putString(NTRef.Timer_Message, "no message from timmer");
 	}
 	
 	public void teleopInit()
