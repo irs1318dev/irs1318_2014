@@ -1,6 +1,7 @@
 package irs2014.driveTrainTank;
 
 import irs2014.components.RobotComponentBase;
+import irs2014.dipSwitch.DipSwitchRef;
 import irs2014.generalData.PortRef;
 import irs2014.generalData.ReferenceData;
 import edu.wpi.first.wpilibj.Talon;
@@ -17,11 +18,21 @@ public class DriveTrainRunner extends RobotComponentBase {
 	}
 	
 	public Talon getNewRightTalon(){
-		return new Talon(PortRef.SIDECAR_SLOT, PortRef.COMPETITION_TALON_R);
+		if (ReferenceData.getInstance().getDipSwitchData().getDipSwitchState() == DipSwitchRef.COMPETITION_BOT) {
+			return new Talon(PortRef.SIDECAR_SLOT, PortRef.COMPETITION_TALON_R);
+		} else if (ReferenceData.getInstance().getDipSwitchData().getDipSwitchState() == DipSwitchRef.PRACTICE_BOT) {
+			return new Talon(PortRef.SIDECAR_SLOT, PortRef.PRACTICE_TALON_R);
+		}
+		return null;
 	}
 
 	public Talon getNewLeftTalon(){
-		return new Talon(PortRef.SIDECAR_SLOT, PortRef.COMPETITION_TALON_L);
+		if (ReferenceData.getInstance().getDipSwitchData().getDipSwitchState() == DipSwitchRef.COMPETITION_BOT) {
+			return new Talon(PortRef.SIDECAR_SLOT, PortRef.COMPETITION_TALON_L);
+		} else if (ReferenceData.getInstance().getDipSwitchData().getDipSwitchState() == DipSwitchRef.PRACTICE_BOT) {
+			return new Talon(PortRef.SIDECAR_SLOT, PortRef.PRACTICE_TALON_L);
+		}
+		return null;
 	}
 	
 	public Talon getRightTalon() {
