@@ -9,7 +9,7 @@ import edu.wpi.first.wpilibj.Compressor;
 import static org.mockito.Mockito.*;
 
 
-public class StartCompressorTest extends Throwable{
+public class CompressorRunnerTest extends Throwable{
 	CompressorRunner runner;
 	CompressorRunner runnerSpy;
 	
