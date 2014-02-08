@@ -10,11 +10,7 @@ public class CollectorMotorRunner extends RobotComponentBase {
 	private Talon collectorMotor;
 	
 	public void robotInit(){
-		if (ReferenceData.getInstance().getDipSwitchData().getDipSwitchState() == DipSwitchRef.COMPETITION_BOT) {
-			collectorMotor = new Talon (PortRef.SIDECAR_SLOT, PortRef.COMPETITION_COLLECTOR_MOTOR);
-		} else if (ReferenceData.getInstance().getDipSwitchData().getDipSwitchState() == DipSwitchRef.PRACTICE_BOT) {
-			collectorMotor = new Talon(PortRef.SIDECAR_SLOT, PortRef.PRACTICE_COLLECTOR_MOTOR);
-		}
+		collectorMotor = getNewCollectorMotor();
 	}
 	
 	public void teleopPeriodic(){
@@ -23,5 +19,14 @@ public class CollectorMotorRunner extends RobotComponentBase {
 	
 	public Talon getCollectorMotor() {
 		return collectorMotor;
+	}
+	
+	public Talon getNewCollectorMotor() {
+		if (ReferenceData.getInstance().getDipSwitchData().getDipSwitchState() == DipSwitchRef.COMPETITION_BOT) {
+			collectorMotor = new Talon (PortRef.SIDECAR_SLOT, PortRef.COMPETITION_COLLECTOR_MOTOR);
+		} else if (ReferenceData.getInstance().getDipSwitchData().getDipSwitchState() == DipSwitchRef.PRACTICE_BOT) {
+			collectorMotor = new Talon(PortRef.SIDECAR_SLOT, PortRef.PRACTICE_COLLECTOR_MOTOR);
+		}
+		return null;
 	}
 }
