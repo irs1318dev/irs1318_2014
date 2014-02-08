@@ -10,14 +10,13 @@ public class EncoderState
 	public static final String HIGH_GOAL_BUMP = "hgb";
 	public static final String CAMERA_REF = "cr";
 	
-	public static final String PID_VELOCITY = "vpid";
-	public static final String PID_POSITION = "ppid";
-	
+	public static final boolean VELOCITY_PID = false;
+	public static final boolean POSITION_PID = true;
 	
 	private Hashtable distanceFromReferencePoints = null; 
 	private double launchTick; // this is the calculated destination tick we need to get to.
-	private String PIDType = PID_VELOCITY; 
-
+	private boolean PIDType = VELOCITY_PID;
+	
 	/*This is like a list, but instead of making the index 1, 
 	 *makes it something more meaningful, like a string name.
 	 **/
@@ -58,12 +57,12 @@ public class EncoderState
 		this.launchTick = launchTick;
 	}
 	
-	public void setPIDType(String PIDType)
+	public void setPIDType(boolean PIDType)
 	{
 		this.PIDType = PIDType;
 	}
 	
-	public String getPIDType()
+	public boolean getPIDType()
 	{
 		return PIDType;
 	}
