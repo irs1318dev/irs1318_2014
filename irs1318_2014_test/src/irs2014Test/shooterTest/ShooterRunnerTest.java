@@ -16,7 +16,7 @@ import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
-public class ShooterSolenoidRunnerTest {
+public class ShooterRunnerTest {
 	
 	ShooterRunner runner;
 	ShooterRunner runnerSpy; 
