@@ -1,26 +1,26 @@
 package irs2014.timmer;
 
 import edu.wpi.first.wpilibj.Timer;
+import edu.wpi.first.wpilibj.Utility;
 import irs2014.components.RobotComponentBase;
 import irs2014.networkTable.IRSTable;
 import irs2014.networkTable.NTRef;
 
 public class TimerRunner extends RobotComponentBase{
 	
-	private double timeInterval = .003; //in seconds with millisecond revolution
-	private double intervalStart = 0;
-	private double currentTime;
+	private long timeInterval = 10000; //micro seconds
+	private long intervalStart = 0;
+	private long currentTime;
 	
 	public void teleopPeriodic(){
 		if(intervalStart == 0){
-			intervalStart = Timer.getFPGATimestamp();
+			intervalStart = Utility.getFPGATime();
 			return;
 		}
-		currentTime = Timer.getFPGATimestamp();
+		currentTime = Utility.getFPGATime();
 		if((currentTime - intervalStart) < timeInterval){
-			//try{
-				Timer.delay(currentTime - timeInterval);
-			//}catch(){}	TODO: figure out exception type 
+			double remainingTime = (timeInterval - (currentTime - intervalStart))/ 1000000.0;	//microseconds to seconds
+			Timer.delay(remainingTime);
 		}else{
 			IRSTable.putString(NTRef.Timer_Message, ("interval too short by: " + (currentTime - timeInterval)));
 		}

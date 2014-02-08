@@ -23,6 +23,7 @@ import irs2014.shooter.ShooterRunner;
 import irs2014.simpleRIAB.GamePadReaderRIAB;
 import irs2014.simpleRIAB.SimpleRAIBCalculator;
 import irs2014.simpleRIAB.TalonRunner;
+import irs2014.timmer.TimerRunner;
 import irs2014.userInputDevices.Joystick1Reader;
 import irs2014.userInputDevices.JoystickPortTest;
 
@@ -34,6 +35,7 @@ public class MainIterativeComponentRobot extends IterativeComponentRobot {
 	
 	protected static BotVector initialRobot(){
 		BotVector b = new BotVector();
+		b.add(new TimerRunner());
 		b.add(new DipSwitchReader());
 		b.add(new CompressorRunner());
 		b.add(new Joystick1Reader());
@@ -49,8 +51,6 @@ public class MainIterativeComponentRobot extends IterativeComponentRobot {
 		b.add(new DriveTrainRunner());
 		b.add(new CollectorMotorRunner());
 		b.add(new CollectorSolenoidRunner());
-		b.add(new ShooterRunner());
-		b.add(new DriveTrainRunner());
 		return b;
 	}
 	

@@ -1,22 +1,23 @@
 package irs2014.timmer;
 
 import edu.wpi.first.wpilibj.Timer;
+import edu.wpi.first.wpilibj.Utility;
 import irs2014.components.RobotComponentBase;
 
 public class TimeMeasureRunner extends RobotComponentBase{
 
-	private double intervalStart = 0;
-	private double currentTime;
-	private double counter = 0;
-	private double totalTime = 0;
-	private double interval;
+	private long intervalStart = 0;
+	private long currentTime;
+	private long counter = 0;
+	private long totalTime = 0;
+	private long interval;
 	
 	public void teleopPeriodi(){
 		if(intervalStart == 0){
-			intervalStart = Timer.getFPGATimestamp();
+			intervalStart = Utility.getFPGATime();
 			return;
 		}
-		currentTime = Timer.getFPGATimestamp();
+		currentTime = Utility.getFPGATime();
 		interval = currentTime - intervalStart;
 		totalTime += interval;
 		counter++;
