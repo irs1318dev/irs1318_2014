@@ -34,22 +34,23 @@ public class MainIterativeComponentRobot extends IterativeComponentRobot {
 	
 	protected static BotVector initialRobot(){
 		BotVector b = new BotVector();
-		b.add(new CompressorRunner()); //Test: StartCompressorTest
-		b.add(new Joystick1Reader()); //Joystick1ReaderTest
-		b.add(new DriveTrainEncoderReader()); //NONE
-		b.add(new DipSwitchReader()); //DipSwitchReaderTest
-		b.add(new PressureSensorReader()); //NONE
-		b.add(new CollectorLimitSwitchReader()); //CollectorLimitSwitchReaderTest
-		b.add(new AutoTaskRunner()); //NONE
-		b.add(new CollectorCalculator()); //CollectorCalculatorTest
-		b.add(new ShooterCalculator()); //NONE
-		b.add(new DriveTrain1JoystickCalculator()); //NONE
-		b.add(new DriveTrainPIDCalculator()); //NONE
-		b.add(new NetworkTableRunner()); //NONE
-		b.add(new DriveTrainRunner()); //DriveTrainRunnerTest
-		b.add(new CollectorMotorRunner()); //CollectorMotorRunnerTest
-		b.add(new CollectorSolenoidRunner()); //CollectorSolenoidRunnerTest
-		b.add(new ShooterRunner()); //ShooterSolenoidRunnerTest
+		b.add(new CompressorRunner());
+		b.add(new Joystick1Reader());
+		b.add(new DriveTrainEncoderReader());
+		b.add(new DipSwitchReader());
+		b.add(new PressureSensorReader());
+		b.add(new CollectorLimitSwitchReader());
+		b.add(new AutoTaskRunner());
+		b.add(new CollectorCalculator());
+		b.add(new ShooterCalculator());
+		b.add(new DriveTrain1JoystickCalculator());
+		b.add(new DriveTrainPIDCalculator());
+		b.add(new NetworkTableRunner());
+		b.add(new DriveTrainRunner());
+		b.add(new CollectorMotorRunner());
+		b.add(new CollectorSolenoidRunner());
+		b.add(new ShooterRunner());
+		b.add(new DriveTrainRunner());
 		return b;
 	}
 	

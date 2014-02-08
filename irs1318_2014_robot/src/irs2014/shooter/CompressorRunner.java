@@ -23,8 +23,4 @@ public class CompressorRunner extends RobotComponentBase {
 		compressor.start();
 	}
 	
-	public Compressor getCompressor(){
-		return compressor;
-	}
-	
 }
