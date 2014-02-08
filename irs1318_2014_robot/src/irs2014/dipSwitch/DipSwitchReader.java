@@ -9,7 +9,7 @@ public class DipSwitchReader extends RobotComponentBase{
 	private DigitalInput dipSwitch; 
 	
 	public void robotInit(){
-		dipSwitch = new DigitalInput(PortRef.DIP_SWITCH);
+		dipSwitch = getNewDipSwitch();
 		boolean value = dipSwitch.get();
 		ReferenceData.getInstance().getDipSwitchData().setDipSwitchState(value);
 		System.out.println("The dip switch state is " + value);

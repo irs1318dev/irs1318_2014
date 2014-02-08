@@ -34,10 +34,10 @@ public class MainIterativeComponentRobot extends IterativeComponentRobot {
 	
 	protected static BotVector initialRobot(){
 		BotVector b = new BotVector();
+		b.add(new DipSwitchReader());
 		b.add(new CompressorRunner());
 		b.add(new Joystick1Reader());
 		b.add(new DriveTrainEncoderReader());
-		b.add(new DipSwitchReader());
 		b.add(new PressureSensorReader());
 		b.add(new CollectorLimitSwitchReader());
 		b.add(new AutoTaskRunner());
