@@ -29,8 +29,8 @@ public class DriveTrainRunnerTest {
 
 	@Test
 	public void right0Test(){
-		ReferenceData.getInstance().getDriveTrainData().setRightPIDSpeed(0.0);
-		ReferenceData.getInstance().getDriveTrainData().setLeftPIDSpeed(0.0);
+		ReferenceData.getInstance().getDriveTrainData().getRightPIDData().setPIDVelocity(0.0);
+		ReferenceData.getInstance().getDriveTrainData().getLeftPIDData().setPIDVelocity(0.0);
 		runnerSpy.teleopPeriodic();
 		verify(mockRightTalon,times(1)).set(0.0);
 		verify(mockLeftTalon, times(1)).set(0.0);
@@ -38,8 +38,8 @@ public class DriveTrainRunnerTest {
 	
 	@Test
 	public void rightPositive1Test(){
-		ReferenceData.getInstance().getDriveTrainData().setRightPIDSpeed(1);
-		ReferenceData.getInstance().getDriveTrainData().setLeftPIDSpeed(0.0);
+		ReferenceData.getInstance().getDriveTrainData().getRightPIDData().setPIDVelocity(1);
+		ReferenceData.getInstance().getDriveTrainData().getLeftPIDData().setPIDVelocity(0.0);
 		runnerSpy.teleopPeriodic();
 		verify(mockRightTalon, times(1)).set(-1);
 		verify(mockLeftTalon, times(1)).set(0.0);
@@ -47,8 +47,8 @@ public class DriveTrainRunnerTest {
 	
 	@Test
 	public void rightNegitive1test(){
-		ReferenceData.getInstance().getDriveTrainData().setRightPIDSpeed(-1);
-		ReferenceData.getInstance().getDriveTrainData().setLeftPIDSpeed(0.0);
+		ReferenceData.getInstance().getDriveTrainData().getRightPIDData().setPIDVelocity(-1);
+		ReferenceData.getInstance().getDriveTrainData().getLeftPIDData().setPIDVelocity(0.0);
 		runnerSpy.teleopPeriodic();
 		verify(mockRightTalon, times(1)).set(.573);
 		verify(mockLeftTalon, times (1)).set(.178);
@@ -56,16 +56,16 @@ public class DriveTrainRunnerTest {
 		
 	@Test
 	public void positiveInBoundsTest(){
-		ReferenceData.getInstance().getDriveTrainData().setLeftPIDSpeed(.178);
-		ReferenceData.getInstance().getDriveTrainData().setRightPIDSpeed(.573);
+		ReferenceData.getInstance().getDriveTrainData().getRightPIDData().setPIDVelocity(.178);
+		ReferenceData.getInstance().getDriveTrainData().getLeftPIDData().setPIDVelocity(.573);
 	}
 	
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
 	@Test
 	public void left0pTest(){
-		ReferenceData.getInstance().getDriveTrainData().setRightPIDSpeed(0.0);
-		ReferenceData.getInstance().getDriveTrainData().setLeftPIDSpeed(0.0);
+		ReferenceData.getInstance().getDriveTrainData().getRightPIDData().setPIDVelocity(0.0);
+		ReferenceData.getInstance().getDriveTrainData().getLeftPIDData().setPIDVelocity(0.0);
 		runnerSpy.teleopPeriodic();
 		verify(mockRightTalon, times(1)).set(0.0);
 		verify(mockLeftTalon, times(1)).set(1);
@@ -73,8 +73,8 @@ public class DriveTrainRunnerTest {
 	
 	@Test
 	public void leftPositive1Test(){
-		ReferenceData.getInstance().getDriveTrainData().setRightPIDSpeed(0.0);
-		ReferenceData.getInstance().getDriveTrainData().setLeftPIDSpeed(1);
+		ReferenceData.getInstance().getDriveTrainData().getRightPIDData().setPIDVelocity(0.0);
+		ReferenceData.getInstance().getDriveTrainData().getLeftPIDData().setPIDVelocity(1);
 		runnerSpy.teleopPeriodic();
 		verify(mockRightTalon, times(1)).set (0.0);
 		verify(mockLeftTalon, times(1)).set(1);
@@ -82,8 +82,8 @@ public class DriveTrainRunnerTest {
 	
 //	@Test
 //	public void leftNegative1(){
-//		ReferenceData.getInstance().getDriveTrainData().setRightPIDSpeed(0.0);
-//		ReferenceData.getInstance().getDriveTrainData().setLeftPIDSpeed(-1);
+//		ReferenceData.getInstance().getDriveTrainData().getRightPIDData().setPIDVelocity(0.0);
+//		ReferenceData.getInstance().getDriveTrainData().getLeftPIDData().setPIDVelocity(-1);
 //		runnerSpy.teleopPeriodic();
 //		verify(mockRightTalon, time(1)).set(0.0);
 //		verify(mockLeftTalon, time (-1))
@@ -91,8 +91,8 @@ public class DriveTrainRunnerTest {
 
 //	@Test
 //	public void negitiveInBoundsTest(){
-//		ReferenceData.getInstance().getDriveTrainData().setRightPIDSpeed(-.178);
-//		ReferenceData.getInstance().getDriveTrainData().setLeftPIDSpeed(-.573);
+//		ReferenceData.getInstance().getDriveTrainData().getRightPIDData().setPIDVelocity(-.178);
+//		ReferenceData.getInstance().getDriveTrainData().getLeftPIDData().setPIDVelocity(-.573);
 //		runnerSpy.teleopPeriodic();
 //		verify(mockRightTalon, times(1)).set(.573);
 //		verify(mockLefttalon, times(1)).set(-.178)
