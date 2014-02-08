@@ -1,6 +1,7 @@
 package irs2014.driveTrainTank;
 
 import irs2014.components.RobotComponentBase;
+import irs2014.dipSwitch.DipSwitchRef;
 import irs2014.generalData.PortRef;
 import irs2014.generalData.ReferenceData;
 import irs2014.generalOpperations.EncoderAngularVelocity;
@@ -18,11 +19,21 @@ public class DriveTrainEncoderReader extends RobotComponentBase{
 	}
 	
 	public EncoderAngularVelocity getNewLeftEncoder() {
-		return new EncoderAngularVelocity(PortRef.COMPETITION_ENCODER_L_A, PortRef.COMPETITION_ENCODER_L_B);
+		if (ReferenceData.getInstance().getDipSwitchData().getDipSwitchState() == DipSwitchRef.COMPETITION_BOT) {
+			return new EncoderAngularVelocity(PortRef.COMPETITION_ENCODER_L_A, PortRef.COMPETITION_ENCODER_L_B);
+		} else if (ReferenceData.getInstance().getDipSwitchData().getDipSwitchState() == DipSwitchRef.PRACTICE_BOT) {
+			return new EncoderAngularVelocity(PortRef.PRACTICE_ENCODER_L_A, PortRef.PRACTICE_ENCODER_L_B);
+		}
+		return null;
 	}
 
 	public EncoderAngularVelocity getNewRightEncoder() {
-		return new EncoderAngularVelocity(PortRef.COMPETITION_ENCODER_R_A, PortRef.COMPETITION_ENCODER_R_B);
+		if (ReferenceData.getInstance().getDipSwitchData().getDipSwitchState() == DipSwitchRef.COMPETITION_BOT) {
+			return new EncoderAngularVelocity(PortRef.COMPETITION_ENCODER_R_A, PortRef.COMPETITION_ENCODER_R_B);
+		} else if (ReferenceData.getInstance().getDipSwitchData().getDipSwitchState() == DipSwitchRef.PRACTICE_BOT) {
+			return new EncoderAngularVelocity(PortRef.PRACTICE_ENCODER_R_A, PortRef.PRACTICE_ENCODER_R_B);
+		}
+		return null;
 	}
 
 	double count;
