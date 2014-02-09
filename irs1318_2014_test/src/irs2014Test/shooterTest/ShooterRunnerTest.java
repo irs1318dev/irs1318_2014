@@ -101,5 +101,11 @@ public class ShooterRunnerTest {
 		verify(mockOuterSolenoids, times(1)).set(Value.kOff);
 	}
 	
+	@Test
+	public void shooterPulseTest() {
+		ReferenceData.getInstance().getShooterData().setIsShooting(true);
+		runnerSpy.teleopPeriodic();		
+	}
+	
 
 }

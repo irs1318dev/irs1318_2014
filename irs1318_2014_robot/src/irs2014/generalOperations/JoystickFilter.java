@@ -1,4 +1,4 @@
-package irs2014.generalOpperations;
+package irs2014.generalOperations;
 
 public class JoystickFilter {
 	

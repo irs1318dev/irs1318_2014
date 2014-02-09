@@ -4,7 +4,7 @@ import edu.wpi.first.wpilibj.Joystick;
 import irs2014.components.RobotComponentBase;
 import irs2014.generalData.PortRef;
 import irs2014.generalData.ReferenceData;
-import irs2014.generalOpperations.JoystickFilter;
+import irs2014.generalOperations.JoystickFilter;
 
 public class Joystick1Reader extends RobotComponentBase {
 	Joystick joystick;

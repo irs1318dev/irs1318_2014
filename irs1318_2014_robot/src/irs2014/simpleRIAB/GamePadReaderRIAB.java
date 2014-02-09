@@ -1,7 +1,7 @@
 package irs2014.simpleRIAB;
 
 import irs2014.components.RobotComponentBase;
-import irs2014.generalOpperations.GamePad;
+import irs2014.generalOperations.GamePad;
 
 public class GamePadReaderRIAB extends RobotComponentBase{
 	

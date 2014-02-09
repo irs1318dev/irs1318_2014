@@ -4,7 +4,7 @@ import irs2014.components.RobotComponentBase;
 import irs2014.dipSwitch.DipSwitchRef;
 import irs2014.generalData.PortRef;
 import irs2014.generalData.ReferenceData;
-import irs2014.generalOpperations.EncoderAngularVelocity;
+import irs2014.generalOperations.EncoderAngularVelocity;
 
 public class DriveTrainEncoderReader extends RobotComponentBase{
 	
