@@ -6,7 +6,18 @@ import irs2014.generalData.ReferenceData;
 import edu.wpi.first.wpilibj.Utility;
 import irs2014.shooter.ShooterData;
 
+
 public class ShooterCalculator extends RobotComponentBase {
+	boolean hasExtended;
+	boolean hasRetracted;
+
+	public Boolean getHasExtended() {
+		return hasExtended;
+	}
+	
+	public Boolean getHasRetracted() {
+		return hasRetracted;
+	}
 	
 	public void teleopPeriodic() {
 		if(ReferenceData.getInstance().getPressureSensorData().getIsPressurized() && ReferenceData.getInstance().getUserInputData().getExtendAllShooterSolenoids() && !ReferenceData.getInstance().getCollectorData().getSolenoidData().getCurrentSolenoidState()) {
@@ -71,6 +82,7 @@ public class ShooterCalculator extends RobotComponentBase {
 		
 		if(ReferenceData.getInstance().getPressureSensorData().getIsPressurized() && ReferenceData.getInstance().getUserInputData().getRetractShooterAngle() && !ReferenceData.getInstance().getCollectorData().getSolenoidData().getCurrentSolenoidState()) {
 			ReferenceData.getInstance().getShooterData().setDesiredShooterAngleSolenoidState(ShooterRef.RETRACT);
+			hasRetracted = true;
 		}
 		else {
 			if (ReferenceData.getInstance().getUserInputData().getExtendInnerShooterSolenoids()) {
@@ -85,20 +97,57 @@ public class ShooterCalculator extends RobotComponentBase {
 		
 		if(ReferenceData.getInstance().getShooterData().getIsShooting()){
 			if(Utility.getFPGATime() < ReferenceData.getInstance().getShooterData().getStartTime() + ReferenceData.getInstance().getShooterData().getPulseTime()){
-				ReferenceData.getInstance().getShooterData().setDesiredMiddleSolenoidState(ShooterRef.EXTEND);
-				ReferenceData.getInstance().getShooterData().setDesiredInnerSolenoidsState(ShooterRef.EXTEND);
-				ReferenceData.getInstance().getShooterData().setDesiredOuterSolenoidsState(ShooterRef.EXTEND);
+				this.setDesiredMiddleSolenoidStateExtend();
+				this.setDesiredInnerSolenoidStateExtend();
+				this.setDesiredOuterSolenoidStateExtend();
+				hasExtended = true;
+				
 			}else{
 				ReferenceData.getInstance().getShooterData().setIsShooting(false);
 			}
 		} else {
-			ReferenceData.getInstance().getShooterData().setDesiredMiddleSolenoidState(ShooterRef.RETRACT);
-			ReferenceData.getInstance().getShooterData().setDesiredInnerSolenoidsState(ShooterRef.RETRACT);
-			ReferenceData.getInstance().getShooterData().setDesiredOuterSolenoidsState(ShooterRef.RETRACT);
+			this.setDesiredMiddleSolenoidStateRetract();
+			this.setDesiredInnerSolenoidStateRetract();
+			this.setDesiredOuterSolenoidStateRetract();
+			hasRetracted = true;
+			
 		}
 	}
+	
 	
 	public long getFPGATime() {
 		return Utility.getFPGATime();
 	}
+	
+	public void setDesiredInnerSolenoidStateExtend() {
+		ReferenceData.getInstance().getShooterData().setDesiredInnerSolenoidsState(ShooterRef.EXTEND);
+		hasExtended = true;
+	}
+	
+	public void setDesiredMiddleSolenoidStateExtend() {
+		ReferenceData.getInstance().getShooterData().setDesiredMiddleSolenoidState(ShooterRef.EXTEND);
+		hasExtended = true;
+	}
+	
+	public void setDesiredOuterSolenoidStateExtend() {
+		ReferenceData.getInstance().getShooterData().setDesiredOuterSolenoidsState(ShooterRef.EXTEND);
+		hasExtended = true;
+	}
+	
+	public void setDesiredInnerSolenoidStateRetract() {
+		ReferenceData.getInstance().getShooterData().setDesiredInnerSolenoidsState(ShooterRef.RETRACT);
+		hasRetracted = true;
+	}
+	
+	public void setDesiredMiddleSolenoidStateRetract() {
+		ReferenceData.getInstance().getShooterData().setDesiredMiddleSolenoidState(ShooterRef.RETRACT);
+		hasRetracted = true;
+	}
+	
+	public void setDesiredOuterSolenoidStateRetract() {
+		ReferenceData.getInstance().getShooterData().setDesiredOuterSolenoidsState(ShooterRef.RETRACT);
+		hasRetracted = true;
+	}
+	
 }
+
