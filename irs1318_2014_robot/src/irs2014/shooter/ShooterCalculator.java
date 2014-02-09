@@ -79,7 +79,7 @@ public class ShooterCalculator extends RobotComponentBase {
 		}
 		
 		if(ReferenceData.getInstance().getPressureSensorData().getIsPressurized() && ReferenceData.getInstance().getUserInputData().getShooterPulse() && ReferenceData.getInstance().getCollectorData().getSolenoidData().getCurrentSolenoidState() == CollectorRef.EXTEND)  {
-			ReferenceData.getInstance().getShooterData().setStartTime(Utility.getFPGATime());
+			ReferenceData.getInstance().getShooterData().setStartTime(getFPGATime());
 			ReferenceData.getInstance().getShooterData().setIsShooting(true);
 		}
 		
@@ -96,5 +96,9 @@ public class ShooterCalculator extends RobotComponentBase {
 			ReferenceData.getInstance().getShooterData().setDesiredInnerSolenoidsState(ShooterRef.RETRACT);
 			ReferenceData.getInstance().getShooterData().setDesiredOuterSolenoidsState(ShooterRef.RETRACT);
 		}
+	}
+	
+	public long getFPGATime() {
+		return Utility.getFPGATime();
 	}
 }
