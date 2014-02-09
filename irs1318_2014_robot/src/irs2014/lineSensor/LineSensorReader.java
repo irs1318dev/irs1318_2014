@@ -13,6 +13,11 @@ public class LineSensorReader extends RobotComponentBase {
 		lineSensor = getNewLineSensor();
 	}
 	
+	public void teleopPeriodic() {
+		boolean value = lineSensor.get(); 
+		ReferenceData.getInstance().getLineSensorData().setIsOnLine(value);
+	}
+	
 	public DigitalInput getNewLineSensor() {
 		if (ReferenceData.getInstance().getDipSwitchData().getDipSwitchState() == DipSwitchRef.COMPETITION_BOT) {
 			return new DigitalInput(PortRef.DIGITAL_IO, PortRef.COMPETITION_LINE_SENSOR_PORT);

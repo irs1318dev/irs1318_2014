@@ -4,6 +4,7 @@ package irs2014.generalData;
 import irs2014.collector.CollectorData;
 import irs2014.dipSwitch.DipSwitchData;
 import irs2014.driveTrainTank.DriveTrainData;
+import irs2014.lineSensor.LineSensorData;
 import irs2014.shooter.PressureSensorData;
 import irs2014.shooter.PressureSensorTimerData;
 import irs2014.shooter.ShooterData;
@@ -23,6 +24,7 @@ public class ReferenceData {
 	private DipSwitchData dipSwitchData;
 	private EncoderState encoderState; 
 	private PressureSensorTimerData pressureSensorTimerData;
+	private LineSensorData lineSensorData; 
 	
 	private ReferenceData(){
 	}
@@ -83,11 +85,17 @@ public class ReferenceData {
 		return shooterData; 
 	}
 	
+	public LineSensorData getLineSensorData() {
+		if (lineSensorData == null) {
+			lineSensorData = new LineSensorData();
+		}
+		return lineSensorData; 
+	}
+	
 	public EncoderState getEncoderState()
 	{
 		if(encoderState == null)
 			encoderState = new EncoderState();
 		return encoderState;
 	}
-	
 }
