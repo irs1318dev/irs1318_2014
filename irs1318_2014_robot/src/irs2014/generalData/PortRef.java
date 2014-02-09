@@ -4,7 +4,7 @@ import edu.wpi.first.wpilibj.SensorBase;
 
 
 public interface PortRef {
-	int DIP_SWITCH = -1; //TODO
+	int DIP_SWITCH = 14;
 	
 	int JOYSTICK_1 = 1;
 	int JOYSTICK_2 = 2;
