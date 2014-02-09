@@ -14,7 +14,7 @@ import irs2014.driveTrainTank.DriveTrainPIDCalculator;
 import irs2014.driveTrainTank.DriveTrainRunner;
 import irs2014.generalData.PortRef;
 import irs2014.generalData.ReferenceData;
-import irs2014.generalOpperations.EncoderAngularVelocity;
+import irs2014.generalOperations.EncoderAngularVelocity;
 import irs2014.userInputDevices.Joystick1Reader;
 import static org.mockito.Mockito.*;
 

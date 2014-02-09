@@ -2,7 +2,7 @@ package irs2014Test.driveTrainTest;
 
 import irs2014.driveTrainTank.DriveTrainEncoderReader;
 import irs2014.generalData.ReferenceData;
-import irs2014.generalOpperations.EncoderAngularVelocity;
+import irs2014.generalOperations.EncoderAngularVelocity;
 
 import org.junit.Before;
 import org.junit.Test;
