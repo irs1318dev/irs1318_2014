@@ -9,7 +9,7 @@ import edu.wpi.first.wpilibj.DigitalInput;
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
-public class IsPressurizedTest {
+public class PressureSensorReaderTest {
 	
 	PressureSensorReader reader;
 	PressureSensorReader readerSpy;

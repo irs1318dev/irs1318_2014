@@ -16,7 +16,7 @@ import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
-public class ShooterSolenoidRunnerTest {
+public class ShooterRunnerTest {
 	
 	ShooterRunner runner;
 	ShooterRunner runnerSpy; 
@@ -99,6 +99,12 @@ public class ShooterSolenoidRunnerTest {
 		ReferenceData.getInstance().getShooterData().setDesiredOuterSolenoidsState(ShooterRef.RETRACT);
 		runnerSpy.teleopPeriodic();
 		verify(mockOuterSolenoids, times(1)).set(Value.kOff);
+	}
+	
+	@Test
+	public void shooterPulseTest() {
+		ReferenceData.getInstance().getShooterData().setIsShooting(true);
+		runnerSpy.teleopPeriodic();		
 	}
 	
 

@@ -1,9 +1,10 @@
 package irs2014.driveTrainTank;
 
 import irs2014.components.RobotComponentBase;
+import irs2014.generalData.EncoderState;
 import irs2014.generalData.ReferenceData;
-import irs2014.generalOpperations.JoystickFilter;
-import irs2014.generalOpperations.PID;
+import irs2014.generalOperations.JoystickFilter;
+import irs2014.generalOperations.PID;
 
 public class DriveTrainPIDCalculator extends RobotComponentBase{
 	
@@ -16,12 +17,11 @@ public class DriveTrainPIDCalculator extends RobotComponentBase{
 	}
 	
 	public void teleopPeriodic(){
-		velocityPIDCalculator();
-//		if (ReferenceData.getInstance().getSomethingOrOther???){
-//			velocityPIDCalculator();
-//		}else if(){
-//			positionPIDCalculator();
-//		}
+		if (ReferenceData.getInstance().getEncoderState().getPIDType() == EncoderState.VELOCITY_PID){
+			velocityPIDCalculator();
+		}else if(ReferenceData.getInstance().getEncoderState().getPIDType() == EncoderState.POSITION_PID){
+			positionPIDCalculator();
+		}
 	}
 
 	private void velocityPIDCalculator(){

@@ -43,8 +43,8 @@ import com.googlecode.javacv.cpp.opencv_core.IplImage;
 
 public class CalcRunnable implements Runnable {
 
-	
 	private CameraRunnable cameraRunnable;
+
 	public CameraRunnable getCameraRunnable() {
 		return cameraRunnable;
 	}
@@ -54,34 +54,41 @@ public class CalcRunnable implements Runnable {
 	}
 
 	private String outputPath = "C:\\movies";
+
 	public String getOutputPath() {
 		return outputPath;
 	}
+
 	public void setOutputPath(String outputPath) {
 		this.outputPath = outputPath;
 	}
 
 	private boolean movieMode = true;
+
 	public boolean getMovieMode() {
 		return movieMode;
 	}
- 	public void setMovieMode(boolean movieMode) {
+
+	public void setMovieMode(boolean movieMode) {
 		this.movieMode = movieMode;
 	}
 
 	private boolean showFrame = true;
+
 	public boolean getShowFrame() {
 		return showFrame;
 	}
+
 	public void setShowFrame(boolean showFrame) {
 		this.showFrame = showFrame;
 	}
 
-
 	private int resolution;
+
 	public int getResolution() {
 		return resolution;
 	}
+
 	public void setResolution(int resolution) {
 		this.resolution = resolution;
 	}
@@ -93,80 +100,102 @@ public class CalcRunnable implements Runnable {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 	}
-	
+
 	int frameCount = 0;
 	long now = 0;
-	
-	CanvasFrame frame =null;
-	CanvasFrame hsvFrame =null;
 
-	private void processImage() {
-		if (getShowFrame()) {
+	CanvasFrame frame = null;
+	CanvasFrame hsvFrame = null;
+
+	public void setHsvFrame(CanvasFrame hsvFrame) {
+		this.hsvFrame = hsvFrame;
+	}
+
+	public void setFrame(CanvasFrame frame) {
+		this.frame = frame;
+	}
+
+	public CanvasFrame getFrame() {
+		if (frame == null) {
 			frame = new CanvasFrame("Raw Image");
+		}
+		return frame;
+	}
+
+	public CanvasFrame getHsvFrame() {
+		if (hsvFrame == null) {
 			hsvFrame = new CanvasFrame("HSV pipeline");
 		}
+		return hsvFrame;
+	}
+
+	private void processImage() {
 		HsvAnalysis result = null;
 
 		now = System.currentTimeMillis();
 
 		try {
-			
-		while(true) {
-			long now = System.currentTimeMillis();
-			
-			IplImage image;
-			try {
-				image = getCameraRunnable().getLatestImage();
-				frameCount = getCameraRunnable().getLatestFrameNumber();
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-				continue;
-			}
-			if (getMovieMode()) {
-				// skip some frames to avoid disk access
-				JavaCVUtils.saveImage(outputPath, now+"_raw_"
-						+ frameCount + ".jpg", image);
-			}
-			// simulate 1 second calculation time.
-			try {
-				Thread.currentThread().sleep(1000);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-//			result = processImage(image);
 
-			if (getShowFrame()) {
-				frame.showImage(image);
-//				System.out.println(String.format("live %s, %s",getHueBand(),getViewBand()));
-//				System.out.println(String.format("live %s: %s",
-//						result.getName(),
-//						result.getTrapezoid()
-//						));
-			}
-//			if (!result.getTrapezoid().hasError()) {
-//				PublishValues.publishValues(resolution, frameCount, result.getTrapezoid());
-//			} else { // adjust hue band and view band for the next image
-//				// skip frames if autosharpened less than 3 seoncds worth 3 * fps frames
-//				AutoSharpen.autoSharpen(this, frameCount, image); // already undistorted
-//			}
-		}
+			while (true) {
+				long now = System.currentTimeMillis();
 
-		}
-		finally {
+				IplImage image;
+				try {
+					image = getCameraRunnable().getLatestImage();
+					frameCount = getCameraRunnable().getLatestFrameNumber();
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+					continue;
+				}
+				if (getMovieMode()) {
+					// skip some frames to avoid disk access
+					JavaCVUtils.saveImage(outputPath, now + "_raw_"
+							+ frameCount + ".jpg", image);
+				}
+				// simulate 1 second calculation time.
+				try {
+					Thread.currentThread().sleep(1000);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				// result = processImage(image);
+
+				if (getShowFrame()) {
+					getFrame().showImage(image);
+					// System.out.println(String.format("live %s, %s",getHueBand(),getViewBand()));
+					// System.out.println(String.format("live %s: %s",
+					// result.getName(),
+					// result.getTrapezoid()
+					// ));
+				}
+				// if (!result.getTrapezoid().hasError()) {
+				// PublishValues.publishValues(resolution, frameCount,
+				// result.getTrapezoid());
+				// } else { // adjust hue band and view band for the next image
+				// // skip frames if autosharpened less than 3 seoncds worth 3 *
+				// fps frames
+				// AutoSharpen.autoSharpen(this, frameCount, image); // already
+				// undistorted
+				// }
+			}
+
+		} finally {
 			if (getShowFrame()) {
-				frame.dispose();
+				getFrame().dispose();
+				getHsvFrame().dispose();
 			}
 		}
 
 	}
+
 	private ViewBand viewBand;
 	private HueBand hueBand;
 
 	public ViewBand getViewBand() {
-		if (viewBand==null) {
+		if (viewBand == null) {
 			viewBand = ViewBand.buildViewBand(640, 480, 390, 110); // default
 		}
 		return viewBand;
@@ -177,9 +206,11 @@ public class CalcRunnable implements Runnable {
 	}
 
 	public HueBand getHueBand() {
-		if (hueBand==null) {
-			hueBand = HueBand.buildHueBand("default",75, 100, 147, 255, 240, 255);
-		}
+		if (hueBand == null) {
+			//hueBand = HueBand.buildHueBand("default", 150, 180, 80, 150, 80,100);
+			//hueBand = HueBand.buildHueBand("default", 110, 140, 220, 255, 220,255); 
+			hueBand = HueBand.buildHueBand("default", 50, 200, 150, 255, 150, 255); 
+			}
 		return hueBand;
 	}
 
@@ -188,18 +219,20 @@ public class CalcRunnable implements Runnable {
 	}
 
 	public HsvAnalysis processImage(IplImage image) {
-		IplImage undistortImage = undistort(image); // this is image transformed in place
+		IplImage undistortImage = undistort(image); // this is image transformed
+													// in place
 		IplImage finalHSV = cvCreateImage(cvGetSize(image), IPL_DEPTH_8U, 1);
 		cvSetImageROI(finalHSV, getViewBand().getCvRect());
-		performHsvFilter(undistortImage,finalHSV, getHueBand());
+		performHsvFilter(undistortImage, finalHSV, getHueBand());
 		HsvAnalysis result = findImagePoints(finalHSV);
 		result.analyzePoints();
 		if (showFrame) {
-			hsvFrame.showImage(finalHSV);
+			getHsvFrame().showImage(finalHSV);
+			getFrame().showImage(undistortImage);
 		}
 		if (getMovieMode()) {
-			JavaCVUtils.saveImage(outputPath, now+"_hsv_"
-					+ frameCount + ".jpg", finalHSV);
+			JavaCVUtils.saveImage(outputPath, now + "_hsv_" + frameCount
+					+ ".jpg", finalHSV);
 		}
 		cvReleaseImage(finalHSV);
 		return result;
@@ -212,10 +245,9 @@ public class CalcRunnable implements Runnable {
 
 	public IplImage undistort(IplImage image) {
 		if (mapx == null || mapy == null) {
-			if (getResolution()==640){
+			if (getResolution() == 640) {
 				intrinsic = JavaCVUtils.build640x480Intrinsic();
-			}
-			else {
+			} else {
 				intrinsic = JavaCVUtils.build320x240Intrinsic();
 			}
 			distortion = JavaCVUtils.buildDistortion();
@@ -242,10 +274,11 @@ public class CalcRunnable implements Runnable {
 	IplImage sat = null;
 	IplImage val = null;
 
-	public void performHsvFilter(IplImage image,IplImage finalHSV, HueBand hueBandParam) {
+	public void performHsvFilter(IplImage image, IplImage finalHSV,
+			HueBand hueBandParam) {
 		if (imageSingleDepth == null) {
 			imageSingleDepth = cvCreateImage(cvGetSize(image), IPL_DEPTH_8U, 1);
-			cvZero(imageSingleDepth); 
+			cvZero(imageSingleDepth);
 			// hsv
 			ihsv = cvCreateImage(cvGetSize(image), IPL_DEPTH_8U, 3);
 			hue = cvCreateImage(cvGetSize(image), IPL_DEPTH_8U, 1);
@@ -255,48 +288,53 @@ public class CalcRunnable implements Runnable {
 
 		CvRect roi = cvGetImageROI(finalHSV);
 		CvRect isdRoi = cvGetImageROI(ihsv);
-		cvSetImageROI(finalHSV,isdRoi);
+		cvSetImageROI(finalHSV, isdRoi);
 
 		// work with full image
 		cvCvtColor(image, ihsv, CV_BGR2HSV); // hsv
 		cvSplit(ihsv, hue, sat, val, null); // single channel
 
 		IplImage hueFilter = cvCloneImage(imageSingleDepth);
-		cvInRangeS(hue, hueBandParam.getHueLow(), hueBandParam.getHueHi(), hueFilter);
+		cvInRangeS(hue, hueBandParam.getHueLow(), hueBandParam.getHueHi(),
+				hueFilter);
 
 		IplImage satFilter = cvCloneImage(imageSingleDepth);
-		cvInRangeS(sat, hueBandParam.getSatLow(), hueBandParam.getSatHi(), satFilter);
+		cvInRangeS(sat, hueBandParam.getSatLow(), hueBandParam.getSatHi(),
+				satFilter);
 
 		IplImage valFilter = cvCloneImage(imageSingleDepth);
-		cvInRangeS(val, hueBandParam.getValLow(), hueBandParam.getValHi(), valFilter);
+		cvInRangeS(val, hueBandParam.getValLow(), hueBandParam.getValHi(),
+				valFilter);
 
 		cvAnd(hueFilter, valFilter, finalHSV, null);
 		cvAnd(finalHSV, satFilter, finalHSV, null);
-		
+
 		// blank out everything except the region of interest.
-		int topY = 0;
-		int topH = roi.y();
-		CvRect topBlank = cvRect(0,topY,roi.width(),topH);
-		int bottomY = roi.y()+roi.height();
-		int bottomH = imageSingleDepth.height() - bottomY;
-		CvRect bottomBlank = cvRect(0,bottomY,roi.width(),bottomH);
+		boolean useRoi = false;
+		if (useRoi) {
+			int topY = 0;
+			int topH = roi.y();
+			CvRect topBlank = cvRect(0, topY, roi.width(), topH);
+			int bottomY = roi.y() + roi.height();
+			int bottomH = imageSingleDepth.height() - bottomY;
+			CvRect bottomBlank = cvRect(0, bottomY, roi.width(), bottomH);
 
-		if (topH>0) {
-			cvSetImageROI(finalHSV,topBlank);
-			cvSetImageROI(imageSingleDepth,topBlank);
-			cvAnd(finalHSV,imageSingleDepth,finalHSV,null);
+			if (topH > 0) {
+				cvSetImageROI(finalHSV, topBlank);
+				cvSetImageROI(imageSingleDepth, topBlank);
+				cvAnd(finalHSV, imageSingleDepth, finalHSV, null);
+			}
+
+			if (bottomH > 0) {
+				cvSetImageROI(finalHSV, bottomBlank);
+				cvSetImageROI(imageSingleDepth, bottomBlank);
+				cvAnd(finalHSV, imageSingleDepth, finalHSV, null);
+			}
+
+			cvSetImageROI(finalHSV, roi);
+			cvSetImageROI(imageSingleDepth, isdRoi);
 		}
 
-		if (bottomH>0) {
-			cvSetImageROI(finalHSV,bottomBlank);
-			cvSetImageROI(imageSingleDepth,bottomBlank);
-			cvAnd(finalHSV,imageSingleDepth,finalHSV,null);
-		}
-
-		cvSetImageROI(finalHSV,roi);
-		cvSetImageROI(imageSingleDepth,isdRoi);
-		
-		
 		// release
 		cvReleaseImage(hueFilter);
 		cvReleaseImage(satFilter);
@@ -307,23 +345,21 @@ public class CalcRunnable implements Runnable {
 		ByteBuffer bb = image.getByteBuffer();
 		byte[] dst = new byte[bb.remaining()];
 		bb.get(dst);
-		
+
 		HsvAnalysis hsvAnalysis = new HsvAnalysis();
 		hsvAnalysis.setResolution(getResolution());
-		
+
 		List<Point> points = new ArrayList<Point>();
-		for (int i=0; i<dst.length; i++){
-			if (dst[i]!=0){
-				int y = (int) (floor(i/image.width()));
-				int x = i%image.width();
-				hsvAnalysis.recordPoint(x,y);
+		for (int i = 0; i < dst.length; i++) {
+			if (dst[i] != 0) {
+				int y = (int) (floor(i / image.width()));
+				int x = i % image.width();
+				hsvAnalysis.recordPoint(x, y);
 			}
 		}
-		
-		
+
 		return hsvAnalysis;
 	}
-
 
 	IplImage eig = null;
 	IplImage temp = null;
