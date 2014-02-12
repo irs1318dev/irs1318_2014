@@ -53,7 +53,8 @@ public class UI extends javax.swing.JFrame {
 		this.addInputPanels();
 		
 		pane.add(new StatusPanel(this), BorderLayout.LINE_START);
-		pane.add(ntpanel, BorderLayout.LINE_END);
+		pane.add(ntpanel, BorderLayout.CENTER);
+		pane.add(new ButtonPanel(this), BorderLayout.LINE_END);
 		
 		if(ReferenceData.getInstance().cameraPanelEnabled) {
 			//TODO make camera panel

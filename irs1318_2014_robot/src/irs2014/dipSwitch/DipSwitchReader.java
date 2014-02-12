@@ -16,6 +16,6 @@ public class DipSwitchReader extends RobotComponentBase{
 	}
 		
 	public DigitalInput getNewDipSwitch() {
-		return new DigitalInput(PortRef.DIP_SWITCH);
+		return new DigitalInput(PortRef.DIGITAL_IO, PortRef.DIP_SWITCH);
 	}
 }

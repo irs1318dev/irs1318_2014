@@ -27,6 +27,6 @@ public class CollectorMotorRunner extends RobotComponentBase {
 		} else if (ReferenceData.getInstance().getDipSwitchData().getDipSwitchState() == DipSwitchRef.PRACTICE_BOT) {
 			collectorMotor = new Talon(PortRef.SIDECAR_SLOT, PortRef.PRACTICE_COLLECTOR_MOTOR);
 		}
-		return null;
+		return collectorMotor;
 	}
 }

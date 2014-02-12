@@ -21,10 +21,10 @@ public class Joystick1Reader extends RobotComponentBase {
 	}
 
 	public void teleopPeriodic() {
-		joystickX = JoystickFilter.applyLinearDeadBand(joystick.getX(),0.1);
-		joystickY = -JoystickFilter.applyLinearDeadBand(joystick.getY(),0.1);
-		System.out.println("joystickX: " + joystickX);
-		System.out.println("joystickY: " + joystickY);
+		joystickX = JoystickFilter.applyLinearDeadBand(joystick.getX(), 0.1);
+		joystickY = -JoystickFilter.applyLinearDeadBand(joystick.getY(), 0.1);
+//		System.out.println("joystickX: " + joystickX);
+//		System.out.println("joystickY: " + joystickY);
 		
 		//Theoretical Throttle
 		
@@ -44,14 +44,37 @@ public class Joystick1Reader extends RobotComponentBase {
 		ReferenceData.getInstance().getUserInputData().setCollectorMotorIn(getCollectorMotorIn());
 		ReferenceData.getInstance().getUserInputData().setCollectorMotorOut(getCollectorMotorOut());
 		ReferenceData.getInstance().getUserInputData().setStopCollectorMotor(getStopCollectorMotor());
-		ReferenceData.getInstance().getUserInputData().setExtendAllShooterSolenoids(getExtendAllPistons());
+//		ReferenceData.getInstance().getUserInputData().setExtendAllShooterSolenoids(getExtendAllPistons());
+		ReferenceData.getInstance().getUserInputData().setExtendAllShooterSolenoids(getTrigger());
+		ReferenceData.getInstance().getUserInputData().setRetractShooter(joystick.getRawButton(2));
+//		ReferenceData.getInstance().getUserInputData().setTrigger(getTrigger());
+//		ReferenceData.getInstance().getUserInputData().setExtendBoth(getExtendBoth());
+		ReferenceData.getInstance().getUserInputData().setExtendShooterAngle(getExtendBoth());
+		ReferenceData.getInstance().getUserInputData().setRetractShooterAngle(getRetractBoth());
+//		ReferenceData.getInstance().getUserInputData().setRetractBoth(getRetractBoth());
+		ReferenceData.getInstance().getUserInputData().setShooterStep(getShooterStep());
 		
-		//ReferenceData.getInstance().getUserInputData().setGoForward(joystick.getRawButton(PortRef.GO_FORWARD));
 		ReferenceData.getInstance().getUserInputData().setGoForward(getGoForward());
-		ReferenceData.getInstance().getUserInputData().setCollectBall(getCollectBall());
-		ReferenceData.getInstance().getUserInputData().setEjectBall(getEjectBall());
+//		ReferenceData.getInstance().getUserInputData().setCollectBall(getCollectBall());
+//		ReferenceData.getInstance().getUserInputData().setEjectBall(getEjectBall());
 	}
 	
+	private boolean getShooterStep() {
+		return joystick.getRawButton(ButtonRef.STEP_SHOOTER);
+	}
+
+	private boolean getRetractBoth() {
+		return joystick.getRawButton(ButtonRef.RETRACT_BOTH);
+	}
+
+	private boolean getExtendBoth() {
+		return joystick.getRawButton(ButtonRef.EXTEND_BOTH);
+	}
+
+	private boolean getTrigger() {
+		return joystick.getRawButton(ButtonRef.TRIGGER);
+	}
+
 	public boolean getGoForward() {
 		return joystick.getRawButton(ButtonRef.GO_FORWARD);
 	}
@@ -76,17 +99,17 @@ public class Joystick1Reader extends RobotComponentBase {
 		return joystick.getRawButton(ButtonRef.STOP_COLLECTOR_MOTOR);
 	}
 	
-	public boolean getCollectBall(){
-		return joystick.getRawButton(ButtonRef.COLLECT_BALL);
-	}
+//	public boolean getCollectBall(){
+//		return joystick.getRawButton(ButtonRef.COLLECT_BALL);
+//	}
 	
-	public boolean getEjectBall(){
-		return joystick.getRawButton(ButtonRef.EJECT_BALL);
-	}
+//	public boolean getEjectBall(){
+//		return joystick.getRawButton(ButtonRef.EJECT_BALL);
+//	}
 	
-	public boolean getExtendAllPistons() {
-		return joystick.getRawButton(ButtonRef.EXTEND_ALL_SHOOTER_SOLENOIDS);
-	}
+//	public boolean getExtendAllPistons() {
+//		return joystick.getRawButton(ButtonRef.EXTEND_ALL_SHOOTER_SOLENOIDS);
+//	}
 
 	public double applyLinearDeadBand(double x, double band) {
 		double output = 0;

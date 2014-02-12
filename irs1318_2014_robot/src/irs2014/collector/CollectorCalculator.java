@@ -5,6 +5,11 @@ import irs2014.generalData.ReferenceData;
 
 public class CollectorCalculator extends RobotComponentBase{
 	
+	
+//	public void robotInit(){
+//		ReferenceData.getInstance().getCollectorData().getMotorData().setCollectorMotorOff();
+//	}
+	
 	public void teleopPeriodic(){
 		//Extends or retracts the collector; prefers extend.
 		if (ReferenceData.getInstance().getUserInputData().getExtendCollector()){
@@ -20,6 +25,8 @@ public class CollectorCalculator extends RobotComponentBase{
 			ReferenceData.getInstance().getCollectorData().getMotorData().setCollectorMotorOut();
 		} else if (ReferenceData.getInstance().getUserInputData().getCollectorMotorIn()){
 			ReferenceData.getInstance().getCollectorData().getMotorData().setCollectorMotorIn();
+		} else {
+			ReferenceData.getInstance().getCollectorData().getMotorData().setCollectorMotorOff();
 		}
 	}
 }

@@ -79,6 +79,8 @@ public class NetworkTableRunner extends RobotComponentBase
  		IRSTable.putBoolean(NTRef.Input_GoForward, ReferenceData.getInstance().getUserInputData().getGoForward());
  		IRSTable.putBoolean(NTRef.Input_CollectBall, ReferenceData.getInstance().getUserInputData().getCollectBall());
  		IRSTable.putBoolean(NTRef.Input_EjectBall, ReferenceData.getInstance().getUserInputData().getEjectBall());
+ 		//Other
+ 		IRSTable.putNumber(NTRef.Input_ShooterSet, ReferenceData.getInstance().getUserInputData().getTriggerSet());
  		
  	}
 }

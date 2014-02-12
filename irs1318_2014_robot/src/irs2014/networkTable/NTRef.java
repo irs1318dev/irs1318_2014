@@ -37,6 +37,8 @@ public class NTRef
 	public static final String Input_GoForward = "i.gf";
 	public static final String Input_CollectBall = "i.cb";
 	public static final String Input_EjectBall = "i.eb";
+		//Other
+	public static final String Input_ShooterSet = "i.ss";
 	//RobotGeneral=================================================================
 	public static final String Robot_State = "r.s";
 	//Timmer=======================================================================

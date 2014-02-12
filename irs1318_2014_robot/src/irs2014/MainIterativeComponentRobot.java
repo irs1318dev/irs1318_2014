@@ -17,32 +17,49 @@ import irs2014.helloWorld.HelloWorldRunner;
 import irs2014.networkTable.GetValuesTest;
 import irs2014.networkTable.NetworkTableRunner;
 import irs2014.shooter.CompressorRunner;
+import irs2014.shooter.OneSolenoidRunner;
 import irs2014.shooter.PressureSensorReader;
 import irs2014.shooter.ShooterCalculator;
 import irs2014.shooter.ShooterRunner;
 import irs2014.simpleRIAB.GamePadReaderRIAB;
 import irs2014.simpleRIAB.SimpleRAIBCalculator;
 import irs2014.simpleRIAB.TalonRunner;
+import irs2014.timmer.TimeMeasureRunner;
 import irs2014.timmer.TimerRunner;
 import irs2014.userInputDevices.Joystick1Reader;
 import irs2014.userInputDevices.JoystickPortTest;
+import irs2014.userInputDevices.SmartDashReader;
+import irs2014.userInputDevices.UserInputCalculator;
 
 public class MainIterativeComponentRobot extends IterativeComponentRobot {
 
 	public BotVector currentRobotComponents() {
-		return networkTableTest();
+		return shooterTest();
+	}
+	
+	protected static BotVector oneSolenoidTest(){
+		BotVector b = new BotVector();
+		b.add(new CompressorRunner());
+		b.add(new OneSolenoidRunner());
+		return b;
+	}
+	
+	protected static BotVector compressorTest(){
+		BotVector b = new BotVector();
+		b.add(new CompressorRunner());
+		return b;
 	}
 	
 	protected static BotVector initialRobot(){
 		BotVector b = new BotVector();
-		b.add(new TimerRunner());
+//		b.add(new TimerRunner());
 		b.add(new DipSwitchReader());
 		b.add(new CompressorRunner());
 		b.add(new Joystick1Reader());
 		b.add(new DriveTrainEncoderReader());
-		b.add(new PressureSensorReader());
+//		b.add(new PressureSensorReader());
 		b.add(new CollectorLimitSwitchReader());
-		b.add(new AutoTaskRunner());
+//		b.add(new AutoTaskRunner());
 		b.add(new CollectorCalculator());
 		b.add(new ShooterCalculator());
 		b.add(new DriveTrain1JoystickCalculator());
@@ -100,12 +117,69 @@ public class MainIterativeComponentRobot extends IterativeComponentRobot {
 	
 	protected static BotVector tankDriveTrainTest(){
 		BotVector b = new BotVector();
+		b.add(new CompressorRunner());
 		b.add(new Joystick1Reader());
 		b.add(new DriveTrainEncoderReader());
 		b.add(new DriveTrain1JoystickCalculator());
+		b.add(new CollectorCalculator());
 		//b.add(new DriveTrainNoPIDCalculator());
 		b.add(new DriveTrainPIDCalculator());
+		b.add(new NetworkTableRunner());
+		b.add(new CollectorMotorRunner());
 		b.add(new DriveTrainRunner());
 		return b;
 	}
+	
+	protected static BotVector autonomousTest(){
+		BotVector b = new BotVector();
+		b.add(new AutoTaskRunner());
+		return b;
+	}
+
+	protected static BotVector collectorTest(){
+		BotVector b = new BotVector();
+		b.add(new CompressorRunner());
+		b.add(new Joystick1Reader());
+		b.add(new CollectorCalculator());
+//		b.add(new CollectorLimitSwitchReader());
+//		b.add(new CollectorMotorRunner());
+		b.add(new CollectorSolenoidRunner());
+		return b;
+	}
+	
+	protected static BotVector dipSwitchTest(){
+		BotVector b = new BotVector();
+		b.add(new DipSwitchReader());
+		return b;
+	}
+	
+	protected static BotVector shooterTest(){
+		BotVector b = new BotVector();
+		b.add(new CompressorRunner());
+		b.add(new Joystick1Reader());
+//		b.add(new PressureSensorReader());
+//		b.add(new UserInputCalculator());
+		b.add(new ShooterCalculator());
+		b.add(new CollectorCalculator());
+		b.add(new NetworkTableRunner());
+		b.add(new CollectorSolenoidRunner());
+		b.add(new ShooterRunner());
+		return b;
+	}
+	
+	protected static BotVector timmerTest(){ //lol
+		BotVector b = new BotVector();
+		b.add(new TimeMeasureRunner());
+		b.add(new TimerRunner());
+		return b;
+	}
+	
+	protected static BotVector userInputDevicesTest(){ //idk if we need this
+		BotVector b = new BotVector();
+		b.add(new Joystick1Reader());
+		b.add(new SmartDashReader());
+		b.add(new UserInputCalculator());
+		return b;
+	}
 }
+

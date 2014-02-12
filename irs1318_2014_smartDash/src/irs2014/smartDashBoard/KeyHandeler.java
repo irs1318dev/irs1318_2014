@@ -34,16 +34,18 @@ public class KeyHandeler {
 		this.keyMappings.put("cl.bp", "BALL PREST ");
 		this.keyMappings.put("cl.ms", "COL SPOINT ");
 		this.keyMappings.put("cl.css", "COL SOL ST ");
-		this.keyMappings.put("s.pss", "PRESS ST");
-		this.keyMappings.put("s.cmss", "MID SOL ST");
-		this.keyMappings.put("s.ciss", "INN SOL ST");
-		this.keyMappings.put("s.coss", "OUT SOL ST");
-		this.keyMappings.put("s.cass", "SHT ANG ST");
+		this.keyMappings.put("s.pss", "PRESS ST ");
+		this.keyMappings.put("s.cmss", "MID SOL ST ");
+		this.keyMappings.put("s.ciss", "INN SOL ST ");
+		this.keyMappings.put("s.coss", "OUT SOL ST ");
+		this.keyMappings.put("s.cass", "SHT ANG ST ");
+		this.keyMappings.put("i.ss", "TRIG SET ");
 		this.keyMappings.put("t.m", "Timer: ");
 		
 		keyOrder = new ArrayList<String>();
 		
 //this keeps the output in the right order
+		this.keyOrder.add("i.ss");
 		this.keyOrder.add("cl.bp");
 		this.keyOrder.add("s.pss");
 		this.keyOrder.add("s.cass");

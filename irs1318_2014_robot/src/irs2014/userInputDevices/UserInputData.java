@@ -18,10 +18,16 @@ public class UserInputData {
 	private boolean retractShooter; 
 	private boolean extendShooterAngle; 
 	private boolean retractShooterAngle; 
+	private boolean trigger;
+	private boolean extendBoth;
+	private boolean retractBoth;
+	private boolean shooterStep;
 	//macros
 	private boolean goForward;
 	private boolean collectBall;
 	private boolean ejectBall;
+	
+	private int triggerSet;
 	
 	
 	
@@ -129,6 +135,54 @@ public class UserInputData {
 		retractShooterAngle = value; 
 	}
 	
+	public int getUserInputType() {
+		return userInputType;
+	}
+
+	public void setUserInputType(int userInputType) {
+		this.userInputType = userInputType;
+	}
+
+	public boolean getTrigger() {
+		return trigger;
+	}
+
+	public void setTrigger(boolean trigger) {
+		this.trigger = trigger;
+	}
+	
+	public int getTriggerSet() {
+		return triggerSet;
+	}
+
+	public void setTriggerSet(int triggerSet) {
+		this.triggerSet = triggerSet;
+	}
+
+	public boolean getExtendBoth() {
+		return extendBoth;
+	}
+
+	public void setExtendBoth(boolean extendBoth) {
+		this.extendBoth = extendBoth;
+	}
+
+	public boolean getRetractBoth() {
+		return retractBoth;
+	}
+
+	public void setRetractBoth(boolean retractBoth) {
+		this.retractBoth = retractBoth;
+	}
+
+	public boolean getShooterStep() {
+		return shooterStep;
+	}
+
+	public void setShooterStep(boolean shooterStep) {
+		this.shooterStep = shooterStep;
+	}
+
 	public boolean getCollectBall(){
 		return collectBall;
 	}
