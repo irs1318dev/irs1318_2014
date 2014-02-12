@@ -7,6 +7,8 @@ public class LineSensorData {
 	private boolean isOnLine;
 	private double onLineLeftTick;
 	private double onLineRightTick; 
+	private boolean isRequested;
+	
 	public boolean getIsOnLine() {
 		return isOnLine;
 	}
@@ -19,6 +21,10 @@ public class LineSensorData {
 		return onLineRightTick; 
 	}
 	
+	public boolean getIsRequested() {
+		return isRequested;
+	}
+	
 	public void setIsOnLine(boolean isOnLine) {
 		this.isOnLine = isOnLine;
 	}
@@ -29,6 +35,10 @@ public class LineSensorData {
 	
 	public void setOnLineRightTick(double onLineRightTick) {
 		this.onLineRightTick = onLineRightTick; 
+	}
+	
+	public void setIsRequested(boolean isRequested) {
+		this.isRequested = isRequested; 
 	}
 
 }
