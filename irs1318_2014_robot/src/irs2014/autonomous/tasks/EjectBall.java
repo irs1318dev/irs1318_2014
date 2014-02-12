@@ -31,6 +31,6 @@ public class EjectBall extends AutonomousCommand{
 		stopCollectorMotor();
 	}
 
-	private final static int EJECT_WAIT_TIME = -1; //TODO
+	private final static int EJECT_WAIT_TIME = 3000; //TODO find an actual value for this through testing.
 	
 }
