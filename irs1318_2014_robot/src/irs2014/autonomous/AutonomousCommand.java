@@ -64,9 +64,9 @@ public abstract class AutonomousCommand implements AutoTask
 	
 	
 	
-	////////////////////////////////////////////////////////////////////////
-	//Custom Methods that can be used to accomplish tasks. Eg: go forward
-    ////////////////////////////////////////////////////////////////////////	
+	/////////////////////////////////////////////////////////
+	//Custom Methods that can be used to accomplish tasks. //
+    /////////////////////////////////////////////////////////	
 	public void pause(long delayMillis)
 	{
 		if(stateTime + delayMillis < System.currentTimeMillis())
@@ -126,11 +126,6 @@ public abstract class AutonomousCommand implements AutoTask
 		//TODO: Rev's note: this is being used instead of setting 3 other buttons individually. As a result, we need to make sure that this method stays updated.
 	}
 	
-	public void goForwardRel(double centimeters)
-	{//Go forward relative- goes forward relative to the encoder value from the last state.
-		goForwardRel(centimeters, .66);
-	}
-	
 	public void stopDriveTrain()
 	{//probably for use in quick-set situations, this will tell the robot to stop moving for one cycle. May be good for cancels.
 		ReferenceData.getInstance().getUserInputData().setJoystickX(0);
@@ -138,10 +133,15 @@ public abstract class AutonomousCommand implements AutoTask
 		advanceState();
 	}
 	
+	public void goForwardRel(double centimeters)
+	{//Go forward relative- goes forward relative to the encoder value from the last state.
+		goForwardRel(centimeters, .66);
+	}
+	
 	/**
 	 * Go forward relative- goes forward relative to the encoder value from the last state.
 	 * @param centimeters
-	 * @param speed
+	 * @param speed (between 0 and 1)
 	 */
 	public void goForwardRel(double centimeters, double speed)
 	{//Go forward relative- goes forward relative to the encoder value from the last state.

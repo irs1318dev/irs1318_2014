@@ -28,7 +28,7 @@ public class CatchPrep extends AutonomousCommand
 
 	public void cancel() 
 	{
-		//Nothing required.
+		stopCollectorMotor();
 	}
 
 }

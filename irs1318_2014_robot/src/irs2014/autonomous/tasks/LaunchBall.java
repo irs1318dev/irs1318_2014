@@ -8,21 +8,23 @@ public class LaunchBall extends AutonomousCommand
 	{
 		switch(currentState)
 		{
-		case 1:
+		case 0:
 			extendLauncher();
 			break;
-		case 2:
+		case 1:
 			pause(1000);
 			break;
-		case 3:
+		case 2:
 			lowerLauncher();
+			break;
+		case 3:
+			isDone = true;
 			break;
 		}
 	}
 
 	public void cancel() 
 	{
-		//Nothing required.
 		lowerLauncher();
 	}
 	

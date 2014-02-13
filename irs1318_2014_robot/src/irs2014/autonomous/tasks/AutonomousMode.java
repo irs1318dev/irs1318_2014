@@ -10,8 +10,7 @@ public class AutonomousMode extends AutonomousCommand
 		{
 		case 0:
 			isDone = true;
-			//goForwardRel(200);
-			//putYourRightFootIn();
+//          putYourRightFootIn();
 			break;
 //		case 1:
 //			takeYourRightFootOut();
