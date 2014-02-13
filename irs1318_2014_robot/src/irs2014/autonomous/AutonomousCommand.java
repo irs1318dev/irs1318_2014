@@ -182,13 +182,13 @@ public abstract class AutonomousCommand implements AutoTask
 		if(Math.abs(launchTickRight - currentTick) < EPSILON && Math.abs(launchTickLeft - currentTick) < EPSILON)
 		{//If we're within the small number of ticks we want to shoot from
 			advanceState();
-			ReferenceData.getInstance().getEncoderState().setPIDType(EncoderState.PID_VELOCITY);
+//			ReferenceData.getInstance().getEncoderState().setPIDType(EncoderState.PID_VELOCITY);
 		}
 		else
 		{//If we're not within the shot range, then we use one of two forms of PID.
 			if(Math.abs(launchTickRight - currentTick) > VEL_CUTOFF || Math.abs(launchTickLeft - currentTick) > VEL_CUTOFF)
 			{// if we're further away than the velocity PID cutoff for right or left side...
-				ReferenceData.getInstance().getEncoderState().setPIDType(EncoderState.PID_VELOCITY);
+//				ReferenceData.getInstance().getEncoderState().setPIDType(EncoderState.PID_VELOCITY);
 				if(behindDestinationLine)
 					ReferenceData.getInstance().getUserInputData().setJoystickX(VEL_DRIVE_SPEED);
 				else
@@ -196,7 +196,7 @@ public abstract class AutonomousCommand implements AutoTask
 			}
 			else
 			{// if we're within the range where we want to be more specific
-				ReferenceData.getInstance().getEncoderState().setPIDType(EncoderState.PID_POSITION);
+//				ReferenceData.getInstance().getEncoderState().setPIDType(EncoderState.PID_POSITION);
 				if(Math.abs(launchTickRight - currentTick) < VEL_CUTOFF)
 					ReferenceData.getInstance().getDriveTrainData().getRightPIDData().setPostionSetpoint(launchTickRight);
 				if(Math.abs(launchTickLeft - currentTick) < VEL_CUTOFF)
@@ -215,7 +215,7 @@ public abstract class AutonomousCommand implements AutoTask
 	public void turn(double degrees)
 	{
 		double arcLength = 2 * Math.PI * getWheelDistance() * (degrees / 360);
-		ReferenceData.getInstance().getEncoderState().setPIDType(ReferenceData.getInstance().getEncoderState().PID_POSITION);
+//		ReferenceData.getInstance().getEncoderState().setPIDType(ReferenceData.getInstance().getEncoderState().PID_POSITION);
 		
 		if(degrees > 0) // If we're turning left...
 		{
@@ -223,7 +223,7 @@ public abstract class AutonomousCommand implements AutoTask
 			if(Math.abs(ReferenceData.getInstance().getDriveTrainData().getRightEncoderData().getTicks() - desiredTick) <= ACCEPTED_TICK_ERROR)
 			{
 				advanceState();
-				ReferenceData.getInstance().getEncoderState().setPIDType(EncoderState.PID_VELOCITY);
+//				ReferenceData.getInstance().getEncoderState().setPIDType(EncoderState.PID_VELOCITY);
 			}
 			else
 				ReferenceData.getInstance().getDriveTrainData().getRightPIDData().setPostionSetpoint(desiredTick);
@@ -234,7 +234,7 @@ public abstract class AutonomousCommand implements AutoTask
 			if(Math.abs(ReferenceData.getInstance().getDriveTrainData().getLeftEncoderData().getTicks() - desiredTick) <= ACCEPTED_TICK_ERROR)
 			{
 				advanceState();
-				ReferenceData.getInstance().getEncoderState().setPIDType(EncoderState.PID_VELOCITY);
+//				ReferenceData.getInstance().getEncoderState().setPIDType(EncoderState.PID_VELOCITY);
 			}
 			else
 				ReferenceData.getInstance().getDriveTrainData().getLeftPIDData().setPostionSetpoint(desiredTick);

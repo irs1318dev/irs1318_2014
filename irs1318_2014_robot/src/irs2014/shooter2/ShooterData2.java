@@ -1,6 +1,6 @@
-package irs2014.shooter;
+package irs2014.shooter2;
 
-public class ShooterData {
+public class ShooterData2 {
 	
 	private boolean currentMiddleSolenoidState;
 	private boolean currentInnerSolenoidsState; 

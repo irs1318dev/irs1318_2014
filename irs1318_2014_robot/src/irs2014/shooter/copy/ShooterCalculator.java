@@ -1,4 +1,4 @@
-package irs2014.shooter;
+package irs2014.shooter.copy;
 
 import irs2014.collector.CollectorRef;
 import irs2014.components.RobotComponentBase;

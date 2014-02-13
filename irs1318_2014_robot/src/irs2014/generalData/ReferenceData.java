@@ -9,6 +9,7 @@ import irs2014.shooter.PressureSensorData;
 import irs2014.shooter.PressureSensorTimerData;
 import irs2014.shooter.ShooterData;
 import irs2014.userInputDevices.UserInputData;
+import irs2014.userInputDevices2.UserInputData2;
 
 public class ReferenceData {
 	
@@ -25,6 +26,8 @@ public class ReferenceData {
 	private EncoderState encoderState; 
 	private PressureSensorTimerData pressureSensorTimerData;
 	private LineSensorData lineSensorData; 
+	
+	private UserInputData2 userInputData2;
 	
 	private ReferenceData(){
 	}
@@ -97,5 +100,12 @@ public class ReferenceData {
 		if(encoderState == null)
 			encoderState = new EncoderState();
 		return encoderState;
+	}
+	
+	public UserInputData2 getUserInputData2(){
+		if(userInputData2 == null){
+			userInputData2 = new UserInputData2();
+		}
+		return userInputData2;
 	}
 }

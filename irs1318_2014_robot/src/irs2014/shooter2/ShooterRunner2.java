@@ -1,4 +1,4 @@
-package irs2014.shooter;
+package irs2014.shooter2;
 
 import irs2014.components.RobotComponentBase;
 import irs2014.dipSwitch.DipSwitchRef;
@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.Solenoid;
 
-public class ShooterRunner extends RobotComponentBase {
+public class ShooterRunner2 extends RobotComponentBase {
 	
 	private DoubleSolenoid middleSolenoid;
 	private DoubleSolenoid innerSolenoidL;
@@ -34,7 +34,7 @@ public class ShooterRunner extends RobotComponentBase {
 		
 		boolean desiredMiddleSolenoidState = ReferenceData.getInstance().getShooterData().getDesiredMiddleSolenoidState();
 		boolean currentMiddleSolenoidState = ReferenceData.getInstance().getShooterData().getCurrentMiddleSolenoidState();
-		boolean middleSolenoidEtended = (ReferenceData.getInstance().getShooterData().getDesiredMiddleSolenoidState() == ShooterRef.EXTEND);
+		boolean middleSolenoidEtended = (ReferenceData.getInstance().getShooterData().getDesiredMiddleSolenoidState() == ShooterRef2.EXTEND);
 		
 //		System.out.println("desiredMiddleSolenoidState: " + desiredMiddleSolenoidState + 
 //							"\n currentMiddleSolenoidState: " + currentMiddleSolenoidState + 
@@ -55,7 +55,7 @@ public class ShooterRunner extends RobotComponentBase {
 		
 		boolean desiredInnerSolenoidState = ReferenceData.getInstance().getShooterData().getDesiredInnerSolenoidsState();
 		boolean currentInnerSolenoidState = ReferenceData.getInstance().getShooterData().getCurrentInnerSolenoidsState();
-		boolean innerSolenoidExtended = (ReferenceData.getInstance().getShooterData().getDesiredInnerSolenoidsState() == ShooterRef.EXTEND);
+		boolean innerSolenoidExtended = (ReferenceData.getInstance().getShooterData().getDesiredInnerSolenoidsState() == ShooterRef2.EXTEND);
 		
 		if(desiredInnerSolenoidState != currentInnerSolenoidState) {
 			if(innerSolenoidExtended){
@@ -72,7 +72,7 @@ public class ShooterRunner extends RobotComponentBase {
 		
 		boolean desiredOuterSolenoidState = ReferenceData.getInstance().getShooterData().getDesiredOuterSolenoidsState();
 		boolean currentOuterSolenoidState = ReferenceData.getInstance().getShooterData().getCurrentOuterSolenoidsState();
-		boolean outerSolenoidExtended = (ReferenceData.getInstance().getShooterData().getDesiredOuterSolenoidsState() == ShooterRef.EXTEND);
+		boolean outerSolenoidExtended = (ReferenceData.getInstance().getShooterData().getDesiredOuterSolenoidsState() == ShooterRef2.EXTEND);
 		
 		if(desiredOuterSolenoidState != currentOuterSolenoidState) {
 			if(outerSolenoidExtended){
@@ -89,7 +89,7 @@ public class ShooterRunner extends RobotComponentBase {
 		
 		boolean desiredShooterAngle = ReferenceData.getInstance().getShooterData().getDesiredShooterAngleSolenoidState();
 		boolean currentShooterAngle = ReferenceData.getInstance().getShooterData().getCurrentShooterAngleSolenoidState();
-		boolean shooterAngleExtended = (ReferenceData.getInstance().getShooterData().getDesiredShooterAngleSolenoidState() == ShooterRef.EXTEND);
+		boolean shooterAngleExtended = (ReferenceData.getInstance().getShooterData().getDesiredShooterAngleSolenoidState() == ShooterRef2.EXTEND);
 		
 		if(desiredShooterAngle != currentShooterAngle) {
 			if(shooterAngleExtended) {

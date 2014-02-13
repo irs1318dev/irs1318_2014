@@ -24,6 +24,7 @@ import irs2014.shooter.ShooterRunner;
 import irs2014.simpleRIAB.GamePadReaderRIAB;
 import irs2014.simpleRIAB.SimpleRAIBCalculator;
 import irs2014.simpleRIAB.TalonRunner;
+import irs2014.test.ShooterTest;
 import irs2014.timmer.TimeMeasureRunner;
 import irs2014.timmer.TimerRunner;
 import irs2014.userInputDevices.Joystick1Reader;
@@ -34,7 +35,14 @@ import irs2014.userInputDevices.UserInputCalculator;
 public class MainIterativeComponentRobot extends IterativeComponentRobot {
 
 	public BotVector currentRobotComponents() {
-		return shooterTest();
+		return initialRobot();
+	}
+	
+	protected static BotVector isolatedTest(){
+		BotVector b = new BotVector();
+		b.add(new CompressorRunner());
+		b.add(new ShooterTest());
+		return b;
 	}
 	
 	protected static BotVector oneSolenoidTest(){
@@ -75,17 +83,18 @@ public class MainIterativeComponentRobot extends IterativeComponentRobot {
 		b.add(new Joystick1Reader()); //Joystick1ReaderTest
 		b.add(new DriveTrainEncoderReader()); //DriveTrainEncoderReaderTest
 //		b.add(new PressureSensorReader()); //PressureSensorReaderTest
-		b.add(new CollectorLimitSwitchReader()); //CollectorLimitSwitchReaderTest
+//		b.add(new CollectorLimitSwitchReader()); //CollectorLimitSwitchReaderTest
 //		b.add(new AutoTaskRunner()); //NONE - Matthew
 		b.add(new CollectorCalculator()); //CollectorCalculatorTest
-		b.add(new ShooterCalculator()); //NONE - Megan
+//		b.add(new ShooterCalculator()); //NONE - Megan
 		b.add(new DriveTrain1JoystickCalculator()); //NONE
 		b.add(new DriveTrainPIDCalculator()); //NONE
 		b.add(new NetworkTableRunner()); //NONE - Caroline
 		b.add(new DriveTrainRunner()); //DriveTrainRunnerTest
 		b.add(new CollectorMotorRunner()); //CollectorMotorRunnerTest
 		b.add(new CollectorSolenoidRunner()); //CollectorSolenoidRunnerTest
-		b.add(new ShooterRunner()); //ShooterRunnerTest
+//		b.add(new ShooterRunner()); //ShooterRunnerTest
+		b.add(new ShooterTest());
 
 		return b;
 	}

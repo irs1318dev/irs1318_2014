@@ -1,4 +1,4 @@
-package irs2014.shooter;
+package irs2014.shooter.copy;
 
 public class ShooterData {
 	

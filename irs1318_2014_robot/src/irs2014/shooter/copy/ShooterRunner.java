@@ -1,4 +1,4 @@
-package irs2014.shooter;
+package irs2014.shooter.copy;
 
 import irs2014.components.RobotComponentBase;
 import irs2014.dipSwitch.DipSwitchRef;
