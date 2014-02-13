@@ -61,6 +61,9 @@ public abstract class AutonomousCommand implements AutoTask
 	}
 	
 	
+	
+	
+	
 	////////////////////////////////////////////////////////////////////////
 	//Custom Methods that can be used to accomplish tasks. Eg: go forward
     ////////////////////////////////////////////////////////////////////////	
@@ -182,13 +185,13 @@ public abstract class AutonomousCommand implements AutoTask
 		if(Math.abs(launchTickRight - currentTick) < EPSILON && Math.abs(launchTickLeft - currentTick) < EPSILON)
 		{//If we're within the small number of ticks we want to shoot from
 			advanceState();
-			ReferenceData.getInstance().getEncoderState().setPIDType(EncoderState.PID_VELOCITY);
+			ReferenceData.getInstance().getEncoderState().setPIDType(EncoderState.VELOCITY_PID);
 		}
 		else
 		{//If we're not within the shot range, then we use one of two forms of PID.
 			if(Math.abs(launchTickRight - currentTick) > VEL_CUTOFF || Math.abs(launchTickLeft - currentTick) > VEL_CUTOFF)
 			{// if we're further away than the velocity PID cutoff for right or left side...
-				ReferenceData.getInstance().getEncoderState().setPIDType(EncoderState.PID_VELOCITY);
+				ReferenceData.getInstance().getEncoderState().setPIDType(EncoderState.VELOCITY_PID);
 				if(behindDestinationLine)
 					ReferenceData.getInstance().getUserInputData().setJoystickX(VEL_DRIVE_SPEED);
 				else
@@ -196,7 +199,7 @@ public abstract class AutonomousCommand implements AutoTask
 			}
 			else
 			{// if we're within the range where we want to be more specific
-				ReferenceData.getInstance().getEncoderState().setPIDType(EncoderState.PID_POSITION);
+				ReferenceData.getInstance().getEncoderState().setPIDType(EncoderState.POSITION_PID);
 				if(Math.abs(launchTickRight - currentTick) < VEL_CUTOFF)
 					ReferenceData.getInstance().getDriveTrainData().getRightPIDData().setPostionSetpoint(launchTickRight);
 				if(Math.abs(launchTickLeft - currentTick) < VEL_CUTOFF)
@@ -214,30 +217,41 @@ public abstract class AutonomousCommand implements AutoTask
 	 */
 	public void turn(double degrees)
 	{
-		double arcLength = 2 * Math.PI * getWheelDistance() * (degrees / 360);
-		ReferenceData.getInstance().getEncoderState().setPIDType(ReferenceData.getInstance().getEncoderState().PID_POSITION);
+		//This is the arc length we are trying to turn. This value is to be divided between both sides.
+		double arcLength = 2 * Math.PI * (getWheelDistance() / 2) * (degrees / 360);
+		ReferenceData.getInstance().getEncoderState().setPIDType(EncoderState.POSITION_PID);
 		
 		if(degrees > 0) // If we're turning left...
 		{
-			double desiredTick = toTicks(arcLength) + stateRightEncoderTicks;
-			if(Math.abs(ReferenceData.getInstance().getDriveTrainData().getRightEncoderData().getTicks() - desiredTick) <= ACCEPTED_TICK_ERROR)
+			double desiredRightTick = stateRightEncoderTicks + toTicks(arcLength / 2);
+			double desiredLeftTick = stateRightEncoderTicks - toTicks(arcLength / 2);
+			if(Math.abs(ReferenceData.getInstance().getDriveTrainData().getRightEncoderData().getTicks() - desiredRightTick) <= ACCEPTED_TICK_ERROR &&
+				Math.abs(ReferenceData.getInstance().getDriveTrainData().getLeftEncoderData().getTicks() - desiredLeftTick) <= ACCEPTED_TICK_ERROR)
 			{
 				advanceState();
-				ReferenceData.getInstance().getEncoderState().setPIDType(EncoderState.PID_VELOCITY);
+				ReferenceData.getInstance().getEncoderState().setPIDType(EncoderState.VELOCITY_PID);
 			}
 			else
-				ReferenceData.getInstance().getDriveTrainData().getRightPIDData().setPostionSetpoint(desiredTick);
+			{
+				ReferenceData.getInstance().getDriveTrainData().getRightPIDData().setPostionSetpoint(desiredRightTick);
+				ReferenceData.getInstance().getDriveTrainData().getLeftPIDData().setPostionSetpoint(desiredLeftTick);
+			}
 		}
 		else // Well, we must be turning right...
 		{
-			double desiredTick = toTicks(arcLength) + stateLeftEncoderTicks;
-			if(Math.abs(ReferenceData.getInstance().getDriveTrainData().getLeftEncoderData().getTicks() - desiredTick) <= ACCEPTED_TICK_ERROR)
+			double desiredRightTick = stateRightEncoderTicks - toTicks(arcLength / 2);
+			double desiredLeftTick = stateLeftEncoderTicks - toTicks(arcLength / 2);
+			if(Math.abs(ReferenceData.getInstance().getDriveTrainData().getRightEncoderData().getTicks() - desiredRightTick) <= ACCEPTED_TICK_ERROR &&
+					Math.abs(ReferenceData.getInstance().getDriveTrainData().getLeftEncoderData().getTicks() - desiredLeftTick) <= ACCEPTED_TICK_ERROR)
 			{
 				advanceState();
-				ReferenceData.getInstance().getEncoderState().setPIDType(EncoderState.PID_VELOCITY);
+				ReferenceData.getInstance().getEncoderState().setPIDType(EncoderState.VELOCITY_PID);
 			}
 			else
-				ReferenceData.getInstance().getDriveTrainData().getLeftPIDData().setPostionSetpoint(desiredTick);
+			{
+				ReferenceData.getInstance().getDriveTrainData().getRightPIDData().setPostionSetpoint(desiredRightTick);
+				ReferenceData.getInstance().getDriveTrainData().getLeftPIDData().setPostionSetpoint(desiredLeftTick);
+			}
 		}
 	}
 }
