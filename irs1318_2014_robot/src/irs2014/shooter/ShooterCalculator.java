@@ -20,7 +20,7 @@ public class ShooterCalculator extends RobotComponentBase {
 	}
 	
 	public void teleopPeriodic() {
-		if(ReferenceData.getInstance().getPressureSensorData().getIsPressurized() && ReferenceData.getInstance().getUserInputData().getExtendAllShooterSolenoids() && !ReferenceData.getInstance().getCollectorData().getSolenoidData().getCurrentSolenoidState()) {
+		if(ReferenceData.getInstance().getUserInputData().getExtendAllShooterSolenoids() && ReferenceData.getInstance().getCollectorData().getSolenoidData().getCurrentSolenoidState() == CollectorRef.RETRACT) {
 			ReferenceData.getInstance().getShooterData().setDesiredMiddleSolenoidState(ShooterRef.EXTEND);
 			ReferenceData.getInstance().getShooterData().setDesiredInnerSolenoidsState(ShooterRef.EXTEND);
 			ReferenceData.getInstance().getShooterData().setDesiredOuterSolenoidsState(ShooterRef.EXTEND);
@@ -31,14 +31,14 @@ public class ShooterCalculator extends RobotComponentBase {
 			}
 		}
 		
-		if(ReferenceData.getInstance().getPressureSensorData().getIsPressurized() && ReferenceData.getInstance().getUserInputData().getRetractShooter()) {
+		if(ReferenceData.getInstance().getUserInputData().getRetractShooter() && ReferenceData.getInstance().getCollectorData().getSolenoidData().getCurrentSolenoidState() == CollectorRef.RETRACT) {
 			ReferenceData.getInstance().getShooterData().setDesiredMiddleSolenoidState(ShooterRef.RETRACT);
 			ReferenceData.getInstance().getShooterData().setDesiredInnerSolenoidsState(ShooterRef.RETRACT);
 			ReferenceData.getInstance().getShooterData().setDesiredOuterSolenoidsState(ShooterRef.RETRACT);
 		}
 		
 			
-		if(ReferenceData.getInstance().getPressureSensorData().getIsPressurized() && !ReferenceData.getInstance().getCollectorData().getSolenoidData().getCurrentSolenoidState()) {
+		if(ReferenceData.getInstance().getUserInputData().getExtendInnerShooterSolenoids() && ReferenceData.getInstance().getCollectorData().getSolenoidData().getCurrentSolenoidState() == CollectorRef.RETRACT) {
 			ReferenceData.getInstance().getShooterData().setDesiredMiddleSolenoidState(ShooterRef.RETRACT);
 			ReferenceData.getInstance().getShooterData().setDesiredInnerSolenoidsState(ShooterRef.EXTEND);
 			ReferenceData.getInstance().getShooterData().setDesiredOuterSolenoidsState(ShooterRef.RETRACT);
@@ -49,7 +49,7 @@ public class ShooterCalculator extends RobotComponentBase {
 			}
 		}
 		
-		if(ReferenceData.getInstance().getPressureSensorData().getIsPressurized() && ReferenceData.getInstance().getUserInputData().getExtendInnerThreeShooterSolenoids() && !ReferenceData.getInstance().getCollectorData().getSolenoidData().getCurrentSolenoidState()) {
+		if(ReferenceData.getInstance().getUserInputData().getExtendInnerThreeShooterSolenoids() && ReferenceData.getInstance().getCollectorData().getSolenoidData().getCurrentSolenoidState() == CollectorRef.RETRACT) {
 			ReferenceData.getInstance().getShooterData().setDesiredMiddleSolenoidState(ShooterRef.EXTEND);
 			ReferenceData.getInstance().getShooterData().setDesiredInnerSolenoidsState(ShooterRef.EXTEND);
 			ReferenceData.getInstance().getShooterData().setDesiredOuterSolenoidsState(ShooterRef.RETRACT); 
@@ -60,7 +60,7 @@ public class ShooterCalculator extends RobotComponentBase {
 			}
 		}
 		
-		if(ReferenceData.getInstance().getPressureSensorData().getIsPressurized() && ReferenceData.getInstance().getUserInputData().getExtendMiddleShooterSolenoid() && !ReferenceData.getInstance().getCollectorData().getSolenoidData().getCurrentSolenoidState()) {
+		if(ReferenceData.getInstance().getUserInputData().getExtendMiddleShooterSolenoid() && ReferenceData.getInstance().getCollectorData().getSolenoidData().getCurrentSolenoidState() == CollectorRef.RETRACT) {
 			ReferenceData.getInstance().getShooterData().setDesiredMiddleSolenoidState(ShooterRef.EXTEND);
 			ReferenceData.getInstance().getShooterData().setDesiredInnerSolenoidsState(ShooterRef.RETRACT);
 			ReferenceData.getInstance().getShooterData().setDesiredOuterSolenoidsState(ShooterRef.RETRACT); 
@@ -71,7 +71,7 @@ public class ShooterCalculator extends RobotComponentBase {
 			}
 		}
 			
-		if(ReferenceData.getInstance().getPressureSensorData().getIsPressurized() && ReferenceData.getInstance().getUserInputData().getExtendShooterAngle() && !ReferenceData.getInstance().getCollectorData().getSolenoidData().getCurrentSolenoidState()) {
+		if(ReferenceData.getInstance().getUserInputData().getExtendShooterAngle() && ReferenceData.getInstance().getCollectorData().getSolenoidData().getCurrentSolenoidState() == CollectorRef.RETRACT) {
 			ReferenceData.getInstance().getShooterData().setDesiredShooterAngleSolenoidState(ShooterRef.EXTEND);
 		}
 		else {
@@ -80,7 +80,7 @@ public class ShooterCalculator extends RobotComponentBase {
 			}
 		}
 		
-		if(ReferenceData.getInstance().getPressureSensorData().getIsPressurized() && ReferenceData.getInstance().getUserInputData().getRetractShooterAngle() && !ReferenceData.getInstance().getCollectorData().getSolenoidData().getCurrentSolenoidState()) {
+		if(ReferenceData.getInstance().getUserInputData().getRetractShooterAngle() && ReferenceData.getInstance().getCollectorData().getSolenoidData().getCurrentSolenoidState() == CollectorRef.RETRACT) {
 			ReferenceData.getInstance().getShooterData().setDesiredShooterAngleSolenoidState(ShooterRef.RETRACT);
 			hasRetracted = true;
 		}
@@ -90,7 +90,7 @@ public class ShooterCalculator extends RobotComponentBase {
 			}
 		}
 		
-		if(ReferenceData.getInstance().getPressureSensorData().getIsPressurized() && ReferenceData.getInstance().getUserInputData().getShooterPulse() && ReferenceData.getInstance().getCollectorData().getSolenoidData().getCurrentSolenoidState() == CollectorRef.EXTEND)  {
+		if(ReferenceData.getInstance().getUserInputData().getShooterPulse() && ReferenceData.getInstance().getCollectorData().getSolenoidData().getCurrentSolenoidState() == CollectorRef.EXTEND)  {
 			ReferenceData.getInstance().getShooterData().setStartTime(getFPGATime());
 			ReferenceData.getInstance().getShooterData().setIsShooting(true);
 		}
