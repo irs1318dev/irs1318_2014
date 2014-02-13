@@ -111,14 +111,14 @@ public abstract class AutonomousCommand implements AutoTask
 	
 	public void lowerLauncher()
 	{//Lowers shooter into a position from which we can launch it again.
-		ReferenceData.getInstance().getUserInputData().setExtendAllShooterSolenoids(ShooterRef.RETRACT);
+//		ReferenceData.getInstance().getUserInputData().setExtendAllShooterSolenoids(ShooterRef.RETRACT);
 		advanceState();
 		//TODO: Rev's note: this is being used instead of setting 3 other buttons individually. As a result, we need to make sure that this method stays updated.
 	}
 	
 	public void extendLauncher()
 	{//Launches the ball, hopefully you lowered it before.
-		ReferenceData.getInstance().getUserInputData().setExtendAllShooterSolenoids(ShooterRef.EXTEND);
+//		ReferenceData.getInstance().getUserInputData().setExtendAllShooterSolenoids(ShooterRef.EXTEND);
 		advanceState();
 		//TODO: Rev's note: this is being used instead of setting 3 other buttons individually. As a result, we need to make sure that this method stays updated.
 	}

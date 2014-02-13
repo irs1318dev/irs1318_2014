@@ -30,7 +30,7 @@ public class ShooterCalculator2 extends RobotComponentBase {
 		boolean extendShooterAngle = ReferenceData.getInstance().getUserInputData2().getExtendShooterAngle();
 		boolean retractShooterAngle = ReferenceData.getInstance().getUserInputData2().getRetractShooterAngle();
 		boolean shooterPulse = ReferenceData.getInstance().getUserInputData2().getShooterPulse();
-		boolean isShooting = ReferenceData.getInstance().getShooterData().getIsShooting();
+		boolean isShooting = ReferenceData.getInstance().getShooterData2().getIsShooting();
 		
 //		System.out.println("extendAllShooters: " + extendAllShooters + "\n collectorExtended: " + collectorExtended + "\n retractShooter: " + retractShooter + 
 //							"\n extendInnerSolenoids: " + extendInnerSolenoids + "\n extendInnerThreeSolenoids: " + extendInnerThreeSolenoids + 
@@ -38,9 +38,9 @@ public class ShooterCalculator2 extends RobotComponentBase {
 //							"\n retractShooterAngle: " + retractShooterAngle + "\n shooterPulse: " + shooterPulse + "\n isShooting: " + isShooting);
 		
 		if(extendAllShooters && collectorExtended) {
-			ReferenceData.getInstance().getShooterData().setDesiredMiddleSolenoidState(ShooterRef2.EXTEND);
-			ReferenceData.getInstance().getShooterData().setDesiredInnerSolenoidsState(ShooterRef2.EXTEND);
-			ReferenceData.getInstance().getShooterData().setDesiredOuterSolenoidsState(ShooterRef2.EXTEND);
+			ReferenceData.getInstance().getShooterData2().setDesiredMiddleSolenoidState(ShooterRef2.EXTEND);
+			ReferenceData.getInstance().getShooterData2().setDesiredInnerSolenoidsState(ShooterRef2.EXTEND);
+			ReferenceData.getInstance().getShooterData2().setDesiredOuterSolenoidsState(ShooterRef2.EXTEND);
 //			System.out.println("extendAllShooters called");
 		} else {
 			if (ReferenceData.getInstance().getUserInputData2().getExtendAllShooterSolenoids()) {
@@ -49,16 +49,16 @@ public class ShooterCalculator2 extends RobotComponentBase {
 		}
 		
 		if(retractShooter && collectorExtended) {
-			ReferenceData.getInstance().getShooterData().setDesiredMiddleSolenoidState(ShooterRef2.RETRACT);
-			ReferenceData.getInstance().getShooterData().setDesiredInnerSolenoidsState(ShooterRef2.RETRACT);
-			ReferenceData.getInstance().getShooterData().setDesiredOuterSolenoidsState(ShooterRef2.RETRACT);
+			ReferenceData.getInstance().getShooterData2().setDesiredMiddleSolenoidState(ShooterRef2.RETRACT);
+			ReferenceData.getInstance().getShooterData2().setDesiredInnerSolenoidsState(ShooterRef2.RETRACT);
+			ReferenceData.getInstance().getShooterData2().setDesiredOuterSolenoidsState(ShooterRef2.RETRACT);
 			System.out.println("in retractShooter");
 		}
 			
 		if(extendInnerSolenoids && collectorExtended) {
-			ReferenceData.getInstance().getShooterData().setDesiredMiddleSolenoidState(ShooterRef2.RETRACT);
-			ReferenceData.getInstance().getShooterData().setDesiredInnerSolenoidsState(ShooterRef2.EXTEND);
-			ReferenceData.getInstance().getShooterData().setDesiredOuterSolenoidsState(ShooterRef2.RETRACT);
+			ReferenceData.getInstance().getShooterData2().setDesiredMiddleSolenoidState(ShooterRef2.RETRACT);
+			ReferenceData.getInstance().getShooterData2().setDesiredInnerSolenoidsState(ShooterRef2.EXTEND);
+			ReferenceData.getInstance().getShooterData2().setDesiredOuterSolenoidsState(ShooterRef2.RETRACT);
 //			System.out.println("in extendInnerSolenoids");
 		} else {
 			if (ReferenceData.getInstance().getUserInputData2().getExtendInnerShooterSolenoids()) {
@@ -67,9 +67,9 @@ public class ShooterCalculator2 extends RobotComponentBase {
 		}
 		
 		if(extendInnerThreeSolenoids && collectorExtended) {
-			ReferenceData.getInstance().getShooterData().setDesiredMiddleSolenoidState(ShooterRef2.EXTEND);
-			ReferenceData.getInstance().getShooterData().setDesiredInnerSolenoidsState(ShooterRef2.EXTEND);
-			ReferenceData.getInstance().getShooterData().setDesiredOuterSolenoidsState(ShooterRef2.RETRACT); 
+			ReferenceData.getInstance().getShooterData2().setDesiredMiddleSolenoidState(ShooterRef2.EXTEND);
+			ReferenceData.getInstance().getShooterData2().setDesiredInnerSolenoidsState(ShooterRef2.EXTEND);
+			ReferenceData.getInstance().getShooterData2().setDesiredOuterSolenoidsState(ShooterRef2.RETRACT); 
 //			System.out.println("in extendInnerThreeSolenoids");
 		} else {
 			if (ReferenceData.getInstance().getUserInputData2().getExtendInnerShooterSolenoids()) {
@@ -78,9 +78,9 @@ public class ShooterCalculator2 extends RobotComponentBase {
 		}
 		
 		if( extendMiddleSolenoid && collectorExtended) {
-			ReferenceData.getInstance().getShooterData().setDesiredMiddleSolenoidState(ShooterRef2.EXTEND);
-			ReferenceData.getInstance().getShooterData().setDesiredInnerSolenoidsState(ShooterRef2.RETRACT);
-			ReferenceData.getInstance().getShooterData().setDesiredOuterSolenoidsState(ShooterRef2.RETRACT); 
+			ReferenceData.getInstance().getShooterData2().setDesiredMiddleSolenoidState(ShooterRef2.EXTEND);
+			ReferenceData.getInstance().getShooterData2().setDesiredInnerSolenoidsState(ShooterRef2.RETRACT);
+			ReferenceData.getInstance().getShooterData2().setDesiredOuterSolenoidsState(ShooterRef2.RETRACT); 
 //			System.out.println("in extendMiddleSolenoid");
 		} else {
 			if (ReferenceData.getInstance().getUserInputData2().getExtendInnerShooterSolenoids()) {
@@ -89,7 +89,7 @@ public class ShooterCalculator2 extends RobotComponentBase {
 		}
 			
 		if( extendShooterAngle && collectorExtended) {
-			ReferenceData.getInstance().getShooterData().setDesiredShooterAngleSolenoidState(ShooterRef2.EXTEND);
+			ReferenceData.getInstance().getShooterData2().setDesiredShooterAngleSolenoidState(ShooterRef2.EXTEND);
 //			System.out.println("in extendShooterAngle");
 		} else {
 			if (ReferenceData.getInstance().getUserInputData2().getExtendInnerShooterSolenoids()) {
@@ -98,7 +98,7 @@ public class ShooterCalculator2 extends RobotComponentBase {
 		}
 		
 		if( retractShooterAngle && collectorExtended) {
-			ReferenceData.getInstance().getShooterData().setDesiredShooterAngleSolenoidState(ShooterRef2.RETRACT);
+			ReferenceData.getInstance().getShooterData2().setDesiredShooterAngleSolenoidState(ShooterRef2.RETRACT);
 			hasRetracted = true;
 //			System.out.println("in retractShooterAngle");
 		} else {
@@ -108,13 +108,13 @@ public class ShooterCalculator2 extends RobotComponentBase {
 		}
 		
 		if(shooterPulse && collectorExtended)  {
-			ReferenceData.getInstance().getShooterData().setStartTime(getFPGATime());
-			ReferenceData.getInstance().getShooterData().setIsShooting(true);
+			ReferenceData.getInstance().getShooterData2().setStartTime(getFPGATime());
+			ReferenceData.getInstance().getShooterData2().setIsShooting(true);
 //			System.out.println("in shooterPulse");
 		}
 		
 		if(isShooting){
-			if(Utility.getFPGATime() < ReferenceData.getInstance().getShooterData().getStartTime() + ReferenceData.getInstance().getShooterData().getPulseTime()){
+			if(Utility.getFPGATime() < ReferenceData.getInstance().getShooterData2().getStartTime() + ReferenceData.getInstance().getShooterData2().getPulseTime()){
 				this.setDesiredMiddleSolenoidStateExtend();
 				this.setDesiredInnerSolenoidStateExtend();
 				this.setDesiredOuterSolenoidStateExtend();
@@ -122,7 +122,7 @@ public class ShooterCalculator2 extends RobotComponentBase {
 //				System.out.println("in isShooting");
 				
 			}else{
-				ReferenceData.getInstance().getShooterData().setIsShooting(false);
+				ReferenceData.getInstance().getShooterData2().setIsShooting(false);
 			}
 		} else {
 			this.setDesiredMiddleSolenoidStateRetract();
@@ -139,32 +139,32 @@ public class ShooterCalculator2 extends RobotComponentBase {
 	}
 	
 	public void setDesiredInnerSolenoidStateExtend() {
-		ReferenceData.getInstance().getShooterData().setDesiredInnerSolenoidsState(ShooterRef2.EXTEND);
+		ReferenceData.getInstance().getShooterData2().setDesiredInnerSolenoidsState(ShooterRef2.EXTEND);
 		hasExtended = true;
 	}
 	
 	public void setDesiredMiddleSolenoidStateExtend() {
-		ReferenceData.getInstance().getShooterData().setDesiredMiddleSolenoidState(ShooterRef2.EXTEND);
+		ReferenceData.getInstance().getShooterData2().setDesiredMiddleSolenoidState(ShooterRef2.EXTEND);
 		hasExtended = true;
 	}
 	
 	public void setDesiredOuterSolenoidStateExtend() {
-		ReferenceData.getInstance().getShooterData().setDesiredOuterSolenoidsState(ShooterRef2.EXTEND);
+		ReferenceData.getInstance().getShooterData2().setDesiredOuterSolenoidsState(ShooterRef2.EXTEND);
 		hasExtended = true;
 	}
 	
 	public void setDesiredInnerSolenoidStateRetract() {
-		ReferenceData.getInstance().getShooterData().setDesiredInnerSolenoidsState(ShooterRef2.RETRACT);
+		ReferenceData.getInstance().getShooterData2().setDesiredInnerSolenoidsState(ShooterRef2.RETRACT);
 		hasRetracted = true;
 	}
 	
 	public void setDesiredMiddleSolenoidStateRetract() {
-		ReferenceData.getInstance().getShooterData().setDesiredMiddleSolenoidState(ShooterRef2.RETRACT);
+		ReferenceData.getInstance().getShooterData2().setDesiredMiddleSolenoidState(ShooterRef2.RETRACT);
 		hasRetracted = true;
 	}
 	
 	public void setDesiredOuterSolenoidStateRetract() {
-		ReferenceData.getInstance().getShooterData().setDesiredOuterSolenoidsState(ShooterRef2.RETRACT);
+		ReferenceData.getInstance().getShooterData2().setDesiredOuterSolenoidsState(ShooterRef2.RETRACT);
 		hasRetracted = true;
 	}
 	

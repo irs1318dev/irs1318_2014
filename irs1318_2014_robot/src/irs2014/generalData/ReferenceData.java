@@ -8,6 +8,7 @@ import irs2014.lineSensor.LineSensorData;
 import irs2014.shooter.PressureSensorData;
 import irs2014.shooter.PressureSensorTimerData;
 import irs2014.shooter.ShooterData;
+import irs2014.shooter2.ShooterData2;
 import irs2014.userInputDevices.UserInputData;
 import irs2014.userInputDevices2.UserInputData2;
 
@@ -28,6 +29,7 @@ public class ReferenceData {
 	private LineSensorData lineSensorData; 
 	
 	private UserInputData2 userInputData2;
+	private ShooterData2 shooterData2;
 	
 	private ReferenceData(){
 	}
@@ -107,5 +109,12 @@ public class ReferenceData {
 			userInputData2 = new UserInputData2();
 		}
 		return userInputData2;
+	}
+	
+	public ShooterData2 getShooterData2(){
+		if(shooterData2 == null){
+			shooterData2 = new ShooterData2();
+		}
+		return shooterData2;
 	}
 }

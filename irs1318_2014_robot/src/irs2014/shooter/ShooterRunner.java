@@ -32,75 +32,31 @@ public class ShooterRunner extends RobotComponentBase {
 	
 	public void teleopPeriodic() {
 		
-		boolean desiredMiddleSolenoidState = ReferenceData.getInstance().getShooterData().getDesiredMiddleSolenoidState();
-		boolean currentMiddleSolenoidState = ReferenceData.getInstance().getShooterData().getCurrentMiddleSolenoidState();
-		boolean middleSolenoidEtended = (ReferenceData.getInstance().getShooterData().getDesiredMiddleSolenoidState() == ShooterRef.EXTEND);
-		
-//		System.out.println("desiredMiddleSolenoidState: " + desiredMiddleSolenoidState + 
-//							"\n currentMiddleSolenoidState: " + currentMiddleSolenoidState + 
-//							"\n middleSolenoidExtended: " + middleSolenoidEtended + 
-//							"\n desired compared to current for middle: " + (desiredMiddleSolenoidState != currentMiddleSolenoidState));
-		
-		if(desiredMiddleSolenoidState != currentMiddleSolenoidState) {
-			System.out.println("desire is not current for middle");
-			if(middleSolenoidEtended) {
-				getMiddleSolenoid().set(Value.kForward);
-//				System.out.println("middleSolenoid forward");
-			} else {
-				getMiddleSolenoid().set(Value.kReverse);
-				System.out.println("middleSolenoid reverse");
-			}
-			ReferenceData.getInstance().getShooterData().setCurrentMiddleSolenoidState(!currentMiddleSolenoidState);
+		if(ReferenceData.getInstance().getShooterData().getDesiredShooterState() == true &&
+				ReferenceData.getInstance().getShooterData().getCurrentShooterState() == false ){
+			setAllOuterSolenoids(Value.kForward);
+			middleSolenoid.set(Value.kForward);
+			ReferenceData.getInstance().getShooterData().setCurrentShooterState(true);
+		}else if(ReferenceData.getInstance().getShooterData().getDesiredShooterState() == false &&
+				ReferenceData.getInstance().getShooterData().getCurrentShooterState() == true ){
+			setAllOuterSolenoids(Value.kReverse);
+			middleSolenoid.set(Value.kReverse);
+			ReferenceData.getInstance().getShooterData().setCurrentShooterState(false);
 		}
 		
-		boolean desiredInnerSolenoidState = ReferenceData.getInstance().getShooterData().getDesiredInnerSolenoidsState();
-		boolean currentInnerSolenoidState = ReferenceData.getInstance().getShooterData().getCurrentInnerSolenoidsState();
-		boolean innerSolenoidExtended = (ReferenceData.getInstance().getShooterData().getDesiredInnerSolenoidsState() == ShooterRef.EXTEND);
-		
-		if(desiredInnerSolenoidState != currentInnerSolenoidState) {
-			if(innerSolenoidExtended){
-//				getInnerSolenoids().set(Value.kForward);
-				innerSolenoidL.set(Value.kForward);
-				innerSolenoidR.set(Value.kForward);
-			} else {
-//				getInnerSolenoids().set(Value.kReverse);
-				innerSolenoidL.set(Value.kReverse);
-				innerSolenoidR.set(Value.kReverse);
-			}
-			ReferenceData.getInstance().getShooterData().setCurrentInnerSolenoidsState(!currentInnerSolenoidState);
+		if(ReferenceData.getInstance().getShooterData().getDesiredShooterAngle() == true &&
+				ReferenceData.getInstance().getShooterData().getCurrentShooterAngle() == false ){
+			shooterAngleSolenoid.set(Value.kForward);
+			ReferenceData.getInstance().getShooterData().setCurrentShooterAngle(true);
+		}else if(ReferenceData.getInstance().getShooterData().getDesiredShooterAngle() == false &&
+				ReferenceData.getInstance().getShooterData().getCurrentShooterAngle() == true ){
+			shooterAngleSolenoid.set(Value.kReverse);
+			ReferenceData.getInstance().getShooterData().setCurrentShooterAngle(false);
 		}
 		
-		boolean desiredOuterSolenoidState = ReferenceData.getInstance().getShooterData().getDesiredOuterSolenoidsState();
-		boolean currentOuterSolenoidState = ReferenceData.getInstance().getShooterData().getCurrentOuterSolenoidsState();
-		boolean outerSolenoidExtended = (ReferenceData.getInstance().getShooterData().getDesiredOuterSolenoidsState() == ShooterRef.EXTEND);
-		
-		if(desiredOuterSolenoidState != currentOuterSolenoidState) {
-			if(outerSolenoidExtended){
-//				getOuterSolenoids().set(Value.kForward);
-				outerSolenoidL.set(Value.kForward);
-				outerSolenoidR.set(Value.kForward);
-			} else {
-//				getOuterSolenoids().set(Value.kReverse);
-				outerSolenoidL.set(Value.kReverse);
-				outerSolenoidR.set(Value.kReverse);
-			}
-			ReferenceData.getInstance().getShooterData().setCurrentOuterSolenoidsState(!currentOuterSolenoidState);
-		}
-		
-		boolean desiredShooterAngle = ReferenceData.getInstance().getShooterData().getDesiredShooterAngleSolenoidState();
-		boolean currentShooterAngle = ReferenceData.getInstance().getShooterData().getCurrentShooterAngleSolenoidState();
-		boolean shooterAngleExtended = (ReferenceData.getInstance().getShooterData().getDesiredShooterAngleSolenoidState() == ShooterRef.EXTEND);
-		
-		if(desiredShooterAngle != currentShooterAngle) {
-			if(shooterAngleExtended) {
-				getShooterAngleSolenoid().set(Value.kForward);
-			} else {
-				getShooterAngleSolenoid().set(Value.kReverse);
-			}
-			ReferenceData.getInstance().getShooterData().setCurrentShooterAngleSolenoidState(!currentShooterAngle);
-		}
 	}
-	
+
+
 	public DoubleSolenoid getNewMiddleSolenoid(){
 		if (ReferenceData.getInstance().getDipSwitchData().getDipSwitchState() == DipSwitchRef.COMPETITION_BOT){
 			return new DoubleSolenoid(PortRef.SOLENOID_MODULE_PORT_1, PortRef.COMPETITION_SHOOTER_ANGLE_SOLENOID_EXTENDER_PORT, PortRef.COMPETITION_SHOOTER_MIDDLE_SOLENOID_RETRACTOR_PORT);
@@ -169,5 +125,12 @@ public class ShooterRunner extends RobotComponentBase {
 //	
 	public DoubleSolenoid getShooterAngleSolenoid() {
 		return shooterAngleSolenoid;
+	}
+	
+	public void setAllOuterSolenoids(Value v){
+		innerSolenoidL.set(v);
+		innerSolenoidR.set(v);
+		outerSolenoidL.set(v);
+		outerSolenoidR.set(v);
 	}
 }
