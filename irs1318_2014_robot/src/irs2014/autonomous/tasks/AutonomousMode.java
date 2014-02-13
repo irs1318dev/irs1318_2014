@@ -9,7 +9,8 @@ public class AutonomousMode extends AutonomousCommand
 		switch(currentState)
 		{
 		case 0:
-			goForwardRel(200);
+			isDone = true;
+			//goForwardRel(200);
 			//putYourRightFootIn();
 			break;
 //		case 1:
@@ -27,15 +28,15 @@ public class AutonomousMode extends AutonomousCommand
 //		case 5:
 //			andYouTurnYourselfAbout();
 //			break;
-		case 6:
-			isDone = true;
-			break;
+//		case 6:
+//			isDone = true;
+//			break;
 		}
 	}
 
 	public void cancel() 
 	{
-		//Reset things here...
+		stopDriveTrain();
 	}
 
 }

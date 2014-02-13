@@ -4,7 +4,7 @@ import edu.wpi.first.wpilibj.Joystick;
 import irs2014.components.RobotComponentBase;
 import irs2014.generalData.PortRef;
 import irs2014.generalData.ReferenceData;
-import irs2014.generalOpperations.JoystickFilter;
+import irs2014.generalOperations.JoystickFilter;
 
 public class Joystick1Reader extends RobotComponentBase {
 	Joystick joystick;
@@ -53,6 +53,8 @@ public class Joystick1Reader extends RobotComponentBase {
 		ReferenceData.getInstance().getUserInputData().setRetractShooterAngle(getRetractBoth());
 //		ReferenceData.getInstance().getUserInputData().setRetractBoth(getRetractBoth());
 		ReferenceData.getInstance().getUserInputData().setShooterStep(getShooterStep());
+
+//		ReferenceData.getInstance().getUserInputData().setShooterPulse(getShooterPulse());
 		
 		ReferenceData.getInstance().getUserInputData().setGoForward(getGoForward());
 //		ReferenceData.getInstance().getUserInputData().setCollectBall(getCollectBall());
@@ -109,6 +111,38 @@ public class Joystick1Reader extends RobotComponentBase {
 	
 //	public boolean getExtendAllPistons() {
 //		return joystick.getRawButton(ButtonRef.EXTEND_ALL_SHOOTER_SOLENOIDS);
+//	}
+	
+//	public boolean getExtendAllShooterSolenoids() {
+//		return joystick.getRawButton(ButtonRef.EXTEND_ALL_SHOOTER_SOLENOIDS);
+//	}
+//	
+//	public boolean getExtendInnerShooterSolenoids() {
+//		return joystick.getRawButton(ButtonRef.EXTEND_INNER_SHOOTER_SOLENOIDS);
+//	}
+//	
+//	public boolean getExtendInnerThreeShooterSolenoids() {
+//		return joystick.getRawButton(ButtonRef.EXTEND_INNER_THREE_SHOOTER_SOLENOIDS);
+//	}
+//	
+//	public boolean getExtendMiddleShooterSolenoid() {
+//		return joystick.getRawButton(ButtonRef.EXTEND_MIDDLE_SHOOTER_SOLENOID);
+//	}
+//	
+//	public boolean getShooterPulse() {
+//		return joystick.getRawButton(ButtonRef.SHOOTER_PULSE);
+//	}
+//	
+//	public boolean getRetractShooter() {
+//		return joystick.getRawButton(ButtonRef.RETRACT_SHOOTER);
+//	}
+//	
+//	public boolean getExtendShooterAngle() {
+//		return joystick.getRawButton(ButtonRef.EXTEND_SHOOTER_ANGLE);
+//	}
+//	
+//	public boolean getRetractShooterAngle() {
+//		return joystick.getRawButton(ButtonRef.RETRACT_SHOOTER_ANGLE);
 //	}
 
 	public double applyLinearDeadBand(double x, double band) {

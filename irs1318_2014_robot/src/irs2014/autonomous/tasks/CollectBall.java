@@ -1,6 +1,7 @@
 package irs2014.autonomous.tasks;
 
 import irs2014.autonomous.AutonomousCommand;
+import irs2014.generalData.ReferenceData;
 
 public class CollectBall extends AutonomousCommand{
 
@@ -27,10 +28,11 @@ public class CollectBall extends AutonomousCommand{
 		}
 	}
 
-	public void cancel() {
+	public void cancel() 
+	{
 		stopCollectorMotor();
 	}
 	
-	private static final int COLLECT_WAIT_TIME = -1; //TODO
+	private static final int COLLECT_WAIT_TIME = 3000; //TODO make sure this is a reasonable value. Currently set for 3 seconds.
 	
 }

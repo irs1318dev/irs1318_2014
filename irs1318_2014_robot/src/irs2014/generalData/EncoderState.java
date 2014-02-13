@@ -14,7 +14,10 @@ public class EncoderState
 	public static final boolean POSITION_PID = true;
 	
 	private Hashtable distanceFromReferencePoints = null; 
-	private double launchTick; // this is the calculated destination tick we need to get to.
+
+	private double launchTickRight; 
+	private double launchTickLeft;
+
 	private boolean PIDType = VELOCITY_PID;
 	
 	/*This is like a list, but instead of making the index 1, 
@@ -49,12 +52,20 @@ public class EncoderState
 		return value;
 	}
 	
-	public double getLaunchTick() {
-		return launchTick;
+	public double getLaunchTickRight() {
+		return launchTickRight;
 	}
 
-	public void setLaunchTick(double launchTick) {
-		this.launchTick = launchTick;
+	public void setLaunchTickRight(double launchTickRight) {
+		this.launchTickRight = launchTickRight;
+	}
+	
+	public double getLaunchTickLeft() {
+		return launchTickLeft;
+	}
+
+	public void setLaunchTickLeft(double launchTickLeft) {
+		this.launchTickLeft = launchTickLeft;
 	}
 	
 	public void setPIDType(boolean PIDType)

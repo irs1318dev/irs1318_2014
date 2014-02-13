@@ -4,6 +4,7 @@ import edu.wpi.first.wpilibj.SensorBase;
 
 
 public interface PortRef {
+
 	int DIP_SWITCH = 1;
 	
 	int JOYSTICK_1 = 1;
@@ -59,6 +60,8 @@ public interface PortRef {
 	int COMPETITION_COMPRESSOR_RELAY_SLOT = 0; //TODO
 	int COMPETITION_COMPRESSOR_RELAY_CHANNEL = 0; //TODO
 	
+	int COMPETITION_LINE_SENSOR_PORT = -1; //TODO
+	
 	int PRACTICE_TALON_R = 2;
 	int PRACTICE_TALON_L = 1;
 
@@ -99,4 +102,6 @@ public interface PortRef {
 	int PRACTICE_PRESSURE_SWITCH_SLOT = 6; //TODO
 	int PRACTICE_COMPRESSOR_RELAY_SLOT = 0; //TODO
 	int PRACTICE_COMPRESSOR_RELAY_CHANNEL = 1; //TODO
+	
+	int PRACTICE_LINE_SENSOR_PORT = -1; //TODO
 }

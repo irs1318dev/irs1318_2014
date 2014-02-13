@@ -3,8 +3,8 @@ package irs2014.driveTrainTank;
 import irs2014.components.RobotComponentBase;
 import irs2014.generalData.EncoderState;
 import irs2014.generalData.ReferenceData;
-import irs2014.generalOpperations.JoystickFilter;
-import irs2014.generalOpperations.PID;
+import irs2014.generalOperations.JoystickFilter;
+import irs2014.generalOperations.PID;
 
 public class DriveTrainPIDCalculator extends RobotComponentBase{
 	

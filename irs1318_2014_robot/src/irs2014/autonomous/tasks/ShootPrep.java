@@ -2,25 +2,27 @@ package irs2014.autonomous.tasks;
 
 import irs2014.autonomous.AutonomousCommand;
 
-public class CatchPrep extends AutonomousCommand
+public class ShootPrep extends AutonomousCommand
 {
 	public void run() 
-	{	
+	{
 		switch(currentState)
 		{
-		case 0:
-			extendShooterFrame();
-			break;
 		case 1:
-			extendCollector();
+			collectorMotorIn();
 			break;
 		case 2:
-			lowerLauncher();
-			break;
+			extendShooterFrame();
 		case 3:
+			extendCollector();
+			break;
+		case 4:
+			pause(150);
+			break;
+		case 5:
 			stopCollectorMotor();
 			break;
-		case 4: 
+		case 6:
 			isDone = true;
 			break;
 		}
@@ -28,7 +30,6 @@ public class CatchPrep extends AutonomousCommand
 
 	public void cancel() 
 	{
-		//Nothing required.
+		stopCollectorMotor();
 	}
-
 }

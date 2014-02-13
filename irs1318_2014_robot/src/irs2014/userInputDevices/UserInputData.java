@@ -22,6 +22,7 @@ public class UserInputData {
 	private boolean extendBoth;
 	private boolean retractBoth;
 	private boolean shooterStep;
+	private boolean shooterPulse;
 	//macros
 	private boolean goForward;
 	private boolean collectBall;
@@ -133,6 +134,12 @@ public class UserInputData {
 	}
 	public void setRetractShooterAngle(boolean value) {
 		retractShooterAngle = value; 
+	}
+	public boolean getShooterPulse() {
+		return shooterPulse;
+	}
+	public void setShooterPulse(boolean value) {
+		shooterPulse = value; 
 	}
 	
 	public int getUserInputType() {

@@ -26,6 +26,7 @@ public class ShooterRunner extends RobotComponentBase {
 		shooterAngleSolenoid = getNewShooterAngleSolenoid();
 		
 		System.out.println("DoubleSolenoids robotInit()");
+		 
 		
 	}
 	

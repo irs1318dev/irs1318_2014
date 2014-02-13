@@ -2,26 +2,20 @@ package irs2014.autonomous.tasks;
 
 import irs2014.autonomous.AutonomousCommand;
 
-public class CatchPrep extends AutonomousCommand
+public class LaunchBall extends AutonomousCommand
 {
 	public void run() 
-	{	
+	{
 		switch(currentState)
 		{
-		case 0:
-			extendShooterFrame();
-			break;
 		case 1:
-			extendCollector();
+			extendLauncher();
 			break;
 		case 2:
-			lowerLauncher();
+			pause(1000);
 			break;
 		case 3:
-			stopCollectorMotor();
-			break;
-		case 4: 
-			isDone = true;
+			lowerLauncher();
 			break;
 		}
 	}
@@ -29,6 +23,7 @@ public class CatchPrep extends AutonomousCommand
 	public void cancel() 
 	{
 		//Nothing required.
+		lowerLauncher();
 	}
-
+	
 }

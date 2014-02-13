@@ -20,6 +20,7 @@ public interface ButtonRef {
 	int EXTEND_BOTH = 11;	//Collector and Shooter Angle
 	int RETRACT_BOTH = 9;	//Collector and Shooter Angle 
 	int STEP_SHOOTER = 5;
+
 	int GO_FORWARD = 3;
 	int TRIGGER = 1;
 	

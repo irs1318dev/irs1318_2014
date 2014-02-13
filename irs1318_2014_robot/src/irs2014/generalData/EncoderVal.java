@@ -14,20 +14,22 @@ public class EncoderVal
 		this.startRight = startRight;
 	}
 	
-	/**
-	 * returns ticks traveled from the start of the reference.
-	 */
-	public double getTicksTraveled()
+	public double getStartLeft()
 	{
-		calculateCenterOfTicks();
-		return distaneTraveled;
+		return startLeft;
 	}
 	
+	public double getStartRight()
+	{
+		return startRight;
+	}
+	
+	/*
 	private void calculateCenterOfTicks()
 	{
 		double difLeft = startLeft - ReferenceData.getInstance().getDriveTrainData().getLeftEncoderData().getTicks();
 		double difRight = startRight - ReferenceData.getInstance().getDriveTrainData().getRightEncoderData().getTicks();
 		distaneTraveled = (difLeft + difRight) / 2.0;
 	}
-
+	*/
 }

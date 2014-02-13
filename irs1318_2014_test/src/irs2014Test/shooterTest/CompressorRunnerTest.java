@@ -9,7 +9,7 @@ import edu.wpi.first.wpilibj.Compressor;
 import static org.mockito.Mockito.*;
 
 
-public class StartCompressorTest extends Throwable{
+public class CompressorRunnerTest extends Throwable{
 	CompressorRunner runner;
 	CompressorRunner runnerSpy;
 	
@@ -21,7 +21,7 @@ public class StartCompressorTest extends Throwable{
 		mockCompressor = mock(Compressor.class);
 		runnerSpy = spy(runner);
 		
-		doReturn(mockCompressor).when(runnerSpy).getCompressor(); 
+		doReturn(mockCompressor).when(runnerSpy).getNewCompressor(); 
 		 
 	}
 	
