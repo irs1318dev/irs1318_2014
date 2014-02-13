@@ -21,23 +21,23 @@ public class UserInputCalculator extends RobotComponentBase{
 	
 	public void teleopPeriodic(){
 		if(IRSTable.getBoolean(SmartDashRef.EXTEND_SHOOTER)){
-//			ReferenceData.getInstance().getUserInputData().setExtendShooterAngle(true);
+			ReferenceData.getInstance().getUserInputData().setExtendShooterAngle(true);
 			IRSTable.putBoolean(SmartDashRef.EXTEND_SHOOTER, false);
 		}
 		if(IRSTable.getBoolean(SmartDashRef.RETRACT_SHOOTER)){
-//			ReferenceData.getInstance().getUserInputData().setRetractShooterAngle(true);
+			ReferenceData.getInstance().getUserInputData().setRetractShooterAngle(true);
 			IRSTable.putBoolean(SmartDashRef.RETRACT_SHOOTER, false);
 		}
 		if(IRSTable.getBoolean(SmartDashRef.FIVE_PISTON_SHOT)){
-//			ReferenceData.getInstance().getUserInputData().setExtendAllShooterSolenoids(true);
+			ReferenceData.getInstance().getUserInputData().setExtendAllShooterSolenoids(true);
 			IRSTable.putBoolean(SmartDashRef.FIVE_PISTON_SHOT, false);
 		}
 		if(IRSTable.getBoolean(SmartDashRef.THREE_PISTON_SHOT)){
-//			ReferenceData.getInstance().getUserInputData().setExtendInnerThreeShooterSolenoids(true);
+			ReferenceData.getInstance().getUserInputData().setExtendInnerThreeShooterSolenoids(true);
 			IRSTable.putBoolean(SmartDashRef.THREE_PISTON_SHOT, false);
 		}
 		if(IRSTable.getBoolean(SmartDashRef.ONE_PISTON_SHOT)){
-//			ReferenceData.getInstance().getUserInputData().setExtendInnerShooterSolenoids(true);
+			ReferenceData.getInstance().getUserInputData().setExtendInnerShooterSolenoids(true);
 			IRSTable.putBoolean(SmartDashRef.ONE_PISTON_SHOT, false);
 		}
 		if(IRSTable.getBoolean(SmartDashRef.SET_ONE_SHOT)){
@@ -53,44 +53,44 @@ public class UserInputCalculator extends RobotComponentBase{
 			IRSTable.putBoolean(SmartDashRef.SET_FIVE_SHOT, false);
 		}
 		
-//		if(ReferenceData.getInstance().getUserInputData().getTrigger()){
+		if(ReferenceData.getInstance().getUserInputData().getTrigger()){
 			int temp = ReferenceData.getInstance().getUserInputData().getTriggerSet();
 			switch(temp){
 			case 1:
-//				ReferenceData.getInstance().getUserInputData().setExtendInnerShooterSolenoids(true);
+				ReferenceData.getInstance().getUserInputData().setExtendInnerShooterSolenoids(true);
 				break;
 			case 3:
-//				ReferenceData.getInstance().getUserInputData().setExtendMiddleShooterSolenoid(true);
+				ReferenceData.getInstance().getUserInputData().setExtendMiddleShooterSolenoid(true);
 				break;
 			case 5:
-//				ReferenceData.getInstance().getUserInputData().setExtendAllShooterSolenoids(true);
+				ReferenceData.getInstance().getUserInputData().setExtendAllShooterSolenoids(true);
 				break;
 			}
-//		}
+		}
 		
 		if(ReferenceData.getInstance().getUserInputData().getExtendBoth()){
-//			ReferenceData.getInstance().getUserInputData().setExtendShooterAngle(true);
+			ReferenceData.getInstance().getUserInputData().setExtendShooterAngle(true);
 			ReferenceData.getInstance().getUserInputData().setExtendCollector(true);
 		}
 		if(ReferenceData.getInstance().getUserInputData().getRetractBoth()){
-//			ReferenceData.getInstance().getUserInputData().setRetractShooterAngle(true);
+			ReferenceData.getInstance().getUserInputData().setRetractShooterAngle(true);
 			ReferenceData.getInstance().getUserInputData().setRetractCollector(true);
 		}
 		
-//		if(ReferenceData.getInstance().getUserInputData().getShooterStep()){
-//			int temp = ReferenceData.getInstance().getUserInputData().getTriggerSet();
-//			switch(temp){
-//			case 1:
-//				ReferenceData.getInstance().getUserInputData().setTriggerSet(3);
-//				break;
-//			case 3:
-//				ReferenceData.getInstance().getUserInputData().setTriggerSet(5);
-//				break;
-//			case 5:
-//				ReferenceData.getInstance().getUserInputData().setTriggerSet(1);
-//				break;
-//			}
-//		}
+		if(ReferenceData.getInstance().getUserInputData().getShooterStep()){
+			int temp = ReferenceData.getInstance().getUserInputData().getTriggerSet();
+			switch(temp){
+			case 1:
+				ReferenceData.getInstance().getUserInputData().setTriggerSet(3);
+				break;
+			case 3:
+				ReferenceData.getInstance().getUserInputData().setTriggerSet(5);
+				break;
+			case 5:
+				ReferenceData.getInstance().getUserInputData().setTriggerSet(1);
+				break;
+			}
+		}
 	}
 
 }

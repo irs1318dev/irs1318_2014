@@ -23,7 +23,19 @@ public class Joystick1Reader extends RobotComponentBase {
 	public void teleopPeriodic() {
 		joystickX = JoystickFilter.applyLinearDeadBand(joystick.getX(), 0.1);
 		joystickY = -JoystickFilter.applyLinearDeadBand(joystick.getY(), 0.1);
-
+//		System.out.println("joystickX: " + joystickX);
+//		System.out.println("joystickY: " + joystickY);
+		
+		//Theoretical Throttle
+		
+		//TODO X and Y were switched on hardware, switched in software
+//		ReferenceData.getInstance().getUserInputData().setJoystickY(-joystickX);
+//		ReferenceData.getInstance().getUserInputData().setJoystickX(-joystickY);
+		
+//		System.out.println("joystick Y: " + joystickY);
+//		System.out.println("joystick X: " + joystickX);
+		
+		//TODO X and Y were switched on hardware, switched in software
 		ReferenceData.getInstance().getUserInputData().setJoystickY(joystickX);
 		ReferenceData.getInstance().getUserInputData().setJoystickX(joystickY);
 		
@@ -31,34 +43,34 @@ public class Joystick1Reader extends RobotComponentBase {
 		ReferenceData.getInstance().getUserInputData().setRetractCollector(getRetractCollector());
 		ReferenceData.getInstance().getUserInputData().setCollectorMotorIn(getCollectorMotorIn());
 		ReferenceData.getInstance().getUserInputData().setCollectorMotorOut(getCollectorMotorOut());
-//		ReferenceData.getInstance().getUserInputData().setStopCollectorMotor(getStopCollectorMotor());
-		ReferenceData.getInstance().getUserInputData().setRetractShooterAngle(getRetractShooterAngle());
-		ReferenceData.getInstance().getUserInputData().setExtendShooterAngle(getExtendShooterAngle());
-		
-		ReferenceData.getInstance().getUserInputData().setShoot5Pistons(getShoot5Pistons());
-		ReferenceData.getInstance().getUserInputData().setRetract5Pistons(getRetract5Pistons());
+		ReferenceData.getInstance().getUserInputData().setStopCollectorMotor(getStopCollectorMotor());
+//		ReferenceData.getInstance().getUserInputData().setExtendAllShooterSolenoids(getExtendAllPistons());
+		ReferenceData.getInstance().getUserInputData().setExtendAllShooterSolenoids(getTrigger());
+		ReferenceData.getInstance().getUserInputData().setRetractShooter(joystick.getRawButton(2));
+//		ReferenceData.getInstance().getUserInputData().setTrigger(getTrigger());
+//		ReferenceData.getInstance().getUserInputData().setExtendBoth(getExtendBoth());
+		ReferenceData.getInstance().getUserInputData().setExtendShooterAngle(getExtendBoth());
+		ReferenceData.getInstance().getUserInputData().setRetractShooterAngle(getRetractBoth());
+//		ReferenceData.getInstance().getUserInputData().setRetractBoth(getRetractBoth());
+		ReferenceData.getInstance().getUserInputData().setShooterStep(getShooterStep());
+
+//		ReferenceData.getInstance().getUserInputData().setShooterPulse(getShooterPulse());
 		
 		ReferenceData.getInstance().getUserInputData().setGoForward(getGoForward());
-	}
-	
-	private boolean getShoot5Pistons(){
-		return joystick.getRawButton(ButtonRef.SHOOT_5_PISTONS);
-	}
-	
-	private boolean getRetract5Pistons(){
-		return joystick.getRawButton(ButtonRef.RETRACT_5_PISTONS);
+//		ReferenceData.getInstance().getUserInputData().setCollectBall(getCollectBall());
+//		ReferenceData.getInstance().getUserInputData().setEjectBall(getEjectBall());
 	}
 	
 	private boolean getShooterStep() {
 		return joystick.getRawButton(ButtonRef.STEP_SHOOTER);
 	}
-	
-	private boolean getExtendShooterAngle(){
-		return joystick.getRawButton(ButtonRef.RETRACT_SHOOTER_ANGLE);
+
+	private boolean getRetractBoth() {
+		return joystick.getRawButton(ButtonRef.RETRACT_BOTH);
 	}
-	
-	private boolean getRetractShooterAngle(){
-		return joystick.getRawButton(ButtonRef.RETRACT_SHOOTER_ANGLE);
+
+	private boolean getExtendBoth() {
+		return joystick.getRawButton(ButtonRef.EXTEND_BOTH);
 	}
 
 	private boolean getTrigger() {
@@ -85,8 +97,52 @@ public class Joystick1Reader extends RobotComponentBase {
 		return joystick.getRawButton(ButtonRef.COLLECTOR_MOTOR_OUT);
 	}
 	
-//	public boolean getStopCollectorMotor(){
-//		return joystick.getRawButton(ButtonRef.STOP_COLLECTOR_MOTOR);
+	public boolean getStopCollectorMotor(){
+		return joystick.getRawButton(ButtonRef.STOP_COLLECTOR_MOTOR);
+	}
+	
+//	public boolean getCollectBall(){
+//		return joystick.getRawButton(ButtonRef.COLLECT_BALL);
+//	}
+	
+//	public boolean getEjectBall(){
+//		return joystick.getRawButton(ButtonRef.EJECT_BALL);
+//	}
+	
+//	public boolean getExtendAllPistons() {
+//		return joystick.getRawButton(ButtonRef.EXTEND_ALL_SHOOTER_SOLENOIDS);
+//	}
+	
+//	public boolean getExtendAllShooterSolenoids() {
+//		return joystick.getRawButton(ButtonRef.EXTEND_ALL_SHOOTER_SOLENOIDS);
+//	}
+//	
+//	public boolean getExtendInnerShooterSolenoids() {
+//		return joystick.getRawButton(ButtonRef.EXTEND_INNER_SHOOTER_SOLENOIDS);
+//	}
+//	
+//	public boolean getExtendInnerThreeShooterSolenoids() {
+//		return joystick.getRawButton(ButtonRef.EXTEND_INNER_THREE_SHOOTER_SOLENOIDS);
+//	}
+//	
+//	public boolean getExtendMiddleShooterSolenoid() {
+//		return joystick.getRawButton(ButtonRef.EXTEND_MIDDLE_SHOOTER_SOLENOID);
+//	}
+//	
+//	public boolean getShooterPulse() {
+//		return joystick.getRawButton(ButtonRef.SHOOTER_PULSE);
+//	}
+//	
+//	public boolean getRetractShooter() {
+//		return joystick.getRawButton(ButtonRef.RETRACT_SHOOTER);
+//	}
+//	
+//	public boolean getExtendShooterAngle() {
+//		return joystick.getRawButton(ButtonRef.EXTEND_SHOOTER_ANGLE);
+//	}
+//	
+//	public boolean getRetractShooterAngle() {
+//		return joystick.getRawButton(ButtonRef.RETRACT_SHOOTER_ANGLE);
 //	}
 
 	public double applyLinearDeadBand(double x, double band) {
