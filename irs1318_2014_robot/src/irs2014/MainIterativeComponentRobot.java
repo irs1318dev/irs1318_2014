@@ -86,15 +86,15 @@ public class MainIterativeComponentRobot extends IterativeComponentRobot {
 //		b.add(new CollectorLimitSwitchReader()); //CollectorLimitSwitchReaderTest
 //		b.add(new AutoTaskRunner()); //NONE - Matthew
 		b.add(new CollectorCalculator()); //CollectorCalculatorTest
-//		b.add(new ShooterCalculator()); //NONE - Megan
+		b.add(new ShooterCalculator()); //NONE - Megan
 		b.add(new DriveTrain1JoystickCalculator()); //NONE
 		b.add(new DriveTrainPIDCalculator()); //NONE
 		b.add(new NetworkTableRunner()); //NONE - Caroline
 		b.add(new DriveTrainRunner()); //DriveTrainRunnerTest
 		b.add(new CollectorMotorRunner()); //CollectorMotorRunnerTest
 		b.add(new CollectorSolenoidRunner()); //CollectorSolenoidRunnerTest
-//		b.add(new ShooterRunner()); //ShooterRunnerTest
-		b.add(new ShooterTest());
+		b.add(new ShooterRunner()); //ShooterRunnerTest
+//		b.add(new ShooterTest());
 
 		return b;
 	}
