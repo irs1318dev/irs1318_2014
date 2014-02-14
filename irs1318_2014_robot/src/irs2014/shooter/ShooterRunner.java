@@ -39,8 +39,6 @@ public class ShooterRunner extends RobotComponentBase {
 			setAllOuterSolenoids(Value.kForward);
 			middleSolenoid.set(Value.kForward);
 			ReferenceData.getInstance().getShooterData().setCurrentShooterState(true);
-			ReferenceData.getInstance().getShooterData().setInShot(true);
-			ReferenceData.getInstance().getShooterData().setTimeLastShot(Utility.getFPGATime());
 		}else if(ReferenceData.getInstance().getShooterData().getDesiredShooterState() == false &&
 				ReferenceData.getInstance().getShooterData().getCurrentShooterState() == true ){
 			setAllOuterSolenoids(Value.kReverse);

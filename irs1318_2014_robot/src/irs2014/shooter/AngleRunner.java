@@ -19,13 +19,11 @@ public class AngleRunner extends RobotComponentBase{
 		if(ReferenceData.getInstance().getAngleData().getDesiredShooterAngle() == ShooterRef.EXTEND &&
 				ReferenceData.getInstance().getAngleData().getCurrentShooterAngle() == ShooterRef.RETRACT ){
 			shooterAngleSolenoid.set(Value.kForward);
-			System.out.println("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ set shooterAngle to forward");
 			ReferenceData.getInstance().getAngleData().setCurrentShooterAngle(ShooterRef.EXTEND);
 			
 		}else if(ReferenceData.getInstance().getAngleData().getDesiredShooterAngle() == ShooterRef.RETRACT &&
 				ReferenceData.getInstance().getAngleData().getCurrentShooterAngle() == ShooterRef.EXTEND ){
 			shooterAngleSolenoid.set(Value.kReverse);
-			System.out.println("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ set shooterAngle to reverse");
 			ReferenceData.getInstance().getAngleData().setCurrentShooterAngle(ShooterRef.RETRACT);
 		}
 	}

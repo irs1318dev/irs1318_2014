@@ -15,7 +15,6 @@ public class AngleData {
 		return desiredShooterAngle;
 	}
 	public void setDesiredShooterAngle(boolean desiredShooterAngle) {
-		System.out.println("desiredShooterAngle = " + desiredShooterAngle);
 		this.desiredShooterAngle = desiredShooterAngle;
 	}
 	

@@ -6,7 +6,7 @@ public class ShooterData {
 	private boolean desiredShooterState;
 	
 	private long timeLastShot;
-	public static final long SHOT_INTERVAL = 30000000;
+	public static final long SHOT_INTERVAL = 1000000;
 	private boolean inShot;
 	
 	public boolean getCurrentShooterState() {
