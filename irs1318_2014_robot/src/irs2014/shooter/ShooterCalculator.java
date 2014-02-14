@@ -17,13 +17,6 @@ public class ShooterCalculator extends RobotComponentBase {
 			ReferenceData.getInstance().getShooterData().setDesiredShooterState(false);
 		}
 		
-		
-		if(ReferenceData.getInstance().getUserInputData().getExtendShooterAngle()){
-			ReferenceData.getInstance().getShooterData().setDesiredShooterAngle(true);
-		}else if(ReferenceData.getInstance().getUserInputData().getRetractShooterAngle()){
-			ReferenceData.getInstance().getShooterData().setDesiredShooterAngle(false);
-		}
-		
 //		if(ReferenceData.getInstance().getShooterData().getInShot()){
 //			if((ReferenceData.getInstance().getShooterData().getTimeLastShot() + ReferenceData.getInstance().getShooterData().SHOT_INTERVAL) >= Utility.getFPGATime()){
 //				ReferenceData.getInstance().getShooterData().setDesiredShooterState(false);

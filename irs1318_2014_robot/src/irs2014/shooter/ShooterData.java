@@ -5,11 +5,8 @@ public class ShooterData {
 	private boolean currentShooterState;
 	private boolean desiredShooterState;
 	
-	private boolean currentShooterAngle;
-	private boolean desiredShooterAngle;
-	
 	private long timeLastShot;
-	public static final long SHOT_INTERVAL = 300000000;
+	public static final long SHOT_INTERVAL = 30000000;
 	private boolean inShot;
 	
 	public boolean getCurrentShooterState() {
@@ -24,19 +21,7 @@ public class ShooterData {
 	public void setDesiredShooterState(boolean desiredShooterState) {
 		this.desiredShooterState = desiredShooterState;
 	}
-	public boolean getCurrentShooterAngle() {
-		return currentShooterAngle;
-	}
-	public void setCurrentShooterAngle(boolean currentShooterAngle) {
-		this.currentShooterAngle = currentShooterAngle;
-	}
-	public boolean getDesiredShooterAngle() {
-		return desiredShooterAngle;
-	}
-	public void setDesiredShooterAngle(boolean desiredShooterAngle) {
-		System.out.println("desiredShooterAngle = " + desiredShooterAngle);
-		this.desiredShooterAngle = desiredShooterAngle;
-	}
+	
 	public long getTimeLastShot() {
 		return timeLastShot;
 	}

@@ -16,6 +16,8 @@ import irs2014.driveTrainTank.MotorRunner;
 import irs2014.helloWorld.HelloWorldRunner;
 import irs2014.networkTable.GetValuesTest;
 import irs2014.networkTable.NetworkTableRunner;
+import irs2014.shooter.AngleCalculator;
+import irs2014.shooter.AngleRunner;
 import irs2014.shooter.CompressorRunner;
 import irs2014.shooter.OneSolenoidRunner;
 import irs2014.shooter.PressureSensorReader;
@@ -68,10 +70,12 @@ public class MainIterativeComponentRobot extends IterativeComponentRobot {
 		b.add(new ShooterCalculator());
 		b.add(new DriveTrain1JoystickCalculator());
 		b.add(new DriveTrainPIDCalculator());
+		b.add(new AngleCalculator());
 		b.add(new NetworkTableRunner());
 		b.add(new DriveTrainRunner());
 		b.add(new CollectorMotorRunner());
 		b.add(new CollectorSolenoidRunner());
+		b.add(new AngleRunner());
 		b.add(new ShooterRunner());
 
 		return b;

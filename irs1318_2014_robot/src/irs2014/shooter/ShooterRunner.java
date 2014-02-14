@@ -17,7 +17,6 @@ public class ShooterRunner extends RobotComponentBase {
 	private DoubleSolenoid innerSolenoidR;
 	private DoubleSolenoid outerSolenoidL;
 	private DoubleSolenoid outerSolenoidR;
-	private DoubleSolenoid shooterAngleSolenoid; 
 		
 	public void robotInit() {
 		middleSolenoid = getNewMiddleSolenoid();
@@ -25,7 +24,6 @@ public class ShooterRunner extends RobotComponentBase {
 		innerSolenoidR = getNewInnerSolenoidsR();
 		outerSolenoidL = getNewOuterSolenoidsL();
 		outerSolenoidR = getNewOuterSolenoidsR();
-		shooterAngleSolenoid = getNewShooterAngleSolenoid();
 		
 		System.out.println("DoubleSolenoids robotInit()");
 		 
@@ -41,7 +39,6 @@ public class ShooterRunner extends RobotComponentBase {
 			setAllOuterSolenoids(Value.kForward);
 			middleSolenoid.set(Value.kForward);
 			ReferenceData.getInstance().getShooterData().setCurrentShooterState(true);
-//			System.out.println("******************************************************lifted shooter (shot)");
 			ReferenceData.getInstance().getShooterData().setInShot(true);
 			ReferenceData.getInstance().getShooterData().setTimeLastShot(Utility.getFPGATime());
 		}else if(ReferenceData.getInstance().getShooterData().getDesiredShooterState() == false &&
@@ -49,19 +46,6 @@ public class ShooterRunner extends RobotComponentBase {
 			setAllOuterSolenoids(Value.kReverse);
 			middleSolenoid.set(Value.kReverse);
 			ReferenceData.getInstance().getShooterData().setCurrentShooterState(false);
-//			System.out.println("******************************************************retracted shooter");
-		}
-		
-		if(ReferenceData.getInstance().getShooterData().getDesiredShooterAngle() == true &&
-				ReferenceData.getInstance().getShooterData().getCurrentShooterAngle() == false ){
-			shooterAngleSolenoid.set(Value.kForward);
-			System.out.println("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ set shooterAngle to forward");
-			ReferenceData.getInstance().getShooterData().setCurrentShooterAngle(true);
-		}else if(ReferenceData.getInstance().getShooterData().getDesiredShooterAngle() == false &&
-				ReferenceData.getInstance().getShooterData().getCurrentShooterAngle() == true ){
-			shooterAngleSolenoid.set(Value.kReverse);
-			System.out.println("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ set shooterAngle to reverse");
-			ReferenceData.getInstance().getShooterData().setCurrentShooterAngle(false);
 		}
 		
 	}
@@ -133,9 +117,6 @@ public class ShooterRunner extends RobotComponentBase {
 //		return outerSolenoids; 
 //	}
 //	
-	public DoubleSolenoid getShooterAngleSolenoid() {
-		return shooterAngleSolenoid;
-	}
 	
 	public void setAllOuterSolenoids(Value v){
 		innerSolenoidL.set(v);

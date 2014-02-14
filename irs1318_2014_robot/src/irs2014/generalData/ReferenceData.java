@@ -5,6 +5,7 @@ import irs2014.collector.CollectorData;
 import irs2014.dipSwitch.DipSwitchData;
 import irs2014.driveTrainTank.DriveTrainData;
 import irs2014.lineSensor.LineSensorData;
+import irs2014.shooter.AngleData;
 import irs2014.shooter.PressureSensorData;
 import irs2014.shooter.PressureSensorTimerData;
 import irs2014.shooter.ShooterData;
@@ -27,6 +28,7 @@ public class ReferenceData {
 	private EncoderState encoderState; 
 	private PressureSensorTimerData pressureSensorTimerData;
 	private LineSensorData lineSensorData; 
+	private AngleData angleData;
 	
 	private UserInputData2 userInputData2;
 	private ShooterData2 shooterData2;
@@ -102,6 +104,13 @@ public class ReferenceData {
 		if(encoderState == null)
 			encoderState = new EncoderState();
 		return encoderState;
+	}
+	
+	public AngleData getAngleData()
+	{
+		if(angleData == null)
+			angleData = new AngleData();
+		return angleData;
 	}
 	
 	public UserInputData2 getUserInputData2(){
