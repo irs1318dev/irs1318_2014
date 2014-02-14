@@ -7,6 +7,8 @@ import irs2014.generalData.ReferenceData;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.Solenoid;
+import edu.wpi.first.wpilibj.Timer;
+import edu.wpi.first.wpilibj.Utility;
 
 public class ShooterRunner extends RobotComponentBase {
 	
@@ -32,25 +34,33 @@ public class ShooterRunner extends RobotComponentBase {
 	
 	public void teleopPeriodic() {
 		
+//		System.out.println((ReferenceData.getInstance().getShooterData().getDesiredShooterState() != ReferenceData.getInstance().getShooterData().getCurrentShooterState()));
+		
 		if(ReferenceData.getInstance().getShooterData().getDesiredShooterState() == true &&
 				ReferenceData.getInstance().getShooterData().getCurrentShooterState() == false ){
 			setAllOuterSolenoids(Value.kForward);
 			middleSolenoid.set(Value.kForward);
 			ReferenceData.getInstance().getShooterData().setCurrentShooterState(true);
+//			System.out.println("******************************************************lifted shooter (shot)");
+			ReferenceData.getInstance().getShooterData().setInShot(true);
+			ReferenceData.getInstance().getShooterData().setTimeLastShot(Utility.getFPGATime());
 		}else if(ReferenceData.getInstance().getShooterData().getDesiredShooterState() == false &&
 				ReferenceData.getInstance().getShooterData().getCurrentShooterState() == true ){
 			setAllOuterSolenoids(Value.kReverse);
 			middleSolenoid.set(Value.kReverse);
 			ReferenceData.getInstance().getShooterData().setCurrentShooterState(false);
+//			System.out.println("******************************************************retracted shooter");
 		}
 		
 		if(ReferenceData.getInstance().getShooterData().getDesiredShooterAngle() == true &&
 				ReferenceData.getInstance().getShooterData().getCurrentShooterAngle() == false ){
 			shooterAngleSolenoid.set(Value.kForward);
+			System.out.println("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ set shooterAngle to forward");
 			ReferenceData.getInstance().getShooterData().setCurrentShooterAngle(true);
 		}else if(ReferenceData.getInstance().getShooterData().getDesiredShooterAngle() == false &&
 				ReferenceData.getInstance().getShooterData().getCurrentShooterAngle() == true ){
 			shooterAngleSolenoid.set(Value.kReverse);
+			System.out.println("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ set shooterAngle to reverse");
 			ReferenceData.getInstance().getShooterData().setCurrentShooterAngle(false);
 		}
 		

@@ -141,6 +141,9 @@ public class UserInputData {
 	}
 	
 	public boolean getExtendShooterAngle() {
+//		if(extendShooterAngle){
+//		System.out.println("***************************************** extendShooterAngle is " + extendShooterAngle + " in UserInputData");
+//		}
 		return extendShooterAngle;
 	}
 
@@ -149,6 +152,9 @@ public class UserInputData {
 	}
 
 	public boolean getRetractShooterAngle() {
+//		if(retractShooterAngle){
+			System.out.println("***************************************** retractShooterAngle is " + retractShooterAngle + " in UserInputData");
+//		}
 		return retractShooterAngle;
 	}
 
