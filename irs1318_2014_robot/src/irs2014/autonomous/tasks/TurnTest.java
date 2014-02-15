@@ -2,35 +2,34 @@ package irs2014.autonomous.tasks;
 
 import irs2014.autonomous.AutonomousCommand;
 
-public class ShootPrep extends AutonomousCommand
+public class TurnTest extends AutonomousCommand
 {
 	public void run() 
 	{
 		switch(currentState)
 		{
 		case 0:
-			collectorMotorIn();
+			goForwardRel(100);
 			break;
 		case 1:
-			extendShooterFrame();
+			rotate(-45);
 			break;
 		case 2:
-			extendCollector();
+			goForwardRel(100);
 			break;
 		case 3:
-			pause(150);
+			rotate(45);
 			break;
 		case 4:
-			stopCollectorMotor();
+			goForwardRel(100);
 			break;
 		case 5:
 			isDone = true;
 			break;
 		}
 	}
-
 	public void cancel() 
 	{
-		stopCollectorMotor();
+		stopDriveTrain();
 	}
 }

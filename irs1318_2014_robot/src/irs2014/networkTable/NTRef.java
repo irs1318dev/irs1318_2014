@@ -5,20 +5,16 @@ public class NTRef
 	//DriveTrain===================================================================
 	public static final String DriveTrain_RightEncoder = "dt.re";
 	public static final String DriveTrain_LeftEncoder = "dt.le";
+	public static final String DriveTrain_RightEncoderVelocity = "dt.rev";
+	public static final String DriveTrain_LeftEncoderVelocity = "dt.lev";
 	public static final String DriveTrain_RightSetPoint = "dt.rsp";
-	public static final String DriveTrain_LeftSetPoint = "dt.ldp";
+	public static final String DriveTrain_LeftSetPoint = "dt.lsp";
 	public static final String DriveTrain_RightPIDSpeed = "dt.rps";
 	public static final String DriveTrain_LeftPIDSpeed = "dt.lps";
 	//Shooter======================================================================
 	public static final String Shooter_PressureSensorState = "s.pss";
-	public static final String Shooter_CurrentMiddleSolenoidState = "s.cmss";
-	public static final String Shooter_CurrentInnerSolenoidState = "s.ciss";
-	public static final String Shooter_CurrentOuterSolenoidState = "s.coss";
-	public static final String Shooter_CurrentShooterAngleSolenoidState = "s.cass";
-	public static final String Shooter_DesiredMiddleSolenoidState = "s.dmss";
-	public static final String Shooter_DesiredInnerSolenoidState = "s.diss";
-	public static final String Shooter_DesiredOuterSolenoidState = "s.doss";
-	public static final String Shooter_DesiredShooterAngleSolenoidState = "s.dass";
+	public static final String Shooter_ShotExtended = "s.se";
+	public static final String Shooter_AngleExtended = "s.ae";
 	//Collector====================================================================
 	public static final String Collector_BallPresent = "cl.bp";
 	public static final String Collector_MotorSpeed = "cl.ms";
@@ -41,7 +37,7 @@ public class NTRef
 	public static final String Input_ShooterSet = "i.ss";
 	//RobotGeneral=================================================================
 	public static final String Robot_State = "r.s";
-	//Timmer=======================================================================
+	//Timer=======================================================================
 	public static final String Timer_Message = "t.m";
 	//=============================================================================
 }

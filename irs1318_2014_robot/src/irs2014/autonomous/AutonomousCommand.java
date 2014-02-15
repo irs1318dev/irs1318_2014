@@ -7,6 +7,11 @@ import irs2014.shooter.ShooterRef;
 public abstract class AutonomousCommand implements AutoTask
 {//The entire point of this is to create a system that allows us to just call one of these methods if we want to go forward.
 	
+	//Static Variables
+	public static int COLLECT_WAIT_TIME = 3000; //TODO make sure this is tuned properly. (in milliseconds)
+	public static int LAUNCH_WAIT_TIME = 1000; //TODO make sure this is tuned properly. (in milliseconds)
+	public static int EJECT_WAIT_TIME = 3000; //TODO make sure this is tuned properly. (in milliseconds)
+	
 	//Variables
 	protected int currentState; //The integer representing the current state.
 	protected double stateLeftEncoderTicks; //The starting encoder ticks of the current state- left encoder.
@@ -61,9 +66,12 @@ public abstract class AutonomousCommand implements AutoTask
 	}
 	
 	
-	////////////////////////////////////////////////////////////////////////
-	//Custom Methods that can be used to accomplish tasks. Eg: go forward
-    ////////////////////////////////////////////////////////////////////////	
+	
+	
+	
+	/////////////////////////////////////////////////////////
+	//Custom Methods that can be used to accomplish tasks. //
+    /////////////////////////////////////////////////////////	
 	public void pause(long delayMillis)
 	{
 		if(stateTime + delayMillis < System.currentTimeMillis())
@@ -111,21 +119,16 @@ public abstract class AutonomousCommand implements AutoTask
 	
 	public void lowerLauncher()
 	{//Lowers shooter into a position from which we can launch it again.
-//		ReferenceData.getInstance().getUserInputData().setExtendAllShooterSolenoids(ShooterRef.RETRACT);
+		ReferenceData.getInstance().getUserInputData().setShoot5Pistons(ShooterRef.RETRACT);
 		advanceState();
 		//TODO: Rev's note: this is being used instead of setting 3 other buttons individually. As a result, we need to make sure that this method stays updated.
 	}
 	
 	public void extendLauncher()
 	{//Launches the ball, hopefully you lowered it before.
-//		ReferenceData.getInstance().getUserInputData().setExtendAllShooterSolenoids(ShooterRef.EXTEND);
+		ReferenceData.getInstance().getUserInputData().setShoot5Pistons(ShooterRef.EXTEND);
 		advanceState();
 		//TODO: Rev's note: this is being used instead of setting 3 other buttons individually. As a result, we need to make sure that this method stays updated.
-	}
-	
-	public void goForwardRel(double centimeters)
-	{//Go forward relative- goes forward relative to the encoder value from the last state.
-		goForwardRel(centimeters, .66);
 	}
 	
 	public void stopDriveTrain()
@@ -135,10 +138,15 @@ public abstract class AutonomousCommand implements AutoTask
 		advanceState();
 	}
 	
+	public void goForwardRel(double centimeters)
+	{//Go forward relative- goes forward relative to the encoder value from the last state.
+		goForwardRel(centimeters, .66);
+	}
+	
 	/**
 	 * Go forward relative- goes forward relative to the encoder value from the last state.
 	 * @param centimeters
-	 * @param speed
+	 * @param speed (between 0 and 1)
 	 */
 	public void goForwardRel(double centimeters, double speed)
 	{//Go forward relative- goes forward relative to the encoder value from the last state.
@@ -182,13 +190,13 @@ public abstract class AutonomousCommand implements AutoTask
 		if(Math.abs(launchTickRight - currentTick) < EPSILON && Math.abs(launchTickLeft - currentTick) < EPSILON)
 		{//If we're within the small number of ticks we want to shoot from
 			advanceState();
-//			ReferenceData.getInstance().getEncoderState().setPIDType(EncoderState.PID_VELOCITY);
+			ReferenceData.getInstance().getEncoderState().setPIDType(EncoderState.VELOCITY_PID);
 		}
 		else
 		{//If we're not within the shot range, then we use one of two forms of PID.
 			if(Math.abs(launchTickRight - currentTick) > VEL_CUTOFF || Math.abs(launchTickLeft - currentTick) > VEL_CUTOFF)
 			{// if we're further away than the velocity PID cutoff for right or left side...
-//				ReferenceData.getInstance().getEncoderState().setPIDType(EncoderState.PID_VELOCITY);
+				ReferenceData.getInstance().getEncoderState().setPIDType(EncoderState.VELOCITY_PID);
 				if(behindDestinationLine)
 					ReferenceData.getInstance().getUserInputData().setJoystickX(VEL_DRIVE_SPEED);
 				else
@@ -196,7 +204,7 @@ public abstract class AutonomousCommand implements AutoTask
 			}
 			else
 			{// if we're within the range where we want to be more specific
-//				ReferenceData.getInstance().getEncoderState().setPIDType(EncoderState.PID_POSITION);
+				ReferenceData.getInstance().getEncoderState().setPIDType(EncoderState.POSITION_PID);
 				if(Math.abs(launchTickRight - currentTick) < VEL_CUTOFF)
 					ReferenceData.getInstance().getDriveTrainData().getRightPIDData().setPostionSetpoint(launchTickRight);
 				if(Math.abs(launchTickLeft - currentTick) < VEL_CUTOFF)
@@ -212,32 +220,43 @@ public abstract class AutonomousCommand implements AutoTask
 	 * This method takes a degree value in and acts according to what you gave it. PID currently commented out, verify you are setting it correctly.
 	 * @param degrees degrees to turn. Positive is counterClockwise, Negative is clockwise.
 	 */
-	public void turn(double degrees)
+	public void rotate(double degrees)
 	{
-		double arcLength = 2 * Math.PI * getWheelDistance() * (degrees / 360);
-//		ReferenceData.getInstance().getEncoderState().setPIDType(ReferenceData.getInstance().getEncoderState().PID_POSITION);
+		//This is the arc length we are trying to turn. This value is to be divided between both sides.
+		double arcLength = 2 * Math.PI * (getWheelDistance() / 2) * (degrees / 360);
+		ReferenceData.getInstance().getEncoderState().setPIDType(EncoderState.POSITION_PID);
 		
 		if(degrees > 0) // If we're turning left...
 		{
-			double desiredTick = toTicks(arcLength) + stateRightEncoderTicks;
-			if(Math.abs(ReferenceData.getInstance().getDriveTrainData().getRightEncoderData().getTicks() - desiredTick) <= ACCEPTED_TICK_ERROR)
+			double desiredRightTick = stateRightEncoderTicks + toTicks(arcLength / 2);
+			double desiredLeftTick = stateRightEncoderTicks - toTicks(arcLength / 2);
+			if(Math.abs(ReferenceData.getInstance().getDriveTrainData().getRightEncoderData().getTicks() - desiredRightTick) <= ACCEPTED_TICK_ERROR &&
+				Math.abs(ReferenceData.getInstance().getDriveTrainData().getLeftEncoderData().getTicks() - desiredLeftTick) <= ACCEPTED_TICK_ERROR)
 			{
 				advanceState();
-//				ReferenceData.getInstance().getEncoderState().setPIDType(EncoderState.PID_VELOCITY);
+				ReferenceData.getInstance().getEncoderState().setPIDType(EncoderState.VELOCITY_PID);
 			}
 			else
-				ReferenceData.getInstance().getDriveTrainData().getRightPIDData().setPostionSetpoint(desiredTick);
+			{
+				ReferenceData.getInstance().getDriveTrainData().getRightPIDData().setPostionSetpoint(desiredRightTick);
+				ReferenceData.getInstance().getDriveTrainData().getLeftPIDData().setPostionSetpoint(desiredLeftTick);
+			}
 		}
 		else // Well, we must be turning right...
 		{
-			double desiredTick = toTicks(arcLength) + stateLeftEncoderTicks;
-			if(Math.abs(ReferenceData.getInstance().getDriveTrainData().getLeftEncoderData().getTicks() - desiredTick) <= ACCEPTED_TICK_ERROR)
+			double desiredRightTick = stateRightEncoderTicks - toTicks(arcLength / 2);
+			double desiredLeftTick = stateLeftEncoderTicks - toTicks(arcLength / 2);
+			if(Math.abs(ReferenceData.getInstance().getDriveTrainData().getRightEncoderData().getTicks() - desiredRightTick) <= ACCEPTED_TICK_ERROR &&
+					Math.abs(ReferenceData.getInstance().getDriveTrainData().getLeftEncoderData().getTicks() - desiredLeftTick) <= ACCEPTED_TICK_ERROR)
 			{
 				advanceState();
-//				ReferenceData.getInstance().getEncoderState().setPIDType(EncoderState.PID_VELOCITY);
+				ReferenceData.getInstance().getEncoderState().setPIDType(EncoderState.VELOCITY_PID);
 			}
 			else
-				ReferenceData.getInstance().getDriveTrainData().getLeftPIDData().setPostionSetpoint(desiredTick);
+			{
+				ReferenceData.getInstance().getDriveTrainData().getRightPIDData().setPostionSetpoint(desiredRightTick);
+				ReferenceData.getInstance().getDriveTrainData().getLeftPIDData().setPostionSetpoint(desiredLeftTick);
+			}
 		}
 	}
 }

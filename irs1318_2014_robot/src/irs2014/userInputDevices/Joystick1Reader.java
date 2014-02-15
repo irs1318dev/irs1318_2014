@@ -37,10 +37,20 @@ public class Joystick1Reader extends RobotComponentBase {
 		
 		ReferenceData.getInstance().getUserInputData().setShoot5Pistons(getShoot5Pistons());
 		ReferenceData.getInstance().getUserInputData().setRetract5Pistons(getRetract5Pistons());
+		ReferenceData.getInstance().getUserInputData().setShoot3Pistons(getShoot3Pistons());
+		ReferenceData.getInstance().getUserInputData().setShootPulse(getSetShootPulse());
 		
 		ReferenceData.getInstance().getUserInputData().setGoForward(getGoForward());
 	}
 	
+	private boolean getSetShootPulse() {
+		return joystick.getRawButton(ButtonRef.SHOOT_PULSE);
+	}
+
+	private boolean getShoot3Pistons() {
+		return joystick.getRawButton(ButtonRef.SHOOT_3_PISTONS);
+	}
+
 	private boolean getShoot5Pistons(){
 		return joystick.getRawButton(ButtonRef.SHOOT_5_PISTONS);
 	}
@@ -63,9 +73,9 @@ public class Joystick1Reader extends RobotComponentBase {
 //		return joystick.getRawButton(6);
 	}
 
-	private boolean getTrigger() {
-		return joystick.getRawButton(ButtonRef.TRIGGER);
-	}
+//	private boolean getTrigger() {
+//		return joystick.getRawButton(ButtonRef.TRIGGER);
+//	}
 
 	public boolean getGoForward() {
 		return joystick.getRawButton(ButtonRef.GO_FORWARD);

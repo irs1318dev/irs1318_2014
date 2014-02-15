@@ -2,13 +2,12 @@ package irs2014.autonomous;
 
 import java.util.Vector;
 
-import irs2014.autonomous.tasks.AutonomousMode;
 import irs2014.components.RobotComponentBase;
 
 public class AutoTaskRunner extends RobotComponentBase
 {
 	//Variables
-	private AutoTask currentTask;//will either be null, or a reference to a current task.
+	private static AutoTask currentTask;//will either be null, or a reference to a current task.
 	private Vector completedTasks;//contains completed tasks.
 	private AutoInputMap autoInputMap;
 	
@@ -21,8 +20,9 @@ public class AutoTaskRunner extends RobotComponentBase
 	
 	public void autonomousPeriodic()
 	{
-		if(currentTask == null)
-			setAutoTask(new AutonomousMode());
+		if(currentTask == null){
+			//do nothing yet
+		}
 	}
 	
 	public void teleopPeriodic() 
@@ -57,13 +57,13 @@ public class AutoTaskRunner extends RobotComponentBase
 	//Gets, sets, and the like.
     /////////////////////////////////////////////
 	
-	public void setAutoTask(AutoTask task)
+	public static void setAutoTask(AutoTask task)
 	{//Changed so that it will initialize the task if available, but you can still set the task to null.
 		if(task != null)
 		{
 			task.init();	
 		}
-		this.currentTask = task;
+		currentTask = task;
 	}
 	
 	public boolean hasCurrentTask()

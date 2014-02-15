@@ -4,9 +4,8 @@ import irs2014.components.RobotComponentBase;
 import irs2014.generalData.EncoderState;
 import irs2014.generalData.ReferenceData;
 import irs2014.generalOperations.JoystickFilter;
-import irs2014.generalOperations.PID;
 
-public class DriveTrainPIDCalculator extends RobotComponentBase{
+public class DriveTrainPIDCalculatorWithTimer extends RobotComponentBase{
 	
 	//TODO write test
 	
@@ -28,7 +27,7 @@ public class DriveTrainPIDCalculator extends RobotComponentBase{
 		double rightVelocitySetpoint = ReferenceData.getInstance().getDriveTrainData().getRightPIDData().getVelocitySetpoint();
 		double rightEncoderVelocity = ReferenceData.getInstance().getDriveTrainData().getRightEncoderData().getVelocity();
 		double rightKf = 0.1;
-		double rightKd = -0.0008; // practice bot
+		double rightKd = -0.0004; // practice bot
 //		double rightKd = 0.00020; // competition bot
 		double rightKscale = 2800;
 		

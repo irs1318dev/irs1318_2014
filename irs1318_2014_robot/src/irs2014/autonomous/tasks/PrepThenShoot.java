@@ -1,9 +1,10 @@
 package irs2014.autonomous.tasks;
 
+import irs2014.autonomous.AutoTaskRunner;
 import irs2014.autonomous.AutonomousCommand;
 
-public class ShootPrep extends AutonomousCommand
-{
+public class PrepThenShoot extends AutonomousCommand{
+
 	public void run() 
 	{
 		switch(currentState)
@@ -25,6 +26,7 @@ public class ShootPrep extends AutonomousCommand
 			break;
 		case 5:
 			isDone = true;
+			AutoTaskRunner.setAutoTask(new LaunchBall());
 			break;
 		}
 	}
