@@ -16,6 +16,8 @@ import irs2014.driveTrainTank.MotorRunner;
 import irs2014.helloWorld.HelloWorldRunner;
 import irs2014.networkTable.GetValuesTest;
 import irs2014.networkTable.NetworkTableRunner;
+import irs2014.shooter.AngleCalculator;
+import irs2014.shooter.AngleRunner;
 import irs2014.shooter.CompressorRunner;
 import irs2014.shooter.OneSolenoidRunner;
 import irs2014.shooter.PressureSensorReader;
@@ -60,41 +62,21 @@ public class MainIterativeComponentRobot extends IterativeComponentRobot {
 	
 	protected static BotVector initialRobot(){
 		BotVector b = new BotVector();
-////		b.add(new TimerRunner());
-//		b.add(new DipSwitchReader());
-//		b.add(new CompressorRunner());
-//		b.add(new Joystick1Reader());
-//		b.add(new DriveTrainEncoderReader());
-////		b.add(new PressureSensorReader());
-//		b.add(new CollectorLimitSwitchReader());
-////		b.add(new AutoTaskRunner());
-//		b.add(new CollectorCalculator());
-//		b.add(new ShooterCalculator());
-//		b.add(new DriveTrain1JoystickCalculator());
-//		b.add(new DriveTrainPIDCalculator());
-//		b.add(new NetworkTableRunner());
-//		b.add(new DriveTrainRunner());
-//		b.add(new CollectorMotorRunner());
-//		b.add(new CollectorSolenoidRunner());
-		//TESTS
-//		b.add(new TimerRunner()); //NONE - Is this a thing?
-		b.add(new DipSwitchReader()); //DipSwitchReaderTest
-		b.add(new CompressorRunner()); //CompressorRunnerTest
-		b.add(new Joystick1Reader()); //Joystick1ReaderTest
-		b.add(new DriveTrainEncoderReader()); //DriveTrainEncoderReaderTest
-//		b.add(new PressureSensorReader()); //PressureSensorReaderTest
-//		b.add(new CollectorLimitSwitchReader()); //CollectorLimitSwitchReaderTest
-//		b.add(new AutoTaskRunner()); //NONE - Matthew
-		b.add(new CollectorCalculator()); //CollectorCalculatorTest
-//		b.add(new ShooterCalculator()); //NONE - Megan
-		b.add(new DriveTrain1JoystickCalculator()); //NONE
-		b.add(new DriveTrainPIDCalculator()); //NONE
-		b.add(new NetworkTableRunner()); //NONE - Caroline
-		b.add(new DriveTrainRunner()); //DriveTrainRunnerTest
-		b.add(new CollectorMotorRunner()); //CollectorMotorRunnerTest
-		b.add(new CollectorSolenoidRunner()); //CollectorSolenoidRunnerTest
-//		b.add(new ShooterRunner()); //ShooterRunnerTest
-		b.add(new ShooterTest());
+		b.add(new DipSwitchReader());
+		b.add(new CompressorRunner());
+		b.add(new Joystick1Reader());
+		b.add(new DriveTrainEncoderReader());
+		b.add(new CollectorCalculator());
+		b.add(new ShooterCalculator());
+		b.add(new DriveTrain1JoystickCalculator());
+		b.add(new DriveTrainPIDCalculator());
+		b.add(new AngleCalculator());
+		b.add(new NetworkTableRunner());
+		b.add(new DriveTrainRunner());
+		b.add(new CollectorMotorRunner());
+		b.add(new CollectorSolenoidRunner());
+		b.add(new AngleRunner());
+		b.add(new ShooterRunner());
 
 		return b;
 	}

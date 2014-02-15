@@ -7,6 +7,11 @@ import irs2014.shooter.ShooterRef;
 public abstract class AutonomousCommand implements AutoTask
 {//The entire point of this is to create a system that allows us to just call one of these methods if we want to go forward.
 	
+	//Static Variables
+	public static int COLLECT_WAIT_TIME = 3000; //TODO make sure this is tuned properly. (in milliseconds)
+	public static int LAUNCH_WAIT_TIME = 1000; //TODO make sure this is tuned properly. (in milliseconds)
+	public static int EJECT_WAIT_TIME = 3000; //TODO make sure this is tuned properly. (in milliseconds)
+	
 	//Variables
 	protected int currentState; //The integer representing the current state.
 	protected double stateLeftEncoderTicks; //The starting encoder ticks of the current state- left encoder.
@@ -215,7 +220,7 @@ public abstract class AutonomousCommand implements AutoTask
 	 * This method takes a degree value in and acts according to what you gave it. PID currently commented out, verify you are setting it correctly.
 	 * @param degrees degrees to turn. Positive is counterClockwise, Negative is clockwise.
 	 */
-	public void turn(double degrees)
+	public void rotate(double degrees)
 	{
 		//This is the arc length we are trying to turn. This value is to be divided between both sides.
 		double arcLength = 2 * Math.PI * (getWheelDistance() / 2) * (degrees / 360);

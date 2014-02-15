@@ -22,7 +22,7 @@ public class Joystick1Reader extends RobotComponentBase {
 
 	public void teleopPeriodic() {
 		joystickX = JoystickFilter.applyLinearDeadBand(joystick.getX(), 0.1);
-		joystickY = -JoystickFilter.applyLinearDeadBand(joystick.getY(), 0.1);
+		joystickY = JoystickFilter.applyLinearDeadBand(joystick.getY(), 0.1);
 
 		ReferenceData.getInstance().getUserInputData().setJoystickY(joystickX);
 		ReferenceData.getInstance().getUserInputData().setJoystickX(joystickY);
@@ -54,11 +54,13 @@ public class Joystick1Reader extends RobotComponentBase {
 	}
 	
 	private boolean getExtendShooterAngle(){
-		return joystick.getRawButton(ButtonRef.RETRACT_SHOOTER_ANGLE);
+		return joystick.getRawButton(ButtonRef.EXTEND_SHOOTER_ANGLE);
 	}
 	
 	private boolean getRetractShooterAngle(){
 		return joystick.getRawButton(ButtonRef.RETRACT_SHOOTER_ANGLE);
+//		System.out.println("retractShooterAngleButton = " + joystick.getRawButton(6));
+//		return joystick.getRawButton(6);
 	}
 
 	private boolean getTrigger() {

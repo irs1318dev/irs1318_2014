@@ -1,27 +1,32 @@
 package irs2014.autonomous.tasks;
 
+import irs2014.autonomous.AutoTaskRunner;
 import irs2014.autonomous.AutonomousCommand;
 
-public class CatchPrep extends AutonomousCommand
-{
+public class PrepThenShoot extends AutonomousCommand{
+
 	public void run() 
-	{	
+	{
 		switch(currentState)
 		{
 		case 0:
-			extendShooterFrame();
+			collectorMotorIn();
 			break;
 		case 1:
-			extendCollector();
+			extendShooterFrame();
 			break;
 		case 2:
-			lowerLauncher();
+			extendCollector();
 			break;
 		case 3:
+			pause(150);
+			break;
+		case 4:
 			stopCollectorMotor();
 			break;
-		case 4: 
+		case 5:
 			isDone = true;
+			AutoTaskRunner.setAutoTask(new LaunchBall());
 			break;
 		}
 	}

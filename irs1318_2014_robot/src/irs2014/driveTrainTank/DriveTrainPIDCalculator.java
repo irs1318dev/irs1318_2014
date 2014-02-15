@@ -49,10 +49,10 @@ public class DriveTrainPIDCalculator extends RobotComponentBase{
 //		JoystickFilter.Velocity clampedVelocity = JoystickFilter.applyClamp(motorVelocity, 1.0);
 		
 		if (count%1000==0) {
-			System.out.println("leftVelocitySetpoint=" + leftVelocitySetpoint + " , rightVelocitySetpoint=" + rightVelocitySetpoint);
-			System.out.println("leftEncoderVelocity=" + leftEncoderVelocity + " , rightEncoderVelocity=" + rightEncoderVelocity);
-			System.out.println("leftPIDVal=" + ReferenceData.getInstance().getDriveTrainData().getLeftPIDData().getPIDVelocity()
-					+ ", rightPIDVal=" + ReferenceData.getInstance().getDriveTrainData().getRightPIDData().getPIDVelocity());
+//			System.out.println("leftVelocitySetpoint=" + leftVelocitySetpoint + " , rightVelocitySetpoint=" + rightVelocitySetpoint);
+//			System.out.println("leftEncoderVelocity=" + leftEncoderVelocity + " , rightEncoderVelocity=" + rightEncoderVelocity);
+//			System.out.println("leftPIDVal=" + ReferenceData.getInstance().getDriveTrainData().getLeftPIDData().getPIDVelocity()
+//					+ ", rightPIDVal=" + ReferenceData.getInstance().getDriveTrainData().getRightPIDData().getPIDVelocity());
 //			System.out.println("leftVelocity="+clampedVelocity.leftVelocity+" , rightVelocity="+clampedVelocity.rightVelocity);
 		}
 		count++;
@@ -87,10 +87,10 @@ public class DriveTrainPIDCalculator extends RobotComponentBase{
 		motorVelocity.rightVelocity = rightPIDVal;
 		
 		if (count%1000==0){
-			System.out.println("leftPostionSetpoint=" + leftPostionSetpoint + " , rightPostionSetpoint=" + rightPostionSetpoint);
-			System.out.println("leftEncoderTicks=" + leftEncoderTicks + " , rightEncoderTicks=" + rightEncoderTicks);
-			System.out.println("leftPIDVal=" + ReferenceData.getInstance().getDriveTrainData().getLeftPIDData().getPIDVelocity()
-					+ ", rightPIDVal=" + ReferenceData.getInstance().getDriveTrainData().getRightPIDData().getPIDVelocity());
+//			System.out.println("leftPostionSetpoint=" + leftPostionSetpoint + " , rightPostionSetpoint=" + rightPostionSetpoint);
+//			System.out.println("leftEncoderTicks=" + leftEncoderTicks + " , rightEncoderTicks=" + rightEncoderTicks);
+//			System.out.println("leftPIDVal=" + ReferenceData.getInstance().getDriveTrainData().getLeftPIDData().getPIDVelocity()
+//					+ ", rightPIDVal=" + ReferenceData.getInstance().getDriveTrainData().getRightPIDData().getPIDVelocity());
 		}
 		count++;
 		
