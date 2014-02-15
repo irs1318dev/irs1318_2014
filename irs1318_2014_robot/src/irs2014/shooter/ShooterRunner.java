@@ -36,8 +36,16 @@ public class ShooterRunner extends RobotComponentBase {
 		
 		if(ReferenceData.getInstance().getShooterData().getDesiredShooterState() == true &&
 				ReferenceData.getInstance().getShooterData().getCurrentShooterState() == false ){
-			setAllOuterSolenoids(Value.kForward);
+//			setAllOuterSolenoids(Value.kForward);
 			middleSolenoid.set(Value.kForward);
+			switch(ReferenceData.getInstance().getShooterData().getNumPistons()){
+			case 5:
+				setAllOuterSolenoids(Value.kForward);
+				break;
+			case 3:
+				setInnerSolenoids(Value.kForward);
+				break;
+			}
 			ReferenceData.getInstance().getShooterData().setCurrentShooterState(true);
 		}else if(ReferenceData.getInstance().getShooterData().getDesiredShooterState() == false &&
 				ReferenceData.getInstance().getShooterData().getCurrentShooterState() == true ){
@@ -106,7 +114,7 @@ public class ShooterRunner extends RobotComponentBase {
 	public DoubleSolenoid getMiddleSolenoid() {
 		return middleSolenoid;
 	}
-//	
+	
 //	public DoubleSolenoid getInnerSolenoids() {
 //		return innerSolenoidL; 
 //	}
@@ -114,12 +122,16 @@ public class ShooterRunner extends RobotComponentBase {
 //	public DoubleSolenoid getOuterSolenoids() {
 //		return outerSolenoids; 
 //	}
-//	
 	
 	public void setAllOuterSolenoids(Value v){
 		innerSolenoidL.set(v);
 		innerSolenoidR.set(v);
 		outerSolenoidL.set(v);
 		outerSolenoidR.set(v);
+	}
+	
+	public void setInnerSolenoids(Value v){
+		innerSolenoidL.set(v);
+		innerSolenoidR.set(v);
 	}
 }

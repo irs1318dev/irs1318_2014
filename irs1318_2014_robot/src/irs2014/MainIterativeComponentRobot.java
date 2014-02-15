@@ -77,7 +77,8 @@ public class MainIterativeComponentRobot extends IterativeComponentRobot {
 		b.add(new CollectorSolenoidRunner());
 		b.add(new AngleRunner());
 		b.add(new ShooterRunner());
-
+		b.add(new TimerRunner());
+//		b.add(new TimeMeasureRunner());
 		return b;
 	}
 	

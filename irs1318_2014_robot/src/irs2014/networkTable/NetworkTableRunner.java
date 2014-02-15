@@ -37,8 +37,10 @@ public class NetworkTableRunner extends RobotComponentBase
 	
 	private void driveTrainData()
 	{
-		IRSTable.putNumber(NTRef.DriveTrain_RightEncoder, ReferenceData.getInstance().getDriveTrainData().getRightEncoderData().getVelocity());
-		IRSTable.putNumber(NTRef.DriveTrain_LeftEncoder, ReferenceData.getInstance().getDriveTrainData().getLeftEncoderData().getVelocity());
+		IRSTable.putNumber(NTRef.DriveTrain_RightEncoder, ReferenceData.getInstance().getDriveTrainData().getRightEncoderData().getTicks());
+		IRSTable.putNumber(NTRef.DriveTrain_LeftEncoder, ReferenceData.getInstance().getDriveTrainData().getLeftEncoderData().getTicks());
+		IRSTable.putNumber(NTRef.DriveTrain_RightEncoderVelocity, ReferenceData.getInstance().getDriveTrainData().getRightEncoderData().getVelocity());
+		IRSTable.putNumber(NTRef.DriveTrain_LeftEncoderVelocity, ReferenceData.getInstance().getDriveTrainData().getLeftEncoderData().getVelocity());
 		IRSTable.putNumber(NTRef.DriveTrain_RightSetPoint, ReferenceData.getInstance().getDriveTrainData().getRightPIDData().getVelocitySetpoint());
 		IRSTable.putNumber(NTRef.DriveTrain_LeftSetPoint, ReferenceData.getInstance().getDriveTrainData().getLeftPIDData().getVelocitySetpoint());
 		IRSTable.putNumber(NTRef.DriveTrain_RightPIDSpeed, ReferenceData.getInstance().getDriveTrainData().getRightPIDData().getPIDVelocity());
@@ -48,14 +50,8 @@ public class NetworkTableRunner extends RobotComponentBase
  	private void shooterData()
  	{
  		IRSTable.putBoolean(NTRef.Shooter_PressureSensorState, ReferenceData.getInstance().getPressureSensorData().getIsPressurized());
-// 		IRSTable.putBoolean(NTRef.Shooter_CurrentMiddleSolenoidState, ReferenceData.getInstance().getShooterData().getCurrentMiddleSolenoidState());
-// 		IRSTable.putBoolean(NTRef.Shooter_CurrentInnerSolenoidState, ReferenceData.getInstance().getShooterData().getCurrentInnerSolenoidsState());
-// 		IRSTable.putBoolean(NTRef.Shooter_CurrentOuterSolenoidState, ReferenceData.getInstance().getShooterData().getCurrentOuterSolenoidsState());
-// 		IRSTable.putBoolean(NTRef.Shooter_CurrentShooterAngleSolenoidState, ReferenceData.getInstance().getShooterData().getCurrentShooterAngleSolenoidState());
-// 		IRSTable.putBoolean(NTRef.Shooter_DesiredMiddleSolenoidState, ReferenceData.getInstance().getShooterData().getDesiredMiddleSolenoidState());
-// 		IRSTable.putBoolean(NTRef.Shooter_DesiredInnerSolenoidState, ReferenceData.getInstance().getShooterData().getDesiredInnerSolenoidsState());
-// 		IRSTable.putBoolean(NTRef.Shooter_DesiredOuterSolenoidState, ReferenceData.getInstance().getShooterData().getDesiredOuterSolenoidsState());
-// 		IRSTable.putBoolean(NTRef.Shooter_DesiredShooterAngleSolenoidState, ReferenceData.getInstance().getShooterData().getDesiredShooterAngleSolenoidState());
+ 		IRSTable.putBoolean(NTRef.Shooter_ShotExtended, ReferenceData.getInstance().getShooterData().getCurrentShooterState());
+ 		IRSTable.putBoolean(NTRef.Shooter_AngleExtended, ReferenceData.getInstance().getAngleData().getCurrentShooterAngle());
  	}
  	
  	private void collectorData(){

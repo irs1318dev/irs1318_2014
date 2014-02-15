@@ -5,6 +5,7 @@ import irs2014.dipSwitch.DipSwitchRef;
 import irs2014.generalData.PortRef;
 import irs2014.generalData.ReferenceData;
 import irs2014.generalOperations.EncoderAngularVelocity;
+import irs2014.generalOperations.EncoderAngularVelocityFPGA;
 
 public class DriveTrainEncoderReader extends RobotComponentBase{
 	

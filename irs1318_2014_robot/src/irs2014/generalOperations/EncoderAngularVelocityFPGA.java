@@ -57,24 +57,27 @@ public class EncoderAngularVelocityFPGA extends Encoder
     	currentTicks = getDistance();
     	dt = currentTime - previousTime;
 //    	dt = 0.02;
-    	if (dt<0.0015) { // prevent too fast loop that gets within the time resolution.
-    		return previousOmega;
+    	if (dt<1) { // prevent too fast loop that gets within the time resolution.
+//    		return previousOmega; //TODO changed on 2/14/14 by Rainier
+    		dt = 1;
     	}
-    	double omega = (currentTicks - previousTicks) / (dt);
-    	if(Double.isNaN(omega)) {
-    		//dt could be zero, so you could get some sketchy stuff
-    		System.err.println(getName()+": omega is NaN. returning previouse omega" +
-    				", prevTime="+previousTime+", curTime="+currentTime+", dt="+dt);
-    		return previousOmega;
-    	}else {
+    //	double omega = (currentTicks - previousTicks) / (dt);   
+    	double omega = (currentTicks - previousTicks) / (1.0);
+//    	if(Double.isNaN(omega)) {
+//    		//dt could be zero, so you could get some sketchy stuff
+//    		System.err.println(getName()+": omega is NaN. returning previouse omega" +
+//    				", prevTime="+previousTime+", curTime="+currentTime+", dt="+dt);
+//    		return previousOmega;
+//    	}else {
     		previousOmega = omega;
 	    	previousTicks = currentTicks;
 	    	previousTime = currentTime;
 //    		System.err.println(getName()+": encoder rate " +omega + ", ticks= " + currentTicks
 //    				+", prevTime="+previousTime+", curTime="+currentTime+", dt="+dt);
 //	    	System.err.println("******" + getName() + " ticks = " + currentTicks);
+//	    	omega = omega * 1000000; // turns it into ticks per second.... I think....
 	    	return omega;
-    	}
+//    	}
     }
     
     public double getValue() {
