@@ -56,7 +56,7 @@ public class HsvAnalysis {
 	private Map<Integer, Set<Integer>> xPoints = null;
 	private Map<Integer, Set<Integer>> yPoints = null;
 	
-	private List<Point> points = new ArrayList<Point>();
+ 	private List<Point> points = new ArrayList<Point>();
 
 	public Point getCentroid() {
 		return null;
@@ -204,6 +204,21 @@ public class HsvAnalysis {
 			getYPoints().get(yInt).add(xTiltInt);
 		}
 	}
+	public GoalDistance analysePoints2014() {
+		buildVerticalLines();
+		for (int x : getXPoints().keySet()) {
+			
+		}
+	
+		for (int y : getYPoints().keySet()) {
+			
+		}
+		return null;
+	}	
+	
+	
+	
+	
 
 	/**
 	 * Analyze points within bounding box for top rectangle.
@@ -349,7 +364,7 @@ public class HsvAnalysis {
 			Integer xInt = new Double(x).intValue();
 			Integer yInt = new Double(y).intValue();
 			
-			Set yPointSet = getXPoints().get(xInt);
+		 	Set yPointSet = getXPoints().get(xInt);
 			if (yPointSet==null) {
 				yPointSet = new TreeSet<Integer>();
 				getXPoints().put(xInt,yPointSet);
