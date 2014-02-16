@@ -15,7 +15,7 @@ public class PrepThenShoot extends AutonomousCommand{
 			extendCollector();
 			break;
 		case 2:
-			launch3Pistons();
+			launch5Pistons();
 			break;
 		case 3:
 			isDone = true;
