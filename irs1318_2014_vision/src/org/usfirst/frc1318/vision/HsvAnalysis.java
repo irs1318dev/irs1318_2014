@@ -205,12 +205,48 @@ public class HsvAnalysis {
 		}
 	}
 	public GoalDistance analysePoints2014() {
+		boolean findinVerticalBar=false;
+		int minX = 0;
+		int maxX = 0;
 		for (int x : getXPoints().keySet()) {
-			
+			if(getXPoints().get(x).size()<20) {
+				if (findinVerticalBar) {
+					findinVerticalBar=false;
+					// create a new Bar instance using minY maxY
+					System.out.println(String.format("Found minX=%s, maxX=%s",minX,maxX));
+					minX = 0;
+					maxX = 0;
+				}
+				continue;
+			} else {
+				findinVerticalBar=true;
+			}
+			if(minX==0) {
+				minX = x;
+			}
+			maxX = x;
 		}
-	
+		
+		boolean findinHorizontalBar=false;
+		int minY = 0;
+		int maxY = 0;
 		for (int y : getYPoints().keySet()) {
-			
+			if(getYPoints().get(y).size()<20) {
+				if (findinHorizontalBar) {
+					findinHorizontalBar=false;
+					// create a new Bar instance using minY maxY
+					System.out.println(String.format("Found minY=%s, maxY=%s",minY,maxY));
+					minY = 0;
+					maxY = 0;
+				}
+				continue;
+			} else {
+				findinHorizontalBar=true;
+			}
+			if(minY==0) {
+				minY = y;
+			}
+			maxY = y;
 		}
 		return null;
 	}	
