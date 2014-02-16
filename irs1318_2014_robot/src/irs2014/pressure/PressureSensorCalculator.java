@@ -1,4 +1,4 @@
-package irs2014.shooter;
+package irs2014.pressure;
 
 import irs2014.generalData.ReferenceData;
 import irs2014.components.RobotComponentBase;
@@ -9,6 +9,7 @@ public class PressureSensorCalculator extends RobotComponentBase {
 			ReferenceData.getInstance().getPressureSensorTimerData().setShouldStopTimer(false);
 			if(ReferenceData.getInstance().getPressureSensorData().getIsPressurized() != ReferenceData.getInstance().getPressureSensorData().getWasPressurized()) {
 				ReferenceData.getInstance().getPressureSensorTimerData().setShouldStartTimer(true);
+//				System.out.println("pressure sensor became true");
 			} else if (ReferenceData.getInstance().getPressureSensorData().getIsPressurized() == ReferenceData.getInstance().getPressureSensorData().getWasPressurized()) {
 				ReferenceData.getInstance().getPressureSensorTimerData().setShouldStartTimer(false);
 			}
@@ -16,6 +17,7 @@ public class PressureSensorCalculator extends RobotComponentBase {
 		
 		if(ReferenceData.getInstance().getPressureSensorData().getIsPressurized() == false) {
 			ReferenceData.getInstance().getPressureSensorTimerData().setShouldStopTimer(true);
+//			System.out.println("pressure sensor is false");
 		}
 		
 	}

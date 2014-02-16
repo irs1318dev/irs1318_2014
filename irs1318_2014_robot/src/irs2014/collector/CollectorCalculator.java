@@ -5,11 +5,6 @@ import irs2014.generalData.ReferenceData;
 
 public class CollectorCalculator extends RobotComponentBase{
 	
-	
-//	public void robotInit(){
-//		ReferenceData.getInstance().getCollectorData().getMotorData().setCollectorMotorOff();
-//	}
-	
 	public void teleopPeriodic(){
 		//Extends or retracts the collector; prefers extend.
 		if (ReferenceData.getInstance().getUserInputData().getExtendCollector()){

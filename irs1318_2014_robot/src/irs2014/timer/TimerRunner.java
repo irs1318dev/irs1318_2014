@@ -1,4 +1,4 @@
-package irs2014.timmer;
+package irs2014.timer;
 
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.Utility;

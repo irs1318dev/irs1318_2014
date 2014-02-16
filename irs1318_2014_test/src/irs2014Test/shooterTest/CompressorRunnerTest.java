@@ -1,6 +1,6 @@
 package irs2014Test.shooterTest;
 
-import irs2014.shooter.CompressorRunner;
+import irs2014.pressure.CompressorRunner;
 
 import org.junit.Before;
 import org.junit.Test;

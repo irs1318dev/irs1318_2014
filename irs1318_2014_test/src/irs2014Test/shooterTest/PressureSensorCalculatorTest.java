@@ -6,7 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import irs2014.generalData.ReferenceData;
-import irs2014.shooter.PressureSensorCalculator;
+import irs2014.pressure.PressureSensorCalculator;
 
 public class PressureSensorCalculatorTest {
 	PressureSensorCalculator calculator; 

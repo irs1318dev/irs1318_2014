@@ -1,6 +1,6 @@
 package org.usfirst.ihs1318.shared;
 
-import irs2014.shooter.PressureSensorData;
+import irs2014.pressure.PressureSensorData;
 
 import org.usfirst.ihs1318.shared.data.ArmEncoderValues;
 import org.usfirst.ihs1318.shared.data.ArmInput;

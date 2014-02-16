@@ -1,6 +1,7 @@
 package irs2014.smartDashBoard.UI;
 
 import irs2014.smartDashBoard.ButtonKeyHandler;
+import irs2014.smartDashBoard.ConnectionListener;
 import irs2014.smartDashBoard.TableManager;
 import irs2014.smartDashBoard.constants.ReferenceData;
 
@@ -31,6 +32,7 @@ public class ButtonPanel extends JPanel{
 		keyHandler = new ButtonKeyHandler();
 		this.setLayout(new FlowLayout());
 		this.table = TableManager.getInstance().getTable();
+//		System.out.println("table from ButtonPanel = " + table);
 		
 		final ButtonPanel myButtonPanel = this;
 		ActionListener listener = new ActionListener(){
@@ -52,10 +54,38 @@ public class ButtonPanel extends JPanel{
 			//temp.setDisplayedMnemonic() => try to set hot-key
 		}
 		
+		ConnectionListener connectListener = new ConnectionListener() {
+            ButtonPanel anonButtonPanel = myButtonPanel;
+			@Override
+			public void onConnect() {
+				anonButtonPanel.onConnect();
+			}
+
+			@Override
+			public void onDisconnect() {
+				anonButtonPanel.onDisconnect();
+			}
+			
+		};
+		
+		TableManager.getInstance().addListener(connectListener);
+		
 	}
 	
 	private void buttonPressed(Button b){
-		table.putBoolean(keyHandler.getButtonMap().get(b.getName()), true);
+//		System.out.println("name: " + b.getLabel());
+//		System.out.println("key: " + keyHandler.getButtonMap().get(b.getLabel()));
+//		System.out.println(table);
+		table.putBoolean(keyHandler.getButtonMap().get(b.getLabel()), true);
+	}
+	
+	public void onConnect() {
+		this.table = TableManager.getInstance().getTable();
+		
+	}
+	
+	public void onDisconnect() {
+		
 	}
 
 }
