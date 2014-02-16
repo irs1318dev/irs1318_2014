@@ -4,39 +4,33 @@ import irs2014.components.RobotComponentBase;
 import irs2014.generalData.ReferenceData;
 
 
-public class NetworkTableRunner extends RobotComponentBase
-{
+public class NetworkTableRunner extends RobotComponentBase{
 	int val = 0;
-	public void robotInit()
-	{
+	public void robotInit(){
 		System.out.println("Network Table is ready!");
 		IRSTable.putString(NTRef.Robot_State, "Init");
-		IRSTable.putString(NTRef.Timer_Message, "no message from timmer");
+		IRSTable.putString(NTRef.Timer_Message, "no message from timer");
 	}
 	
-	public void teleopInit()
-	{
+	public void teleopInit(){
 		IRSTable.putString(NTRef.Robot_State, "Teleop");
 	}
 	
-	public void disabledInit()
-	{
+	public void disabledInit(){
 		IRSTable.putString(NTRef.Robot_State, "Disabled");
 	}
 	
-	public void teleopPeriodic() 
-	{
-		if(val++ % 10 == 0)
-		{
+	public void teleopPeriodic() {
+		if(val++ % 10 == 0){
 			driveTrainData();
 			shooterData();
 			collectorData();
 			userInputData();
+			pressureSensor();
 		}
 	}
 	
-	private void driveTrainData()
-	{
+	private void driveTrainData(){
 		IRSTable.putNumber(NTRef.DriveTrain_RightEncoder, ReferenceData.getInstance().getDriveTrainData().getRightEncoderData().getTicks());
 		IRSTable.putNumber(NTRef.DriveTrain_LeftEncoder, ReferenceData.getInstance().getDriveTrainData().getLeftEncoderData().getTicks());
 		IRSTable.putNumber(NTRef.DriveTrain_RightEncoderVelocity, ReferenceData.getInstance().getDriveTrainData().getRightEncoderData().getVelocity());
@@ -47,9 +41,7 @@ public class NetworkTableRunner extends RobotComponentBase
 		IRSTable.putNumber(NTRef.DriveTrain_LeftPIDSpeed, ReferenceData.getInstance().getDriveTrainData().getLeftPIDData().getPIDVelocity());
 	}
 
- 	private void shooterData()
- 	{
- 		IRSTable.putBoolean(NTRef.Shooter_PressureSensorState, ReferenceData.getInstance().getPressureSensorData().getIsPressurized());
+ 	private void shooterData(){
  		IRSTable.putBoolean(NTRef.Shooter_ShotExtended, ReferenceData.getInstance().getShooterData().getCurrentShooterState());
  		IRSTable.putBoolean(NTRef.Shooter_AngleExtended, ReferenceData.getInstance().getAngleData().getCurrentShooterAngle());
  	}
@@ -61,8 +53,7 @@ public class NetworkTableRunner extends RobotComponentBase
  		IRSTable.putBoolean(NTRef.Collector_CurrentSolenoidState, ReferenceData.getInstance().getCollectorData().getSolenoidData().getCurrentSolenoidState());
  	}
  	
- 	private void userInputData()
- 	{
+ 	private void userInputData(){
  		//Joysticks
  		IRSTable.putNumber(NTRef.Input_JoystickX, ReferenceData.getInstance().getUserInputData().getJoystickX());
  		IRSTable.putNumber(NTRef.Input_JoystickY, ReferenceData.getInstance().getUserInputData().getJoystickY());
@@ -77,6 +68,10 @@ public class NetworkTableRunner extends RobotComponentBase
  		IRSTable.putBoolean(NTRef.Input_EjectBall, ReferenceData.getInstance().getUserInputData().getEjectBall());
  		//Other
  		IRSTable.putNumber(NTRef.Input_ShooterSet, ReferenceData.getInstance().getUserInputData().getTriggerSet());
- 		
+ 	}
+ 	
+ 	public void pressureSensor(){
+ 		IRSTable.putBoolean(NTRef.PressureSensor_State, ReferenceData.getInstance().getPressureSensorData().getIsPressurized());
+ 		IRSTable.putNumber(NTRef.PressureSensor_Time, (ReferenceData.getInstance().getPressureSensorTimerData().getTimerTime() / 1000000));
  	}
 }

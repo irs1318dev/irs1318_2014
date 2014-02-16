@@ -71,16 +71,16 @@ public class UI extends javax.swing.JFrame {
 	
 	public void addInputPanels() {
 		HashMap <String, String> fieldNames = new HashMap<String, String>();
-		fieldNames.put("spid.vsp", "Shooter Setpoint");
-		fieldNames.put("test.f", "Test");
+		fieldNames.put("spid.up", "Shooter UP");
+		fieldNames.put("spid.dw", "Shooter DOWN");
 		
 		HashMap<String, String> overrideNames = new HashMap<String, String>();
-		overrideNames.put("spid.nto", "Shooter Setpoint Override");
-		overrideNames.put("test.o", "Test Override");
+		overrideNames.put("spid.nto", "Pulse Override");
+//		overrideNames.put("test.o", "Test Override");
 		
 		HashMap<String, String> fieldOverride = new HashMap<String, String>();
-		fieldOverride.put("spid.vsp", "spid.nto");
-		fieldOverride.put("test.f", "test.o");
+		fieldOverride.put("spid.dw", "spid.nto");
+//		fieldOverride.put("test.f", "test.o");
 		
 		this.ntpanel.add(new InputPanel(fieldNames, overrideNames, fieldOverride));
 	}

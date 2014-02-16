@@ -11,6 +11,7 @@ public interface ButtonRef {
 	int RETRACT_5_PISTONS = 2;
 	int SHOOT_3_PISTONS = 7;
 	int SHOOT_PULSE = 8;
+	int SHOOT_1_PISTON = 4;
 	
 //	int RETRACT_SHOOTER = 7; //TODO 
 	int EXTEND_SHOOTER_ANGLE = 9; //TODO 
@@ -19,7 +20,7 @@ public interface ButtonRef {
 //	int RETRACT_BOTH = 9;	//Collector and Shooter Angle 
 	int STEP_SHOOTER = 6;
 
-	int GO_FORWARD = 4;
+//	int GO_FORWARD = 4;
 //	int TRIGGER = 1;
 	
 	

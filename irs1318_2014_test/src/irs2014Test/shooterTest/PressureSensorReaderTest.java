@@ -4,7 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import irs2014.generalData.ReferenceData;
-import irs2014.shooter.PressureSensorReader;
+import irs2014.pressure.PressureSensorReader;
 import edu.wpi.first.wpilibj.DigitalInput;
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
@@ -21,7 +21,7 @@ public class PressureSensorReaderTest {
 		mockPressureSensor = mock(DigitalInput.class); 
 		readerSpy = spy(reader);
 		
-		doReturn(mockPressureSensor).when(readerSpy).getPressureSensor(); 
+		doReturn(mockPressureSensor).when(readerSpy).getNewPressureSensor(); 
 	}
 	
 	@Test

@@ -1,10 +1,11 @@
 package irs2014Test.shooterTest;
 
 import irs2014.generalData.ReferenceData;
-import irs2014.shooter.PressureSensorReader;
+import irs2014.pressure.PressureSensorReader;
 import irs2014.shooter.ShooterData;
 import irs2014.shooter.ShooterRef;
 import irs2014.shooter.ShooterRunner;
+
 
 
 import org.junit.Before;
@@ -12,7 +13,6 @@ import org.junit.Test;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
-
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 

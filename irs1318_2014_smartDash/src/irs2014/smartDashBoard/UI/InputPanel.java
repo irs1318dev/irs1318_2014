@@ -6,6 +6,7 @@ import irs2014.smartDashBoard.TableManager;
 import java.awt.Button;
 import java.awt.Checkbox;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.HashMap;
@@ -40,6 +41,7 @@ public class InputPanel extends JPanel {
 	 */
 	public InputPanel(HashMap<String, String> fieldNames, HashMap<String, String> overrideNames, HashMap<String, String> fieldOverride) {
 		this.table = TableManager.getInstance().getTable();
+//		System.out.println("table from InputPanel = " + table);
 		this.override = new HashMap<String, Checkbox>();
 		this.fieldNames = fieldNames;
 		this.fields = new HashMap<String, InputField>();
@@ -48,6 +50,7 @@ public class InputPanel extends JPanel {
 		
 		//make panels show up in correct layout
 		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+//		this.setLayout(new FlowLayout());
 		
 		for(String s : overrideNames.keySet()){
 			Checkbox newBox = new Checkbox(overrideNames.get(s));
@@ -65,9 +68,11 @@ public class InputPanel extends JPanel {
 			fields.put(s, newField);
 		}
 		
-		for(String s : fieldOverride.keySet()){
+		for(String s : fieldNames.keySet()){
 			this.add(fields.get(s));
-			this.add(override.get(fieldOverride.get(s)));
+			if(override.containsKey(fieldOverride.get(s))){
+				this.add(override.get(fieldOverride.get(s)));
+			}
 		}
 		
 		final InputPanel myInputPanel = this;

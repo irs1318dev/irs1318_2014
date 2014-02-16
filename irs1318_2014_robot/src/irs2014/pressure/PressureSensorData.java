@@ -1,4 +1,4 @@
-package irs2014.shooter;
+package irs2014.pressure;
 
 public class PressureSensorData {
 	

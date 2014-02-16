@@ -1,4 +1,4 @@
-package irs2014.shooter;
+package irs2014.pressure;
 
 
 import edu.wpi.first.wpilibj.DigitalInput;
@@ -14,17 +14,17 @@ public class PressureSensorReader extends RobotComponentBase{
 	DigitalInput pressureSensor;
 	
 	public void robotInit() {
-		pressureSensor = getPressureSensor();
+		pressureSensor = getNewPressureSensor();
 		System.out.println("PressureSensor robotInit()");
 	}
 	
 	public void teleopPeriodic() {
-		boolean value = getPressureSensor().get();
+		boolean value = !pressureSensor.get();
 		ReferenceData.getInstance().getPressureSensorData().setIsPressurized(value);
-		System.out.println("pressureSensor= " + value + ", isPressurized=" + ReferenceData.getInstance().getPressureSensorData().getIsPressurized());
+//		System.out.println("pressureSensor= " + value + ", isPressurized=" + ReferenceData.getInstance().getPressureSensorData().getIsPressurized());
 	}
 	
-	public DigitalInput getPressureSensor() {
+	public DigitalInput getNewPressureSensor() {
 		if (ReferenceData.getInstance().getDipSwitchData().getDipSwitchState() == DipSwitchRef.COMPETITION_BOT){
 			return pressureSensor = new DigitalInput(PortRef.COMPETITION_PRESSURE_SENSOR);
 		}else if (ReferenceData.getInstance().getDipSwitchData().getDipSwitchState() == DipSwitchRef.PRACTICE_BOT){

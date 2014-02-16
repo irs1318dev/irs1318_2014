@@ -1,4 +1,4 @@
-package irs2014.shooter;
+package irs2014.pressure;
 import edu.wpi.first.wpilibj.Utility;
 import irs2014.components.RobotComponentBase;
 import irs2014.generalData.ReferenceData;
@@ -11,6 +11,7 @@ public class PressureSensorTimerRunner extends RobotComponentBase {
 		}
 		if (ReferenceData.getInstance().getPressureSensorTimerData().getShouldStopTimer() == false) {
 			ReferenceData.getInstance().getPressureSensorTimerData().setTimerTime(getFPGATime() - ReferenceData.getInstance().getPressureSensorTimerData().getTimerStartTime());
+//			System.out.println(ReferenceData.getInstance().getPressureSensorTimerData().getTimerTime());
 		} else if (ReferenceData.getInstance().getPressureSensorTimerData().getShouldStopTimer()) {
 			ReferenceData.getInstance().getPressureSensorTimerData().setTimerTime(0);
 		}

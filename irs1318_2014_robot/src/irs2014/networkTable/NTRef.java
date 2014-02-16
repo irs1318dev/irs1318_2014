@@ -12,7 +12,6 @@ public class NTRef
 	public static final String DriveTrain_RightPIDSpeed = "dt.rps";
 	public static final String DriveTrain_LeftPIDSpeed = "dt.lps";
 	//Shooter======================================================================
-	public static final String Shooter_PressureSensorState = "s.pss";
 	public static final String Shooter_ShotExtended = "s.se";
 	public static final String Shooter_AngleExtended = "s.ae";
 	//Collector====================================================================
@@ -39,5 +38,8 @@ public class NTRef
 	public static final String Robot_State = "r.s";
 	//Timer=======================================================================
 	public static final String Timer_Message = "t.m";
+	//Pressure Sensor==============================================================
+	public static final String PressureSensor_State = "ps.s";
+	public static final String PressureSensor_Time = "ps.t";
 	//=============================================================================
 }
