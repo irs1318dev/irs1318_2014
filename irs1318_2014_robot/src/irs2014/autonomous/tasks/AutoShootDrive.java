@@ -9,33 +9,24 @@ public class AutoShootDrive extends AutonomousCommand
 		switch(currentState)
 		{
 		case 0:
-			collectorMotorIn();
-			break;
-		case 1:
 			extendShooterFrame();
 			break;
-		case 2:
+		case 1:
 			extendCollector();
 			break;
+		case 2:
+			pause(SHIFT_WAIT_TIME);
+			break;
 		case 3:
-			pause(COLLECT_WAIT_TIME);
+			launch5Pistons();
 			break;
 		case 4:
-			stopCollectorMotor();
+			pause(MOVE_WAIT_TIME);
 			break;
 		case 5:
-			extendLauncher();
-			break;
-		case 6:
-			pause(LAUNCH_WAIT_TIME);
-			break;
-		case 7:
-			lowerLauncher();
-			break;
-		case 8:
 			goForwardRel(3 * 12 * 2.54);// feet to inches to centimeters.
 			break;
-		case 9:
+		case 6:
 			isDone = true;
 			break;
 		}
@@ -43,7 +34,6 @@ public class AutoShootDrive extends AutonomousCommand
 
 	public void cancel() 
 	{
-		stopCollectorMotor();
 		stopDriveTrain();
 	}
 }

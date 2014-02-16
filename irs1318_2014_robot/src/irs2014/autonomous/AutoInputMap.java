@@ -1,7 +1,6 @@
 package irs2014.autonomous;
 
 import irs2014.autonomous.tasks.*;
-import irs2014.userInputDevices.*;
 import irs2014.generalData.*;
 
 public class AutoInputMap 

@@ -10,48 +10,30 @@ public class AutoShootDriveLoadShoot extends AutonomousCommand
 		switch(currentState)
 		{
 		case 0:
-			collectorMotorIn();
-			break;
-		case 1:
 			extendShooterFrame();
 			break;
-		case 2:
+		case 1:
 			extendCollector();
+			break;
+		case 2:
+			pause(SHIFT_WAIT_TIME);
 			break;
 		case 3:
-			pause(COLLECT_WAIT_TIME);
+			launch5Pistons();
 			break;
 		case 4:
-			stopCollectorMotor();
+			pause(MOVE_WAIT_TIME);
 			break;
 		case 5:
-			extendLauncher();
+			goForwardRel(3 * 12 * 2.54);// feet to inches to centimeters.
 			break;
 		case 6:
-			pause(LAUNCH_WAIT_TIME);
-			break;
-		case 7:
-			lowerLauncher();
-			break;
-		case 8:
-			goForwardRel(-3 * 12 * 2.54);// feet to inches to centimeters.
-			break;
-		case 9:
 			extendCollector();
 			break;
-		case 10:
-			collectorMotorIn();
+		case 7:
+			collectorMotorIn(COLLECT_WAIT_TIME);
 			break;
-		case 11: 
-			pause(COLLECT_WAIT_TIME);
-			break;
-		case 12:
-			stopCollectorMotor();
-			break;
-		case 13:
-			retractCollector();
-			break;
-		case 14:
+		case 8:
 			isDone = true;
 			AutoTaskRunner.setAutoTask(new PrepThenShoot());
 			break;
@@ -61,6 +43,5 @@ public class AutoShootDriveLoadShoot extends AutonomousCommand
 	public void cancel() 
 	{
 		stopDriveTrain();
-		stopCollectorMotor();
 	}
 }

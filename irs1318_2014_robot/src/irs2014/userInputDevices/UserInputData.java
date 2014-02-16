@@ -33,7 +33,7 @@ public class UserInputData {
 	
 	
 	public boolean getIsActive(){
-		return ((joystickX != 0) || (joystickY != 0) || goForward); 
+		return ((joystickX != 0) || (joystickY != 0)); 
 	}
 	
 	public double getJoystickX(){

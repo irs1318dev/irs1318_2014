@@ -2,6 +2,7 @@ package irs2014.autonomous;
 
 import java.util.Vector;
 
+import irs2014.autonomous.tasks.*;
 import irs2014.components.RobotComponentBase;
 
 public class AutoTaskRunner extends RobotComponentBase
@@ -18,17 +19,28 @@ public class AutoTaskRunner extends RobotComponentBase
 		autoInputMap = new AutoInputMap(this);
 	}
 	
+	boolean hasRun = false;
 	public void autonomousPeriodic()
 	{
-		if(currentTask == null){
-			//do nothing yet
+		if(currentTask == null && hasRun == false){
+			currentTask = new AutoDriveTurn();
+		}
+		if(currentTask != null)
+		{
+			currentTask.run();
+			if(currentTask.isDone())
+			{
+				completedTasks.addElement(currentTask);
+				currentTask = null;
+				hasRun = true;
+				System.out.println("Autonomous code is done! Wohoo!");
+			}
 		}
 	}
 	
 	public void teleopPeriodic() 
-	{
+	{/*
 		autoInputMap.update();
-		System.out.println("Ran the autoInputMap update");
 		if(currentTask != null)
 		{
 			currentTask.run();
@@ -36,9 +48,9 @@ public class AutoTaskRunner extends RobotComponentBase
 			{//If the task's isDone method returned true, meaning it's done...
 				completedTasks.addElement(currentTask);
 				currentTask = null;
-				System.err.println("You shouldn't see this after only one pass.");
+				System.out.println("Task complete.");
 			}
-		}
+		}*/
 	}
 	
 	public void cancelCurrentTask()

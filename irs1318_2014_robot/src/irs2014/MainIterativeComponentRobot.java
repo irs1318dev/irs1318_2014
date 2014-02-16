@@ -37,7 +37,33 @@ import irs2014.userInputDevices.UserInputCalculator;
 public class MainIterativeComponentRobot extends IterativeComponentRobot {
 
 	public BotVector currentRobotComponents() {
-		return initialRobot();
+		//return initialRobot();
+		return autonomousTesting();
+	}
+	
+	protected static BotVector autonomousTesting()
+	{//This is just testing the task set in Auto Input Map
+		BotVector b = new BotVector();
+		b.add(new DipSwitchReader());
+		b.add(new CompressorRunner());
+		b.add(new Joystick1Reader());
+		b.add(new DriveTrainEncoderReader());
+		//Auto stuff goes after readers, before calculators.
+		b.add(new AutoTaskRunner());
+		//
+		b.add(new CollectorCalculator());
+		b.add(new ShooterCalculator());
+		b.add(new DriveTrain1JoystickCalculator());
+		b.add(new DriveTrainPIDCalculator());
+		b.add(new AngleCalculator());
+		b.add(new NetworkTableRunner());
+		b.add(new DriveTrainRunner());
+		b.add(new CollectorMotorRunner());
+		b.add(new CollectorSolenoidRunner());
+		b.add(new AngleRunner());
+		b.add(new ShooterRunner());
+		b.add(new TimerRunner());
+		return b;
 	}
 	
 	protected static BotVector isolatedTest(){

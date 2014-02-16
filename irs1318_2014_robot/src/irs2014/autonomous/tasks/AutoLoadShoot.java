@@ -13,18 +13,9 @@ public class AutoLoadShoot extends AutonomousCommand
 			extendCollector();
 			break;
 		case 1:
-			collectorMotorIn();
+			collectorMotorIn(COLLECT_WAIT_TIME);
 			break;
-		case 2: 
-			pause(COLLECT_WAIT_TIME);
-			break;
-		case 3:
-			stopCollectorMotor();
-			break;
-		case 4:
-			retractCollector();
-			break;
-		case 5:
+		case 2:
 			isDone = true;
 			AutoTaskRunner.setAutoTask(new PrepThenShoot());
 			break;
@@ -33,6 +24,6 @@ public class AutoLoadShoot extends AutonomousCommand
 
 	public void cancel() 
 	{
-		stopCollectorMotor();
+		//Nothing required at this time.
 	}	
 }

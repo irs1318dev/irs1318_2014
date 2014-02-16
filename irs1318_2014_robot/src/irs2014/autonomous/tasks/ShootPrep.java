@@ -9,21 +9,15 @@ public class ShootPrep extends AutonomousCommand
 		switch(currentState)
 		{
 		case 0:
-			collectorMotorIn();
-			break;
-		case 1:
 			extendShooterFrame();
 			break;
-		case 2:
+		case 1:
 			extendCollector();
 			break;
+		case 2:
+			pause(SHIFT_WAIT_TIME);
+			break;
 		case 3:
-			pause(150);
-			break;
-		case 4:
-			stopCollectorMotor();
-			break;
-		case 5:
 			isDone = true;
 			break;
 		}
@@ -31,6 +25,6 @@ public class ShootPrep extends AutonomousCommand
 
 	public void cancel() 
 	{
-		stopCollectorMotor();
+		//Nothing required yet
 	}
 }

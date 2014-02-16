@@ -14,7 +14,7 @@ public class AutoDriveTurn extends AutonomousCommand
 		case 1:
 			rotate(180);
 		case 2:
-			isDone = true;
+			//isDone = true;
 			break;
 		}
 	}

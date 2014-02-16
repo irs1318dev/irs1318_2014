@@ -12,33 +12,24 @@ public class AutoDriveShootTurn extends AutonomousCommand
 			goForwardRel(10 * 12 * 2.54); // 10 feet, converted to inches, converted to centimeters.
 			break;
 		case 1:
-			collectorMotorIn();
-			break;
-		case 2:
 			extendShooterFrame();
 			break;
-		case 3:
+		case 2:
 			extendCollector();
 			break;
+		case 3:
+			pause(SHIFT_WAIT_TIME);
+			break;
 		case 4:
-			pause(COLLECT_WAIT_TIME);
+			launch3Pistons();
 			break;
 		case 5:
-			stopCollectorMotor();
+			pause(MOVE_WAIT_TIME);
 			break;
 		case 6:
-			extendLauncher();
-			break;
-		case 7:
-			pause(LAUNCH_WAIT_TIME);
-			break;
-		case 8:
-			lowerLauncher();
-			break;
-		case 9:
 			rotate(180);
 			break;
-		case 10:
+		case 7:
 			isDone = true;
 			break;
 		}

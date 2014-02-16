@@ -1,7 +1,6 @@
 package irs2014.autonomous.tasks;
 
 import irs2014.autonomous.AutonomousCommand;
-import irs2014.generalData.ReferenceData;
 
 public class CollectBall extends AutonomousCommand{
 
@@ -11,18 +10,9 @@ public class CollectBall extends AutonomousCommand{
 			extendCollector();
 			break;
 		case 1:
-			collectorMotorIn();
+			collectorMotorIn(COLLECT_WAIT_TIME);
 			break;
-		case 2: 
-			pause(COLLECT_WAIT_TIME);
-			break;
-		case 3:
-			stopCollectorMotor();
-			break;
-		case 4:
-			retractCollector();
-			break;
-		case 5:
+		case 2:
 			isDone = true;
 			break;
 		}
@@ -30,6 +20,6 @@ public class CollectBall extends AutonomousCommand{
 
 	public void cancel() 
 	{
-		stopCollectorMotor();
+		//Nothing required
 	}	
 }

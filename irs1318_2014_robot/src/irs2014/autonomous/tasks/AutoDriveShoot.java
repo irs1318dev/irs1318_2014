@@ -1,6 +1,5 @@
 package irs2014.autonomous.tasks;
 
-import irs2014.autonomous.AutoInputMap;
 import irs2014.autonomous.AutoTaskRunner;
 import irs2014.autonomous.AutonomousCommand;
 

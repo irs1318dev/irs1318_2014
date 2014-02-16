@@ -9,8 +9,9 @@ public abstract class AutonomousCommand implements AutoTask
 	
 	//Static Variables
 	public static int COLLECT_WAIT_TIME = 3000; //TODO make sure this is tuned properly. (in milliseconds)
-	public static int LAUNCH_WAIT_TIME = 1000; //TODO make sure this is tuned properly. (in milliseconds)
+	public static int MOVE_WAIT_TIME = 500; //TODO tune me. This is the time we wait before moving after we shoot. (in milliseconds)
 	public static int EJECT_WAIT_TIME = 3000; //TODO make sure this is tuned properly. (in milliseconds)
+	public static int SHIFT_WAIT_TIME = 150; //TODO tune me. This is the time we wait after shifting shooter angle or collector angle. (in milliseconds)
 	
 	//Variables
 	protected int currentState; //The integer representing the current state.
@@ -22,8 +23,8 @@ public abstract class AutonomousCommand implements AutoTask
 	public void init()
 	{//Initializes a series of variables- this makes it so you don't have to have it. 
 		currentState = 0;
-		stateLeftEncoderTicks = 0;//? Is this accurate?
-		stateRightEncoderTicks = 0;
+		stateLeftEncoderTicks = ReferenceData.getInstance().getDriveTrainData().getLeftEncoderData().getTicks();
+		stateRightEncoderTicks = ReferenceData.getInstance().getDriveTrainData().getRightEncoderData().getTicks();
 		stateTime = System.currentTimeMillis();
 		isDone = false;
 	}
@@ -88,21 +89,16 @@ public abstract class AutonomousCommand implements AutoTask
 		advanceState();
 	}
 	
-	public void collectorMotorIn()
+	public void collectorMotorIn(long timeMillis)
 	{//This will start the motor, it must be stopped later.
 		ReferenceData.getInstance().getUserInputData().setCollectorMotorIn(true);
-		advanceState();
+		pause(timeMillis);
 	}
 	
-	public void collectorMotorOut()
+	public void collectorMotorOut(long timeMillis)
 	{//This also starts the motor (spitting the ball out) and must be stopped later.
 		ReferenceData.getInstance().getUserInputData().setCollectorMotorOut(true);
-		advanceState();
-	}
-	
-	public void stopCollectorMotor(){
-		ReferenceData.getInstance().getUserInputData().setStopCollectorMotor(true);
-		advanceState();
+		pause(timeMillis);
 	}
 	
 	public void extendShooterFrame()
@@ -117,18 +113,16 @@ public abstract class AutonomousCommand implements AutoTask
 		advanceState();
 	}
 	
-	public void lowerLauncher()
-	{//Lowers shooter into a position from which we can launch it again.
-		ReferenceData.getInstance().getUserInputData().setShoot5Pistons(ShooterRef.RETRACT);
+	public void launch3Pistons()
+	{
+		ReferenceData.getInstance().getUserInputData().setShoot3Pistons(ShooterRef.EXTEND);
 		advanceState();
-		//TODO: Rev's note: this is being used instead of setting 3 other buttons individually. As a result, we need to make sure that this method stays updated.
 	}
 	
-	public void extendLauncher()
-	{//Launches the ball, hopefully you lowered it before.
+	public void launch5Pistons()
+	{
 		ReferenceData.getInstance().getUserInputData().setShoot5Pistons(ShooterRef.EXTEND);
 		advanceState();
-		//TODO: Rev's note: this is being used instead of setting 3 other buttons individually. As a result, we need to make sure that this method stays updated.
 	}
 	
 	public void stopDriveTrain()
@@ -150,7 +144,8 @@ public abstract class AutonomousCommand implements AutoTask
 	 */
 	public void goForwardRel(double centimeters, double speed)
 	{//Go forward relative- goes forward relative to the encoder value from the last state.
-		if(stateLeftEncoderTicks + toTicks(centimeters) < ReferenceData.getInstance().getDriveTrainData().getLeftEncoderData().getVelocity())
+		System.out.println(stateRightEncoderTicks + toTicks(centimeters) + "__<?__" + ReferenceData.getInstance().getDriveTrainData().getRightEncoderData());
+		if(stateRightEncoderTicks + toTicks(centimeters) < ReferenceData.getInstance().getDriveTrainData().getRightEncoderData().getTicks())
 			advanceState();
 		else
 			ReferenceData.getInstance().getUserInputData().setJoystickX(speed / 2.5);

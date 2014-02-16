@@ -14,13 +14,7 @@ public class CatchPrep extends AutonomousCommand
 		case 1:
 			extendCollector();
 			break;
-		case 2:
-			lowerLauncher();
-			break;
-		case 3:
-			stopCollectorMotor();
-			break;
-		case 4: 
+		case 2: 
 			isDone = true;
 			break;
 		}
@@ -28,6 +22,6 @@ public class CatchPrep extends AutonomousCommand
 
 	public void cancel() 
 	{
-		stopCollectorMotor();
+		//Nothing required right now
 	}
 }

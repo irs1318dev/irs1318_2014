@@ -69,18 +69,22 @@ public class DriveTrainPIDCalculator extends RobotComponentBase{
 		double rightPostionSetpoint = ReferenceData.getInstance().getDriveTrainData().getRightPIDData().getPositionSetpoint();
 		double rightEncoderTicks = ReferenceData.getInstance().getDriveTrainData().getRightEncoderData().getTicks();
 		double rightEncoderVelocity = ReferenceData.getInstance().getDriveTrainData().getRightEncoderData().getVelocity();
-		double rightKp = -1; //TODO
-		double rightKd = -1; //TODO
+		double rightKp = .0001; //TODO
+		double rightKd = 0; //TODO
 		
 		double rightPIDVal = rightKp * (rightPostionSetpoint - rightEncoderTicks) + rightKd * rightEncoderVelocity;
+		rightPIDVal = Math.min(.2, rightPIDVal);
+		rightPIDVal = Math.max(-.2, rightPIDVal);
 		
 		double leftPostionSetpoint = - ReferenceData.getInstance().getDriveTrainData().getLeftPIDData().getPositionSetpoint();
 		double leftEncoderTicks = ReferenceData.getInstance().getDriveTrainData().getLeftEncoderData().getTicks();
 		double leftEncoderVelocity = ReferenceData.getInstance().getDriveTrainData().getLeftEncoderData().getVelocity();
-		double leftKp = -1; //TODO
-		double leftKd = -1; //TODO
+		double leftKp = .0001; //TODO
+		double leftKd = 0; //TODO
 		
 		double leftPIDVal = leftKp * (leftPostionSetpoint - leftEncoderTicks) + leftKd * leftEncoderVelocity;
+		leftPIDVal = Math.min(.2, leftPIDVal);
+		leftPIDVal = Math.max(-.2, leftPIDVal);
 		
 		JoystickFilter.Velocity motorVelocity = new JoystickFilter.Velocity();
 		motorVelocity.leftVelocity = leftPIDVal;

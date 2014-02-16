@@ -10,27 +10,19 @@ public class EjectBall extends AutonomousCommand{
 			retractCollector();
 			break;
 		case 1:
-			collectorMotorOut();
+			collectorMotorOut(EJECT_WAIT_TIME);
 			break;
 		case 2:
-			pause(EJECT_WAIT_TIME);
-			break;
-		case 3:
 			extendCollector();
 			break;
-		case 4:
-			stopCollectorMotor();
-			break;
-		case 5:
+		case 3:
 			isDone = true;
 			break;
 		}
 	}
 
-	public void cancel() {
-		stopCollectorMotor();
-	}
-
-	private final static int EJECT_WAIT_TIME = 3000; //TODO find an actual value for this through testing.
-	
+	public void cancel() 
+	{
+		//Nothing required yet.
+	}	
 }
