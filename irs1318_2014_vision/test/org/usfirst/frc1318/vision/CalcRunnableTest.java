@@ -2,13 +2,12 @@ package org.usfirst.frc1318.vision;
 
 import static com.googlecode.javacv.cpp.opencv_core.*;
 import static com.googlecode.javacv.cpp.opencv_imgproc.*;
+
 import com.googlecode.javacv.cpp.opencv_core.*;
 
 import static com.googlecode.javacv.cpp.opencv_highgui.cvLoadImage;
-
 import static java.lang.String.*;
 import static java.lang.Math.*;
-
 import static org.junit.Assert.*;
 
 import java.io.File;
@@ -41,6 +40,96 @@ public class CalcRunnableTest {
 		}
 	}
 
+	@Test
+	public void testAnalyseImageMediumRaw() {
+		// read an image
+		File file = new File(getInputPath(), "imageMediumRaw.jpg");
+		IplImage image;
+		try {
+			image = cvLoadImage(file.getCanonicalPath());
+			assertNotNull(image);
+			CalcRunnable cr = new CalcRunnable();
+			cr.setResolution(320);
+			IplImage undistortImage = cr.undistort(image); // this is image
+															// transformed
+			// in place
+			IplImage finalHSV = cvCreateImage(cvGetSize(image), IPL_DEPTH_8U, 1);
+			cr.performHsvFilter(undistortImage, finalHSV, HueBand.buildHueBand("default",75, 140, 100, 255, 0, 255));
+			//cr.performHsvFilter(undistortImage, finalHSV, HueBand.buildHueBand("default",75, 140, 147, 255, 240, 255));
+			JavaCVUtils.saveImage(getOutputPath(), "TestAnalysisImageMediumRaw.jpg", finalHSV);
+			HsvAnalysis result = cr.findImagePoints(finalHSV);
+//			assertEquals(17, result.getMinX());
+//			assertEquals(306, result.getMaxX());
+//			assertEquals(108, result.getMinY());
+//			assertEquals(240, result.getMaxY());
+			result.buildVerticalLines();
+			result.analysePoints2014();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	@Test
+	public void testAnalyseImageRed() {
+		// read an image
+		File file = new File(getInputPath(), "imageRed.jpg");
+		IplImage image;
+		try {
+			image = cvLoadImage(file.getCanonicalPath());
+			assertNotNull(image);
+			CalcRunnable cr = new CalcRunnable();
+			cr.setResolution(320);
+			IplImage undistortImage = cr.undistort(image); // this is image
+															// transformed
+			// in place
+			IplImage finalHSV = cvCreateImage(cvGetSize(image), IPL_DEPTH_8U, 1);
+			cr.performHsvFilter(undistortImage, finalHSV, HueBand.buildHueBand("default",0, 255, 100, 255, 0, 255));
+			//cr.performHsvFilter(undistortImage, finalHSV, HueBand.buildHueBand("default",75, 140, 147, 255, 240, 255));
+			JavaCVUtils.saveImage(getOutputPath(), "TestAnalysisImageRed.jpg", finalHSV);
+			HsvAnalysis result = cr.findImagePoints(finalHSV);
+//			assertEquals(17, result.getMinX());
+//			assertEquals(306, result.getMaxX());
+//			assertEquals(108, result.getMinY());
+//			assertEquals(240, result.getMaxY());
+			result.buildVerticalLines();
+			result.analysePoints2014();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	@Test
+	public void testAnalyseImageYellow() {
+		// read an image
+		File file = new File(getInputPath(), "imageYellow.jpg");
+		IplImage image;
+		try {
+			image = cvLoadImage(file.getCanonicalPath());
+			assertNotNull(image);
+			CalcRunnable cr = new CalcRunnable();
+			cr.setResolution(320);
+			IplImage undistortImage = cr.undistort(image); // this is image
+															// transformed
+			// in place
+			IplImage finalHSV = cvCreateImage(cvGetSize(image), IPL_DEPTH_8U, 1);
+			cr.performHsvFilter(undistortImage, finalHSV, HueBand.buildHueBand("default",15, 62, 100, 255, 0, 255));
+			//cr.performHsvFilter(undistortImage, finalHSV, HueBand.buildHueBand("default",75, 140, 147, 255, 240, 255));
+			JavaCVUtils.saveImage(getOutputPath(), "TestAnalysisImageYellow.jpg", finalHSV);
+			HsvAnalysis result = cr.findImagePoints(finalHSV);
+//			assertEquals(17, result.getMinX());
+//			assertEquals(306, result.getMaxX());
+//			assertEquals(108, result.getMinY());
+//			assertEquals(240, result.getMaxY());
+			result.buildVerticalLines();
+			result.analysePoints2014();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
 	private String outputPath = "C:\\devfrc\\git\\irs1318_2014\\visionOutput";
 	private String inputPath = "C:\\devfrc\\git\\irs1318_2014\\visionSamples";
 
@@ -618,11 +707,12 @@ public class CalcRunnableTest {
 
 	@Test
 	public void testFullLookupTableCalibration() {
-//		String sourcePath = "C:\\dev\\frc2012\\range\\bright640_middleOnly";
-//		String hsvPath = "C:\\dev\\frc2012\\range\\bright640_middleOnly\\hsv";
+		// String sourcePath = "C:\\dev\\frc2012\\range\\bright640_middleOnly";
+		// String hsvPath =
+		// "C:\\dev\\frc2012\\range\\bright640_middleOnly\\hsv";
 		String sourcePath = "C:\\dev\\frc2012\\range\\bright640_full_field";
 		String hsvPath = "C:\\dev\\frc2012\\range\\bright640_full_field\\hsv";
-		
+
 		IplImage image;
 		CalcRunnable cr = new CalcRunnable();
 		cr.setResolution(640);
@@ -633,9 +723,10 @@ public class CalcRunnableTest {
 				continue;
 
 			String filename = file.getName();
-//			String tickStr = filename.split("_")[1].split("\\.")[0]; // time tick calibration
+			// String tickStr = filename.split("_")[1].split("\\.")[0]; // time
+			// tick calibration
 			String tickStr = filename.split("\\.")[0]; // feet calibration
-//			int tickCount = Integer.parseInt(tickStr);
+			// int tickCount = Integer.parseInt(tickStr);
 			sortedFiles.put(tickStr, file);
 
 		}
@@ -650,13 +741,14 @@ public class CalcRunnableTest {
 																// in place
 
 				boolean proceed = true;
-//				proceed = tickCount == 16;
+				// proceed = tickCount == 16;
 				if (!proceed)
 					continue;
 
 				IplImage finalHSV = null;
 				ViewBand vb = ViewBand.buildViewBand(640, 480, 480, 0); // default
-//				ViewBand vb = ViewBand.buildViewBand(640, 480, 390, 110); // default
+				// ViewBand vb = ViewBand.buildViewBand(640, 480, 390, 110); //
+				// default
 				boolean viewPortAdjustment = true; // do once only
 
 				HueBand bestHueBand = null;
@@ -744,7 +836,8 @@ public class CalcRunnableTest {
 								}
 								String setting = String.format("%s_%s_%s",
 										hueSetting, satSetting, valSetting);
-								if (!"1_1_3".equals(setting))		continue;
+								if (!"1_1_3".equals(setting))
+									continue;
 
 								hueBand = HueBand.buildHueBandDegreePercent(
 										setting, hueLow, hueHigh, satLow,
@@ -787,15 +880,15 @@ public class CalcRunnableTest {
 									// .getErrorMessage() + "_"
 									// + file.getName(), finalHSV);
 
-//									vb = ViewBand
-//											.buildViewBand(
-//													640,
-//													480,
-//													hsvAnalysis.getMaxY() + 60,
-//													hsvAnalysis.getMaxY()
-//															+ 60
-//															- (hsvAnalysis
-//																	.getDataWidth() + 120));
+									// vb = ViewBand
+									// .buildViewBand(
+									// 640,
+									// 480,
+									// hsvAnalysis.getMaxY() + 60,
+									// hsvAnalysis.getMaxY()
+									// + 60
+									// - (hsvAnalysis
+									// .getDataWidth() + 120));
 									if (!adjustedOnce) {
 										adjustedOnce = true;
 									} else {
@@ -804,7 +897,7 @@ public class CalcRunnableTest {
 									continue newViewPort; // start for loop
 															// again.
 
-								} 
+								}
 
 								if (bestAnalysis == null) {
 									if (hsvAnalysis.getTrapezoid()
@@ -868,11 +961,12 @@ public class CalcRunnableTest {
 
 	@Test
 	public void testSkunkWorksCalibration() {
-//		String sourcePath = "C:\\dev\\frc2012\\range\\bright640_middleOnly";
-//		String hsvPath = "C:\\dev\\frc2012\\range\\bright640_middleOnly\\hsv";
+		// String sourcePath = "C:\\dev\\frc2012\\range\\bright640_middleOnly";
+		// String hsvPath =
+		// "C:\\dev\\frc2012\\range\\bright640_middleOnly\\hsv";
 		String sourcePath = "C:\\dev\\frc2012\\range\\bright640_full_field";
 		String hsvPath = "C:\\dev\\frc2012\\range\\bright640_full_field\\hsv";
-		
+
 		IplImage image;
 		CalcRunnable cr = new CalcRunnable();
 		cr.setResolution(640);
@@ -883,9 +977,10 @@ public class CalcRunnableTest {
 				continue;
 
 			String filename = file.getName();
-//			String tickStr = filename.split("_")[1].split("\\.")[0]; // time tick calibration
+			// String tickStr = filename.split("_")[1].split("\\.")[0]; // time
+			// tick calibration
 			String tickStr = filename.split("\\.")[0]; // feet calibration
-//			int tickCount = Integer.parseInt(tickStr);
+			// int tickCount = Integer.parseInt(tickStr);
 			sortedFiles.put(tickStr, file);
 
 		}
@@ -906,7 +1001,8 @@ public class CalcRunnableTest {
 
 				IplImage finalHSV = null;
 				ViewBand vb = ViewBand.buildViewBand(640, 480, 480, 0); // default
-//				ViewBand vb = ViewBand.buildViewBand(640, 480, 390, 110); // default
+				// ViewBand vb = ViewBand.buildViewBand(640, 480, 390, 110); //
+				// default
 				boolean viewPortAdjustment = true; // do once only
 
 				HueBand bestHueBand = null;
@@ -994,7 +1090,8 @@ public class CalcRunnableTest {
 								}
 								String setting = String.format("%s_%s_%s",
 										hueSetting, satSetting, valSetting);
-								if (!"0_1_4".equals(setting))		continue;
+								if (!"0_1_4".equals(setting))
+									continue;
 
 								hueBand = HueBand.buildHueBandDegreePercent(
 										setting, hueLow, hueHigh, satLow,
@@ -1037,15 +1134,15 @@ public class CalcRunnableTest {
 									// .getErrorMessage() + "_"
 									// + file.getName(), finalHSV);
 
-//									vb = ViewBand
-//											.buildViewBand(
-//													640,
-//													480,
-//													hsvAnalysis.getMaxY() + 60,
-//													hsvAnalysis.getMaxY()
-//															+ 60
-//															- (hsvAnalysis
-//																	.getDataWidth() + 120));
+									// vb = ViewBand
+									// .buildViewBand(
+									// 640,
+									// 480,
+									// hsvAnalysis.getMaxY() + 60,
+									// hsvAnalysis.getMaxY()
+									// + 60
+									// - (hsvAnalysis
+									// .getDataWidth() + 120));
 									if (!adjustedOnce) {
 										adjustedOnce = true;
 									} else {
@@ -1054,7 +1151,7 @@ public class CalcRunnableTest {
 									continue newViewPort; // start for loop
 															// again.
 
-								} 
+								}
 
 								if (bestAnalysis == null) {
 									if (hsvAnalysis.getTrapezoid()

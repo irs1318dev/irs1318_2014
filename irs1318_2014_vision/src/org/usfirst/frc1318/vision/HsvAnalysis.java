@@ -205,7 +205,6 @@ public class HsvAnalysis {
 		}
 	}
 	public GoalDistance analysePoints2014() {
-		buildVerticalLines();
 		for (int x : getXPoints().keySet()) {
 			
 		}
@@ -356,7 +355,7 @@ public class HsvAnalysis {
 		
 	}
 	
-	private void buildVerticalLines() {
+	public void buildVerticalLines() {
 		for (Point p : points) {
 			double x = p.getX();
 			double y = p.getY();

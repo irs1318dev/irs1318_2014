@@ -207,9 +207,10 @@ public class CalcRunnable implements Runnable {
 
 	public HueBand getHueBand() {
 		if (hueBand == null) {
+			hueBand = HueBand.buildHueBand("default",75, 100, 147, 255, 240, 255); // green
 			//hueBand = HueBand.buildHueBand("default", 150, 180, 80, 150, 80,100);
 			//hueBand = HueBand.buildHueBand("default", 110, 140, 220, 255, 220,255); 
-			hueBand = HueBand.buildHueBand("default", 50, 200, 150, 255, 150, 255); 
+			//hueBand = HueBand.buildHueBand("default", 50, 200, 150, 255, 150, 255); 
 			}
 		return hueBand;
 	}
