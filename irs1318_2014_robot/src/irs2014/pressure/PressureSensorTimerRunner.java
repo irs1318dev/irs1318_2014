@@ -9,7 +9,11 @@ public class PressureSensorTimerRunner extends RobotComponentBase {
 		if (ReferenceData.getInstance().getPressureSensorTimerData().getShouldStartTimer()) {
 			ReferenceData.getInstance().getPressureSensorTimerData().setTimerStartTime(getFPGATime());
 		}
-		if (ReferenceData.getInstance().getPressureSensorTimerData().getShouldStopTimer() == false) {
+		if(ReferenceData.getInstance().getPressureSensorTimerData().getShouldRestartTimer()){
+			ReferenceData.getInstance().getPressureSensorTimerData().setTimerStartTime(getFPGATime());
+			ReferenceData.getInstance().getPressureSensorTimerData().setTimerTime(0);
+		}
+		if (!ReferenceData.getInstance().getPressureSensorTimerData().getShouldStopTimer()) {
 			ReferenceData.getInstance().getPressureSensorTimerData().setTimerTime(getFPGATime() - ReferenceData.getInstance().getPressureSensorTimerData().getTimerStartTime());
 //			System.out.println(ReferenceData.getInstance().getPressureSensorTimerData().getTimerTime());
 		} else if (ReferenceData.getInstance().getPressureSensorTimerData().getShouldStopTimer()) {
