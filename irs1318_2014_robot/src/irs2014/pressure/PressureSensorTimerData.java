@@ -3,6 +3,7 @@ package irs2014.pressure;
 public class PressureSensorTimerData {
 	private boolean shouldStartTimer;
 	private boolean shouldStopTimer;
+	private boolean shouldRestartTimer;
 	private long timerStartTime; 
 	private long timerTime; 
 	
@@ -36,5 +37,13 @@ public class PressureSensorTimerData {
 	
 	public void setTimerTime(long timerTime) {
 		this.timerTime = timerTime; 
+	}
+
+	public boolean getShouldRestartTimer() {
+		return shouldRestartTimer;
+	}
+
+	public void setShouldRestartTimer(boolean shouldRestartTimer) {
+		this.shouldRestartTimer = shouldRestartTimer;
 	}
 }
