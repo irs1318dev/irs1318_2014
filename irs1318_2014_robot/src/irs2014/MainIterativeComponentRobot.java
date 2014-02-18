@@ -40,8 +40,7 @@ import irs2014.userInputDevices.UserInputCalculator;
 public class MainIterativeComponentRobot extends IterativeComponentRobot {
 
 	public BotVector currentRobotComponents() {
-		//return initialRobot();
-		return autonomousTesting();
+		return initialRobot();
 	}
 	
 	protected static BotVector autonomousTesting()
@@ -101,7 +100,8 @@ public class MainIterativeComponentRobot extends IterativeComponentRobot {
 		b.add(new CollectorCalculator());
 		b.add(new ShooterCalculator());
 		b.add(new DriveTrain1JoystickCalculator());
-		b.add(new DriveTrainPIDCalculator());
+//		b.add(new DriveTrainPIDCalculator());
+		b.add(new DriveTrainNoPIDCalculator());
 		b.add(new AngleCalculator());
 		b.add(new PressureSensorCalculator());
 		b.add(new NetworkTableRunner());

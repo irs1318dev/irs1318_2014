@@ -29,6 +29,7 @@ public class PressureSensorReader extends RobotComponentBase{
 			return pressureSensor = new DigitalInput(PortRef.COMPETITION_PRESSURE_SENSOR);
 		}else if (ReferenceData.getInstance().getDipSwitchData().getDipSwitchState() == DipSwitchRef.PRACTICE_BOT){
 			return pressureSensor = new DigitalInput(PortRef.DIGITAL_IO, PortRef.PRACTICE_PRESSURE_SENSOR);
+//			return pressureSensor = new DigitalInput(PortRef.DIGITAL_IO, 6);
 		}
 		return null;
 	}

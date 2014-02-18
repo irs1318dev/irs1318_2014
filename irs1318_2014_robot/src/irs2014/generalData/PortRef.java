@@ -5,7 +5,7 @@ import edu.wpi.first.wpilibj.SensorBase;
 
 public interface PortRef {
 
-	int DIP_SWITCH = 1;
+	int DIP_SWITCH = 10;
 	
 	int JOYSTICK_1 = 1;
 	int JOYSTICK_2 = 2;
@@ -65,11 +65,11 @@ public interface PortRef {
 	int PRACTICE_TALON_R = 2;
 	int PRACTICE_TALON_L = 1;
 
-	int PRACTICE_ENCODER_R_A = 4;
-	int PRACTICE_ENCODER_R_B = 5;
+	int PRACTICE_ENCODER_R_A = 3;//4;	ENCODER_R works on competition bot 
+	int PRACTICE_ENCODER_R_B = 2;//5;
 
-	int PRACTICE_ENCODER_L_A = 2;
-	int PRACTICE_ENCODER_L_B = 3;
+	int PRACTICE_ENCODER_L_A = 5;//4;//2;//2;
+	int PRACTICE_ENCODER_L_B = 1;//5;//1;//3;
 	
 	int PRACTICE_COLLECTOR_MOTOR = 3; //TODO
 	

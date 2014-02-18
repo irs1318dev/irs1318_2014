@@ -22,10 +22,10 @@ public class Joystick1Reader extends RobotComponentBase {
 
 	public void teleopPeriodic() {
 		joystickX = JoystickFilter.applyLinearDeadBand(joystick.getX(), 0.1);
-		joystickY = JoystickFilter.applyLinearDeadBand(joystick.getY(), 0.1);
+		joystickY = -JoystickFilter.applyLinearDeadBand(joystick.getY(), 0.1);
 
-		ReferenceData.getInstance().getUserInputData().setJoystickY(joystickX);
-		ReferenceData.getInstance().getUserInputData().setJoystickX(joystickY);
+		ReferenceData.getInstance().getUserInputData().setJoystickY(joystickY);
+		ReferenceData.getInstance().getUserInputData().setJoystickX(joystickX);
 		
 		ReferenceData.getInstance().getUserInputData().setExtendCollector(getExtendCollector());
 		ReferenceData.getInstance().getUserInputData().setRetractCollector(getRetractCollector());
