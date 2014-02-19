@@ -13,7 +13,6 @@ public class CollectorSolenoidData {
 	}
 	
 	public void setDesiredSolenoidState(boolean desiredSolenoidState){
-		setCurrentSolenoidState(this.desiredSolenoidState);
 		this.desiredSolenoidState = desiredSolenoidState;
 	}
 	

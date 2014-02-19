@@ -19,7 +19,7 @@ public class AutoLoadDriveShoot extends AutonomousCommand
 			goForwardRel(DRIVE_DISTANCE);
 			break;
 		case 3:
-			pause(100);
+			pause(500);
 			break;
 		case 4:
 			isDone = true;
@@ -33,5 +33,5 @@ public class AutoLoadDriveShoot extends AutonomousCommand
 		stopDriveTrain();
 	}
 	
-	private static final double DRIVE_DISTANCE = 5 * 12 * 2.54;//Feet to inches to centimeters
+	private static final double DRIVE_DISTANCE = 10 * 12 * 2.54;//Feet to inches to centimeters
 }

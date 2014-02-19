@@ -18,8 +18,10 @@ public class CollectorSolenoidRunner extends RobotComponentBase {
 		if (ReferenceData.getInstance().getCollectorData().getSolenoidData().getDesiredSolenoidState() != ReferenceData.getInstance().getCollectorData().getSolenoidData().getCurrentSolenoidState()) {
 			if (ReferenceData.getInstance().getCollectorData().getSolenoidData().getDesiredSolenoidState() == CollectorRef.EXTEND) {
 				getCollectorSolenoid().set(Value.kForward);
+				ReferenceData.getInstance().getCollectorData().getSolenoidData().setCurrentSolenoidState(CollectorRef.EXTEND);
 			} else if (ReferenceData.getInstance().getCollectorData().getSolenoidData().getDesiredSolenoidState() == CollectorRef.RETRACT) {
 				getCollectorSolenoid().set(Value.kReverse);
+				ReferenceData.getInstance().getCollectorData().getSolenoidData().setCurrentSolenoidState(CollectorRef.RETRACT);
 			}
 		}
 	}

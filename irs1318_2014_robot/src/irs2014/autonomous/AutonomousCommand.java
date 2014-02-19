@@ -1,5 +1,6 @@
 package irs2014.autonomous;
 
+import edu.wpi.first.wpilibj.Utility;
 import irs2014.collector.CollectorRef;
 import irs2014.generalData.*;
 import irs2014.shooter.ShooterRef;
@@ -38,7 +39,7 @@ public abstract class AutonomousCommand implements AutoTask
 		currentState++;
 		stateLeftEncoderTicks = ReferenceData.getInstance().getDriveTrainData().getLeftEncoderData().getTicks();
 		stateRightEncoderTicks = ReferenceData.getInstance().getDriveTrainData().getRightEncoderData().getTicks();
-		stateTime = System.currentTimeMillis();
+		stateTime = Utility.getFPGATime() / 1000;
 	}
 	
 	public boolean isDone()
@@ -48,11 +49,12 @@ public abstract class AutonomousCommand implements AutoTask
 	
 	private double toTicks(double centimeters)
 	{//Converts centimeters to ticks
-		double practiceWheelRaduis = 4.0 * 2.54; // centimeters
-		double competitionWheelRadius = 2.5 * 2.54; // centimeters
-		if(ReferenceData.getInstance().getDipSwitchData().getDipSwitchState()) // if it is the practice robot
-			return centimeters * 360 / (2 * Math.PI * practiceWheelRaduis); 
-		return centimeters * 360 / (2 * Math.PI * competitionWheelRadius);
+		double practiceWheelDiameter = 4.0 * 2.54; // centimeters
+		double competitionWheelDiameter = 4.0 * 2.54; // centimeters
+		//if(ReferenceData.getInstance().getDipSwitchData().getDipSwitchState()) // if it is the practice robot
+		//	return centimeters * 360 / (2 * Math.PI * practiceWheelRaduis); 
+		System.out.println(centimeters / (Math.PI * competitionWheelDiameter) * 360);
+		return centimeters / (Math.PI * competitionWheelDiameter) * 360;
 	}
 	
 	/**
@@ -75,7 +77,7 @@ public abstract class AutonomousCommand implements AutoTask
     /////////////////////////////////////////////////////////	
 	public void pause(long delayMillis)
 	{
-		if(stateTime + delayMillis < System.currentTimeMillis())
+		if(stateTime + delayMillis < Utility.getFPGATime() / 1000)
 			advanceState();
 	}
 	

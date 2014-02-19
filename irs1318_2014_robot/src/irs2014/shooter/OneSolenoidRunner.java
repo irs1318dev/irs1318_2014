@@ -13,12 +13,12 @@ public class OneSolenoidRunner extends RobotComponentBase{
 	private boolean currentState = true;
 	
 	public void robotInit(){
-		solenoid = new DoubleSolenoid[1];
-//		solenoid[0] = new DoubleSolenoid(PortRef.SOLENOID_MODULE_PORT_1, 7, 8);
-//		solenoid[1] = new DoubleSolenoid(PortRef.SOLENOID_MODULE_PORT_1, 5, 6);
-//		solenoid[2] = new DoubleSolenoid(PortRef.SOLENOID_MODULE_PORT_1, 3, 4);
-//		solenoid[3] = new DoubleSolenoid(PortRef.SOLENOID_MODULE_PORT_2, 1, 2);
-		solenoid[0] = new DoubleSolenoid(PortRef.SOLENOID_MODULE_PORT_2, 1, 2);
+		solenoid = new DoubleSolenoid[5];
+		solenoid[0] = new DoubleSolenoid(PortRef.SOLENOID_MODULE_PORT_1, 7, 8);
+		solenoid[1] = new DoubleSolenoid(PortRef.SOLENOID_MODULE_PORT_1, 5, 6);
+		solenoid[2] = new DoubleSolenoid(PortRef.SOLENOID_MODULE_PORT_1, 3, 4);
+		solenoid[3] = new DoubleSolenoid(PortRef.SOLENOID_MODULE_PORT_2, 7, 8);
+		solenoid[4] = new DoubleSolenoid(PortRef.SOLENOID_MODULE_PORT_2, 1, 2);
 //		solenoid[5] = new DoubleSolenoid(PortRef.SOLENOID_MODULE_PORT_2, 3, 4);
 //		solenoid[6] = new DoubleSolenoid(PortRef.SOLENOID_MODULE_PORT_2, 5, 6);
 //		solenoid[7] = new DoubleSolenoid(PortRef.SOLENOID_MODULE_PORT_2, 7, 8);
