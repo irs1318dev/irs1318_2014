@@ -28,8 +28,8 @@ public class DriveTrainPIDCalculator extends RobotComponentBase{
 		double rightVelocitySetpoint = ReferenceData.getInstance().getDriveTrainData().getRightPIDData().getVelocitySetpoint();
 		double rightEncoderVelocity = ReferenceData.getInstance().getDriveTrainData().getRightEncoderData().getVelocity();
 		double rightKf = 0.5;
-//		double rightKd = -0.0008; // practice bot
-		double rightKd = 0.0005; // competition bot
+		double rightKd = 0.0008; // practice bot
+//		double rightKd = 0.0005; // competition bot
 		double rightKscale = 2800;
 		
 		double rightPIDVal = rightKf * rightVelocitySetpoint + rightKd*(rightKscale * rightVelocitySetpoint - rightEncoderVelocity);
@@ -37,8 +37,8 @@ public class DriveTrainPIDCalculator extends RobotComponentBase{
 		double leftVelocitySetpoint = - ReferenceData.getInstance().getDriveTrainData().getLeftPIDData().getVelocitySetpoint();
 		double leftEncoderVelocity = ReferenceData.getInstance().getDriveTrainData().getLeftEncoderData().getVelocity();
 		double leftKf = 0.5;
-//		double leftKd = -0.0005;		// practice bot
-		double leftKd = 0.0005;		// competition bot
+		double leftKd = 0.0005;		// practice bot
+//		double leftKd = 0.0005;		// competition bot
 		double leftKscale = 2800;
 
 		double leftPIDVal = leftKf * leftVelocitySetpoint + leftKd*(leftKscale * leftVelocitySetpoint - leftEncoderVelocity);
