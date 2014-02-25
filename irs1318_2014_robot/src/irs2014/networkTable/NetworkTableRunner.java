@@ -73,5 +73,6 @@ public class NetworkTableRunner extends RobotComponentBase{
  	public void pressureSensor(){
  		IRSTable.putBoolean(NTRef.PressureSensor_State, ReferenceData.getInstance().getPressureSensorData().getIsPressurized());
  		IRSTable.putNumber(NTRef.PressureSensor_Time, (ReferenceData.getInstance().getPressureSensorTimerData().getTimerTime() / 1000000));
+ 		IRSTable.putNumber(NTRef.AnalogPressureSensor_Value, ReferenceData.getInstance().getAnalogPressureSensorData().getPressure());
  	}
 }

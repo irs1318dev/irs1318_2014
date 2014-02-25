@@ -26,7 +26,7 @@ public abstract class AutonomousCommand implements AutoTask
 		currentState = 0;
 		stateLeftEncoderTicks = ReferenceData.getInstance().getDriveTrainData().getLeftEncoderData().getTicks();
 		stateRightEncoderTicks = ReferenceData.getInstance().getDriveTrainData().getRightEncoderData().getTicks();
-		stateTime = System.currentTimeMillis();
+		stateTime = Utility.getFPGATime() / 1000;
 		isDone = false;
 	}
 
@@ -49,12 +49,13 @@ public abstract class AutonomousCommand implements AutoTask
 	
 	private double toTicks(double centimeters)
 	{//Converts centimeters to ticks
-		double practiceWheelDiameter = 4.0 * 2.54; // centimeters
+		double practiceWheelDiameter = 6.0 * 2.54; // centimeters
 		double competitionWheelDiameter = 4.0 * 2.54; // centimeters
 		//if(ReferenceData.getInstance().getDipSwitchData().getDipSwitchState()) // if it is the practice robot
 		//	return centimeters * 360 / (2 * Math.PI * practiceWheelRaduis); 
-		System.out.println(centimeters / (Math.PI * competitionWheelDiameter) * 360);
-		return centimeters / (Math.PI * competitionWheelDiameter) * 360;
+//		System.out.println(centimeters / (Math.PI * competitionWheelDiameter) * 360);
+//		return centimeters / (Math.PI * competitionWheelDiameter) * 360;
+		return centimeters / (Math.PI * practiceWheelDiameter) * 360;
 	}
 	
 	/**

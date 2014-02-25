@@ -22,11 +22,12 @@ public class CollectorMotorRunner extends RobotComponentBase {
 	}
 	
 	public Talon getNewCollectorMotor() {
-		if (ReferenceData.getInstance().getDipSwitchData().getDipSwitchState() == DipSwitchRef.COMPETITION_BOT) {
-			collectorMotor = new Talon (PortRef.SIDECAR_SLOT, PortRef.COMPETITION_COLLECTOR_MOTOR);
-		} else if (ReferenceData.getInstance().getDipSwitchData().getDipSwitchState() == DipSwitchRef.PRACTICE_BOT) {
-			collectorMotor = new Talon(PortRef.SIDECAR_SLOT, PortRef.PRACTICE_COLLECTOR_MOTOR);
-		}
-		return collectorMotor;
+//		if (ReferenceData.getInstance().getDipSwitchData().getDipSwitchState() == DipSwitchRef.COMPETITION_BOT) {
+//			collectorMotor = new Talon (PortRef.SIDECAR_SLOT, PortRef.COMPETITION_COLLECTOR_MOTOR);
+//		} else if (ReferenceData.getInstance().getDipSwitchData().getDipSwitchState() == DipSwitchRef.PRACTICE_BOT) {
+//			collectorMotor = new Talon(PortRef.SIDECAR_SLOT, PortRef.PRACTICE_COLLECTOR_MOTOR);
+//		}
+//		return collectorMotor;
+		return new Talon(PortRef.SIDECAR_SLOT, PortRef.PRACTICE_COLLECTOR_MOTOR);
 	}
 }

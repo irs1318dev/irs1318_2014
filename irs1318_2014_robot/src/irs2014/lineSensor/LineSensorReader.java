@@ -19,11 +19,12 @@ public class LineSensorReader extends RobotComponentBase {
 	}
 	
 	public DigitalInput getNewLineSensor() {
-		if (ReferenceData.getInstance().getDipSwitchData().getDipSwitchState() == DipSwitchRef.COMPETITION_BOT) {
-			return new DigitalInput(PortRef.DIGITAL_IO, PortRef.COMPETITION_LINE_SENSOR_PORT);
-		} else if (ReferenceData.getInstance().getDipSwitchData().getDipSwitchState() == DipSwitchRef.PRACTICE_BOT) {
-			return new DigitalInput(PortRef.DIGITAL_IO, PortRef.PRACTICE_LINE_SENSOR_PORT);
-		}
-		return null;
+//		if (ReferenceData.getInstance().getDipSwitchData().getDipSwitchState() == DipSwitchRef.COMPETITION_BOT) {
+//			return new DigitalInput(PortRef.DIGITAL_IO, PortRef.COMPETITION_LINE_SENSOR_PORT);
+//		} else if (ReferenceData.getInstance().getDipSwitchData().getDipSwitchState() == DipSwitchRef.PRACTICE_BOT) {
+//			return new DigitalInput(PortRef.DIGITAL_IO, PortRef.PRACTICE_LINE_SENSOR_PORT);
+//		}
+//		return null;
+		return new DigitalInput(PortRef.DIGITAL_IO, PortRef.PRACTICE_LINE_SENSOR_PORT);
 	}
 }

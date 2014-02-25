@@ -22,11 +22,12 @@ public class CollectorLimitSwitchReader extends RobotComponentBase{
 	}
 	
 	public DigitalInput getNewCollectorLimitSwitch() {
-		if (ReferenceData.getInstance().getDipSwitchData().getDipSwitchState() == DipSwitchRef.COMPETITION_BOT) {
-			collectorLimitSwitch = new DigitalInput(PortRef.DIGITAL_IO, PortRef.COMPETITION_COLLECTOR_LIMIT_SWITCH_PORT);
-		} else if (ReferenceData.getInstance().getDipSwitchData().getDipSwitchState() == DipSwitchRef.PRACTICE_BOT) {
-			collectorLimitSwitch = new DigitalInput(PortRef.DIGITAL_IO, PortRef.PRACTICE_COLLECTOR_LIMIT_SWITCH_PORT);
-		}
-		return null;
+//		if (ReferenceData.getInstance().getDipSwitchData().getDipSwitchState() == DipSwitchRef.COMPETITION_BOT) {
+//			collectorLimitSwitch = new DigitalInput(PortRef.DIGITAL_IO, PortRef.COMPETITION_COLLECTOR_LIMIT_SWITCH_PORT);
+//		} else if (ReferenceData.getInstance().getDipSwitchData().getDipSwitchState() == DipSwitchRef.PRACTICE_BOT) {
+//			collectorLimitSwitch = new DigitalInput(PortRef.DIGITAL_IO, PortRef.PRACTICE_COLLECTOR_LIMIT_SWITCH_PORT);
+//		}
+		return new DigitalInput(PortRef.DIGITAL_IO, PortRef.PRACTICE_COLLECTOR_LIMIT_SWITCH_PORT);
+//		return null;
 	}
 }

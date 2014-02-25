@@ -12,9 +12,12 @@ public interface PortRef {
 	
 	int SIDECAR_SLOT = SensorBase.getDefaultDigitalModule();
 	int DIGITAL_IO = SensorBase.getDefaultSolenoidModule();
+	int ANALOG_MODULE = SensorBase.getDefaultAnalogModule();
 //	int SOLENOID_MODULE_PORT = SensorBase.getDefaultSolenoidModule();
 	int SOLENOID_MODULE_PORT_1 = 1;
 	int SOLENOID_MODULE_PORT_2 = 2;
+	
+	int ANALOG_PRESSURE_SENSOR = -1;
 	
 	int PORT_1 = 1;
 	int PORT_2 = 2;

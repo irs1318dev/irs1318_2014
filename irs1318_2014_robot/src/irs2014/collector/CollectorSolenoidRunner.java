@@ -31,11 +31,12 @@ public class CollectorSolenoidRunner extends RobotComponentBase {
 	}
 
 	public DoubleSolenoid getNewCollectorSolenoid() {
-		if (ReferenceData.getInstance().getDipSwitchData().getDipSwitchState() == DipSwitchRef.COMPETITION_BOT) {
-			collectorSolenoid = new DoubleSolenoid(PortRef.SOLENOID_MODULE_PORT_2, PortRef.COMPETITION_COLLECTOR_EXTENDER_SOLENOID_PORT, PortRef.COMPETITION_COLLECTOR_RETRACTOR_SOLENOID_PORT);
-		} else if (ReferenceData.getInstance().getDipSwitchData().getDipSwitchState() == DipSwitchRef.PRACTICE_BOT) {
-			collectorSolenoid = new DoubleSolenoid(PortRef.SOLENOID_MODULE_PORT_2, PortRef.PRACTICE_COLLECTOR_EXTENDER_SOLENOID_PORT, PortRef.PRACTICE_COLLECTOR_RETRACTOR_SOLENOID_PORT);
-		}
-		return collectorSolenoid;
+//		if (ReferenceData.getInstance().getDipSwitchData().getDipSwitchState() == DipSwitchRef.COMPETITION_BOT) {
+//			collectorSolenoid = new DoubleSolenoid(PortRef.SOLENOID_MODULE_PORT_2, PortRef.COMPETITION_COLLECTOR_EXTENDER_SOLENOID_PORT, PortRef.COMPETITION_COLLECTOR_RETRACTOR_SOLENOID_PORT);
+//		} else if (ReferenceData.getInstance().getDipSwitchData().getDipSwitchState() == DipSwitchRef.PRACTICE_BOT) {
+//			collectorSolenoid = new DoubleSolenoid(PortRef.SOLENOID_MODULE_PORT_2, PortRef.PRACTICE_COLLECTOR_EXTENDER_SOLENOID_PORT, PortRef.PRACTICE_COLLECTOR_RETRACTOR_SOLENOID_PORT);
+//		}
+//		return collectorSolenoid;
+		return new DoubleSolenoid(PortRef.SOLENOID_MODULE_PORT_2, PortRef.PRACTICE_COLLECTOR_EXTENDER_SOLENOID_PORT, PortRef.PRACTICE_COLLECTOR_RETRACTOR_SOLENOID_PORT);
 	}
 }

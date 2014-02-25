@@ -2,7 +2,7 @@ package irs2014.autonomous.tasks;
 
 import irs2014.autonomous.AutonomousCommand;
 
-public class AutoOpenDriveShoot extends AutonomousCommand
+public class AutoOpenDriveShootOne extends AutonomousCommand
 {
 	public void run() 
 	{
@@ -19,7 +19,7 @@ public class AutoOpenDriveShoot extends AutonomousCommand
 			break;
 		case 3:
 			System.out.println("We are paused!");
-			pause(5000);
+			pause(1000);
 			break;
 		case 4:
 			System.out.println("We are launching!");
