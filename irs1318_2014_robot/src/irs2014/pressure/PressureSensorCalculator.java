@@ -15,6 +15,7 @@ public class PressureSensorCalculator extends RobotComponentBase {
 		if(ReferenceData.getInstance().getPressureSensorData().getIsPressurized()){
 			if(!ReferenceData.getInstance().getPressureSensorData().getWasPressurized()){
 				ReferenceData.getInstance().getPressureSensorTimerData().setShouldRestartTimer(true);
+				ReferenceData.getInstance().getPressureSensorTimerData().setShouldStopTimer(false);
 			}else{
 				ReferenceData.getInstance().getPressureSensorTimerData().setShouldRestartTimer(false);
 				ReferenceData.getInstance().getPressureSensorTimerData().setShouldStopTimer(false);
@@ -23,6 +24,7 @@ public class PressureSensorCalculator extends RobotComponentBase {
 		}else if(!ReferenceData.getInstance().getPressureSensorData().getIsPressurized()){
 			if(ReferenceData.getInstance().getPressureSensorData().getWasPressurized()){
 				ReferenceData.getInstance().getPressureSensorTimerData().setShouldRestartTimer(true);
+				ReferenceData.getInstance().getPressureSensorTimerData().setShouldStopTimer(false);
 			}else{
 				ReferenceData.getInstance().getPressureSensorTimerData().setShouldRestartTimer(false);
 				ReferenceData.getInstance().getPressureSensorTimerData().setShouldStopTimer(false);

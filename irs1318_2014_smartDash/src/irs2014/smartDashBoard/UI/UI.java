@@ -25,7 +25,7 @@ public class UI extends javax.swing.JFrame {
 	int width = 800;
 	int height = 600;
 	
-	
+
 	/**
 	 * @param args
 	 */
