@@ -70,7 +70,7 @@ public interface PortRef {
 
 	int PRACTICE_ENCODER_R_A = 1;///3;//4;	//Flipped right and left ports to fix competition bot 
 	int PRACTICE_ENCODER_R_B = 5;///2;//5;	//Then flipped A and B for left and right to flip sign 
-
+									//***A and B are flipped from hardware - A is blue, B is yellow in hardware 
 	int PRACTICE_ENCODER_L_A = 2;///5;//4;//2;//2;
 	int PRACTICE_ENCODER_L_B = 3;///1;//5;//1;//3;
 	
