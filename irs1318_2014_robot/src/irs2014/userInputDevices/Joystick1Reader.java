@@ -36,6 +36,7 @@ public class Joystick1Reader extends RobotComponentBase {
 		ReferenceData.getInstance().getUserInputData().setExtendShooterAngle(getExtendShooterAngle());
 		
 		ReferenceData.getInstance().getUserInputData().setShoot5Pistons(getShoot5Pistons());
+		ReferenceData.getInstance().getUserInputData().setShoot4Pistons(getShoot4Pistons());
 		ReferenceData.getInstance().getUserInputData().setRetract5Pistons(getRetract5Pistons());
 		ReferenceData.getInstance().getUserInputData().setShoot3Pistons(getShoot3Pistons());
 		ReferenceData.getInstance().getUserInputData().setShootPulse(getSetShootPulse());
@@ -58,6 +59,10 @@ public class Joystick1Reader extends RobotComponentBase {
 
 	private boolean getShoot5Pistons(){
 		return joystick.getRawButton(ButtonRef.SHOOT_5_PISTONS);
+	}
+	
+	private boolean getShoot4Pistons(){
+		return joystick.getRawButton(ButtonRef.SHOOT_4_PISTONS);
 	}
 	
 	private boolean getRetract5Pistons(){
