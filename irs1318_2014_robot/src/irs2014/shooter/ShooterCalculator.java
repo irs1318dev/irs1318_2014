@@ -47,7 +47,9 @@ public class ShooterCalculator extends RobotComponentBase {
 			ReferenceData.getInstance().getUserInputData().setShoot5Pistons(true);
 		}
 		
-		if((ReferenceData.getInstance().getUserInputData().getShoot5Pistons() || ReferenceData.getInstance().getUserInputData().getShoot3Pistons() || ReferenceData.getInstance().getUserInputData().getShootPulse() || ReferenceData.getInstance().getUserInputData().getShoot1Piston()) && collectorExtended){
+		if((ReferenceData.getInstance().getUserInputData().getShoot5Pistons() || ReferenceData.getInstance().getUserInputData().getShoot3Pistons() || 
+				ReferenceData.getInstance().getUserInputData().getShootPulse() || ReferenceData.getInstance().getUserInputData().getShoot1Piston() || 
+				ReferenceData.getInstance().getUserInputData().getShoot4Pistons()) && collectorExtended){
 			if(ReferenceData.getInstance().getUserInputData().getShoot5Pistons()){
 				ReferenceData.getInstance().getShooterData().setNumPistons(5);
 //				ReferenceData.getInstance().getShooterData().setTimeLastShot(Utility.getFPGATime());
@@ -56,6 +58,9 @@ public class ShooterCalculator extends RobotComponentBase {
 				ReferenceData.getInstance().getShooterData().setTimeLastShot(Utility.getFPGATime());
 			}else if(ReferenceData.getInstance().getUserInputData().getShoot1Piston()){
 				ReferenceData.getInstance().getShooterData().setNumPistons(1);
+				ReferenceData.getInstance().getShooterData().setTimeLastShot(Utility.getFPGATime());	
+			}else if(ReferenceData.getInstance().getUserInputData().getShoot4Pistons()){
+				ReferenceData.getInstance().getShooterData().setNumPistons(4);
 				ReferenceData.getInstance().getShooterData().setTimeLastShot(Utility.getFPGATime());
 			}else if(ReferenceData.getInstance().getUserInputData().getShootPulse()){
 				ReferenceData.getInstance().getShooterData().setPrePulse(true);

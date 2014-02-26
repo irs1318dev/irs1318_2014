@@ -42,6 +42,10 @@ public class ShooterRunner extends RobotComponentBase {
 			case 5:
 				setAllOuterSolenoids(Value.kForward);
 				break;
+			case 4: 
+				setInnerSolenoids(Value.kForward);
+				outerSolenoidL.set(Value.kForward);
+				break;
 			case 3:
 				setInnerSolenoids(Value.kForward);
 				break;

@@ -15,6 +15,7 @@ public class UserInputData {
 	private boolean shoot5Pistons;
 	private boolean retract5Pistons;
 	private boolean shoot3Pistons;
+	private boolean shoot4Pistons;
 	private boolean shootPulse;
 	private boolean shoot1Piston;
 	
@@ -181,6 +182,14 @@ public class UserInputData {
 
 	public void setShoot3Pistons(boolean shoot3Pistons) {
 		this.shoot3Pistons = shoot3Pistons;
+	}
+
+	public boolean getShoot4Pistons() {
+		return shoot4Pistons;
+	}
+
+	public void setShoot4Pistons(boolean shoot4Pistons) {
+		this.shoot4Pistons = shoot4Pistons;
 	}
 
 	public boolean getShootPulse() {
