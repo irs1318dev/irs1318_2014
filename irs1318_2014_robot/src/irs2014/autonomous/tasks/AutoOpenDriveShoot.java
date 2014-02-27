@@ -23,7 +23,7 @@ public class AutoOpenDriveShoot extends AutonomousCommand
 			break;
 		case 4:
 			System.out.println("We are launching!");
-			launch5Pistons();
+			launch4Pistons();
 			break;
 		case 5:
 			isDone = true;

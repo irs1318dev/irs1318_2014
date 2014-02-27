@@ -23,7 +23,8 @@ public class AutoTaskRunner extends RobotComponentBase
 	public void autonomousInit()
 	{
 		robotInit();
-		currentTask = new AutoOpenDriveShoot();
+//		currentTask = new AutoOpenDriveShoot();
+		currentTask = new AutoOpenDriveShootTwo();
 	}
 	public void autonomousPeriodic()
 	{

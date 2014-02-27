@@ -26,7 +26,7 @@ public class AutoOpenDriveShootTwo extends AutonomousCommand
 			break;
 		case 5:
 			System.out.println("We are launching ball 1!");
-			launch5Pistons();
+			launch4Pistons();
 			break;
 		case 6:
 			pause(1500);
@@ -38,7 +38,7 @@ public class AutoOpenDriveShootTwo extends AutonomousCommand
 			pause(500);
 			break;
 		case 9:
-			launch5Pistons();
+			launch4Pistons();
 			break;
 		case 10:
 			isDone = true;

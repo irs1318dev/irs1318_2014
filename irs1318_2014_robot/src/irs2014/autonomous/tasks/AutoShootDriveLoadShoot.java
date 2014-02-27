@@ -19,7 +19,7 @@ public class AutoShootDriveLoadShoot extends AutonomousCommand
 			pause(SHIFT_WAIT_TIME);
 			break;
 		case 3:
-			launch5Pistons();
+			launch4Pistons();
 			break;
 		case 4:
 			pause(MOVE_WAIT_TIME);
