@@ -36,6 +36,7 @@ public class Joystick1Reader extends RobotComponentBase {
 		ReferenceData.getInstance().getUserInputData().setExtendShooterAngle(getExtendShooterAngle());
 		
 		ReferenceData.getInstance().getUserInputData().setShoot5Pistons(getShoot5Pistons());
+		ReferenceData.getInstance().getUserInputData().setShoot4Pistons(getShoot4Pistons());
 		ReferenceData.getInstance().getUserInputData().setRetract5Pistons(getRetract5Pistons());
 		ReferenceData.getInstance().getUserInputData().setShoot3Pistons(getShoot3Pistons());
 		ReferenceData.getInstance().getUserInputData().setShoot4Pistons(getShoot4Pistons());

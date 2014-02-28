@@ -7,12 +7,12 @@ public interface ButtonRef {
 	int COLLECTOR_MOTOR_OUT = 5; //TODO
 //	int STOP_COLLECTOR_MOTOR = 2; //TODO
 	
-	int SHOOT_5_PISTONS = 1;
+	int SHOOT_5_PISTONS = 4;
 	int RETRACT_5_PISTONS = 2;
 	int SHOOT_3_PISTONS = 7;
 	int SHOOT_PULSE = 8;
 	int SHOOT_1_PISTON = 6;
-	int SHOOT_4_PISTONS = 4;
+	int SHOOT_4_PISTONS = 1;
 	
 //	int RETRACT_SHOOTER = 7; //TODO 
 	int EXTEND_SHOOTER_ANGLE = 9; //TODO 

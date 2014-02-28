@@ -6,6 +6,7 @@ import irs2014.dipSwitch.DipSwitchData;
 import irs2014.driveTrainTank.DriveTrainData;
 import irs2014.driveTrainTank.PIDConstantData;
 import irs2014.lineSensor.LineSensorData;
+import irs2014.pressure.AnalogPressureSensorData;
 import irs2014.pressure.PressureSensorData;
 import irs2014.pressure.PressureSensorTimerData;
 import irs2014.shooter.AngleData;
@@ -31,6 +32,7 @@ public class ReferenceData {
 	private PressureSensorTimerData pressureSensorTimerData;
 	private LineSensorData lineSensorData; 
 	private AngleData angleData;
+	private AnalogPressureSensorData analogPressureData;
 	
 	private UserInputData2 userInputData2;
 	private ShooterData2 shooterData2;
@@ -113,6 +115,13 @@ public class ReferenceData {
 		if(angleData == null)
 			angleData = new AngleData();
 		return angleData;
+	}
+	
+	public AnalogPressureSensorData getAnalogPressureSensorData(){
+		if(analogPressureData == null){
+			analogPressureData = new AnalogPressureSensorData();
+		}
+		return analogPressureData;
 	}
 	
 	public UserInputData2 getUserInputData2(){

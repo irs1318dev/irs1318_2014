@@ -1,41 +1,47 @@
 package irs2014.autonomous.tasks;
 
-import irs2014.autonomous.AutoTaskRunner;
 import irs2014.autonomous.AutonomousCommand;
 
-public class AutoShootDriveLoadShoot extends AutonomousCommand
+public class AutoOpenDriveShootTwo extends AutonomousCommand
 {
 	public void run() 
 	{
 		switch(currentState)
 		{
 		case 0:
-			extendShooterFrame();
+			extendCollector();
 			break;
 		case 1:
-			extendCollector();
+			extendShooterFrame();
 			break;
 		case 2:
 			pause(SHIFT_WAIT_TIME);
 			break;
 		case 3:
-			launch4Pistons();
+			collectorMotorIn(10000);// in milliseconds
+			goForwardRel(15 * 12 * 2.54, .5);//ft to inches to centimeters
 			break;
 		case 4:
-			pause(MOVE_WAIT_TIME);
+			pause(1000);
 			break;
 		case 5:
-			goForwardRel(3 * 12 * 2.54);// feet to inches to centimeters.
+			System.out.println("We are launching ball 1!");
+			launch4Pistons();
 			break;
 		case 6:
-			extendCollector();
+			pause(1500);
 			break;
 		case 7:
-			collectorMotorIn(COLLECT_WAIT_TIME);
+			collectorMotorIn(1750);
 			break;
 		case 8:
+			pause(500);
+			break;
+		case 9:
+			launch4Pistons();
+			break;
+		case 10:
 			isDone = true;
-			AutoTaskRunner.setAutoTask(new PrepThenShoot());
 			break;
 		}
 	}
@@ -44,4 +50,5 @@ public class AutoShootDriveLoadShoot extends AutonomousCommand
 	{
 		stopDriveTrain();
 	}
+	
 }

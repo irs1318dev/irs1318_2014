@@ -56,12 +56,12 @@ public class ShooterCalculator extends RobotComponentBase {
 			}else if(ReferenceData.getInstance().getUserInputData().getShoot3Pistons()){
 				ReferenceData.getInstance().getShooterData().setNumPistons(3);
 				ReferenceData.getInstance().getShooterData().setTimeLastShot(Utility.getFPGATime());
-			}else if(ReferenceData.getInstance().getUserInputData().getShoot1Piston()){
-				ReferenceData.getInstance().getShooterData().setNumPistons(1);
-				ReferenceData.getInstance().getShooterData().setTimeLastShot(Utility.getFPGATime());	
 			}else if(ReferenceData.getInstance().getUserInputData().getShoot4Pistons()){
 				ReferenceData.getInstance().getShooterData().setNumPistons(4);
 				ReferenceData.getInstance().getShooterData().setTimeLastShot(Utility.getFPGATime());
+			}else if(ReferenceData.getInstance().getUserInputData().getShoot1Piston()){
+				ReferenceData.getInstance().getShooterData().setNumPistons(1);
+				ReferenceData.getInstance().getShooterData().setTimeLastShot(Utility.getFPGATime());	
 			}else if(ReferenceData.getInstance().getUserInputData().getShootPulse()){
 				ReferenceData.getInstance().getShooterData().setPrePulse(true);
 				ReferenceData.getInstance().getShooterData().setPulseState(ShooterData.PRE_PULSE);
