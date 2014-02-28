@@ -18,21 +18,23 @@ public class DriveTrainRunner extends RobotComponentBase {
 	}
 	
 	public Talon getNewRightTalon(){
-		if (ReferenceData.getInstance().getDipSwitchData().getDipSwitchState() == DipSwitchRef.COMPETITION_BOT) {
-			return new Talon(PortRef.SIDECAR_SLOT, PortRef.COMPETITION_TALON_R);
-		} else if (ReferenceData.getInstance().getDipSwitchData().getDipSwitchState() == DipSwitchRef.PRACTICE_BOT) {
-			return new Talon(PortRef.SIDECAR_SLOT, PortRef.PRACTICE_TALON_R);
-		}
-		return null;
+//		if (ReferenceData.getInstance().getDipSwitchData().getDipSwitchState() == DipSwitchRef.COMPETITION_BOT) {
+//			return new Talon(PortRef.SIDECAR_SLOT, PortRef.COMPETITION_TALON_R);
+//		} else if (ReferenceData.getInstance().getDipSwitchData().getDipSwitchState() == DipSwitchRef.PRACTICE_BOT) {
+//			return new Talon(PortRef.SIDECAR_SLOT, PortRef.PRACTICE_TALON_R);
+//		}
+//		return null;
+		return new Talon(PortRef.SIDECAR_SLOT, PortRef.PRACTICE_TALON_R);
 	}
 
 	public Talon getNewLeftTalon(){
-		if (ReferenceData.getInstance().getDipSwitchData().getDipSwitchState() == DipSwitchRef.COMPETITION_BOT) {
-			return new Talon(PortRef.SIDECAR_SLOT, PortRef.COMPETITION_TALON_L);
-		} else if (ReferenceData.getInstance().getDipSwitchData().getDipSwitchState() == DipSwitchRef.PRACTICE_BOT) {
-			return new Talon(PortRef.SIDECAR_SLOT, PortRef.PRACTICE_TALON_L);
-		}
-		return null;
+//		if (ReferenceData.getInstance().getDipSwitchData().getDipSwitchState() == DipSwitchRef.COMPETITION_BOT) {
+//			return new Talon(PortRef.SIDECAR_SLOT, PortRef.COMPETITION_TALON_L);
+//		} else if (ReferenceData.getInstance().getDipSwitchData().getDipSwitchState() == DipSwitchRef.PRACTICE_BOT) {
+//			return new Talon(PortRef.SIDECAR_SLOT, PortRef.PRACTICE_TALON_L);
+//		}
+//		return null;
+		return new Talon(PortRef.SIDECAR_SLOT, PortRef.PRACTICE_TALON_L);
 	}
 	
 	public Talon getRightTalon() {

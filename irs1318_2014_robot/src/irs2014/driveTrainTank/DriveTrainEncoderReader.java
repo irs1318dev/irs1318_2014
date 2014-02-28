@@ -20,21 +20,23 @@ public class DriveTrainEncoderReader extends RobotComponentBase{
 	}
 	
 	public EncoderAngularVelocity getNewLeftEncoder() {
-		if (ReferenceData.getInstance().getDipSwitchData().getDipSwitchState() == DipSwitchRef.COMPETITION_BOT) {
-			return new EncoderAngularVelocity(PortRef.COMPETITION_ENCODER_L_A, PortRef.COMPETITION_ENCODER_L_B);
-		} else if (ReferenceData.getInstance().getDipSwitchData().getDipSwitchState() == DipSwitchRef.PRACTICE_BOT) {
-			return new EncoderAngularVelocity(PortRef.PRACTICE_ENCODER_L_A, PortRef.PRACTICE_ENCODER_L_B);
-		}
-		return null;
+//		if (ReferenceData.getInstance().getDipSwitchData().getDipSwitchState() == DipSwitchRef.COMPETITION_BOT) {
+//			return new EncoderAngularVelocity(PortRef.COMPETITION_ENCODER_L_A, PortRef.COMPETITION_ENCODER_L_B);
+//		} else if (ReferenceData.getInstance().getDipSwitchData().getDipSwitchState() == DipSwitchRef.PRACTICE_BOT) {
+//			return new EncoderAngularVelocity(PortRef.PRACTICE_ENCODER_L_A, PortRef.PRACTICE_ENCODER_L_B);
+//		}
+//		return null;
+		return new EncoderAngularVelocity(PortRef.PRACTICE_ENCODER_L_A, PortRef.PRACTICE_ENCODER_L_B);
 	}
 
 	public EncoderAngularVelocity getNewRightEncoder() {
-		if (ReferenceData.getInstance().getDipSwitchData().getDipSwitchState() == DipSwitchRef.COMPETITION_BOT) {
-			return new EncoderAngularVelocity(PortRef.COMPETITION_ENCODER_R_A, PortRef.COMPETITION_ENCODER_R_B);
-		} else if (ReferenceData.getInstance().getDipSwitchData().getDipSwitchState() == DipSwitchRef.PRACTICE_BOT) {
-			return new EncoderAngularVelocity(PortRef.PRACTICE_ENCODER_R_A, PortRef.PRACTICE_ENCODER_R_B);
-		}
-		return null;
+//		if (ReferenceData.getInstance().getDipSwitchData().getDipSwitchState() == DipSwitchRef.COMPETITION_BOT) {
+//			return new EncoderAngularVelocity(PortRef.COMPETITION_ENCODER_R_A, PortRef.COMPETITION_ENCODER_R_B);
+//		} else if (ReferenceData.getInstance().getDipSwitchData().getDipSwitchState() == DipSwitchRef.PRACTICE_BOT) {
+//			return new EncoderAngularVelocity(PortRef.PRACTICE_ENCODER_R_A, PortRef.PRACTICE_ENCODER_R_B);
+//		}
+//		return null;
+		return new EncoderAngularVelocity(PortRef.PRACTICE_ENCODER_R_A, PortRef.PRACTICE_ENCODER_R_B);
 	}
 
 	double count;

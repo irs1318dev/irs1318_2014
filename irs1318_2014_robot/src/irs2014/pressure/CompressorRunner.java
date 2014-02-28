@@ -12,15 +12,16 @@ public class CompressorRunner extends RobotComponentBase {
 	DigitalInput input;
 	
 	public Compressor getNewCompressor(){
-		if (ReferenceData.getInstance().getDipSwitchData().getDipSwitchState() == DipSwitchRef.COMPETITION_BOT){
-			//return new Compressor(PortRef.COMPETITION_PRESSURE_SWITCH_SLOT, PortRef.COMPETITION_PRESSURE_SWITCH_CHANNEL, PortRef.COMPETITION_COMPRESSOR_RELAY_SLOT, PortRef.COMPETITION_COMPRESSOR_RELAY_CHANNEL);
-			return new Compressor(PortRef.SIDECAR_SLOT, PortRef.COMPETITION_PRESSURE_SWITCH_SLOT, PortRef.DIGITAL_IO, PortRef.COMPETITION_COMPRESSOR_RELAY_CHANNEL);
-		} else if (ReferenceData.getInstance().getDipSwitchData().getDipSwitchState() == DipSwitchRef.PRACTICE_BOT){
-			//return new Compressor(PortRef.PRACTICE_PRESSURE_SWITCH_SLOT, PortRef.PRACTICE_PRESSURE_SWITCH_CHANNEL, PortRef.PRACTICE_COMPRESSOR_RELAY_SLOT, PortRef.PRACTICE_COMPRESSOR_RELAY_CHANNEL);
-			System.out.println("in getNewCompressor() for PracticeBot");
-			return new Compressor(PortRef.SIDECAR_SLOT, PortRef.PRACTICE_PRESSURE_SWITCH_SLOT, PortRef.DIGITAL_IO, PortRef.PRACTICE_COMPRESSOR_RELAY_CHANNEL);
-		}
-		return null;
+//		if (ReferenceData.getInstance().getDipSwitchData().getDipSwitchState() == DipSwitchRef.COMPETITION_BOT){
+//			//return new Compressor(PortRef.COMPETITION_PRESSURE_SWITCH_SLOT, PortRef.COMPETITION_PRESSURE_SWITCH_CHANNEL, PortRef.COMPETITION_COMPRESSOR_RELAY_SLOT, PortRef.COMPETITION_COMPRESSOR_RELAY_CHANNEL);
+//			return new Compressor(PortRef.SIDECAR_SLOT, PortRef.COMPETITION_PRESSURE_SWITCH_SLOT, PortRef.DIGITAL_IO, PortRef.COMPETITION_COMPRESSOR_RELAY_CHANNEL);
+//		} else if (ReferenceData.getInstance().getDipSwitchData().getDipSwitchState() == DipSwitchRef.PRACTICE_BOT){
+//			//return new Compressor(PortRef.PRACTICE_PRESSURE_SWITCH_SLOT, PortRef.PRACTICE_PRESSURE_SWITCH_CHANNEL, PortRef.PRACTICE_COMPRESSOR_RELAY_SLOT, PortRef.PRACTICE_COMPRESSOR_RELAY_CHANNEL);
+//			System.out.println("in getNewCompressor() for PracticeBot");
+//			return new Compressor(PortRef.SIDECAR_SLOT, PortRef.PRACTICE_PRESSURE_SWITCH_SLOT, PortRef.DIGITAL_IO, PortRef.PRACTICE_COMPRESSOR_RELAY_CHANNEL);
+//		}
+//		return null;
+		return new Compressor(PortRef.SIDECAR_SLOT, PortRef.PRACTICE_PRESSURE_SWITCH_SLOT, PortRef.DIGITAL_IO, PortRef.PRACTICE_COMPRESSOR_RELAY_CHANNEL);
 	}
 	
 	public void robotInit() {

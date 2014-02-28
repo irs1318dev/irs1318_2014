@@ -4,6 +4,7 @@ package irs2014.generalData;
 import irs2014.collector.CollectorData;
 import irs2014.dipSwitch.DipSwitchData;
 import irs2014.driveTrainTank.DriveTrainData;
+import irs2014.driveTrainTank.PIDConstantData;
 import irs2014.lineSensor.LineSensorData;
 import irs2014.pressure.PressureSensorData;
 import irs2014.pressure.PressureSensorTimerData;
@@ -19,7 +20,8 @@ public class ReferenceData {
 	
 	private UserInputData userInputData;
 	private DriveTrainData driveTrainData;
-	
+	private PIDConstantData pidConstantData;
+
 	private CollectorData collectorData;
 	
 	private PressureSensorData pressureSensorData;
@@ -125,5 +127,12 @@ public class ReferenceData {
 			shooterData2 = new ShooterData2();
 		}
 		return shooterData2;
+	}
+	
+	public PIDConstantData getPIDConstantData() {
+		if (pidConstantData == null) {
+			pidConstantData = new PIDConstantData();
+		}
+		return pidConstantData;
 	}
 }

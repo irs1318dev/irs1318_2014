@@ -27,18 +27,16 @@ public class DriveTrainPIDCalculator extends RobotComponentBase{
 	private void velocityPIDCalculator(){
 		double rightVelocitySetpoint = ReferenceData.getInstance().getDriveTrainData().getRightPIDData().getVelocitySetpoint();
 		double rightEncoderVelocity = ReferenceData.getInstance().getDriveTrainData().getRightEncoderData().getVelocity();
-		double rightKf = 0.5;
-		double rightKd = 0.0008; // practice bot
-//		double rightKd = 0.0005; // competition bot
+		double rightKf = ReferenceData.getInstance().getPIDConstantData().getRightKf();
+		double rightKd = ReferenceData.getInstance().getPIDConstantData().getRightKd();
 		double rightKscale = 2800;
 		
 		double rightPIDVal = rightKf * rightVelocitySetpoint + rightKd*(rightKscale * rightVelocitySetpoint - rightEncoderVelocity);
 
 		double leftVelocitySetpoint = - ReferenceData.getInstance().getDriveTrainData().getLeftPIDData().getVelocitySetpoint();
 		double leftEncoderVelocity = ReferenceData.getInstance().getDriveTrainData().getLeftEncoderData().getVelocity();
-		double leftKf = 0.5;
-		double leftKd = 0.0005;		// practice bot
-//		double leftKd = 0.0005;		// competition bot
+		double leftKf = ReferenceData.getInstance().getPIDConstantData().getLeftKf();
+		double leftKd = ReferenceData.getInstance().getPIDConstantData().getLeftKd();
 		double leftKscale = 2800;
 
 		double leftPIDVal = leftKf * leftVelocitySetpoint + leftKd*(leftKscale * leftVelocitySetpoint - leftEncoderVelocity);
@@ -69,8 +67,8 @@ public class DriveTrainPIDCalculator extends RobotComponentBase{
 		double rightPostionSetpoint = ReferenceData.getInstance().getDriveTrainData().getRightPIDData().getPositionSetpoint();
 		double rightEncoderTicks = ReferenceData.getInstance().getDriveTrainData().getRightEncoderData().getTicks();
 		double rightEncoderVelocity = ReferenceData.getInstance().getDriveTrainData().getRightEncoderData().getVelocity();
-		double rightKp = .0001; //TODO
-		double rightKd = 0; //TODO
+		double rightKp = ReferenceData.getInstance().getPIDConstantData().getRightPositionalKp();
+		double rightKd = ReferenceData.getInstance().getPIDConstantData().getRightPositionalKd();
 		
 		double rightPIDVal = rightKp * (rightPostionSetpoint - rightEncoderTicks) + rightKd * rightEncoderVelocity;
 		rightPIDVal = Math.min(.2, rightPIDVal);
@@ -79,8 +77,8 @@ public class DriveTrainPIDCalculator extends RobotComponentBase{
 		double leftPostionSetpoint = - ReferenceData.getInstance().getDriveTrainData().getLeftPIDData().getPositionSetpoint();
 		double leftEncoderTicks = ReferenceData.getInstance().getDriveTrainData().getLeftEncoderData().getTicks();
 		double leftEncoderVelocity = ReferenceData.getInstance().getDriveTrainData().getLeftEncoderData().getVelocity();
-		double leftKp = .0001; //TODO
-		double leftKd = 0; //TODO
+		double leftKp = ReferenceData.getInstance().getPIDConstantData().getLeftPositionalKp();
+		double leftKd = ReferenceData.getInstance().getPIDConstantData().getLeftPositionalKd();
 		
 		double leftPIDVal = leftKp * (leftPostionSetpoint - leftEncoderTicks) + leftKd * leftEncoderVelocity;
 		leftPIDVal = Math.min(.2, leftPIDVal);
