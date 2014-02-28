@@ -12,7 +12,7 @@ public abstract class AutonomousCommand implements AutoTask
 	public static int COLLECT_WAIT_TIME = 3000; //TODO make sure this is tuned properly. (in milliseconds)
 	public static int MOVE_WAIT_TIME = 500; //TODO tune me. This is the time we wait before moving after we shoot. (in milliseconds)
 	public static int EJECT_WAIT_TIME = 3000; //TODO make sure this is tuned properly. (in milliseconds)
-	public static int SHIFT_WAIT_TIME = 1500; //TODO tune me. This is the time we wait after shifting shooter angle or collector angle. (in milliseconds)
+	public static int SHIFT_WAIT_TIME = 1000; //TODO tune me. This is the time we wait after shifting shooter angle or collector angle. (in milliseconds)
 	
 	//Variables
 	protected int currentState; //The integer representing the current state.
