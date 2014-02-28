@@ -17,6 +17,7 @@ import irs2014.helloWorld.HelloWorldRunner;
 import irs2014.lineSensor.SimpleLineSensorReader;
 import irs2014.networkTable.GetValuesTest;
 import irs2014.networkTable.NetworkTableRunner;
+import irs2014.pressure.AnalogPressureSensorReader;
 import irs2014.pressure.CompressorRunner;
 import irs2014.pressure.PressureSensorCalculator;
 import irs2014.pressure.PressureSensorReader;
@@ -52,6 +53,7 @@ public class MainIterativeComponentRobot extends IterativeComponentRobot {
 		b.add(new DriveTrainEncoderReader());
 		b.add(new PressureSensorReader());
 		b.add(new SimpleLineSensorReader());
+		b.add(new AnalogPressureSensorReader());
 		b.add(new UserInputCalculator());
 		//Auto stuff goes after readers, before calculators.
 		b.add(new AutoTaskRunner());

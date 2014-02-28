@@ -34,7 +34,7 @@ public class KeyHandeler {
 //		this.keyMappings.put("cl.bp", "BALL PREST ");
 		this.keyMappings.put("cl.ms", "COL SPOINT ");
 		this.keyMappings.put("cl.css", "COL SOL ST ");
-		this.keyMappings.put("ps.s", "PRESSURE ");
+		this.keyMappings.put("ps.s", "55 PSI ");
 		this.keyMappings.put("s.se", "SHOT");
 		this.keyMappings.put("s.ae", "ANGLE");
 //		this.keyMappings.put("i.ss", "TRIG SET ");
@@ -43,12 +43,14 @@ public class KeyHandeler {
 		this.keyMappings.put("dt.lev", "ENC L VEL");
 		this.keyMappings.put("ps.t", "PRESS TIME");
 		this.keyMappings.put("ls.d", "LINE SENSOR");
+		this.keyMappings.put("ps.av", "PRESSURE");
 		
 		keyOrder = new ArrayList<String>();
 		
 //this keeps the output in the right order
 //		this.keyOrder.add("i.ss");
 //		this.keyOrder.add("cl.bp");
+		this.keyOrder.add("ps.av");
 		this.keyOrder.add("ps.s");
 		this.keyOrder.add("ps.t");
 		this.keyOrder.add("dt.rsp");

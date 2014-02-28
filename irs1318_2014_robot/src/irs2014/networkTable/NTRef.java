@@ -41,5 +41,7 @@ public class NTRef
 	//Pressure Sensor==============================================================
 	public static final String PressureSensor_State = "ps.s";
 	public static final String PressureSensor_Time = "ps.t";
+	public static final String AnalogPressureSensor_Value = "ps.av";
+
 	//=============================================================================
 }
