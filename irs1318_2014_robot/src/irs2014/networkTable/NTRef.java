@@ -42,6 +42,13 @@ public class NTRef
 	public static final String PressureSensor_State = "ps.s";
 	public static final String PressureSensor_Time = "ps.t";
 	public static final String AnalogPressureSensor_Value = "ps.av";
-
+	//Auto==========================================================================
+	public static final String Shift_Wait_Time = "at.swt";
+	public static final String Distance = "at.d";
+	public static final String Pause_After_Driving = "at.ad";
+	public static final String Pause_After_Shot1 = "at.as1";
+	public static final String Collector_In = "at.ci";
+	public static final String Pause_After_Collector_In = "at.aci";
+	public static final String Speed = "at.s";
 	//=============================================================================
 }
