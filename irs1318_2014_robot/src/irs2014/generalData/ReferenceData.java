@@ -1,6 +1,7 @@
 package irs2014.generalData;
 
 
+import irs2014.autonomous.AutonomousVariableData;
 import irs2014.collector.CollectorData;
 import irs2014.dipSwitch.DipSwitchData;
 import irs2014.driveTrainTank.DriveTrainData;
@@ -33,9 +34,11 @@ public class ReferenceData {
 	private LineSensorData lineSensorData; 
 	private AngleData angleData;
 	private AnalogPressureSensorData analogPressureData;
+	private AutonomousVariableData autonomousVariableData;
 	
 	private UserInputData2 userInputData2;
 	private ShooterData2 shooterData2;
+	
 	
 	private ReferenceData(){
 	}
@@ -122,6 +125,13 @@ public class ReferenceData {
 			analogPressureData = new AnalogPressureSensorData();
 		}
 		return analogPressureData;
+	}
+	
+	public AutonomousVariableData getAutonomousVariableData() {
+		if(autonomousVariableData == null) {
+			autonomousVariableData = new AutonomousVariableData();
+		}
+		return autonomousVariableData;
 	}
 	
 	public UserInputData2 getUserInputData2(){
