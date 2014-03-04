@@ -6,7 +6,9 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -16,6 +18,8 @@ import java.util.HashMap;
 import javax.swing.JFrame;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
+
+import org.usfirst.ihs1318.telemetry.DataProcessing;
 
 @SuppressWarnings("serial")
 public class UI extends javax.swing.JFrame {
@@ -89,10 +93,14 @@ public class UI extends javax.swing.JFrame {
 	private static BufferedWriter bw;
 	private static boolean writeOutput = false;
 	static final SimpleDateFormat sdfFile = new SimpleDateFormat("yyyy_MMdd_HH_mm_ss");
+	static String devfrcPath = "c:/dashboard/";
+	static String outputPath = "c:/dashboard_flattened/";
+	
 	
 	public static void init() {
 		if(fw != null){
 			try {
+				writeOutput = false;
 				fw.close();
 				bw.close();
 				fw = null;
@@ -102,11 +110,45 @@ public class UI extends javax.swing.JFrame {
 			}
 		}
 		
-		//TODO: add method to flatten 
+		// add method to flatten data 
+		File devfrcDir = new File(devfrcPath);
+		File[] files = devfrcDir.listFiles();
+		for (File file : files) {
+			FileReader fr=null;
+			FileWriter flattenFw=null;
+			try {
+				String outputfileName = "flattend_"+ file.getName();
+				File outputfile = new File(outputPath,outputfileName);
+				if (outputfile.exists()) continue; // skip files that have already been flattened.
+
+				if (!outputfile.getParentFile().exists()) {
+					outputfile.getParentFile().mkdirs();
+				}
+
+				flattenFw = new FileWriter(outputfile);
+				fr = new FileReader(file);
+				DataProcessing dp = new DataProcessing();
+				dp.flattenRawData(fr, flattenFw);
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+					try {
+						if (fr!=null) fr.close();
+						if (flattenFw!=null) flattenFw.close();
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+			}
+		}
 		
 		if (fw == null) {
 			try {
-				fw = new FileWriter("c:/dashboard/recording_"+sdfFile.format(new Date())+".csv");
+				File recordingFile = new File(devfrcPath,"recording_"+sdfFile.format(new Date())+".csv");
+				if (!recordingFile.getParentFile().exists()) {
+					recordingFile.getParentFile().mkdirs();
+				}
+				fw = new FileWriter(recordingFile);
 				bw = new BufferedWriter(fw);
 				writeOutput = true;
 			} catch (FileNotFoundException e) {
