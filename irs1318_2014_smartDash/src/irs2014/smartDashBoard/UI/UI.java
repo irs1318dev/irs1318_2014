@@ -5,11 +5,13 @@ import irs2014.smartDashBoard.constants.ReferenceData;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
+import java.awt.List;
 import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 
@@ -73,6 +75,22 @@ public class UI extends javax.swing.JFrame {
 		HashMap <String, String> fieldNames = new HashMap<String, String>();
 		fieldNames.put("spid.up", "Shooter UP");
 		fieldNames.put("spid.dw", "Shooter DOWN");
+		fieldNames.put("at.swti", "Shift Wait Time");
+		fieldNames.put("at.di", "Drive Forward Distance");
+		fieldNames.put("at.as1i", "After Shot 1");
+		fieldNames.put("at.cii", "Collector In Time");
+		fieldNames.put("at.acii", "After Collector In");
+		fieldNames.put("at.si", "AUTO SPEED");
+		
+		ArrayList<String> fieldOrder = new ArrayList<String>();
+		fieldOrder.add("spid.up");
+		fieldOrder.add("spid.dw");
+		fieldOrder.add("at.swti");
+		fieldOrder.add("at.di");
+		fieldOrder.add("at.as1i");
+		fieldOrder.add("at.cii");
+		fieldOrder.add("at.acii");
+		fieldOrder.add("at.si");
 		
 		HashMap<String, String> overrideNames = new HashMap<String, String>();
 		overrideNames.put("spid.nto", "Pulse Override");
@@ -82,7 +100,7 @@ public class UI extends javax.swing.JFrame {
 		fieldOverride.put("spid.dw", "spid.nto");
 //		fieldOverride.put("test.f", "test.o");
 		
-		this.ntpanel.add(new InputPanel(fieldNames, overrideNames, fieldOverride));
+		this.ntpanel.add(new InputPanel(fieldNames, overrideNames, fieldOverride, fieldOrder));
 	}
 	
 	private static FileWriter fw;

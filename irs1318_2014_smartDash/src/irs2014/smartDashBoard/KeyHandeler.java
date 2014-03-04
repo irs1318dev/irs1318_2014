@@ -44,6 +44,13 @@ public class KeyHandeler {
 		this.keyMappings.put("ps.t", "PRESS TIME");
 		this.keyMappings.put("ls.d", "LINE SENSOR");
 		this.keyMappings.put("ps.av", "PRESSURE");
+		this.keyMappings.put("at.swt", "ShiftWaitTime");
+		this.keyMappings.put("at.d", "DISTANCE");
+		this.keyMappings.put("at.ad", "A DRIVE");
+		this.keyMappings.put("at.as1", "A SHOT 1");
+		this.keyMappings.put("at.ci", "COLL IN");
+		this.keyMappings.put("at.aci", "A COLL IN");
+		this.keyMappings.put("at.s", "AUTO SPEED");
 		
 		keyOrder = new ArrayList<String>();
 		
@@ -67,6 +74,13 @@ public class KeyHandeler {
 		this.keyOrder.add("s.ae");
 		this.keyOrder.add("ls.d");
 		this.keyOrder.add("t.m");
+		this.keyOrder.add("at.swt");
+		this.keyOrder.add("at.d");
+		this.keyOrder.add("at.ad");
+		this.keyOrder.add("at.as1");
+		this.keyOrder.add("at.ci");
+		this.keyOrder.add("at.aci");
+		this.keyOrder.add("at.s");
 	}
 	
 	public String makeReadable(String key){

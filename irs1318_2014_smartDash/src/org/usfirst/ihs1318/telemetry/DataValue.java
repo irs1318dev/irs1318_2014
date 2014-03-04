@@ -141,7 +141,21 @@ public class DataValue {
 			"spid.dw=Double\n" + 
 			"spid.nto=Boolean\n" + 
 			"spid.up=Double\n" + 
-			"t.m=String\n" 
+			"t.m=String\n" + 
+			"at.swt=Double\n" +
+			"at.d=Double\n" +
+			"at.ad=Double\n" + 
+			"at.as1=Double\n" +
+			"at.ci=Double\n" +
+			"at.cii=Double\n" + 
+			"at.s=Double\n" +
+			"at.swti=Double\n" +
+			"at.di=Double\n" +
+			"at.adi=Double\n" + 
+			"at.as1i=Double\n" +
+			"at.cii=Double\n" +
+			"at.acii=Double\n" + 
+			"at.si=Double\n"
 	         ;		
 
 			public static final String FIELD_TYPES_2013 = 

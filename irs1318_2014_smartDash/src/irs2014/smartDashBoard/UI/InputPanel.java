@@ -9,6 +9,7 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import javax.swing.BoxLayout;
@@ -40,7 +41,7 @@ public class InputPanel extends JPanel {
 	 * 		a hashmap with keys being keys from the ITable, and values being 
 	 * 		the name of the field to show up in the gui
 	 */
-	public InputPanel(HashMap<String, String> fieldNames, HashMap<String, String> overrideNames, HashMap<String, String> fieldOverride) {
+	public InputPanel(HashMap<String, String> fieldNames, HashMap<String, String> overrideNames, HashMap<String, String> fieldOverride, ArrayList<String> fieldOrder) {
 		this.table = TableManager.getInstance().getTable();
 //		System.out.println("table from InputPanel = " + table);
 		this.override = new HashMap<String, Checkbox>();
@@ -69,7 +70,7 @@ public class InputPanel extends JPanel {
 			fields.put(s, newField);
 		}
 		
-		for(String s : fieldNames.keySet()){
+		for(String s : fieldOrder){
 			this.add(fields.get(s));
 			if(override.containsKey(fieldOverride.get(s))){
 				this.add(override.get(fieldOverride.get(s)));
