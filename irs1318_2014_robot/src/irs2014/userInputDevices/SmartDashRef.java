@@ -10,7 +10,7 @@ public interface SmartDashRef {
 
 	//Auto================================================================
 	String SHIFT_WAIT_TIME_INPUT = "at.swti";
-	String DISTANCE = "at.di";
+	String DISTANCE_INPUT = "at.di";
 	String PAUSE_AFTER_DRIVING_INPUT = "at.adi";
 	String PAUSE_AFTER_SHOT_1_INPUT = "at.as1i";
 	String COLLECTOR_IN_INPUT = "at.cii";
