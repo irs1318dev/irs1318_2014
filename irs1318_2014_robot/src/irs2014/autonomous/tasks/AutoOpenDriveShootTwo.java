@@ -19,7 +19,7 @@ public class AutoOpenDriveShootTwo extends AutonomousCommand
 			break;
 		case 3:
 			collectorMotorIn(10000);// in milliseconds
-			goForwardRel(15 * 12 * 2.54, .5);//ft to inches to centimeters
+			goForwardRel(15 * 12 * 2.54, .7);//ft to inches to centimeters
 			break;
 		case 4:
 			pause(1000);
@@ -29,16 +29,16 @@ public class AutoOpenDriveShootTwo extends AutonomousCommand
 			launch4Pistons();
 			break;
 		case 6:
-			pause(1500);
+			pause(1200);
 			break;
 		case 7:
-			collectorMotorIn(1750);
+			collectorMotorIn(1500);
 			break;
 		case 8:
-			pause(500);
+			pause(600);
 			break;
 		case 9:
-			launch4Pistons();
+			launch5Pistons();
 			break;
 		case 10:
 			isDone = true;
