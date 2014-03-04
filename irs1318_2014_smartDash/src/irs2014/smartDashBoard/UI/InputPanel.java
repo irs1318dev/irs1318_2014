@@ -27,6 +27,7 @@ public class InputPanel extends JPanel {
 	HashMap<String, String> fieldNames;
 	HashMap<String, InputField> fields;
 	Button submitButton;
+	Button newFileButton;
 	Button unOverrideButton;
 	HashMap<String, String> overrideNames;
 	
@@ -93,7 +94,25 @@ public class InputPanel extends JPanel {
 		unOverrideButton.addActionListener(unOverrideListener);
 		
 		this.add(unOverrideButton);
+				
+		newFileButton = new Button("Make New File");
 		
+		ActionListener newFileListener = new ActionListener(){
+
+			InputPanel anonInputPanel = myInputPanel;
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				UI.init();
+				
+			}
+			
+		};
+		
+		newFileButton.addActionListener(newFileListener);
+		
+		this.add(newFileButton);
+				
 		submitButton = new Button("Send to Robot");
 		
 		ActionListener submitListener = new ActionListener() {

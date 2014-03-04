@@ -47,7 +47,7 @@ public class UI extends javax.swing.JFrame {
 		
 		this.setBackground(Color.DARK_GRAY);
 		this.setForeground(Color.WHITE);
-		this.setSize(800, 600);
+		this.setSize(800, 450);
 		
 		ntpanel = new NTPanel(this);
 		this.addInputPanels();
@@ -91,16 +91,27 @@ public class UI extends javax.swing.JFrame {
 	static final SimpleDateFormat sdfFile = new SimpleDateFormat("yyyy_MMdd_HH_mm_ss");
 	
 	public static void init() {
+		if(fw != null){
+			try {
+				fw.close();
+				bw.close();
+				fw = null;
+				bw = null;
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		//TODO: add method to flatten 
+		
 		if (fw == null) {
 			try {
 				fw = new FileWriter("c:/dashboard/recording_"+sdfFile.format(new Date())+".csv");
 				bw = new BufferedWriter(fw);
 				writeOutput = true;
 			} catch (FileNotFoundException e) {
-				//TODO: add back in comment 
 				//e.printStackTrace();
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
