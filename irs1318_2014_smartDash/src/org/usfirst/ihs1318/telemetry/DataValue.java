@@ -85,6 +85,9 @@ public class DataValue {
 		this.dataType = dataType;
 	}
 	public String getPublishedValue() {
+		if (getDataType()==null) {
+			throw new RuntimeException("Unknown datatype for "+getName());
+		}
 		switch(getDataType()) {
 		case BOOLEAN:
 			return ""+currentBoolean;
@@ -152,6 +155,7 @@ public class DataValue {
 			"at.swti=Double\n" +
 			"at.di=Double\n" +
 			"at.adi=Double\n" + 
+			"at.aci=Double\n" +
 			"at.as1i=Double\n" +
 			"at.cii=Double\n" +
 			"at.acii=Double\n" + 

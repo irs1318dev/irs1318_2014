@@ -27,6 +27,7 @@ public class NetworkTableRunner extends RobotComponentBase{
 			collectorData();
 			userInputData();
 			pressureSensor();
+			autonomous();
 		}
 	}
 	
@@ -74,5 +75,16 @@ public class NetworkTableRunner extends RobotComponentBase{
  		IRSTable.putBoolean(NTRef.PressureSensor_State, ReferenceData.getInstance().getPressureSensorData().getIsPressurized());
  		IRSTable.putNumber(NTRef.PressureSensor_Time, (ReferenceData.getInstance().getPressureSensorTimerData().getTimerTime() / 1000000));
  		IRSTable.putNumber(NTRef.AnalogPressureSensor_Value, ReferenceData.getInstance().getAnalogPressureSensorData().getPressure());
+ 	}
+ 	
+ 	public void autonomous(){
+ 		IRSTable.putNumber(NTRef.Autonomous_ShiftWaitTime, ReferenceData.getInstance().getAutonomousVariableData().getShiftWaitTime());
+ 		IRSTable.putNumber(NTRef.Autonomous_Distance, ReferenceData.getInstance().getAutonomousVariableData().getDistance());
+ 		IRSTable.putNumber(NTRef.Autonomous_PauseAfterDriving, ReferenceData.getInstance().getAutonomousVariableData().getPauseAfterDriving());
+ 		IRSTable.putNumber(NTRef.Autonomous_PauseAfterShot1, ReferenceData.getInstance().getAutonomousVariableData().getPauseAfterShot1());
+ 		IRSTable.putNumber(NTRef.Autonomous_CollectorIn, ReferenceData.getInstance().getAutonomousVariableData().getCollectorIn());
+ 		IRSTable.putNumber(NTRef.Autonomous_PauseAfterCollectorIn, ReferenceData.getInstance().getAutonomousVariableData().getPauseAfterCollectorIn());
+ 		IRSTable.putNumber(NTRef.Autonomous_Speed, ReferenceData.getInstance().getAutonomousVariableData().getSpeed());
+
  	}
 }

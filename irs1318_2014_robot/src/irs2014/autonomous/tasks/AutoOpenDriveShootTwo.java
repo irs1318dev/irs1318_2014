@@ -39,7 +39,7 @@ public class AutoOpenDriveShootTwo extends AutonomousCommand
 			pause(ReferenceData.getInstance().getAutonomousVariableData().getPauseAfterCollectorIn());
 			break;
 		case 9:
-			launch5Pistons();
+			launch4Pistons();
 			break;
 		case 10:
 			isDone = true;

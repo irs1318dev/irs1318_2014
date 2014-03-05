@@ -169,6 +169,8 @@ public class InputPanel extends JPanel {
 			
 			//Make sure type is correct and put into itable
 			
+			Object value = table.getValue(s);
+			
 			//Number
 			if (table == null) {
 				
@@ -177,15 +179,10 @@ public class InputPanel extends JPanel {
 			} else if (table.getValue(s) == (null)) {
 				
 				System.out.println("value at " + s + " does not exist!");
+			
+			}else if (table.getValue(s).equals("")){
 				
-			}else if(table.getValue(s).getClass().equals( Double.class)) {
-				
-				table.putNumber(s, Double.parseDouble(fields.get(s).getText()));
-				
-			//Boolean
-			}else if ( table.getValue(s).getClass() == Boolean.class ) {
-				
-				table.putBoolean(s, Boolean.parseBoolean(fields.get(s).getText()));
+				System.out.println("value at " + s + " is an empty string");
 			
 			//String
 			}else if (table.getValue(s).getClass() == String.class) {
@@ -193,8 +190,15 @@ public class InputPanel extends JPanel {
 				if(!fields.get(s).getText().equals("")){
 					table.putString(s, fields.get(s).getText());
 				}
-				
 			//Other
+			}else if(table.getValue(s).getClass().equals( Double.class)) {
+				if(!table.getValue(s).equals("")){
+					table.putNumber(s, Double.parseDouble(fields.get(s).getText()));
+				}
+			//Boolean
+			}else if ( table.getValue(s).getClass() == Boolean.class ) {
+				
+				table.putBoolean(s, Boolean.parseBoolean(fields.get(s).getText()));
 			}else{
 				
 				System.out.println("error: Type control in class InputPanel or nonexistant key");

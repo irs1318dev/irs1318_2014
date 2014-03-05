@@ -55,6 +55,7 @@ public class MainIterativeComponentRobot extends IterativeComponentRobot {
 		b.add(new SimpleLineSensorReader());
 		b.add(new AnalogPressureSensorReader());
 		b.add(new UserInputCalculator());
+		b.add(new SmartDashReader());
 		//Auto stuff goes after readers, before calculators.
 		b.add(new AutoTaskRunner());
 		//

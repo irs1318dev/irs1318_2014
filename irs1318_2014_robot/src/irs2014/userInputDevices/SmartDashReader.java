@@ -5,13 +5,13 @@ import irs2014.networkTable.IRSTable;
 
 public class SmartDashReader extends RobotComponentBase {
 	public void robotInit() {
-		IRSTable.putNumber(SmartDashRef.SHIFT_WAIT_TIME_INPUT, new Double(0));
-		IRSTable.putNumber(SmartDashRef.DISTANCE_INPUT, new Double(0));
-		IRSTable.putNumber(SmartDashRef.PAUSE_AFTER_DRIVING_INPUT, new Double(0));
-		IRSTable.putNumber(SmartDashRef.PAUSE_AFTER_SHOT_1_INPUT, new Double(0));
-		IRSTable.putNumber(SmartDashRef.COLLECTOR_IN_INPUT, new Double(0));
-		IRSTable.putNumber(SmartDashRef.PAUSE_AFTER_COLLECTOR_IN_INPUT, new Double(0));
-		IRSTable.putNumber(SmartDashRef.SPEED_INPUT, new Double(0));
+		IRSTable.putNumber(SmartDashRef.SHIFT_WAIT_TIME_INPUT, new Double(ReferenceData.getInstance().getAutonomousVariableData().getShiftWaitTime()));
+		IRSTable.putNumber(SmartDashRef.DISTANCE_INPUT, new Double(ReferenceData.getInstance().getAutonomousVariableData().getDistance()));
+		IRSTable.putNumber(SmartDashRef.PAUSE_AFTER_DRIVING_INPUT, new Double(ReferenceData.getInstance().getAutonomousVariableData().getPauseAfterDriving()));
+		IRSTable.putNumber(SmartDashRef.PAUSE_AFTER_SHOT_1_INPUT, new Double(ReferenceData.getInstance().getAutonomousVariableData().getPauseAfterShot1()));
+		IRSTable.putNumber(SmartDashRef.COLLECTOR_IN_INPUT, new Double(ReferenceData.getInstance().getAutonomousVariableData().getCollectorIn()));
+		IRSTable.putNumber(SmartDashRef.PAUSE_AFTER_COLLECTOR_IN_INPUT, new Double(ReferenceData.getInstance().getAutonomousVariableData().getPauseAfterCollectorIn()));
+		IRSTable.putNumber(SmartDashRef.SPEED_INPUT, new Double(ReferenceData.getInstance().getAutonomousVariableData().getSpeed()));
 	}
 	
 	public void teleopPeriodic() {
