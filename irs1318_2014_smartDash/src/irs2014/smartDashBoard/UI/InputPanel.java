@@ -180,7 +180,7 @@ public class InputPanel extends JPanel {
 				
 				System.out.println("value at " + s + " does not exist!");
 			
-			}else if (table.getValue(s).equals("")){
+			}else if (fields.get(s).equals("")){
 				
 				System.out.println("value at " + s + " is an empty string");
 			
@@ -192,13 +192,22 @@ public class InputPanel extends JPanel {
 				}
 			//Other
 			}else if(table.getValue(s).getClass().equals( Double.class)) {
-				if(!table.getValue(s).equals("")){
-					table.putNumber(s, Double.parseDouble(fields.get(s).getText()));
+				if(!"".equals(fields.get(s).getText())){
+					String inputText = fields.get(s).getText();
+					try {
+						table.putNumber(s, Double.parseDouble(inputText));
+					} catch (NumberFormatException nfe) {
+						System.out.println(String.format("NumberFormatException for %s, oldValue=%s, newValue=%s",s,value,inputText));
+					}
 				}
 			//Boolean
 			}else if ( table.getValue(s).getClass() == Boolean.class ) {
-				
-				table.putBoolean(s, Boolean.parseBoolean(fields.get(s).getText()));
+				String inputText = fields.get(s).getText();
+				try {
+					table.putBoolean(s, Boolean.parseBoolean(inputText));
+				} catch (RuntimeException re) {
+					System.out.println(String.format("RuntimeException for %s, oldValue=%s, newValue=%s",s,value,inputText));
+				}
 			}else{
 				
 				System.out.println("error: Type control in class InputPanel or nonexistant key");
