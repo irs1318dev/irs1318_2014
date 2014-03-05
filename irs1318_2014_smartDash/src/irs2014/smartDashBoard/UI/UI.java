@@ -81,6 +81,7 @@ public class UI extends javax.swing.JFrame {
 		fieldNames.put("spid.dw", "Shooter DOWN");
 		fieldNames.put("at.swti", "Shift Wait Time");
 		fieldNames.put("at.di", "Drive Forward Distance");
+		fieldNames.put("at.adi", "After Drive Forward");
 		fieldNames.put("at.as1i", "After Shot 1");
 		fieldNames.put("at.cii", "Collector In Time");
 		fieldNames.put("at.acii", "After Collector In");
@@ -91,6 +92,7 @@ public class UI extends javax.swing.JFrame {
 		fieldOrder.add("spid.dw");
 		fieldOrder.add("at.swti");
 		fieldOrder.add("at.di");
+		fieldOrder.add("at.adi");
 		fieldOrder.add("at.as1i");
 		fieldOrder.add("at.cii");
 		fieldOrder.add("at.acii");
