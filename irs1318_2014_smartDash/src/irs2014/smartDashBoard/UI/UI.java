@@ -116,6 +116,10 @@ public class UI extends javax.swing.JFrame {
 	
 	
 	public static void init() {
+		boolean dontFlatten = false;
+		if(fw == null){
+			dontFlatten = true;
+		}
 		if(fw != null){
 			try {
 				writeOutput = false;
@@ -128,28 +132,29 @@ public class UI extends javax.swing.JFrame {
 			}
 		}
 		
-		// add method to flatten data 
-		File devfrcDir = new File(devfrcPath);
-		File[] files = devfrcDir.listFiles();
-		for (File file : files) {
-			FileReader fr=null;
-			FileWriter flattenFw=null;
-			try {
-				String outputfileName = "flattend_"+ file.getName();
-				File outputfile = new File(outputPath,outputfileName);
-				if (outputfile.exists()) continue; // skip files that have already been flattened.
-
-				if (!outputfile.getParentFile().exists()) {
-					outputfile.getParentFile().mkdirs();
-				}
-
-				flattenFw = new FileWriter(outputfile);
-				fr = new FileReader(file);
-				DataProcessing dp = new DataProcessing();
-				dp.flattenRawData(fr, flattenFw);
-			} catch (Exception e) {
-				e.printStackTrace();
-			} finally {
+		if(!dontFlatten){
+			// add method to flatten data 
+			File devfrcDir = new File(devfrcPath);
+			File[] files = devfrcDir.listFiles();
+			for (File file : files) {
+				FileReader fr=null;
+				FileWriter flattenFw=null;
+				try {
+					String outputfileName = "flattend_"+ file.getName();
+					File outputfile = new File(outputPath,outputfileName);
+					if (outputfile.exists()) continue; // skip files that have already been flattened.
+					
+					if (!outputfile.getParentFile().exists()) {
+						outputfile.getParentFile().mkdirs();
+					}
+					
+					flattenFw = new FileWriter(outputfile);
+					fr = new FileReader(file);
+					DataProcessing dp = new DataProcessing();
+					dp.flattenRawData(fr, flattenFw);
+				} catch (Exception e) {
+					e.printStackTrace();
+				} finally {
 					try {
 						if (fr!=null) fr.close();
 						if (flattenFw!=null) flattenFw.close();
@@ -157,6 +162,7 @@ public class UI extends javax.swing.JFrame {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
+				}
 			}
 		}
 		
