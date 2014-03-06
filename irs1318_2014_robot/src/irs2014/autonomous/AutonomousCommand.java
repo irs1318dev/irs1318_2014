@@ -55,8 +55,8 @@ public abstract class AutonomousCommand implements AutoTask
 		//if(ReferenceData.getInstance().getDipSwitchData().getDipSwitchState()) // if it is the practice robot
 		//	return centimeters * 360 / (2 * Math.PI * practiceWheelRaduis); 
 //		System.out.println(centimeters / (Math.PI * competitionWheelDiameter) * 360);
-//		return centimeters / (Math.PI * competitionWheelDiameter) * 360;
-		return centimeters / (Math.PI * practiceWheelDiameter) * 360;
+		return centimeters / (Math.PI * competitionWheelDiameter) * 360;
+//		return centimeters / (Math.PI * practiceWheelDiameter) * 360;
 	}
 	
 	/**

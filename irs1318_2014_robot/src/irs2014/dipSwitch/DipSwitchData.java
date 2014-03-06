@@ -10,8 +10,8 @@ public class DipSwitchData {
 	private boolean dipSwitchState;
 	
 	public boolean getDipSwitchState() {
-		return dipSwitchState;
-//		return true;
+//		return dipSwitchState;
+		return true;
 	}
 	public void setDipSwitchState(boolean dipSwitchState) {
 		this.dipSwitchState = dipSwitchState;

@@ -16,7 +16,7 @@ public interface PIDConstantRef {
 	
 	// Practice bot
 	double PRACTICE_RIGHT_KF = 0.5;
-	double PRACTICE_RIGHT_KD = 0.0008;
+	double PRACTICE_RIGHT_KD = 0.0005;//0.0008;
 	
 	double PRACTICE_LEFT_KF = 0.5;
 	double PRACTICE_LEFT_KD = 0.0005;

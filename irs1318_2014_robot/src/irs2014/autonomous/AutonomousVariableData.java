@@ -11,7 +11,7 @@ public class AutonomousVariableData {
 	
 	public AutonomousVariableData() {
 		shiftWaitTime = 1000;
-		distance = 15 * 12;
+		distance = 15 * 12; //168;
 		pauseAfterDriving = 1000;
 		pauseAfterShot1 = 1200;
 		collectorIn = 1500;
