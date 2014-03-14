@@ -10,6 +10,7 @@ import java.util.ArrayList;
 
 import javax.swing.JFrame;
 import javax.swing.JTextArea;
+import javax.swing.SwingUtilities;
 
 import edu.wpi.first.wpilibj.tables.TableKeyNotDefinedException;
 
@@ -63,12 +64,13 @@ public class StatusPanel extends JTextArea {
 	}
 	
 	public void printHashMap(){
-		
+//		System.out.println("start of print hash map "+ System.currentTimeMillis());
 		this.builder.setLength(0);
 		this.builder.append("VALUES FROM BOT \n \n");
 		
 		ArrayList<String> keys = keyHandeler.getKeyOrder();
 
+//		System.out.println("start of for keys loop "+ System.currentTimeMillis());
 		for(String key : keys) {
 
 			String message = KeyHandeler.getInstance().getReadabilityMap().get(key);
@@ -97,9 +99,19 @@ public class StatusPanel extends JTextArea {
 			}
 			
 		}//for
+//		System.out.println("end of for keys loop "+ System.currentTimeMillis());
+		SwingUtilities.invokeLater(new Runnable() {
+
+			@Override
+			public void run() {
+				StatusPanel.this.setText(StatusPanel.this.builder.toString());
+//				System.out.println("end of set text "+ System.currentTimeMillis());
+				StatusPanel.this.invalidate();
+//				System.out.println("end of print hash map "+ System.currentTimeMillis());
+			}
+			
+		});
 		
-		this.setText(this.builder.toString());
-		this.invalidate();
 		
 	}//printhashmap
 

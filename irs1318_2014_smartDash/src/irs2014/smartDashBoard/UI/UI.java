@@ -18,6 +18,7 @@ import java.util.Date;
 import java.util.HashMap;
 
 import javax.swing.JFrame;
+import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
@@ -37,8 +38,15 @@ public class UI extends javax.swing.JFrame {
 	 */
 	public static void main(String[] args) {
 		ReferenceData rd = ReferenceData.getInstance();
-		UI.init();
-		UI ui = new UI();
+		
+		SwingUtilities.invokeLater(new Runnable() {
+
+			@Override
+			public void run() {
+				UI.init();
+				UI ui = new UI();
+			}
+		});
 	}
 
 	/**

@@ -81,20 +81,30 @@ public class TableManager implements ITableListener{
 	 */
 	public void valueChanged(ITable source, String key, Object value,
 			boolean isNew) {
-		
-		if(table != null) 
+//		System.out.println("start of value changed "+System.currentTimeMillis());
+
+		if(table != null) {
+//			System.out.println("start of table if "+System.currentTimeMillis());
 			if(table.getValue(key) == null) {
+//				System.out.println("start of table value null "+System.currentTimeMillis());
 				keys.add(key);
+//				System.out.println("end of table value null "+System.currentTimeMillis());
 			}
+//			System.out.println("end of table if "+System.currentTimeMillis());
+		}
 			if(key != null && value != null){
+//				System.out.println("start of key null "+System.currentTimeMillis());
 				UI.writeLog(System.currentTimeMillis(), key + ", " + value.toString());
+//				System.out.println("end of key null "+System.currentTimeMillis());
 			}
-		
-		
+				
 		//required for display
 		if(ReferenceData.getInstance().statusPanel != null) {
+//			System.out.println("start of status panel not null "+System.currentTimeMillis());
 			ReferenceData.getInstance().statusPanel.printHashMap();
+//			System.out.println("end  of status panel not null "+System.currentTimeMillis());
 		}
+//		System.out.println("end of value changed "+System.currentTimeMillis());
 	}
 	
 	
