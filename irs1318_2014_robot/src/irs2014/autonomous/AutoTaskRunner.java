@@ -29,7 +29,7 @@ public class AutoTaskRunner extends RobotComponentBase
 	public void autonomousPeriodic()
 	{
 		if(currentTask == null && hasRun == false){
-			currentTask = new AutoOpenDriveShoot();
+			currentTask = new AutoOpenDriveShootTwo();
 		}
 		if(currentTask != null)
 		{
@@ -45,7 +45,7 @@ public class AutoTaskRunner extends RobotComponentBase
 	}
 	
 	public void teleopPeriodic() 
-	{/*
+	{
 		autoInputMap.update();
 		if(currentTask != null)
 		{
@@ -56,7 +56,7 @@ public class AutoTaskRunner extends RobotComponentBase
 				currentTask = null;
 				System.out.println("Task complete.");
 			}
-		}*/
+		}
 	}
 	
 	public void cancelCurrentTask()

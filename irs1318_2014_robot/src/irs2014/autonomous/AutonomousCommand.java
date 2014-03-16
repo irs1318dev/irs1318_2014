@@ -154,7 +154,7 @@ public abstract class AutonomousCommand implements AutoTask
 	 */
 	public void goForwardRel(double centimeters, double speed)
 	{//Go forward relative- goes forward relative to the encoder value from the last state.
-		System.out.println(stateRightEncoderTicks + toTicks(centimeters) + "__<?__" + ReferenceData.getInstance().getDriveTrainData().getRightEncoderData());
+//		System.out.println(stateRightEncoderTicks + toTicks(centimeters) + "__<?__" + ReferenceData.getInstance().getDriveTrainData().getRightEncoderData());
 		if(stateRightEncoderTicks + toTicks(centimeters) < ReferenceData.getInstance().getDriveTrainData().getRightEncoderData().getTicks())
 			advanceState();
 		else

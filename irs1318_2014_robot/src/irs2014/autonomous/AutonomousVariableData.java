@@ -8,6 +8,10 @@ public class AutonomousVariableData {
 	private int collectorIn;
 	private int pauseAfterCollectorIn;
 	private double speed;
+	private int numPistons;
+	
+	private int collectorWaitTime;
+	private int shoulderWaitTime;
 	
 	public AutonomousVariableData() {
 		shiftWaitTime = 1000;
@@ -17,6 +21,9 @@ public class AutonomousVariableData {
 		collectorIn = 1500;
 		pauseAfterCollectorIn = 600;
 		speed = .7;
+		numPistons = 4;
+		
+		collectorWaitTime = 300;
 	}
 	
 	public int getShiftWaitTime() {
@@ -60,6 +67,32 @@ public class AutonomousVariableData {
 	}
 	public void setSpeed(double speed) {
 		this.speed = speed; 
+	}
+
+	public int getNumPistons() {
+		return numPistons;
+	}
+
+	public void setNumPistons(double d) {
+		if((d == 4) || (d == 5)){
+			this.numPistons = (int)d;
+		}
+	}
+
+	public int getCollectorWaitTime() {
+		return collectorWaitTime;
+	}
+
+	public void setCollectorWaitTime(int collectorWaitTime) {
+		this.collectorWaitTime = collectorWaitTime;
+	}
+
+	public int getShoulderWaitTime() {
+		return shoulderWaitTime;
+	}
+
+	public void setShoulderWaitTime(int shoulderWaitTime) {
+		this.shoulderWaitTime = shoulderWaitTime;
 	}
 	
 	

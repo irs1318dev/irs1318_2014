@@ -85,6 +85,9 @@ public class NetworkTableRunner extends RobotComponentBase{
  		IRSTable.putNumber(NTRef.Autonomous_CollectorIn, ReferenceData.getInstance().getAutonomousVariableData().getCollectorIn());
  		IRSTable.putNumber(NTRef.Autonomous_PauseAfterCollectorIn, ReferenceData.getInstance().getAutonomousVariableData().getPauseAfterCollectorIn());
  		IRSTable.putNumber(NTRef.Autonomous_Speed, ReferenceData.getInstance().getAutonomousVariableData().getSpeed());
-
+ 		IRSTable.putNumber(NTRef.Autonomous_NumPistons, ReferenceData.getInstance().getAutonomousVariableData().getNumPistons());
+ 		
+ 		IRSTable.putNumber(NTRef.Clam_CollectorWait, ReferenceData.getInstance().getAutonomousVariableData().getCollectorWaitTime());
+ 		IRSTable.putNumber(NTRef.Clam_ShoulderWait, ReferenceData.getInstance().getAutonomousVariableData().getShoulderWaitTime());
  	}
 }

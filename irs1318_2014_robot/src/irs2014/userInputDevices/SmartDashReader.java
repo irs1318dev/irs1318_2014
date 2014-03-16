@@ -12,6 +12,10 @@ public class SmartDashReader extends RobotComponentBase {
 		IRSTable.putNumber(SmartDashRef.COLLECTOR_IN_INPUT, new Double(ReferenceData.getInstance().getAutonomousVariableData().getCollectorIn()));
 		IRSTable.putNumber(SmartDashRef.PAUSE_AFTER_COLLECTOR_IN_INPUT, new Double(ReferenceData.getInstance().getAutonomousVariableData().getPauseAfterCollectorIn()));
 		IRSTable.putNumber(SmartDashRef.SPEED_INPUT, new Double(ReferenceData.getInstance().getAutonomousVariableData().getSpeed()));
+		IRSTable.putNumber(SmartDashRef.NUM_PISTONS, new Double(ReferenceData.getInstance().getAutonomousVariableData().getNumPistons()));
+		
+		IRSTable.putNumber(SmartDashRef.CLM_COL_WAIT, new Double(ReferenceData.getInstance().getAutonomousVariableData().getCollectorWaitTime()));
+		IRSTable.putNumber(SmartDashRef.CLM_SHD_WAIT, new Double(ReferenceData.getInstance().getAutonomousVariableData().getShoulderWaitTime()));
 	}
 	
 	public void teleopPeriodic() {
@@ -49,6 +53,11 @@ public class SmartDashReader extends RobotComponentBase {
 			ReferenceData.getInstance().getAutonomousVariableData().setSpeed(IRSTable.getNumber(SmartDashRef.SPEED_INPUT));
 		} catch (Exception e) {
 			ReferenceData.getInstance().getAutonomousVariableData().setSpeed(.7);
+		}
+		try{
+			ReferenceData.getInstance().getAutonomousVariableData().setNumPistons(IRSTable.getNumber(SmartDashRef.NUM_PISTONS));
+		}catch (Exception e) {
+			ReferenceData.getInstance().getAutonomousVariableData().setNumPistons(4);
 		}
 	}
 }

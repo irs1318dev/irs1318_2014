@@ -51,6 +51,9 @@ public class KeyHandeler {
 		this.keyMappings.put("at.ci", "COLL IN");
 		this.keyMappings.put("at.aci", "A COLL IN");
 		this.keyMappings.put("at.s", "AUTO SPEED");
+		this.keyMappings.put("at.np", "AUT NUM PIST");
+		this.keyMappings.put("cl.cw", "CL COL WT");
+		this.keyMappings.put("cl.sw", "CL SHD WT");
 		
 		keyOrder = new ArrayList<String>();
 		
@@ -81,6 +84,9 @@ public class KeyHandeler {
 		this.keyOrder.add("at.ci");
 		this.keyOrder.add("at.aci");
 		this.keyOrder.add("at.s");
+		this.keyOrder.add("at.np");
+		this.keyOrder.add("cl.cw");
+		this.keyOrder.add("cl.sw");
 	}
 	
 	public String makeReadable(String key){

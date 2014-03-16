@@ -85,8 +85,8 @@ public class UI extends javax.swing.JFrame {
 	
 	public void addInputPanels() {
 		HashMap <String, String> fieldNames = new HashMap<String, String>();
-		fieldNames.put("spid.up", "Shooter UP");
-		fieldNames.put("spid.dw", "Shooter DOWN");
+//		fieldNames.put("spid.up", "Shooter UP");
+//		fieldNames.put("spid.dw", "Shooter DOWN");
 		fieldNames.put("at.swti", "Shift Wait Time");
 		fieldNames.put("at.di", "Drive Forward Distance");
 		fieldNames.put("at.adi", "After Drive Forward");
@@ -94,10 +94,13 @@ public class UI extends javax.swing.JFrame {
 		fieldNames.put("at.cii", "Collector In Time");
 		fieldNames.put("at.acii", "After Collector In");
 		fieldNames.put("at.si", "AUTO SPEED");
+		fieldNames.put("at.npi", "Number of Pistons");
+		fieldNames.put("cl.cwi", "Collector Wait Time");
+		fieldNames.put("cl.swi", "Shoulder Wait Time");
 		
 		ArrayList<String> fieldOrder = new ArrayList<String>();
-		fieldOrder.add("spid.up");
-		fieldOrder.add("spid.dw");
+//		fieldOrder.add("spid.up");
+//		fieldOrder.add("spid.dw");
 		fieldOrder.add("at.swti");
 		fieldOrder.add("at.di");
 		fieldOrder.add("at.adi");
@@ -105,13 +108,16 @@ public class UI extends javax.swing.JFrame {
 		fieldOrder.add("at.cii");
 		fieldOrder.add("at.acii");
 		fieldOrder.add("at.si");
+		fieldOrder.add("at.npi");
+		fieldOrder.add("cl.cwi");
+		fieldOrder.add("cl.swi");
 		
 		HashMap<String, String> overrideNames = new HashMap<String, String>();
-		overrideNames.put("spid.nto", "Pulse Override");
+//		overrideNames.put("spid.nto", "Pulse Override");
 //		overrideNames.put("test.o", "Test Override");
 		
 		HashMap<String, String> fieldOverride = new HashMap<String, String>();
-		fieldOverride.put("spid.dw", "spid.nto");
+//		fieldOverride.put("spid.dw", "spid.nto");
 //		fieldOverride.put("test.f", "test.o");
 		
 		this.ntpanel.add(new InputPanel(fieldNames, overrideNames, fieldOverride, fieldOrder));

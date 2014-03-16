@@ -16,6 +16,10 @@ public interface SmartDashRef {
 	String COLLECTOR_IN_INPUT = "at.cii";
 	String PAUSE_AFTER_COLLECTOR_IN_INPUT = "at.acii";
 	String SPEED_INPUT = "at.si";
+	String NUM_PISTONS = "at.npi";
+	
+	String CLM_COL_WAIT = "cl.cwi";
+	String CLM_SHD_WAIT = "cl.swi";
 	//====================================================================
 	
 }

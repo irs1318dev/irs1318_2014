@@ -159,7 +159,13 @@ public class DataValue {
 			"at.as1i=Double\n" +
 			"at.cii=Double\n" +
 			"at.acii=Double\n" + 
-			"at.si=Double\n"
+			"at.si=Double\n" + 
+			"at.np=Double\n" +
+			"at.npi=Double\n" +
+			"cl.cw=Double" +
+			"cl.cwi=Double" +
+			"cl.sw=Double" +
+			"cl.swi=Double"
 	         ;		
 
 			public static final String FIELD_TYPES_2013 = 

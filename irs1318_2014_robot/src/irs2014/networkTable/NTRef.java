@@ -50,5 +50,9 @@ public class NTRef
 	public static final String Autonomous_CollectorIn = "at.ci";
 	public static final String Autonomous_PauseAfterCollectorIn = "at.aci";
 	public static final String Autonomous_Speed = "at.s";
+	public static final String Autonomous_NumPistons = "at.np";
+	
+	public static final String Clam_CollectorWait = "cl.cw";
+	public static final String Clam_ShoulderWait = "col.sw";
 	//=============================================================================
 }

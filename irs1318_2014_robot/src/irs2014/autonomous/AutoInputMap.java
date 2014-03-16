@@ -33,6 +33,10 @@ public class AutoInputMap
 				if(ReferenceData.getInstance().getUserInputData().getEjectBall())
 					autoTaskRunner.setAutoTask(new EjectBall());
 				//autoTaskRunner.setAutoTask();
+				if(ReferenceData.getInstance().getUserInputData().getClam())
+					autoTaskRunner.setAutoTask(new Clam());
+				if(ReferenceData.getInstance().getUserInputData().getUnClam())
+					autoTaskRunner.setAutoTask(new UnClam());
 			}
 		}
 	}

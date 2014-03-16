@@ -29,6 +29,8 @@ public class UserInputData {
 	private boolean goForward;
 	private boolean collectBall;
 	private boolean ejectBall;
+	private boolean clam;
+	private boolean unClam;
 	
 	private int triggerSet;
 	
@@ -206,6 +208,22 @@ public class UserInputData {
 
 	public void setShoot1Piston(boolean shoot1Piston) {
 		this.shoot1Piston = shoot1Piston;
+	}
+
+	public boolean getClam() {
+		return clam;
+	}
+
+	public void setClam(boolean clam) {
+		this.clam = clam;
+	}
+
+	public boolean getUnClam() {
+		return unClam;
+	}
+
+	public void setUnClam(boolean unClam) {
+		this.unClam = unClam;
 	}
 
 }

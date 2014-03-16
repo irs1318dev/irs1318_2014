@@ -27,7 +27,11 @@ public class AutoOpenDriveShootTwo extends AutonomousCommand
 			break;
 		case 5:
 			System.out.println("We are launching ball 1!");
-			launch4Pistons();
+			if(ReferenceData.getInstance().getAutonomousVariableData().getNumPistons() == 5){
+				launch5Pistons();
+			}else{
+				launch4Pistons();
+			}
 			break;
 		case 6:
 			pause(ReferenceData.getInstance().getAutonomousVariableData().getPauseAfterShot1());
@@ -39,7 +43,11 @@ public class AutoOpenDriveShootTwo extends AutonomousCommand
 			pause(ReferenceData.getInstance().getAutonomousVariableData().getPauseAfterCollectorIn());
 			break;
 		case 9:
-			launch4Pistons();
+			if(ReferenceData.getInstance().getAutonomousVariableData().getNumPistons() == 5){
+				launch5Pistons();
+			}else{
+				launch4Pistons();
+			}
 			break;
 		case 10:
 			isDone = true;
