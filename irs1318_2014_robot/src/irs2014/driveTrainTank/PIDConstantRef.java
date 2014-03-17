@@ -14,6 +14,8 @@ public interface PIDConstantRef {
 	double COMPETITION_LEFT_POSITIONAL_KP = .0001; //TODO
 	double COMPETITION_LEFT_POSITIONAL_KD = 0; //TODO
 	
+	double COMPETITION_KB = .3;
+	
 	// Practice bot
 	double PRACTICE_RIGHT_KF = 0.5;
 	double PRACTICE_RIGHT_KD = 0.0005;//0.0008;
@@ -26,4 +28,7 @@ public interface PIDConstantRef {
 	
 	double PRACTICE_LEFT_POSITIONAL_KP = .0001; //TODO
 	double PRACTICE_LEFT_POSITIONAL_KD = 0; //TODO
+	
+	double PRACTICE_KB = .3;
+	
 }

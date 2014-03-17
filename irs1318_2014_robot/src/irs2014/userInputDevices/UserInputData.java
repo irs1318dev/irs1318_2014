@@ -32,6 +32,9 @@ public class UserInputData {
 	private boolean clam;
 	private boolean unClam;
 	
+	private boolean boost;
+
+
 	private int triggerSet;
 	
 	
@@ -225,5 +228,12 @@ public class UserInputData {
 	public void setUnClam(boolean unClam) {
 		this.unClam = unClam;
 	}
+	
+	public boolean getBoost() {
+		return boost;
+	}
 
+	public void setBoost(boolean boost) {
+		this.boost = boost;
+	}
 }

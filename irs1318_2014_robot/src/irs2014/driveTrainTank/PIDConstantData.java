@@ -11,6 +11,8 @@ public class PIDConstantData {
 	private final double leftKf;
 	private final double leftKd;
 	
+	private final double kb;
+	
 	// Positional PID
 	private final double rightPositionalKp;
 	private final double rightPositionalKd;
@@ -28,6 +30,7 @@ public class PIDConstantData {
 			rightPositionalKd = PIDConstantRef.COMPETITION_RIGHT_POSITIONAL_KD;
 			leftPositionalKp = PIDConstantRef.COMPETITION_LEFT_POSITIONAL_KP;
 			leftPositionalKd = PIDConstantRef.COMPETITION_LEFT_POSITIONAL_KD;
+			kb = PIDConstantRef.COMPETITION_KB;
 		} else {// if (ReferenceData.getInstance().getDipSwitchData().getDipSwitchState() == DipSwitchRef.PRACTICE_BOT) {
 			rightKf = PIDConstantRef.PRACTICE_RIGHT_KF;
 			rightKd = PIDConstantRef.PRACTICE_RIGHT_KD;
@@ -37,6 +40,7 @@ public class PIDConstantData {
 			rightPositionalKd = PIDConstantRef.PRACTICE_RIGHT_POSITIONAL_KD;
 			leftPositionalKp = PIDConstantRef.PRACTICE_LEFT_POSITIONAL_KP;
 			leftPositionalKd = PIDConstantRef.PRACTICE_LEFT_POSITIONAL_KD;
+			kb = PIDConstantRef.PRACTICE_KB;
 		}
 	}
 
@@ -70,5 +74,9 @@ public class PIDConstantData {
 
 	public double getLeftPositionalKd() {
 		return leftPositionalKd;
+	}
+	
+	public double getKb() {
+		return kb;
 	}
 }
