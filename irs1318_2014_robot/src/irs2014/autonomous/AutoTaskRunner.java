@@ -45,7 +45,7 @@ public class AutoTaskRunner extends RobotComponentBase
 	}
 	
 	public void teleopPeriodic() 
-	{/*
+	{
 		autoInputMap.update();
 		if(currentTask != null)
 		{
@@ -56,7 +56,7 @@ public class AutoTaskRunner extends RobotComponentBase
 				currentTask = null;
 				System.out.println("Task complete.");
 			}
-		}*/
+		}
 	}
 	
 	public void cancelCurrentTask()
