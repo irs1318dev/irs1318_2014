@@ -40,7 +40,9 @@ public class UserInputData {
 	
 	
 	public boolean getIsActive(){
-		return ((joystickX != 0) || (joystickY != 0)); 
+//		return ((joystickX != 0) || (joystickY != 0));
+		return extendCollector || retractCollector || collectorMotorIn || collectorMotorOut || shoot5Pistons ||
+				shoot3Pistons || shoot4Pistons || extendShooterAngle || retractShooterAngle || boost;
 	}
 	
 	public double getJoystickX(){
