@@ -22,12 +22,12 @@ public class SmartDashReader extends RobotComponentBase {
 		try {
 			ReferenceData.getInstance().getAutonomousVariableData().setCollectorWaitTime((int)IRSTable.getNumber(SmartDashRef.CLM_COL_WAIT));
 		} catch (Exception e) {
-			ReferenceData.getInstance().getAutonomousVariableData().setCollectorWaitTime(1000);
+			ReferenceData.getInstance().getAutonomousVariableData().setCollectorWaitTime(600);
 		}
 		try {
 			ReferenceData.getInstance().getAutonomousVariableData().setShoulderWaitTime((int)IRSTable.getNumber(SmartDashRef.CLM_SHD_WAIT));
 		} catch (Exception e) {
-			ReferenceData.getInstance().getAutonomousVariableData().setShoulderWaitTime(1000);
+			ReferenceData.getInstance().getAutonomousVariableData().setShoulderWaitTime(400);
 		}
 		try {
 			ReferenceData.getInstance().getAutonomousVariableData().setShiftWaitTime((int)IRSTable.getNumber(SmartDashRef.SHIFT_WAIT_TIME_INPUT));
