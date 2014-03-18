@@ -14,7 +14,7 @@ public class AutoTaskRunner extends RobotComponentBase
 	
 	public void robotInit()
 	{//Construction, runs once.
-		System.out.println("Automomous task started. ((Friendly Warning: Too many umlauts!?))");
+//		System.out.println("Automomous task started. ((Friendly Warning: Too many umlauts!?))");
 		completedTasks = new Vector();
 		autoInputMap = new AutoInputMap(this);
 	}
@@ -39,7 +39,7 @@ public class AutoTaskRunner extends RobotComponentBase
 				completedTasks.addElement(currentTask);
 				currentTask = null;
 				hasRun = true;
-				System.out.println("Autonomous code is done! Wohoo!");
+//				System.out.println("Autonomous code is done! Wohoo!");
 			}
 		}
 	}
@@ -49,12 +49,14 @@ public class AutoTaskRunner extends RobotComponentBase
 		autoInputMap.update();
 		if(currentTask != null)
 		{
+//			System.out.println("AutoTaskRunner before run");
 			currentTask.run();
+//			System.out.println("AutoTaskRunner after run");
 			if(currentTask.isDone())
 			{//If the task's isDone method returned true, meaning it's done...
 				completedTasks.addElement(currentTask);
 				currentTask = null;
-				System.out.println("Task complete.");
+//				System.out.println("Task complete.");
 			}
 		}
 	}
@@ -79,14 +81,15 @@ public class AutoTaskRunner extends RobotComponentBase
 	{//Changed so that it will initialize the task if available, but you can still set the task to null.
 		if(task != null)
 		{
-			task.init();	
+			task.init();
+//			System.out.println("setAutoTask after task.init");
 		}
 		currentTask = task;
 	}
 	
 	public boolean hasCurrentTask()
 	{//Whether or not we actually have a current task
-		return currentTask != null;
+		return currentTask != null && !currentTask.isDone();
 	}
 	
 	public AutoTask getCurrentTask()

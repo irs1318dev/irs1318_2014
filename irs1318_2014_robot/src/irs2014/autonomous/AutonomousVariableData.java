@@ -23,7 +23,8 @@ public class AutonomousVariableData {
 		speed = .7;
 		numPistons = 4;
 		
-		collectorWaitTime = 300;
+		collectorWaitTime = 2000;
+		shoulderWaitTime = 300;
 	}
 	
 	public int getShiftWaitTime() {

@@ -156,6 +156,9 @@ public class UserInputData {
 	}
 
 	public void setExtendShooterAngle(boolean extendShooterAngle) {
+//		if(!extendShooterAngle){
+//			System.out.println("set extendShooterAngle to false");
+//		}
 		this.extendShooterAngle = extendShooterAngle;
 	}
 
@@ -216,6 +219,9 @@ public class UserInputData {
 	}
 
 	public boolean getClam() {
+		if(clam){
+			System.out.println("got clam while true");
+		}
 		return clam;
 	}
 

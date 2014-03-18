@@ -53,6 +53,6 @@ public class NTRef
 	public static final String Autonomous_NumPistons = "at.np";
 	
 	public static final String Clam_CollectorWait = "cl.cw";
-	public static final String Clam_ShoulderWait = "col.sw";
+	public static final String Clam_ShoulderWait = "cl.sw";
 	//=============================================================================
 }

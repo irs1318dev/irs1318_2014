@@ -20,6 +20,16 @@ public class SmartDashReader extends RobotComponentBase {
 	
 	public void teleopPeriodic() {
 		try {
+			ReferenceData.getInstance().getAutonomousVariableData().setCollectorWaitTime((int)IRSTable.getNumber(SmartDashRef.CLM_COL_WAIT));
+		} catch (Exception e) {
+			ReferenceData.getInstance().getAutonomousVariableData().setCollectorWaitTime(1000);
+		}
+		try {
+			ReferenceData.getInstance().getAutonomousVariableData().setShoulderWaitTime((int)IRSTable.getNumber(SmartDashRef.CLM_SHD_WAIT));
+		} catch (Exception e) {
+			ReferenceData.getInstance().getAutonomousVariableData().setShoulderWaitTime(1000);
+		}
+		try {
 			ReferenceData.getInstance().getAutonomousVariableData().setShiftWaitTime((int)IRSTable.getNumber(SmartDashRef.SHIFT_WAIT_TIME_INPUT));
 		} catch (Exception e) {
 			ReferenceData.getInstance().getAutonomousVariableData().setShiftWaitTime(1000);

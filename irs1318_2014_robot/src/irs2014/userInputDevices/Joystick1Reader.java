@@ -58,6 +58,9 @@ public class Joystick1Reader extends RobotComponentBase {
 //	}
 	
 	private boolean getClam(){
+//		if(joystick.getRawButton(ButtonRef.CLAM)){
+//			System.out.println("clam button was pressed");
+//		}
 		return joystick.getRawButton(ButtonRef.CLAM);
 	}
 	

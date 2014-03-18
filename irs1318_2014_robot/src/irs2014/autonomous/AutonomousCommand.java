@@ -38,6 +38,7 @@ public abstract class AutonomousCommand implements AutoTask
 	public void advanceState() 
 	{//Advance the macro to the next state
 		currentState++;
+//		System.out.println("advanced state to " + currentState);
 		stateLeftEncoderTicks = ReferenceData.getInstance().getDriveTrainData().getLeftEncoderData().getTicks();
 		stateRightEncoderTicks = ReferenceData.getInstance().getDriveTrainData().getRightEncoderData().getTicks();
 		stateTime = Utility.getFPGATime() / 1000;
@@ -55,8 +56,8 @@ public abstract class AutonomousCommand implements AutoTask
 		//if(ReferenceData.getInstance().getDipSwitchData().getDipSwitchState()) // if it is the practice robot
 		//	return centimeters * 360 / (2 * Math.PI * practiceWheelRaduis); 
 //		System.out.println(centimeters / (Math.PI * competitionWheelDiameter) * 360);
-		return centimeters / (Math.PI * competitionWheelDiameter) * 360;
-//		return centimeters / (Math.PI * practiceWheelDiameter) * 360;
+//		return centimeters / (Math.PI * competitionWheelDiameter) * 360;
+		return centimeters / (Math.PI * practiceWheelDiameter) * 360;
 	}
 	
 	/**
@@ -84,12 +85,12 @@ public abstract class AutonomousCommand implements AutoTask
 	}
 	
 	public void extendCollector(){
-		ReferenceData.getInstance().getUserInputData().setExtendCollector(CollectorRef.EXTEND);
+		ReferenceData.getInstance().getUserInputData().setExtendCollector(true);
 		advanceState();
 	}
 	
 	public void retractCollector(){
-		ReferenceData.getInstance().getUserInputData().setRetractCollector(CollectorRef.RETRACT);
+		ReferenceData.getInstance().getUserInputData().setRetractCollector(true);
 		advanceState();
 	}
 	
@@ -107,31 +108,33 @@ public abstract class AutonomousCommand implements AutoTask
 	
 	public void extendShooterFrame()
 	{
-		ReferenceData.getInstance().getUserInputData().setExtendShooterAngle(ShooterRef.EXTEND);
+		ReferenceData.getInstance().getUserInputData().setExtendShooterAngle(true);
 		advanceState();
 	}
 	
 	public void retractShooterFrame()
 	{
-		ReferenceData.getInstance().getUserInputData().setExtendShooterAngle(ShooterRef.RETRACT);
+		ReferenceData.getInstance().getUserInputData().setRetractShooterAngle(true);
+//		System.out.println("advancing out of retractShooterFrame state="+currentState);
 		advanceState();
+//		System.out.println("advanced out of retractShooterFrame state="+currentState);
 	}
 	
 	public void launch3Pistons()
 	{
-		ReferenceData.getInstance().getUserInputData().setShoot3Pistons(ShooterRef.EXTEND);
+		ReferenceData.getInstance().getUserInputData().setShoot3Pistons(true);
 		advanceState();
 	}
 	
 	public void launch4Pistons()
 	{
-		ReferenceData.getInstance().getUserInputData().setShoot4Pistons(ShooterRef.EXTEND);
+		ReferenceData.getInstance().getUserInputData().setShoot4Pistons(true);
 		advanceState();
 	}
 	
 	public void launch5Pistons()
 	{
-		ReferenceData.getInstance().getUserInputData().setShoot5Pistons(ShooterRef.EXTEND);
+		ReferenceData.getInstance().getUserInputData().setShoot5Pistons(true);
 		advanceState();
 	}
 	

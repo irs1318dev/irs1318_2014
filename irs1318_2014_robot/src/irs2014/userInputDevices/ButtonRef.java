@@ -9,11 +9,11 @@ public interface ButtonRef {
 	
 	int SHOOT_5_PISTONS = 4;
 //	int RETRACT_5_PISTONS = 2;
-	int SHOOT_3_PISTONS = 7;
+	int SHOOT_3_PISTONS = 6;
 //	int SHOOT_PULSE = 8;
 //	int SHOOT_1_PISTON = 6;
 	int CLAM = 8;
-	int UN_CLAM = 6;
+	int UN_CLAM = 7;
 	int SHOOT_4_PISTONS = 1;
 	
 	int BOOST = 2;
