@@ -139,7 +139,6 @@ public class UI extends javax.swing.JFrame {
 		if(fw != null){
 			try {
 				writeOutput = false;
-				fw.close();
 				bw.close();
 				fw = null;
 				bw = null;
