@@ -21,7 +21,7 @@ public class ShooterData {
 	public static final int AFTER = 4;
 	
 	private long timeLastShot;
-	public static final long SHOT_INTERVAL = 750000;
+	public static final long SHOT_INTERVAL = 400000;
 	public static final long PULSE_INTERVAL = 50000;
 	private boolean inShot;
 	
