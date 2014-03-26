@@ -8,6 +8,7 @@ import irs2014.driveTrainTank.DriveTrainData;
 import irs2014.driveTrainTank.PIDConstantData;
 import irs2014.lineSensor.LineSensorData;
 import irs2014.pressure.AnalogPressureSensorData;
+import irs2014.pressure.PressureIndicatorData;
 import irs2014.pressure.PressureSensorData;
 import irs2014.pressure.PressureSensorTimerData;
 import irs2014.shooter.AngleData;
@@ -35,6 +36,7 @@ public class ReferenceData {
 	private AngleData angleData;
 	private AnalogPressureSensorData analogPressureData;
 	private AutonomousVariableData autonomousVariableData;
+	private PressureIndicatorData pressureIndicatorData;
 	
 	private UserInputData2 userInputData2;
 	private ShooterData2 shooterData2;
@@ -153,5 +155,12 @@ public class ReferenceData {
 			pidConstantData = new PIDConstantData();
 		}
 		return pidConstantData;
+	}
+	
+	public PressureIndicatorData getPressureIndicatorData() {
+		if (pressureIndicatorData == null) {
+			pressureIndicatorData = new PressureIndicatorData();
+		}
+		return pressureIndicatorData;
 	}
 }

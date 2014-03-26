@@ -25,7 +25,7 @@ public class DriveTrainPIDCalculator extends RobotComponentBase{
 	}
 
 	private void velocityPIDCalculator(){
-		double boost = (ReferenceData.getInstance().getUserInputData().getBoost()) ? 1.0 : 0.0;
+//		double boost = (ReferenceData.getInstance().getUserInputData().getBoost()) ? 1.0 : 0.0;
 		double kb = ReferenceData.getInstance().getPIDConstantData().getKb();
 		double rightVelocitySetpoint = ReferenceData.getInstance().getDriveTrainData().getRightPIDData().getVelocitySetpoint();
 		double rightEncoderVelocity = ReferenceData.getInstance().getDriveTrainData().getRightEncoderData().getVelocity();
@@ -33,7 +33,7 @@ public class DriveTrainPIDCalculator extends RobotComponentBase{
 		double rightKd = ReferenceData.getInstance().getPIDConstantData().getRightKd();
 		double rightKscale = 2800;
 		
-		double rightPIDVal = (rightKf + (kb * boost)) * rightVelocitySetpoint + rightKd*(rightKscale * rightVelocitySetpoint - rightEncoderVelocity);
+		double rightPIDVal = rightKf * rightVelocitySetpoint + rightKd*(rightKscale * rightVelocitySetpoint - rightEncoderVelocity);
 
 		double leftVelocitySetpoint = - ReferenceData.getInstance().getDriveTrainData().getLeftPIDData().getVelocitySetpoint();
 		double leftEncoderVelocity = ReferenceData.getInstance().getDriveTrainData().getLeftEncoderData().getVelocity();
@@ -41,7 +41,7 @@ public class DriveTrainPIDCalculator extends RobotComponentBase{
 		double leftKd = ReferenceData.getInstance().getPIDConstantData().getLeftKd();
 		double leftKscale = 2800;
 
-		double leftPIDVal = (leftKf + (kb * boost)) * leftVelocitySetpoint + leftKd*(leftKscale * leftVelocitySetpoint - leftEncoderVelocity);
+		double leftPIDVal = leftKf * leftVelocitySetpoint + leftKd*(leftKscale * leftVelocitySetpoint - leftEncoderVelocity);
 
 		JoystickFilter.Velocity motorVelocity = new JoystickFilter.Velocity();
 		motorVelocity.leftVelocity = leftPIDVal;

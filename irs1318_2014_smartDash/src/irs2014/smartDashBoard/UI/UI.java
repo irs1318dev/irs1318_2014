@@ -201,13 +201,14 @@ public class UI extends javax.swing.JFrame {
 	private static SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss.SSS");
 	private static int  count = 0;
 	private static final Object monitor = new Object();
-	
+	private static boolean disableWrite = true;
 	public static void writeLog(long timestamp, String output) {
+		if (disableWrite) return;
 		synchronized(monitor) {
 		if (writeOutput) {
 			try {
 				bw.write(sdf.format(new Date(timestamp))+", "+output+"\n");
-				if (count%100==0) {
+				if (count%100000==0) {// was 100
 					bw.flush();
 					count = 0;
 				}
