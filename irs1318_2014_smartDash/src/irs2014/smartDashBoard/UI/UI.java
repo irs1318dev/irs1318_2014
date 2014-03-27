@@ -153,7 +153,7 @@ public class UI extends javax.swing.JFrame {
 			File[] files = devfrcDir.listFiles();
 			for (File file : files) {
 				FileReader fr=null;
-				FileWriter flattenFw=null;
+				FileWriter flattenFw=null; 
 				try {
 					String outputfileName = "flattend_"+ file.getName();
 					File outputfile = new File(outputPath,outputfileName);
