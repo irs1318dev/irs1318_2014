@@ -1,9 +1,10 @@
 package irs2014.networkTable;
 
 import java.io.IOException;
-import java.net.DatagramPacket;
-import java.net.DatagramSocket;
-import java.net.SocketException;
+
+import javax.microedition.io.Datagram;
+import javax.microedition.io.UDPDatagramConnection;
+import javax.microedition.io.Connector;
 
 public class UDPTable {
 	
@@ -18,20 +19,19 @@ public class UDPTable {
 	
 	private UDPTable(){}
 	
-	DatagramSocket datagramSocket;
+	UDPDatagramConnection datagramSocket;
 	int messageCount;
 	
-	public void init() throws SocketException{
-		datagramSocket = new DatagramSocket(1140);
-		datagramSocket.setBroadcast(true);
+	public void init() throws IOException {
+		datagramSocket = (UDPDatagramConnection)Connector.open("datagram://:1140");
 	}
 	
 	public void sendData(String key, String value) {
 		String data = messageCount +","+key+","+value+"\n";
 		byte[] databytes = data.getBytes();
-		DatagramPacket p = new DatagramPacket(databytes,databytes.length);
 		try {
-			datagramSocket.send(p);
+			Datagram dg = datagramSocket.newDatagram(databytes, databytes.length);
+			datagramSocket.send(dg);
 		} catch (IOException e) {
 		}
 	}
