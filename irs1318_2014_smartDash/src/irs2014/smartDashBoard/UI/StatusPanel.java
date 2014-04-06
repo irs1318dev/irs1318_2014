@@ -1,8 +1,11 @@
 package irs2014.smartDashBoard.UI;
 
 import irs2014.smartDashBoard.ConnectionListener;
+import irs2014.smartDashBoard.DataPacket;
 import irs2014.smartDashBoard.KeyHandeler;
 import irs2014.smartDashBoard.TableManager;
+import irs2014.smartDashBoard.UDPTableManager;
+import irs2014.smartDashBoard.UdpKeyListener;
 import irs2014.smartDashBoard.constants.ReferenceData;
 
 import java.awt.Dimension;
@@ -61,6 +64,13 @@ public class StatusPanel extends JTextArea {
 		
 		this.printHashMap();
 		
+		UDPTableManager.getInstance().addUdpKeyListener(new UdpKeyListener() {
+			@Override
+			public void udpArrived(String key) {
+				DataPacket p = UDPTableManager.getInstance().get(key);
+				System.out.println(String.format("key=%s value=%s",key,p.getValue()));
+			}
+		});
 	}
 	
 	public void printHashMap(){

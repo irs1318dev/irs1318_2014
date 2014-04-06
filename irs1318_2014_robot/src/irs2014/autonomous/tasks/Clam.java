@@ -7,7 +7,7 @@ public class Clam extends AutonomousCommand{
 
 	private boolean shoulderAlreadyRetracted = false;
 	
-	@Override
+
 	public void run() {
 		switch(currentState){
 		case 0:
@@ -28,7 +28,7 @@ public class Clam extends AutonomousCommand{
 		}
 	}
 
-	@Override
+	
 	public void cancel() {
 		
 	}

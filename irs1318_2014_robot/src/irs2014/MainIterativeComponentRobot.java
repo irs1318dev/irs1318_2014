@@ -17,6 +17,7 @@ import irs2014.helloWorld.HelloWorldRunner;
 import irs2014.lineSensor.SimpleLineSensorReader;
 import irs2014.networkTable.GetValuesTest;
 import irs2014.networkTable.NetworkTableRunner;
+import irs2014.networkTable.UDPTest;
 import irs2014.pressure.AnalogPressureSensorReader;
 import irs2014.pressure.CompressorRunner;
 import irs2014.pressure.PressureSensorCalculator;
@@ -41,7 +42,13 @@ import irs2014.userInputDevices.UserInputCalculator;
 public class MainIterativeComponentRobot extends IterativeComponentRobot {
 
 	public BotVector currentRobotComponents() {
-		return autonomousTesting();
+		return udpTest();
+	}
+	
+	protected static BotVector udpTest(){
+		BotVector b = new BotVector();
+		b.add(new UDPTest());
+		return b;
 	}
 	
 	protected static BotVector autonomousTesting()

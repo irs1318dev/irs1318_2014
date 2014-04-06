@@ -1,5 +1,7 @@
 package irs2014.networkTable;
 
+import java.net.SocketException;
+
 import irs2014.components.RobotComponentBase;
 import irs2014.generalData.ReferenceData;
 
@@ -10,6 +12,11 @@ public class NetworkTableRunner extends RobotComponentBase{
 		System.out.println("Network Table is ready!");
 		IRSTable.putString(NTRef.Robot_State, "Init");
 		IRSTable.putString(NTRef.Timer_Message, "no message from timer");
+		try {
+			UDPTable.getInstance().init();
+		} catch (SocketException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public void teleopInit(){
@@ -23,23 +30,32 @@ public class NetworkTableRunner extends RobotComponentBase{
 	public void teleopPeriodic() {
 		if(val++ % 10 == 0){
 			driveTrainData();
-			shooterData();
-			collectorData();
-			userInputData();
 			pressureSensor();
 			autonomous();
 		}
+		userInputData();
+		collectorData();
+		shooterData();
 	}
 	
 	private void driveTrainData(){
-		IRSTable.putNumber(NTRef.DriveTrain_RightEncoder, ReferenceData.getInstance().getDriveTrainData().getRightEncoderData().getTicks());
-		IRSTable.putNumber(NTRef.DriveTrain_LeftEncoder, ReferenceData.getInstance().getDriveTrainData().getLeftEncoderData().getTicks());
-		IRSTable.putNumber(NTRef.DriveTrain_RightEncoderVelocity, ReferenceData.getInstance().getDriveTrainData().getRightEncoderData().getVelocity());
-		IRSTable.putNumber(NTRef.DriveTrain_LeftEncoderVelocity, ReferenceData.getInstance().getDriveTrainData().getLeftEncoderData().getVelocity());
-		IRSTable.putNumber(NTRef.DriveTrain_RightSetPoint, ReferenceData.getInstance().getDriveTrainData().getRightPIDData().getVelocitySetpoint());
-		IRSTable.putNumber(NTRef.DriveTrain_LeftSetPoint, ReferenceData.getInstance().getDriveTrainData().getLeftPIDData().getVelocitySetpoint());
-		IRSTable.putNumber(NTRef.DriveTrain_RightPIDSpeed, ReferenceData.getInstance().getDriveTrainData().getRightPIDData().getPIDVelocity());
-		IRSTable.putNumber(NTRef.DriveTrain_LeftPIDSpeed, ReferenceData.getInstance().getDriveTrainData().getLeftPIDData().getPIDVelocity());
+		//TODO: change to UDP
+//		IRSTable.putNumber(NTRef.DriveTrain_RightEncoder, ReferenceData.getInstance().getDriveTrainData().getRightEncoderData().getTicks());
+//		IRSTable.putNumber(NTRef.DriveTrain_LeftEncoder, ReferenceData.getInstance().getDriveTrainData().getLeftEncoderData().getTicks());
+//		IRSTable.putNumber(NTRef.DriveTrain_RightEncoderVelocity, ReferenceData.getInstance().getDriveTrainData().getRightEncoderData().getVelocity());
+//		IRSTable.putNumber(NTRef.DriveTrain_LeftEncoderVelocity, ReferenceData.getInstance().getDriveTrainData().getLeftEncoderData().getVelocity());
+//		IRSTable.putNumber(NTRef.DriveTrain_RightSetPoint, ReferenceData.getInstance().getDriveTrainData().getRightPIDData().getVelocitySetpoint());
+//		IRSTable.putNumber(NTRef.DriveTrain_LeftSetPoint, ReferenceData.getInstance().getDriveTrainData().getLeftPIDData().getVelocitySetpoint());
+//		IRSTable.putNumber(NTRef.DriveTrain_RightPIDSpeed, ReferenceData.getInstance().getDriveTrainData().getRightPIDData().getPIDVelocity());
+//		IRSTable.putNumber(NTRef.DriveTrain_LeftPIDSpeed, ReferenceData.getInstance().getDriveTrainData().getLeftPIDData().getPIDVelocity());
+		UDPTable.getInstance().sendData(NTRef.DriveTrain_RightEncoder, ("" + ReferenceData.getInstance().getDriveTrainData().getRightEncoderData().getTicks()));
+		UDPTable.getInstance().sendData(NTRef.DriveTrain_LeftEncoder, ("" + ReferenceData.getInstance().getDriveTrainData().getLeftEncoderData().getTicks()));
+		UDPTable.getInstance().sendData(NTRef.DriveTrain_RightEncoderVelocity, ("" + ReferenceData.getInstance().getDriveTrainData().getRightEncoderData().getVelocity()));
+		UDPTable.getInstance().sendData(NTRef.DriveTrain_LeftEncoderVelocity, ("" + ReferenceData.getInstance().getDriveTrainData().getLeftEncoderData().getVelocity()));
+		UDPTable.getInstance().sendData(NTRef.DriveTrain_RightSetPoint, ("" + ReferenceData.getInstance().getDriveTrainData().getRightPIDData().getVelocitySetpoint()));
+		UDPTable.getInstance().sendData(NTRef.DriveTrain_LeftSetPoint, ("" + ReferenceData.getInstance().getDriveTrainData().getLeftPIDData().getVelocitySetpoint()));
+		UDPTable.getInstance().sendData(NTRef.DriveTrain_RightPIDSpeed, ("" + ReferenceData.getInstance().getDriveTrainData().getRightPIDData().getPIDVelocity()));
+		UDPTable.getInstance().sendData(NTRef.DriveTrain_LeftPIDSpeed, ("" + ReferenceData.getInstance().getDriveTrainData().getLeftPIDData().getPIDVelocity()));
 	}
 
  	private void shooterData(){
@@ -48,9 +64,9 @@ public class NetworkTableRunner extends RobotComponentBase{
  	}
  	
  	private void collectorData(){
- 		IRSTable.putBoolean(NTRef.Collector_BallPresent, ReferenceData.getInstance().getCollectorData().getLimitSwitchData().getBallPresent());
+// 		IRSTable.putBoolean(NTRef.Collector_BallPresent, ReferenceData.getInstance().getCollectorData().getLimitSwitchData().getBallPresent());
  		IRSTable.putNumber(NTRef.Collector_MotorSpeed, ReferenceData.getInstance().getCollectorData().getMotorData().getCollectorMotorSpeed());
- 		IRSTable.putBoolean(NTRef.Collector_DesiredSolenoidState, ReferenceData.getInstance().getCollectorData().getSolenoidData().getDesiredSolenoidState());
+// 		IRSTable.putBoolean(NTRef.Collector_DesiredSolenoidState, ReferenceData.getInstance().getCollectorData().getSolenoidData().getDesiredSolenoidState());
  		IRSTable.putBoolean(NTRef.Collector_CurrentSolenoidState, ReferenceData.getInstance().getCollectorData().getSolenoidData().getCurrentSolenoidState());
  	}
  	
@@ -72,9 +88,13 @@ public class NetworkTableRunner extends RobotComponentBase{
  	}
  	
  	public void pressureSensor(){
- 		IRSTable.putBoolean(NTRef.PressureSensor_State, ReferenceData.getInstance().getPressureSensorData().getIsPressurized());
- 		IRSTable.putNumber(NTRef.PressureSensor_Time, (ReferenceData.getInstance().getPressureSensorTimerData().getTimerTime() / 1000000));
- 		IRSTable.putNumber(NTRef.AnalogPressureSensor_Value, ReferenceData.getInstance().getAnalogPressureSensorData().getPressure());
+// 		IRSTable.putBoolean(NTRef.PressureSensor_State, ReferenceData.getInstance().getPressureSensorData().getIsPressurized());
+// 		IRSTable.putNumber(NTRef.PressureSensor_Time, (ReferenceData.getInstance().getPressureSensorTimerData().getTimerTime() / 1000000));
+// 		IRSTable.putNumber(NTRef.AnalogPressureSensor_Value, ReferenceData.getInstance().getAnalogPressureSensorData().getPressure());
+ 		UDPTable.getInstance().sendData(NTRef.PressureSensor_State, ("" + ReferenceData.getInstance().getPressureSensorData().getIsPressurized()));
+ 		UDPTable.getInstance().sendData(NTRef.PressureSensor_Time, ("" + (ReferenceData.getInstance().getPressureSensorTimerData().getTimerTime() / 1000000)));
+ 		UDPTable.getInstance().sendData(NTRef.AnalogPressureSensor_Value, ("" + ReferenceData.getInstance().getAnalogPressureSensorData().getPressure()));
+ 		
  	}
  	
  	public void autonomous(){

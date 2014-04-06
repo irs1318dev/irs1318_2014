@@ -5,7 +5,7 @@ import irs2014.generalData.ReferenceData;
 
 public class UnClam extends AutonomousCommand{
 
-	@Override
+
 	public void run() {
 		switch(currentState){
 		case 0:
@@ -22,7 +22,7 @@ public class UnClam extends AutonomousCommand{
 		}
 	}
 
-	@Override
+	
 	public void cancel() {
 		
 	}
