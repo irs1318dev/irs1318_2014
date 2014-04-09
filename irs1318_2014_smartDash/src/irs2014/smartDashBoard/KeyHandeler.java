@@ -61,8 +61,8 @@ public class KeyHandeler {
 //		this.keyOrder.add("i.ss");
 //		this.keyOrder.add("cl.bp");
 		this.keyOrder.add("ps.av");
-		this.keyOrder.add("ps.s");
-		this.keyOrder.add("ps.t");
+//		this.keyOrder.add("ps.s");
+//		this.keyOrder.add("ps.t");
 		this.keyOrder.add("dt.rsp");
 		this.keyOrder.add("dt.lsp");
 		this.keyOrder.add("dt.rps");
