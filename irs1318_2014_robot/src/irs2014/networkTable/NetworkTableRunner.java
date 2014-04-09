@@ -21,14 +21,14 @@ public class NetworkTableRunner extends RobotComponentBase{
 	}
 	
 	public void teleopPeriodic() {
-		if(val++ % 10 == 0){
+		if(val++ % 100 == 0){
 			driveTrainData();
-			shooterData();
-			collectorData();
-			userInputData();
 			pressureSensor();
-			autonomous();
 		}
+		shooterData();
+		collectorData();
+		userInputData();
+		autonomous();
 	}
 	
 	private void driveTrainData(){

@@ -2,7 +2,7 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="lib" path="libs/networktables-crio.jar"/>
+	<classpathentry kind="lib" path="libs/networktables-crio.jar" sourcepath="libs/networktables-desktop-sources.jar"/>
 	<classpathentry kind="lib" path="libs/squawk_device_classes.jar"/>
 	<classpathentry kind="lib" path="libs/squawk.jar"/>
 	<classpathentry kind="lib" path="libs/wpilibj.jar" sourcepath="libs/wpilibj.src.zip"/>
