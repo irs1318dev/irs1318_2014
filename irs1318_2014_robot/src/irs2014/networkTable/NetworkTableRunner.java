@@ -1,9 +1,9 @@
 package irs2014.networkTable;
 
-import java.net.SocketException;
-
 import irs2014.components.RobotComponentBase;
 import irs2014.generalData.ReferenceData;
+
+import java.io.IOException;
 
 
 public class NetworkTableRunner extends RobotComponentBase{
@@ -14,7 +14,7 @@ public class NetworkTableRunner extends RobotComponentBase{
 		IRSTable.putString(NTRef.Timer_Message, "no message from timer");
 		try {
 			UDPTable.getInstance().init();
-		} catch (SocketException e) {
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}

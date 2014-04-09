@@ -2,9 +2,9 @@ package irs2014.networkTable;
 
 import java.io.IOException;
 
+import javax.microedition.io.Connector;
 import javax.microedition.io.Datagram;
 import javax.microedition.io.UDPDatagramConnection;
-import javax.microedition.io.Connector;
 
 public class UDPTable {
 	

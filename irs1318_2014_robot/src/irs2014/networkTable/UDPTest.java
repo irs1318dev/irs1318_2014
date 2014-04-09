@@ -1,8 +1,8 @@
 package irs2014.networkTable;
 
-import java.net.SocketException;
-
 import irs2014.components.RobotComponentBase;
+
+import java.io.IOException;
 
 public class UDPTest extends RobotComponentBase{
 	
@@ -12,7 +12,7 @@ public class UDPTest extends RobotComponentBase{
 		test = 0;
 		try {
 			UDPTable.getInstance().init();
-		} catch (SocketException e) {
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
