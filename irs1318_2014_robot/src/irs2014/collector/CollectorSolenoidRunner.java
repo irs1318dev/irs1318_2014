@@ -37,6 +37,6 @@ public class CollectorSolenoidRunner extends RobotComponentBase {
 //			collectorSolenoid = new DoubleSolenoid(PortRef.SOLENOID_MODULE_PORT_2, PortRef.PRACTICE_COLLECTOR_EXTENDER_SOLENOID_PORT, PortRef.PRACTICE_COLLECTOR_RETRACTOR_SOLENOID_PORT);
 //		}
 //		return collectorSolenoid;
-		return new DoubleSolenoid(PortRef.SOLENOID_MODULE_PORT_2, PortRef.PRACTICE_COLLECTOR_EXTENDER_SOLENOID_PORT, PortRef.PRACTICE_COLLECTOR_RETRACTOR_SOLENOID_PORT);
+		return new DoubleSolenoid(/*PortRef.SOLENOID_MODULE_PORT_2*/1, PortRef.PRACTICE_COLLECTOR_EXTENDER_SOLENOID_PORT, PortRef.PRACTICE_COLLECTOR_RETRACTOR_SOLENOID_PORT);
 	}
 }

@@ -29,22 +29,22 @@ public class Joystick1Reader extends RobotComponentBase {
 		
 		ReferenceData.getInstance().getUserInputData().setExtendCollector(getExtendCollector());
 		ReferenceData.getInstance().getUserInputData().setRetractCollector(getRetractCollector());
-		ReferenceData.getInstance().getUserInputData().setCollectorMotorIn(getCollectorMotorIn());
-		ReferenceData.getInstance().getUserInputData().setCollectorMotorOut(getCollectorMotorOut());
+		//ReferenceData.getInstance().getUserInputData().setCollectorMotorIn(getCollectorMotorIn());
+		//ReferenceData.getInstance().getUserInputData().setCollectorMotorOut(getCollectorMotorOut());
 //		ReferenceData.getInstance().getUserInputData().setStopCollectorMotor(getStopCollectorMotor());
-		ReferenceData.getInstance().getUserInputData().setRetractShooterAngle(getRetractShooterAngle());
-		ReferenceData.getInstance().getUserInputData().setExtendShooterAngle(getExtendShooterAngle());
-		ReferenceData.getInstance().getUserInputData().setClam(getClam());
-		ReferenceData.getInstance().getUserInputData().setUnClam(getUnClam());
+		//ReferenceData.getInstance().getUserInputData().setRetractShooterAngle(getRetractShooterAngle());
+		//ReferenceData.getInstance().getUserInputData().setExtendShooterAngle(getExtendShooterAngle());
+		//ReferenceData.getInstance().getUserInputData().setClam(getClam());
+		//ReferenceData.getInstance().getUserInputData().setUnClam(getUnClam());
 		
-		ReferenceData.getInstance().getUserInputData().setShoot5Pistons(getShoot5Pistons());
-		ReferenceData.getInstance().getUserInputData().setShoot4Pistons(getShoot4Pistons());
+		//ReferenceData.getInstance().getUserInputData().setShoot5Pistons(getShoot5Pistons());
+		//ReferenceData.getInstance().getUserInputData().setShoot4Pistons(getShoot4Pistons());
 //		ReferenceData.getInstance().getUserInputData().setRetract5Pistons(getRetract5Pistons());
-		ReferenceData.getInstance().getUserInputData().setShoot3Pistons(getShoot3Pistons());
-		ReferenceData.getInstance().getUserInputData().setShoot4Pistons(getShoot4Pistons());
+		//ReferenceData.getInstance().getUserInputData().setShoot3Pistons(getShoot3Pistons());
+		//ReferenceData.getInstance().getUserInputData().setShoot4Pistons(getShoot4Pistons());
 //		ReferenceData.getInstance().getUserInputData().setShootPulse(getSetShootPulse());
 //		ReferenceData.getInstance().getUserInputData().setShoot1Piston(getShoot1Piston();
-		ReferenceData.getInstance().getUserInputData().setBoost(getBoost());
+		//ReferenceData.getInstance().getUserInputData().setBoost(getBoost());
 		
 //		ReferenceData.getInstance().getUserInputData().setGoForward(getGoForward());
 	}
